@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.drift_cache/
+results/
+!results/smoke/summary_table.json
+data/locomo_drift.json
+data/locomo10.json
+.venv/
+.pytest_cache/
+.DS_Store

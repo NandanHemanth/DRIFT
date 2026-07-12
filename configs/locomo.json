@@ -1,0 +1,10 @@
+{
+  "dataset": "data/locomo_drift.json",
+  "results_dir": "results/locomo",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 8,
+  "extract_model": "cerebras:gpt-oss-120b",
+  "judge_model": "gemini:gemini-2.5-flash",
+  "models": ["groq:llama-3.3-70b-versatile", "cerebras:gpt-oss-120b"],
+  "policies": ["P0", "P1:ttl_days=35", "P2", "P3", "P4"]
+}

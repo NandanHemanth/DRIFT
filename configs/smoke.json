@@ -1,0 +1,10 @@
+{
+  "dataset": "data/synthetic_smoke.json",
+  "results_dir": "results/smoke",
+  "embedder": "hashing",
+  "retrieval_k": 8,
+  "extract_model": "mock",
+  "judge_model": "mock",
+  "models": ["mock"],
+  "policies": ["P0", "P1:ttl_days=35", "P2", "P3", "P4"]
+}

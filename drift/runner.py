@@ -1,0 +1,112 @@
+"""Experiment runner: {policies} x {models} x {dataset} -> results JSON.
+
+Resumable: one results file per experiment cell; completed cells are skipped.
+
+Usage:
+    python -m drift.runner --config configs/smoke.json
+    python -m drift.runner --config configs/locomo.json
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import time
+from pathlib import Path
+
+from drift.embeddings import make_embedder
+from drift.memory.graph import BitemporalGraph
+from drift.pipeline import answer_question, ingest_session, judge_answer
+from drift.policies import make_policy
+from drift.providers import make_provider
+
+
+def load_dataset(path: str) -> dict:
+    """Dataset schema:
+    {"conversations": [{"id": str, "sessions": [{"time": float, "lines": [str]}],
+                        "questions": [{"question": str, "answer": str,
+                                       "category": str, "stale_answer": str|null}]}]}
+    """
+    return json.loads(Path(path).read_text())
+
+
+def staleness_hit(answer: str, stale_answer: str | None) -> bool:
+    """An answer is stale if it contains the superseded (old) fact string."""
+    if not stale_answer:
+        return False
+    return stale_answer.lower() in answer.lower()
+
+
+def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_path: Path) -> dict:
+    embedder = make_embedder(cfg.get("embedder", "hashing"))
+    answer_provider = make_provider(model_spec, cfg.get("cache_dir", ".drift_cache"))
+    extract_provider = make_provider(cfg.get("extract_model", model_spec), cfg.get("cache_dir", ".drift_cache"))
+    judge_provider = make_provider(cfg.get("judge_model", "mock"), cfg.get("cache_dir", ".drift_cache"))
+
+    records, memory_curves = [], []
+    for convo in dataset["conversations"]:
+        policy = make_policy(policy_spec)  # fresh policy state per conversation
+        graph = BitemporalGraph(embedder)
+        t_last = 0.0
+        for s_idx, session in enumerate(convo["sessions"]):
+            ingest_session(session, graph, policy, extract_provider)
+            t_last = max(t_last, session["time"])
+            memory_curves.append({"conversation": convo["id"], "session": s_idx, **graph.stats()})
+
+        for q in convo["questions"]:
+            result = answer_question(q["question"], graph, policy, answer_provider,
+                                     k=cfg.get("retrieval_k", 8), now=t_last)
+            verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider)
+            records.append({
+                "conversation": convo["id"], "category": q.get("category", "single_hop"),
+                **result, "gold": q["answer"], **verdict,
+                "stale": staleness_hit(result["answer"], q.get("stale_answer")),
+            })
+
+    n = len(records)
+    summary = {
+        "policy": policy_spec, "model": model_spec, "n_questions": n,
+        "accuracy": sum(r["correct"] for r in records) / n if n else 0.0,
+        "mean_f1": sum(r["f1"] for r in records) / n if n else 0.0,
+        "staleness_rate": sum(r["stale"] for r in records) / n if n else 0.0,
+        "mean_tokens_per_q": sum(r["tokens"] for r in records) / n if n else 0.0,
+        "final_memory": memory_curves[-1] if memory_curves else {},
+        "timestamp": time.time(),
+    }
+    out_path.write_text(json.dumps(
+        {"summary": summary, "records": records, "memory_curves": memory_curves}, indent=1))
+    return summary
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="DRIFT experiment runner")
+    parser.add_argument("--config", required=True)
+    parser.add_argument("--force", action="store_true", help="rerun completed cells")
+    args = parser.parse_args()
+
+    cfg = json.loads(Path(args.config).read_text())
+    dataset = load_dataset(cfg["dataset"])
+    results_dir = Path(cfg.get("results_dir", "results"))
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    summaries = []
+    for policy_spec in cfg["policies"]:
+        for model_spec in cfg["models"]:
+            cell = f"{policy_spec.split(':')[0]}__{model_spec.replace(':', '_').replace('/', '_')}"
+            out_path = results_dir / f"{cell}.json"
+            if out_path.exists() and not args.force:
+                print(f"[skip] {cell} (exists)")
+                summaries.append(json.loads(out_path.read_text())["summary"])
+                continue
+            print(f"[run ] {cell}")
+            summary = run_cell(policy_spec, model_spec, dataset, cfg, out_path)
+            print(f"       acc={summary['accuracy']:.3f} f1={summary['mean_f1']:.3f} "
+                  f"stale={summary['staleness_rate']:.3f} tok/q={summary['mean_tokens_per_q']:.0f}")
+            summaries.append(summary)
+
+    table_path = results_dir / "summary_table.json"
+    table_path.write_text(json.dumps(summaries, indent=1))
+    print(f"\nWrote {table_path}")
+
+
+if __name__ == "__main__":
+    main()

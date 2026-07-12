@@ -1,0 +1,14 @@
+[project]
+name = "drift-memory"
+version = "0.1.0"
+description = "DRIFT: Decay and Retention In Forgetful Temporal-graph memory - a research framework for forgetting policies in LLM agent memory"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+dependencies = []  # core is stdlib-only by design
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+analysis = ["matplotlib>=3.7"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
