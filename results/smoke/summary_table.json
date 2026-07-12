@@ -1,0 +1,97 @@
+[
+ {
+  "policy": "P0",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.35714285714286,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 12,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1783822696.1048615
+ },
+ {
+  "policy": "P1:ttl_days=35",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.5,
+  "mean_f1": 0.14647297147297147,
+  "staleness_rate": 0.07142857142857142,
+  "mean_tokens_per_q": 160.92857142857142,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 6,
+   "invalidated_active": 1,
+   "pruned": 6,
+   "write_rejections": 0
+  },
+  "timestamp": 1783822696.1113641
+ },
+ {
+  "policy": "P2",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.9285714285714286,
+  "mean_f1": 0.2990327133184277,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 172.5,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 9,
+   "invalidated_active": 0,
+   "pruned": 3,
+   "write_rejections": 0
+  },
+  "timestamp": 1783822696.1197422
+ },
+ {
+  "policy": "P3",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.21428571428572,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 11,
+   "active_facts": 11,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  "timestamp": 1783822696.1330335
+ },
+ {
+  "policy": "P4",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.07142857142858,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 11,
+   "invalidated_active": 3,
+   "pruned": 1,
+   "write_rejections": 0
+  },
+  "timestamp": 1783822696.143771
+ }
+]

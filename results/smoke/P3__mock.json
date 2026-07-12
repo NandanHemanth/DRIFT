@@ -1,0 +1,437 @@
+{
+ "summary": {
+  "policy": "P3",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.21428571428572,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 11,
+   "active_facts": 11,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  "timestamp": 1783822696.1330335
+ },
+ "records": [
+  {
+   "conversation": "convo_alice_bob",
+   "category": "current_state",
+   "question": "Which city does Alice live in?",
+   "answer": "Alice: I live in Boston, the city is great for museums.",
+   "retrieved_ids": [
+    "107cd8a997a6",
+    "c1f92104f46e",
+    "70aa580ee7e4",
+    "e1fa9c772c67",
+    "6060ee5ce1e0",
+    "83e8235420e4",
+    "a1920cf8f681",
+    "80c7bed7870e"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 178,
+   "gold": "Seattle",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 56,
+   "stale": true
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "current_state",
+   "question": "Which company does Alice work at?",
+   "answer": "Alice: I work at Acme Corp, the company makes robotics.",
+   "retrieved_ids": [
+    "6060ee5ce1e0",
+    "83e8235420e4",
+    "e1fa9c772c67",
+    "c1f92104f46e",
+    "70aa580ee7e4",
+    "f0f4b5ee35e7",
+    "107cd8a997a6",
+    "b4d43fe218ea"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 177,
+   "gold": "Globex Industries",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 59,
+   "stale": true
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "What pet did Bob adopt?",
+   "answer": "Bob: I adopted a puppy named Max, my first pet.",
+   "retrieved_ids": [
+    "f16d8341646b",
+    "a1920cf8f681",
+    "b08a0fb288ee",
+    "f0f4b5ee35e7",
+    "f1b0994cd089",
+    "e1fa9c772c67",
+    "70aa580ee7e4",
+    "2b20b3796315"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 164,
+   "gold": "a puppy named Max",
+   "correct": true,
+   "f1": 0.5714285714285715,
+   "judge_tokens": 53,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "What is Alice's favorite hobby?",
+   "answer": "Alice: My favorite hobby is painting landscapes.",
+   "retrieved_ids": [
+    "80c7bed7870e",
+    "70aa580ee7e4",
+    "e1fa9c772c67",
+    "b4d43fe218ea",
+    "6060ee5ce1e0",
+    "107cd8a997a6",
+    "c1f92104f46e",
+    "83e8235420e4"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 175,
+   "gold": "painting landscapes",
+   "correct": true,
+   "f1": 0.4444444444444445,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "What is Bob studying at Harvard?",
+   "answer": "Bob: I am studying biology at Harvard.",
+   "retrieved_ids": [
+    "2b20b3796315",
+    "f0f4b5ee35e7",
+    "a1920cf8f681",
+    "b08a0fb288ee",
+    "e1fa9c772c67",
+    "6060ee5ce1e0",
+    "f1b0994cd089",
+    "f16d8341646b"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 159,
+   "gold": "biology",
+   "correct": true,
+   "f1": 0.25,
+   "judge_tokens": 51,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "Which language did Alice start learning?",
+   "answer": "Alice: I started learning Spanish this month.",
+   "retrieved_ids": [
+    "b4d43fe218ea",
+    "e1fa9c772c67",
+    "70aa580ee7e4",
+    "6060ee5ce1e0",
+    "c1f92104f46e",
+    "107cd8a997a6",
+    "80c7bed7870e",
+    "83e8235420e4"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 176,
+   "gold": "Spanish",
+   "correct": true,
+   "f1": 0.25,
+   "judge_tokens": 55,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "Where did Bob visit his grandmother?",
+   "answer": "Bob: I visited my grandmother in Chicago last weekend.",
+   "retrieved_ids": [
+    "a1920cf8f681",
+    "b08a0fb288ee",
+    "e1fa9c772c67",
+    "f0f4b5ee35e7",
+    "f16d8341646b",
+    "70aa580ee7e4",
+    "f1b0994cd089",
+    "2b20b3796315"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 169,
+   "gold": "Chicago",
+   "correct": true,
+   "f1": 0.19999999999999998,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "What promotion did Alice get?",
+   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "retrieved_ids": [
+    "e1fa9c772c67",
+    "70aa580ee7e4",
+    "6060ee5ce1e0",
+    "c1f92104f46e",
+    "b4d43fe218ea",
+    "83e8235420e4",
+    "107cd8a997a6",
+    "f1b0994cd089"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 175,
+   "gold": "senior engineer",
+   "correct": true,
+   "f1": 0.33333333333333337,
+   "judge_tokens": 58,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "current_state",
+   "question": "Which city does Dan live in?",
+   "answer": "Dan: I live in Austin, the city has amazing tacos.",
+   "retrieved_ids": [
+    "dd47a46f2d0c",
+    "f99d22015aef",
+    "c0a6551660f0",
+    "1a4be3e02a6d",
+    "d323966a84ac",
+    "f8ebf66cb78a",
+    "754e0f892c6e",
+    "6d1b9b5a9567"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 176,
+   "gold": "Denver",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 54,
+   "stale": true
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "current_state",
+   "question": "Which company does Carol work at?",
+   "answer": "Carol: I work at Initech, the company audits spreadsheets.",
+   "retrieved_ids": [
+    "6d1b9b5a9567",
+    "244401fac59a",
+    "f8ebf66cb78a",
+    "754e0f892c6e",
+    "1a4be3e02a6d",
+    "08db8b293034",
+    "724bd18cd144",
+    "c0a6551660f0"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 174,
+   "gold": "Hooli",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 57,
+   "stale": true
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What instrument does Dan play?",
+   "answer": "Dan: I play guitar in a local band, my favorite instrument.",
+   "retrieved_ids": [
+    "d323966a84ac",
+    "1a4be3e02a6d",
+    "c0a6551660f0",
+    "f99d22015aef",
+    "dd47a46f2d0c",
+    "f8ebf66cb78a",
+    "6d1b9b5a9567",
+    "754e0f892c6e"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 178,
+   "gold": "guitar",
+   "correct": true,
+   "f1": 0.16666666666666669,
+   "judge_tokens": 55,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What pet did Carol adopt?",
+   "answer": "Carol: I adopted a kitten named Whiskers, my first pet.",
+   "retrieved_ids": [
+    "f8ebf66cb78a",
+    "08db8b293034",
+    "754e0f892c6e",
+    "6d1b9b5a9567",
+    "1a4be3e02a6d",
+    "724bd18cd144",
+    "244401fac59a",
+    "c0a6551660f0"
+   ],
+   "retrieved_invalidated": 2,
+   "tokens": 171,
+   "gold": "a kitten named Whiskers",
+   "correct": true,
+   "f1": 0.5714285714285715,
+   "judge_tokens": 57,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_recent",
+   "question": "What is the name of Dan's band's first album?",
+   "answer": "Dan: My band released our first album called Midnight Drive.",
+   "retrieved_ids": [
+    "c0a6551660f0",
+    "f99d22015aef",
+    "1a4be3e02a6d",
+    "d323966a84ac",
+    "f8ebf66cb78a",
+    "dd47a46f2d0c",
+    "08db8b293034",
+    "754e0f892c6e"
+   ],
+   "retrieved_invalidated": 1,
+   "tokens": 184,
+   "gold": "Midnight Drive",
+   "correct": true,
+   "f1": 0.33333333333333337,
+   "judge_tokens": 61,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What does Carol love doing on weekends?",
+   "answer": "Carol: I love hiking on weekends.",
+   "retrieved_ids": [
+    "724bd18cd144",
+    "f8ebf66cb78a",
+    "1a4be3e02a6d",
+    "754e0f892c6e",
+    "6d1b9b5a9567",
+    "c0a6551660f0",
+    "f99d22015aef",
+    "08db8b293034"
+   ],
+   "retrieved_invalidated": 1,
+   "tokens": 169,
+   "gold": "hiking",
+   "correct": true,
+   "f1": 0.2857142857142857,
+   "judge_tokens": 51,
+   "stale": false
+  }
+ ],
+ "memory_curves": [
+  {
+   "conversation": "convo_alice_bob",
+   "session": 0,
+   "total_facts": 5,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "session": 1,
+   "total_facts": 7,
+   "active_facts": 7,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "session": 2,
+   "total_facts": 10,
+   "active_facts": 10,
+   "invalidated_active": 2,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "session": 3,
+   "total_facts": 12,
+   "active_facts": 12,
+   "invalidated_active": 2,
+   "pruned": 0,
+   "write_rejections": 2
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "session": 4,
+   "total_facts": 14,
+   "active_facts": 14,
+   "invalidated_active": 2,
+   "pruned": 0,
+   "write_rejections": 2
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "session": 0,
+   "total_facts": 4,
+   "active_facts": 4,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "session": 1,
+   "total_facts": 5,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "session": 2,
+   "total_facts": 7,
+   "active_facts": 7,
+   "invalidated_active": 2,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "session": 3,
+   "total_facts": 9,
+   "active_facts": 9,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 11,
+   "active_facts": 11,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 1
+  }
+ ]
+}

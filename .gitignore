@@ -1,8 +1,8 @@
 __pycache__/
 *.pyc
 .drift_cache/
-results/
-!results/smoke/summary_table.json
+results/*
+!results/smoke/
 data/locomo_drift.json
 data/locomo10.json
 .venv/
