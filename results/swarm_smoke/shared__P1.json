@@ -1,0 +1,420 @@
+{
+ "summary": {
+  "n_questions": 14,
+  "accuracy": 0.14285714285714285,
+  "mean_f1": 0.058608058608058615,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 151.35714285714286,
+  "n_agents": 3,
+  "invalidations": 3,
+  "cross_writer_invalidations": 3,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 6,
+   "invalidated_active": 0,
+   "pruned": 22,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P1:ttl_days=14",
+  "wall_seconds": 0.0
+ },
+ "records": [
+  {
+   "conversation": "convo_alice_bob",
+   "category": "current_state",
+   "question": "Which city does Alice live in?",
+   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "retrieved_ids": [
+    "8cb615a17b43",
+    "84d8af2616ea",
+    "abee868b4247",
+    "579286329069",
+    "c888ea1e3a85",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 153,
+   "gold": "Seattle",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 57,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "current_state",
+   "question": "Which company does Alice work at?",
+   "answer": "Carol: My mentor at work is very supportive.",
+   "retrieved_ids": [
+    "abee868b4247",
+    "8cb615a17b43",
+    "872906023cd8",
+    "579286329069",
+    "84d8af2616ea",
+    "c888ea1e3a85"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 149,
+   "gold": "Globex Industries",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "What pet did Bob adopt?",
+   "answer": "Bob: I am training Max for an agility competition.",
+   "retrieved_ids": [
+    "579286329069",
+    "abee868b4247",
+    "8cb615a17b43",
+    "c888ea1e3a85",
+    "84d8af2616ea",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 148,
+   "gold": "a puppy named Max",
+   "correct": false,
+   "f1": 0.15384615384615383,
+   "judge_tokens": 55,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "What is Alice's favorite hobby?",
+   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "retrieved_ids": [
+    "8cb615a17b43",
+    "abee868b4247",
+    "84d8af2616ea",
+    "579286329069",
+    "c888ea1e3a85",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 153,
+   "gold": "painting landscapes",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 61,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "What is Bob studying at Harvard?",
+   "answer": "Bob: I am training Max for an agility competition.",
+   "retrieved_ids": [
+    "579286329069",
+    "abee868b4247",
+    "8cb615a17b43",
+    "84d8af2616ea",
+    "c888ea1e3a85",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 150,
+   "gold": "biology",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 55,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_old",
+   "question": "Which language did Alice start learning?",
+   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "retrieved_ids": [
+    "8cb615a17b43",
+    "abee868b4247",
+    "84d8af2616ea",
+    "579286329069",
+    "c888ea1e3a85",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 155,
+   "gold": "Spanish",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 60,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "Where did Bob visit his grandmother?",
+   "answer": "Bob: I am training Max for an agility competition.",
+   "retrieved_ids": [
+    "8cb615a17b43",
+    "579286329069",
+    "84d8af2616ea",
+    "abee868b4247",
+    "c888ea1e3a85",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 151,
+   "gold": "Chicago",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_alice_bob",
+   "category": "recall_recent",
+   "question": "What promotion did Alice get?",
+   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "retrieved_ids": [
+    "8cb615a17b43",
+    "abee868b4247",
+    "c888ea1e3a85",
+    "84d8af2616ea",
+    "579286329069",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 152,
+   "gold": "senior engineer",
+   "correct": true,
+   "f1": 0.33333333333333337,
+   "judge_tokens": 58,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "current_state",
+   "question": "Which city does Dan live in?",
+   "answer": "Dan: My band released our first album called Midnight Drive.",
+   "retrieved_ids": [
+    "84d8af2616ea",
+    "c888ea1e3a85",
+    "abee868b4247",
+    "8cb615a17b43",
+    "579286329069",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 152,
+   "gold": "Denver",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "current_state",
+   "question": "Which company does Carol work at?",
+   "answer": "Carol: My mentor at work is very supportive.",
+   "retrieved_ids": [
+    "abee868b4247",
+    "872906023cd8",
+    "579286329069",
+    "8cb615a17b43",
+    "c888ea1e3a85",
+    "84d8af2616ea"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 149,
+   "gold": "Hooli",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 53,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What instrument does Dan play?",
+   "answer": "Dan: My band released our first album called Midnight Drive.",
+   "retrieved_ids": [
+    "84d8af2616ea",
+    "c888ea1e3a85",
+    "8cb615a17b43",
+    "abee868b4247",
+    "579286329069",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 153,
+   "gold": "guitar",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 57,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What pet did Carol adopt?",
+   "answer": "Carol: My mentor at work is very supportive.",
+   "retrieved_ids": [
+    "abee868b4247",
+    "872906023cd8",
+    "84d8af2616ea",
+    "8cb615a17b43",
+    "c888ea1e3a85",
+    "579286329069"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 147,
+   "gold": "a kitten named Whiskers",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 56,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_recent",
+   "question": "What is the name of Dan's band's first album?",
+   "answer": "Dan: My band released our first album called Midnight Drive.",
+   "retrieved_ids": [
+    "84d8af2616ea",
+    "abee868b4247",
+    "c888ea1e3a85",
+    "8cb615a17b43",
+    "579286329069",
+    "872906023cd8"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 156,
+   "gold": "Midnight Drive",
+   "correct": true,
+   "f1": 0.33333333333333337,
+   "judge_tokens": 61,
+   "stale": false
+  },
+  {
+   "conversation": "convo_carol_dan",
+   "category": "recall_old",
+   "question": "What does Carol love doing on weekends?",
+   "answer": "Carol: My mentor at work is very supportive.",
+   "retrieved_ids": [
+    "abee868b4247",
+    "84d8af2616ea",
+    "579286329069",
+    "c888ea1e3a85",
+    "872906023cd8",
+    "8cb615a17b43"
+   ],
+   "retrieved_invalidated": 0,
+   "tokens": 151,
+   "gold": "hiking",
+   "correct": false,
+   "f1": 0.0,
+   "judge_tokens": 55,
+   "stale": false
+  }
+ ],
+ "memory_curve": [
+  {
+   "step": 0,
+   "agent": 0,
+   "time": 0,
+   "total_facts": 5,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "step": 1,
+   "agent": 1,
+   "time": 0,
+   "total_facts": 9,
+   "active_facts": 9,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "step": 2,
+   "agent": 2,
+   "time": 864000,
+   "total_facts": 12,
+   "active_facts": 12,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "step": 3,
+   "agent": 0,
+   "time": 1036800,
+   "total_facts": 14,
+   "active_facts": 14,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  {
+   "step": 4,
+   "agent": 1,
+   "time": 2160000,
+   "total_facts": 17,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 12,
+   "write_rejections": 0
+  },
+  {
+   "step": 5,
+   "agent": 2,
+   "time": 2592000,
+   "total_facts": 19,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 14,
+   "write_rejections": 0
+  },
+  {
+   "step": 6,
+   "agent": 0,
+   "time": 3456000,
+   "total_facts": 22,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  {
+   "step": 7,
+   "agent": 1,
+   "time": 3888000,
+   "total_facts": 24,
+   "active_facts": 5,
+   "invalidated_active": 0,
+   "pruned": 19,
+   "write_rejections": 0
+  },
+  {
+   "step": 8,
+   "agent": 2,
+   "time": 4752000,
+   "total_facts": 26,
+   "active_facts": 4,
+   "invalidated_active": 0,
+   "pruned": 22,
+   "write_rejections": 0
+  },
+  {
+   "step": 9,
+   "agent": 0,
+   "time": 5011200,
+   "total_facts": 28,
+   "active_facts": 6,
+   "invalidated_active": 0,
+   "pruned": 22,
+   "write_rejections": 0
+  }
+ ]
+}

@@ -45,12 +45,17 @@ Core framework is **stdlib-only** (Python ≥ 3.10). No API keys needed for test
 
 ```bash
 git clone <this repo> && cd DRIFT
-pip install pytest            # only dev dependency
+pip install pytest matplotlib   # dev + figures dependencies
 
-make test     # 18 unit/integration tests, fully offline
-make smoke    # full pipeline on the synthetic dataset with the mock provider
-make tables   # markdown result tables from results/smoke
+make test       # 24 unit/integration tests, fully offline
+make smoke      # full pipeline on the synthetic dataset with the mock provider
+make swarm      # multi-agent topologies (shared / independent / orchestrator), offline
+make tables     # markdown result tables from results/smoke
+make figures    # publication PNGs into results/*/figures/
+make dashboard  # self-contained interactive HTML -> docs/dashboard.html
 ```
+
+API keys go in `.env` (gitignored — copy `.env.example` and fill in; loaded automatically).
 
 ### Running with real LLM APIs (free tiers)
 
@@ -110,6 +115,10 @@ THESIS_REPORT.md        # the thesis document (updated as benchmarks complete)
 | P4 LLM consolidation | 0.714 | 0.286 | 11 |
 
 Never forgetting causes stale answers; naive TTL forgetting destroys recall; **structure-aware forgetting (P2) dominates both**. See `THESIS_REPORT.md` §6 for analysis. LoCoMo results with real models: pending (requires API keys).
+
+## Multi-agent (swarm) experiments
+
+`drift/swarm.py` reruns the policy comparison under three agent topologies (same substrate, only the usage pattern varies): **shared** (N writers, one graph — write contention), **independent** (private graphs, 80% observation — variance), **orchestrator** (router LLM + specialist workers over shared memory — production read pattern). `make swarm` runs offline; `make swarm-real` uses a model-diverse worker pool (Llama-3.3-70B / GLM-5.2 / MiniMax-M3) with a Gemini judge. Key smoke finding: P2's contradiction invalidation is writer-agnostic — 5/5 cross-writer invalidations handled, single-agent accuracy preserved. See `THESIS_REPORT.md` §6.4.
 
 ## Extending DRIFT
 

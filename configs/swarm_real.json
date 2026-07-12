@@ -1,0 +1,23 @@
+{
+  "dataset": "data/synthetic_smoke.json",
+  "results_dir": "results/swarm_real",
+  "embedder": "hashing",
+  "retrieval_k": 8,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "seed": 42,
+  "extract_models": ["cerebras:gpt-oss-120b", "groq:llama-3.3-70b-versatile", "nvidia:z-ai/glm-5.2"],
+  "answer_model": "groq:llama-3.3-70b-versatile",
+  "judge_model": "gemini:gemini-2.5-flash",
+  "router_model": "nvidia:z-ai/glm-5.2",
+  "workers": [
+    {"id": "w0", "specialty": "current state of people (where they live/work now)",
+     "model": "groq:llama-3.3-70b-versatile"},
+    {"id": "w1", "specialty": "old memories and long-ago events",
+     "model": "nvidia:z-ai/glm-5.2"},
+    {"id": "w2", "specialty": "recent events and updates",
+     "model": "nvidia:minimaxai/minimax-m3"}
+  ],
+  "topologies": ["shared", "independent", "orchestrator"],
+  "policies": ["P0", "P1:ttl_days=14", "P2", "P3", "P4"]
+}

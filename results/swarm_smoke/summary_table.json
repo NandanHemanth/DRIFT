@@ -1,0 +1,292 @@
+[
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.07142857142858,
+  "n_agents": 3,
+  "invalidations": 5,
+  "cross_writer_invalidations": 5,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 28,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P0",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.14285714285714285,
+  "mean_f1": 0.058608058608058615,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 151.35714285714286,
+  "n_agents": 3,
+  "invalidations": 3,
+  "cross_writer_invalidations": 3,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 6,
+   "invalidated_active": 0,
+   "pruned": 22,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P1:ttl_days=14",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.9285714285714286,
+  "mean_f1": 0.2990327133184277,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 172.28571428571428,
+  "n_agents": 3,
+  "invalidations": 5,
+  "cross_writer_invalidations": 5,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 23,
+   "invalidated_active": 0,
+   "pruned": 5,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P2",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.5,
+  "n_agents": 3,
+  "invalidations": 5,
+  "cross_writer_invalidations": 5,
+  "final_memory": {
+   "total_facts": 25,
+   "active_facts": 25,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 3
+  },
+  "topology": "shared",
+  "policy": "P3",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.07142857142858,
+  "n_agents": 3,
+  "invalidations": 5,
+  "cross_writer_invalidations": 5,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 25,
+   "invalidated_active": 5,
+   "pruned": 3,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P4",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.6666666666666666,
+  "mean_f1": 0.23259637188208618,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.23809523809524,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.6666666666666666,
+  "accuracy_std": 0.041239304942116105,
+  "staleness_mean": 0.2857142857142857,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "P0",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.14285714285714285,
+  "mean_f1": 0.05860805860805862,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 151.35714285714286,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.14285714285714285,
+  "accuracy_std": 0.0,
+  "staleness_mean": 0.0,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "P1:ttl_days=14",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.8809523809523809,
+  "mean_f1": 0.2883184276041419,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 172.38095238095238,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.8809523809523809,
+  "accuracy_std": 0.04123930494211617,
+  "staleness_mean": 0.0,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "P2",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.6666666666666666,
+  "mean_f1": 0.23259637188208618,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.35714285714286,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.6666666666666666,
+  "accuracy_std": 0.041239304942116105,
+  "staleness_mean": 0.2857142857142857,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "P3",
+  "wall_seconds": 0.1
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.6666666666666666,
+  "mean_f1": 0.23259637188208618,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.0,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.6666666666666666,
+  "accuracy_std": 0.041239304942116105,
+  "staleness_mean": 0.2857142857142857,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "P4",
+  "wall_seconds": 0.1
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.07142857142858,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 28,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "P0",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.14285714285714285,
+  "mean_f1": 0.058608058608058615,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 151.35714285714286,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 6,
+   "invalidated_active": 0,
+   "pruned": 22,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "P1:ttl_days=14",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.9285714285714286,
+  "mean_f1": 0.2990327133184277,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 172.28571428571428,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 23,
+   "invalidated_active": 0,
+   "pruned": 5,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "P2",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.5,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 25,
+   "active_facts": 25,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 3
+  },
+  "topology": "orchestrator",
+  "policy": "P3",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.7142857142857143,
+  "mean_f1": 0.2433106575963719,
+  "staleness_rate": 0.2857142857142857,
+  "mean_tokens_per_q": 173.07142857142858,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 25,
+   "invalidated_active": 5,
+   "pruned": 3,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "P4",
+  "wall_seconds": 0.0
+ }
+]

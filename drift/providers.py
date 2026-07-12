@@ -22,6 +22,30 @@ import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
 
+def load_dotenv(path: str | Path = ".env") -> None:
+    """Load KEY=VALUE lines from a .env file into os.environ (stdlib-only).
+
+    Real environment variables take precedence: a key already set in the
+    shell is never overwritten. Searches the given path, then the repo root
+    (parent of this package), so it works from any working directory.
+    """
+    candidates = [Path(path), Path(__file__).resolve().parent.parent / ".env"]
+    for p in candidates:
+        if not p.is_file():
+            continue
+        for line in p.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            key, value = key.strip(), value.strip().strip("'\"")
+            if key and value and key not in os.environ:
+                os.environ[key] = value
+        return  # first file found wins
+
+
+load_dotenv()
+
 PROVIDER_PRESETS = {
     "groq": {"base_url": "https://api.groq.com/openai/v1", "key_env": "GROQ_API_KEY", "rpm": 25},
     "cerebras": {"base_url": "https://api.cerebras.ai/v1", "key_env": "CEREBRAS_API_KEY", "rpm": 25},

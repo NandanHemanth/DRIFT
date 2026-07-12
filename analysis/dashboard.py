@@ -1,0 +1,308 @@
+"""Generate a self-contained interactive HTML dashboard for DRIFT.
+
+Embeds result JSON directly into the page (no server, no CDN, works offline —
+just double-click the file). Includes an animated pipeline diagram, the concept
+explainer, and charts for every results directory passed in.
+
+Usage:
+    python analysis/dashboard.py results/smoke results/swarm_smoke -o docs/dashboard.html
+"""
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+HTML_TEMPLATE = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DRIFT — When Should Agents Forget?</title>
+<style>
+:root {
+  --bg:#0f1117; --panel:#181c26; --panel2:#1f2432; --text:#e6e9f0; --dim:#9aa3b5;
+  --p0:#8888aa; --p1:#e07b39; --p2:#2a9d8f; --p3:#7b6fb0; --p4:#c94f5e;
+  --accent:#2a9d8f; --line:#2c3345;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--text); font:15px/1.55 -apple-system,'Segoe UI',sans-serif; padding:32px 5vw; }
+h1 { font-size:26px; margin-bottom:4px; }
+h2 { font-size:18px; margin:36px 0 12px; color:var(--accent); }
+h3 { font-size:14px; margin:14px 0 6px; }
+.sub { color:var(--dim); margin-bottom:24px; }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:18px; }
+.row { display:flex; gap:18px; flex-wrap:wrap; }
+.row > .panel { flex:1 1 420px; }
+.dim { color:var(--dim); font-size:13px; }
+svg text { fill:var(--text); }
+.legend span { display:inline-block; margin-right:14px; font-size:12px; }
+.dot { display:inline-block; width:10px; height:10px; border-radius:5px; margin-right:5px; vertical-align:-1px; }
+/* pipeline animation */
+.stage rect { fill:var(--panel2); stroke:var(--line); rx:10; }
+.stage text { font-size:12.5px; }
+.stage .small { font-size:10.5px; fill:var(--dim); }
+.flowdot { fill:var(--accent); }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th,td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); }
+th { color:var(--dim); font-weight:600; }
+.pill { padding:1px 8px; border-radius:10px; font-size:11.5px; color:#fff; }
+.tabbar button { background:var(--panel2); color:var(--text); border:1px solid var(--line);
+  padding:6px 14px; border-radius:8px; cursor:pointer; margin-right:8px; font-size:13px; }
+.tabbar button.active { background:var(--accent); border-color:var(--accent); color:#06231f; font-weight:600; }
+</style>
+</head>
+<body>
+<h1>DRIFT <span style="color:var(--dim);font-weight:400">— When Should Agents Forget?</span></h1>
+<div class="sub">Decay &amp; Retention In Forgetful Temporal-graph memory · interactive results dashboard</div>
+
+<div class="panel">
+  <h2 style="margin-top:0">The pipeline</h2>
+  <div class="dim" style="margin-bottom:10px">Facts flow left to right; the forgetting policy touches memory at three hooks (write · maintain · retrieve). Watch the pulse.</div>
+  <svg id="pipeline" viewBox="0 0 1180 300" width="100%" xmlns="http://www.w3.org/2000/svg"></svg>
+</div>
+
+<div class="row">
+  <div class="panel">
+    <h2 style="margin-top:0">The five policies</h2>
+    <table id="policy-table"></table>
+  </div>
+  <div class="panel">
+    <h2 style="margin-top:0">Concepts in 60 seconds</h2>
+    <h3>Bitemporal fact</h3>
+    <div class="dim">Every fact stores <b>valid time</b> (when true in the world) and <b>ingestion time</b> (when the agent learned it). A contradiction on a functional predicate (lives_in, works_at…) <i>closes</i> the old fact's valid window instead of deleting it — that's what P2 exploits.</div>
+    <h3>Staleness</h3>
+    <div class="dim">An answer is <b>stale</b> when it contains the superseded fact ("Boston" after the move to Seattle). Accuracy alone hides this failure mode; DRIFT measures it separately.</div>
+    <h3>Swarm topologies</h3>
+    <div class="dim"><b>shared</b>: N writers, one memory — tests contention. <b>independent</b>: N private memories with 80% observation — tests variance. <b>orchestrator</b>: router LLM assigns questions to specialist workers over shared memory — tests the production read pattern.</div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2 style="margin-top:0">Results</h2>
+  <div class="tabbar" id="tabs"></div>
+  <div class="row" style="margin-top:16px">
+    <div class="panel" style="background:var(--panel2)">
+      <h3>Accuracy &amp; staleness by policy</h3>
+      <svg id="bars" viewBox="0 0 560 300" width="100%"></svg>
+      <div class="legend"><span><span class="dot" style="background:var(--accent)"></span>accuracy</span>
+      <span><span class="dot" style="background:#c94f5e"></span>staleness</span></div>
+    </div>
+    <div class="panel" style="background:var(--panel2)">
+      <h3>Trade-off map (ideal = top-left)</h3>
+      <svg id="scatter" viewBox="0 0 560 300" width="100%"></svg>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel" style="background:var(--panel2)">
+      <h3>Memory growth over ingestion steps</h3>
+      <svg id="growth" viewBox="0 0 560 300" width="100%"></svg>
+    </div>
+    <div class="panel" style="background:var(--panel2)">
+      <h3>Summary table</h3>
+      <table id="summary-table"></table>
+    </div>
+  </div>
+</div>
+
+<div class="dim" style="margin-top:20px">Generated by analysis/dashboard.py · data embedded at build time · DRIFT thesis project</div>
+
+<script>
+const DATA = __DATA__;
+const PCOLORS = {P0:'#8888aa',P1:'#e07b39',P2:'#2a9d8f',P3:'#7b6fb0',P4:'#c94f5e'};
+const PNAMES = {P0:'No forgetting',P1:'TTL decay',P2:'Contradiction invalidation',P3:'Novelty gate',P4:'LLM consolidation'};
+const pid = s => s.split(':')[0];
+const NS = 'http://www.w3.org/2000/svg';
+const el = (t,a={}) => { const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); return e; };
+
+/* ------------------------------ pipeline diagram ------------------------- */
+(function(){
+  const svg = document.getElementById('pipeline');
+  const stages = [
+    {t:'Sessions', s:'multi-writer\nconversations', x:20},
+    {t:'Extraction', s:'LLM → (s,p,o) triples', x:185},
+    {t:'Write gate', s:'policy hook 1 · P3', x:350},
+    {t:'Bitemporal graph', s:'valid + ingestion time', x:515},
+    {t:'Maintenance', s:'policy hook 2 · P1 P4', x:680},
+    {t:'Retrieval', s:'hybrid + hook 3 · P2', x:845},
+    {t:'Answer · Judge', s:'independent judge LLM', x:1010}
+  ];
+  const y=110, w=150, h=76;
+  stages.forEach((st,i)=>{
+    const g = el('g',{class:'stage'});
+    g.appendChild(el('rect',{x:st.x,y:y,width:w,height:h,rx:10}));
+    const t1=el('text',{x:st.x+w/2,y:y+30,'text-anchor':'middle','font-weight':'600'});
+    t1.textContent=st.t; g.appendChild(t1);
+    const t2=el('text',{x:st.x+w/2,y:y+52,'text-anchor':'middle',class:'small'});
+    t2.textContent=st.s; g.appendChild(t2);
+    svg.appendChild(g);
+    if(i<stages.length-1){
+      svg.appendChild(el('line',{x1:st.x+w,y1:y+h/2,x2:st.x+165,y2:y+h/2,stroke:'#2c3345','stroke-width':2}));
+    }
+  });
+  // policy band
+  const band = el('rect',{x:350,y:y-58,width:645,height:34,rx:8,fill:'none',stroke:'#2a9d8f','stroke-dasharray':'5 4'});
+  svg.appendChild(band);
+  const bt = el('text',{x:672,y:y-36,'text-anchor':'middle','font-size':'12',fill:'#2a9d8f'});
+  bt.textContent='forgetting policy P0–P4 acts at these three hooks';
+  bt.setAttribute('fill','#2a9d8f');
+  svg.appendChild(bt);
+  // animated pulse
+  const dot = el('circle',{class:'flowdot',r:6,cy:y+h/2});
+  svg.appendChild(dot);
+  let t0=null;
+  const x0=30, x1=1140;
+  function anim(ts){ if(!t0)t0=ts; const p=((ts-t0)/6000)%1; dot.setAttribute('cx',x0+p*(x1-x0)); requestAnimationFrame(anim); }
+  requestAnimationFrame(anim);
+})();
+
+/* ------------------------------ policy table ----------------------------- */
+(function(){
+  const rows = [
+    ['P0','No forgetting','append-only baseline','accumulates stale facts'],
+    ['P1','TTL decay','prune facts older than N days','destroys old-but-true recall'],
+    ['P2','Contradiction invalidation','hide facts the graph proves superseded','hypothesis: dominates'],
+    ['P3','Novelty gate','reject near-duplicate writes','smaller memory, staleness untouched'],
+    ['P4','LLM consolidation','periodic LLM keep/drop review','risky per arXiv:2605.12978']
+  ];
+  document.getElementById('policy-table').innerHTML =
+    '<tr><th></th><th>Policy</th><th>Mechanism</th><th>Expected behaviour</th></tr>' +
+    rows.map(r=>`<tr><td><span class="pill" style="background:${PCOLORS[r[0]]}">${r[0]}</span></td><td>${r[1]}</td><td class="dim">${r[2]}</td><td class="dim">${r[3]}</td></tr>`).join('');
+})();
+
+/* ------------------------------ charts ----------------------------------- */
+function dedupe(cells){
+  const seen={};
+  for(const c of cells){ const p=pid(c.summary.policy); if(!(p in seen)) seen[p]=c; }
+  return Object.keys(seen).sort().map(k=>seen[k]);
+}
+
+function drawBars(cells){
+  const svg=document.getElementById('bars'); svg.innerHTML='';
+  const cs=dedupe(cells); const W=560,H=300,pad=40, bw=(W-2*pad)/cs.length;
+  [0,.25,.5,.75,1].forEach(v=>{
+    const yy=H-30-v*(H-70);
+    svg.appendChild(el('line',{x1:pad-6,y1:yy,x2:W-10,y2:yy,stroke:'#2c3345'}));
+    const t=el('text',{x:6,y:yy+4,'font-size':'10',fill:'#9aa3b5'}); t.textContent=v; t.setAttribute('fill','#9aa3b5'); svg.appendChild(t);
+  });
+  cs.forEach((c,i)=>{
+    const s=c.summary, p=pid(s.policy), x=pad+i*bw;
+    const hA=s.accuracy*(H-70), hS=s.staleness_rate*(H-70);
+    svg.appendChild(el('rect',{x:x+bw*0.12,y:H-30-hA,width:bw*0.32,height:hA,fill:PCOLORS[p],rx:3}));
+    svg.appendChild(el('rect',{x:x+bw*0.52,y:H-30-hS,width:bw*0.32,height:hS,fill:'#c94f5e',opacity:.75,rx:3}));
+    const t=el('text',{x:x+bw/2,y:H-12,'text-anchor':'middle','font-size':'11'}); t.textContent=p; svg.appendChild(t);
+  });
+}
+
+function drawScatter(cells){
+  const svg=document.getElementById('scatter'); svg.innerHTML='';
+  const cs=dedupe(cells); const W=560,H=300,pad=46;
+  const maxS=Math.max(0.35,...cs.map(c=>c.summary.staleness_rate))*1.15;
+  svg.appendChild(el('line',{x1:pad,y1:H-36,x2:W-14,y2:H-36,stroke:'#2c3345'}));
+  svg.appendChild(el('line',{x1:pad,y1:14,x2:pad,y2:H-36,stroke:'#2c3345'}));
+  const xl=el('text',{x:W/2,y:H-8,'text-anchor':'middle','font-size':'11',fill:'#9aa3b5'}); xl.textContent='staleness →'; xl.setAttribute('fill','#9aa3b5'); svg.appendChild(xl);
+  const yl=el('text',{x:14,y:H/2,'font-size':'11',fill:'#9aa3b5',transform:`rotate(-90 14 ${H/2})`,'text-anchor':'middle'}); yl.textContent='accuracy →'; yl.setAttribute('fill','#9aa3b5'); svg.appendChild(yl);
+  const stack={};
+  cs.forEach(c=>{
+    const s=c.summary,p=pid(s.policy);
+    const cx=pad+(s.staleness_rate/maxS)*(W-pad-24);
+    const cy=(H-36)-s.accuracy*(H-56);
+    const key=Math.round(cx)+','+Math.round(cy); stack[key]=(stack[key]||0);
+    const mem=(s.final_memory&&s.final_memory.active_facts)||5;
+    svg.appendChild(el('circle',{cx:cx,cy:cy,r:6+mem*0.8,fill:PCOLORS[p],opacity:.85}));
+    const t=el('text',{x:cx+14,y:cy+4+stack[key]*13,'font-size':'11'}); t.textContent=p;
+    t.setAttribute('fill',PCOLORS[p]); svg.appendChild(t);
+    stack[key]++;
+  });
+}
+
+function drawGrowth(cells){
+  const svg=document.getElementById('growth'); svg.innerHTML='';
+  const W=560,H=300,pad=40;
+  const seen={};
+  let maxLen=1,maxV=1;
+  const curves=[];
+  for(const c of cells){
+    const p=pid(c.summary.policy); if(seen[p])continue;
+    const curve=c.memory_curves||c.memory_curve||[]; if(!curve.length)continue;
+    seen[p]=1; curves.push([p,curve]);
+    maxLen=Math.max(maxLen,curve.length); maxV=Math.max(maxV,...curve.map(x=>x.active_facts));
+  }
+  for(const [p,curve] of curves){
+    let d='';
+    curve.forEach((pt,i)=>{
+      const x=pad+(i/(maxLen-1||1))*(W-pad-20);
+      const y=(H-34)-(pt.active_facts/maxV)*(H-58);
+      d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+    });
+    svg.appendChild(el('path',{d:d,fill:'none',stroke:PCOLORS[p],'stroke-width':2}));
+    const last=curve[curve.length-1];
+    const t=el('text',{x:W-46,y:(H-34)-(last.active_facts/maxV)*(H-58)+4,'font-size':'11'});
+    t.textContent=p; t.setAttribute('fill',PCOLORS[p]); svg.appendChild(t);
+  }
+  const t=el('text',{x:pad,y:H-8,'font-size':'10',fill:'#9aa3b5'}); t.textContent='ingestion steps →'; t.setAttribute('fill','#9aa3b5'); svg.appendChild(t);
+}
+
+function drawTable(cells){
+  const tbl=document.getElementById('summary-table');
+  const hasTopo=cells.some(c=>'topology' in c.summary);
+  tbl.innerHTML='<tr>'+(hasTopo?'<th>topology</th>':'')+'<th>policy</th><th>acc</th><th>stale</th><th>f1</th><th>tok/q</th></tr>'+
+    cells.map(c=>{const s=c.summary;const p=pid(s.policy);
+      return `<tr>${hasTopo?`<td class="dim">${s.topology||''}</td>`:''}`+
+      `<td><span class="pill" style="background:${PCOLORS[p]}">${p}</span></td>`+
+      `<td>${s.accuracy.toFixed(3)}</td><td>${s.staleness_rate.toFixed(3)}</td>`+
+      `<td>${(s.mean_f1||0).toFixed(3)}</td><td>${Math.round(s.mean_tokens_per_q||0)}</td></tr>`;}).join('');
+}
+
+/* ------------------------------ tabs -------------------------------------- */
+const names=Object.keys(DATA);
+const tabbar=document.getElementById('tabs');
+function select(name){
+  [...tabbar.children].forEach(b=>b.classList.toggle('active',b.textContent===name));
+  const cells=DATA[name];
+  drawBars(cells); drawScatter(cells); drawGrowth(cells); drawTable(cells);
+}
+names.forEach(n=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>select(n);tabbar.appendChild(b);});
+if(names.length) select(names[0]);
+</script>
+</body>
+</html>
+"""
+
+
+def load_cells(results_dir: Path) -> list[dict]:
+    cells = []
+    for p in sorted(results_dir.glob("*.json")):
+        if p.name == "summary_table.json":
+            continue
+        data = json.loads(p.read_text())
+        if "summary" in data:
+            # keep payload small: drop per-question records, keep summaries + curves
+            cells.append({"summary": data["summary"],
+                          "memory_curves": data.get("memory_curves"),
+                          "memory_curve": data.get("memory_curve")})
+    return cells
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="DRIFT dashboard generator")
+    parser.add_argument("results_dirs", nargs="+")
+    parser.add_argument("-o", "--out", default="docs/dashboard.html")
+    args = parser.parse_args()
+
+    data = {}
+    for d in args.results_dirs:
+        p = Path(d)
+        cells = load_cells(p)
+        if cells:
+            data[p.name] = cells
+    if not data:
+        raise SystemExit("no results found")
+
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(HTML_TEMPLATE.replace("__DATA__", json.dumps(data)))
+    print(f"dashboard -> {out}  (tabs: {', '.join(data)})")
+
+
+if __name__ == "__main__":
+    main()

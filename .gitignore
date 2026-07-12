@@ -1,8 +1,12 @@
+# secrets — never commit
+.env
+
 __pycache__/
 *.pyc
 .drift_cache/
 results/*
 !results/smoke/
+!results/swarm_smoke/
 data/locomo_drift.json
 data/locomo10.json
 .venv/

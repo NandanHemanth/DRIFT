@@ -31,6 +31,7 @@ An agent that remembers everything eventually contradicts itself. When a user sa
 - **RQ1 (staleness):** How often does an append-only temporal-graph memory surface superseded facts in its answers, and does this grow with interaction depth?
 - **RQ2 (policy comparison):** Across heuristic and agentic forgetting policies, which achieves the best accuracy–staleness–token-cost trade-off?
 - **RQ3 (structure):** Does exploiting the memory graph's *bitemporal structure* (valid-time windows closed by contradictions) outperform structure-blind policies (TTL, novelty gates, LLM review)?
+- **RQ4 (multi-agent):** Do the policy rankings survive when memory is used the way agent systems actually use it — multiple writers sharing one memory, agents with partial observation, and orchestrator/worker read patterns?
 
 ### 1.3 Contributions
 
@@ -73,6 +74,14 @@ Policies see three hooks: `on_write(fact, graph) → bool`, `after_session(graph
 
 Deterministic offline mode (MockProvider + hashing embedder) makes every experiment repeatable bit-for-bit without keys; the disk cache keys every real LLM call by SHA-256(provider, model, prompt, temperature), so resumed or repeated runs are free and traceable; the runner writes one JSON per experiment cell with full per-question retrieval traces.
 
+### 3.5 Multi-agent (swarm) extension
+
+`drift/swarm.py` runs the same policies under three agent topologies, holding substrate, extraction, retrieval, and judging constant so that only the *usage pattern* varies:
+
+- **shared** — N writer agents ingest an interleaved global session timeline into one shared graph (round-robin). Contradictions now arrive from *different* writers; each fact records its writer in `provenance`, and the runner reports how many invalidations were cross-writer. Tests policy behaviour under write contention.
+- **independent** — N agents with private graphs, each observing a seeded random subset (default 80%) of sessions. Reports per-policy mean ± std across agents: robustness under partial observation.
+- **orchestrator** — one shared graph; a router LLM assigns each question to a specialist worker agent (workers may use different model families). Tests the production coordinator/worker read pattern.
+
 ## 4. Experimental Setup
 
 **Datasets.** (a) *Synthetic smoke* (this report §6.1): 2 conversations × 5 sessions spanning ~58 simulated days, containing functional-fact updates (city moves, job changes), duplicate utterances (novelty probes), and 14 questions in three categories — `current_state` (annotated with `stale_answer`), `recall_old`, `recall_recent`. (b) *LoCoMo* (§6.2): 10 very-long multi-session conversations, ~1.5k QA pairs, converted by `scripts/download_locomo.py`.
@@ -83,7 +92,7 @@ Deterministic offline mode (MockProvider + hashing embedder) makes every experim
 
 ## 5. Implementation Status & Verification
 
-- 18 offline tests pass (`make test`): graph bitemporality, contradiction semantics, all five policies, extraction upgrade pass, cache round-trip, end-to-end staleness differentiation (P0 answers "Boston", P2 answers "Seattle" on the same stream — `tests/test_pipeline.py::test_staleness_differentiation_p0_vs_p2`).
+- 24 offline tests pass (`make test`), including the swarm topology suite (`tests/test_swarm.py`): graph bitemporality, contradiction semantics, all five policies, extraction upgrade pass, cache round-trip, end-to-end staleness differentiation (P0 answers "Boston", P2 answers "Seattle" on the same stream — `tests/test_pipeline.py::test_staleness_differentiation_p0_vs_p2`).
 - Full pipeline smoke run completes offline in <1s with zero API calls (`make smoke`).
 
 ## 6. Results
@@ -122,13 +131,31 @@ Blocked only on API keys (`CEREBRAS_API_KEY`, `GROQ_API_KEY`, `GEMINI_API_KEY`).
 
 Retrieval k ∈ {4, 8, 16}; P1 ttl ∈ {14, 35, 70}d; P3 τ ∈ {0.8, 0.9, 0.95}; P4 period ∈ {1, 3, 5}; judge-vs-F1 agreement analysis.
 
+### 6.4 Swarm topologies (synthetic, offline mock provider) — ✅ completed 2026-07-12
+
+*Purpose: test RQ4 — whether the policy ordering from §6.1 survives multi-agent usage patterns. Same controlled mock setting as §6.1; note P1 uses ttl=14d here (vs 35d in §6.1) against the interleaved ~58-day global timeline. Figures: `results/swarm_smoke/figures/`.*
+
+| Topology | P0 | P1 (14d) | **P2** | P3 | P4 |
+|---|---|---|---|---|---|
+| shared (3 writers, acc) | 0.714 | 0.143 | **0.929** | 0.714 | 0.714 |
+| independent (3 agents, acc mean ± std) | 0.667 ± 0.041 | 0.143 ± 0.000 | **0.881 ± 0.041** | 0.667 ± 0.041 | 0.667 ± 0.041 |
+| orchestrator (3 workers, acc) | 0.714 | 0.143 | **0.929** | 0.714 | 0.714 |
+| staleness (all topologies) | 0.286 | 0.000 | **0.000** | 0.286 | 0.286 |
+
+**Findings (RQ4):**
+
+1. **The ordering P2 > P0 ≈ P3 ≈ P4 > P1 is invariant across all three topologies.** Policy choice matters more than agent topology at this scale.
+2. **Contradiction invalidation survives multi-writer contention.** In the shared topology, 5/5 invalidations were *cross-writer* — the update fact arrived via a different agent than the original — yet P2 matched its single-agent accuracy (0.929). Because contradiction detection lives in the graph (bitemporal semantics), not in any agent, it is writer-agnostic by construction. This is the mechanism that makes P2 suitable for shared-memory agent systems.
+3. **TTL collapses catastrophically on interleaved timelines (0.143).** With sessions from multiple conversations interleaved, the global stream spans the full ~58 days and a 14-day TTL prunes nearly all old-but-true facts. TTL's failure mode *worsens* with swarm-style usage, where memory horizons stretch.
+4. **Partial observation degrades P2 gracefully** (0.929 → 0.881 ± 0.041): an agent that missed the update session cannot invalidate the old fact, but agents that saw it are unaffected. Variance is small and equal across structure-blind policies.
+
 ## 7. Discussion
 
 The smoke results sharpen the thesis claim: *forgetting is not one thing.* The three policy hook points (write gate, maintenance, retrieval filter) address different failure modes, and the only policy that improved correctness was the one that consumed the graph's temporal structure rather than a proxy signal (age, similarity, LLM judgment). This suggests the field's framing of "learned forgetting" as a scoring problem may be incomplete — the representation (bitemporal windows) does much of the work before any learning happens. If the LoCoMo runs preserve the ordering P2 > P0 > P1 with real models, the practical recommendation to memory-system builders is concrete: implement contradiction-driven invalidation *at retrieval time* before investing in LLM-driven consolidation, which adds cost and (per arXiv:2605.12978) risk.
 
 ## 8. Limitations & Future Work
 
-The smoke benchmark is small and lexically constructed to be solvable by a deterministic answerer; it validates the harness and mechanism, not generality — that is what §6.2 is for. The judge in real runs is an LLM with known biases (mitigated by family separation and F1 cross-checks). Functional-predicate contradiction detection currently relies on a fixed predicate list; entity resolution is string-based. Future work: contamination stress test (Zombie-Agents-style injections, arXiv:2602.15654 — does P2's provenance-adjacent structure also quarantine poisoned facts?); learned policies (bandit over policy actions using the staleness signal as reward); multi-agent shared-memory extension (arXiv:2603.10062).
+The smoke benchmark is small and lexically constructed to be solvable by a deterministic answerer; it validates the harness and mechanism, not generality — that is what §6.2 is for. The judge in real runs is an LLM with known biases (mitigated by family separation and F1 cross-checks). Functional-predicate contradiction detection currently relies on a fixed predicate list; entity resolution is string-based. Future work: contamination stress test (Zombie-Agents-style injections, arXiv:2602.15654 — does P2's provenance-adjacent structure also quarantine poisoned facts?); learned policies (bandit over policy actions using the staleness signal as reward). The multi-agent extension (§3.5, §6.4) currently uses the synthetic dataset and a mock provider; scaling the swarm study to LoCoMo with model-diverse workers (configs/swarm_real.json wires Llama-3.3-70B, GLM-5.2, and MiniMax-M3 as specialist workers) is the immediate next step, along with adversarial writers (a Zombie-Agents-style contamination test, arXiv:2602.15654 — does P2 also quarantine poisoned facts?).
 
 ## 9. Conclusion
 

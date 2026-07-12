@@ -1,10 +1,25 @@
-.PHONY: test smoke locomo tables clean
+.PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean
 
 test:
 	python -m pytest tests/ -v
 
 smoke:
 	python -m drift.runner --config configs/smoke.json
+
+swarm:
+	python -m drift.swarm --config configs/swarm_smoke.json
+
+swarm-real:
+	python -m drift.swarm --config configs/swarm_real.json
+
+figures:
+	python analysis/plots.py results/smoke
+	python analysis/plots.py results/swarm_smoke --swarm
+	-python analysis/plots.py results/locomo
+	-python analysis/plots.py results/swarm_real --swarm
+
+dashboard:
+	python analysis/dashboard.py results/* -o docs/dashboard.html
 
 locomo-data:
 	python scripts/download_locomo.py
