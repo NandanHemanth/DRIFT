@@ -1,4 +1,24 @@
-.PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean
+.PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean \
+        longmemeval-data longmemeval real-all
+
+longmemeval-data:
+	python scripts/download_longmemeval.py --max-questions 150
+
+longmemeval:
+	python -m drift.runner --config configs/longmemeval.json
+
+# The full real-data campaign. Everything is resumable: rerun after any
+# interruption or quota exhaustion and completed cells / cached calls are free.
+real-all:
+	-python scripts/download_locomo.py
+	-python scripts/download_longmemeval.py --max-questions 150
+	python -m drift.runner --config configs/locomo.json
+	python -m drift.runner --config configs/longmemeval.json
+	python -m drift.swarm --config configs/swarm_real.json
+	-python analysis/plots.py results/locomo
+	-python analysis/plots.py results/longmemeval
+	-python analysis/plots.py results/swarm_real --swarm
+	python analysis/dashboard.py results/* -o docs/dashboard.html
 
 test:
 	python -m pytest tests/ -v

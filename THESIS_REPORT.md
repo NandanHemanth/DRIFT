@@ -46,7 +46,11 @@ An agent that remembers everything eventually contradicts itself. When a user sa
 
 **Forgetting and consolidation.** Surveys of agent memory name learned forgetting and continual consolidation as open frontiers (arXiv:2603.07670; arXiv:2602.06052; arXiv:2605.06716; graph-memory taxonomy in arXiv:2602.05665). SAGE (arXiv:2605.30711) gates memory *writes* by novelty — our P3. D-MEM (arXiv:2603.14597) routes writes by reward-prediction error. Most relevant, arXiv:2605.12978 demonstrates that memories continually *updated* by LLMs become faulty over repeated cycles — our P4 operationalizes exactly this risky policy class, and arXiv:2606.15903 shows that *where* memory-management logic sits changes what gets forgotten across 13 system configurations. To our knowledge no prior work compares these policy families on an identical bitemporal graph substrate.
 
-**Evaluation.** LoCoMo (Maharana et al., ACL 2024) and LongMemEval(-V2, arXiv:2605.12493) are the standard long-term conversational memory benchmarks; reported cross-paper numbers are contested (see Letta's reproduction critique), which motivates our within-harness comparison design: DRIFT never compares against numbers produced outside its own pipeline.
+**Staleness and contradiction resolution (2026).** The staleness problem DRIFT measures has since been independently confirmed as open: STALE (arXiv:2605.06527) shows frontier models achieve only ~55% on expert-validated memory-conflict scenarios, and Supersede (arXiv:2606.27472) diagnoses a persistent gap between *retrieving* updated evidence and *acting* on it. TOKI (arXiv:2606.06240) formalizes bitemporal contradiction resolution as an operator algebra — a theoretical treatment of the mechanism P2 implements; Engram (arXiv:2606.09900) ships a bitemporal engine with asynchronous consolidation. Most directly aligned with our H3, arXiv:2606.01435 argues freshness tracking should be *deterministic*, not delegated to an LLM — the design principle P2-over-P4 tests empirically. None of these performs a controlled comparison across the forgetting-policy design space on a fixed substrate.
+
+**Multi-agent shared memory (2026).** GateMem (arXiv:2606.18829) benchmarks governance in multi-principal shared-memory agents and finds no method jointly achieves utility, access control, and reliable forgetting; arXiv:2606.24535 names *stale propagation* and *contradiction persistence* among four foundational failure modes of governed shared memory. DRIFT's shared topology (§3.5) measures precisely these two failure modes under controlled policy variation — to our knowledge the first policy-versus-topology factorial for forgetting.
+
+**Evaluation.** LoCoMo (Maharana et al., ACL 2024) and LongMemEval (Wu et al., ICLR 2025; -V2, arXiv:2605.12493) are the standard long-term conversational memory benchmarks; reported cross-paper numbers are contested (see Letta's reproduction critique), which motivates our within-harness comparison design: DRIFT never compares against numbers produced outside its own pipeline.
 
 ## 3. The DRIFT Framework
 
@@ -86,7 +90,9 @@ Deterministic offline mode (MockProvider + hashing embedder) makes every experim
 
 **Datasets.** (a) *Synthetic smoke* (this report §6.1): 2 conversations × 5 sessions spanning ~58 simulated days, containing functional-fact updates (city moves, job changes), duplicate utterances (novelty probes), and 14 questions in three categories — `current_state` (annotated with `stale_answer`), `recall_old`, `recall_recent`. (b) *LoCoMo* (§6.2): 10 very-long multi-session conversations, ~1.5k QA pairs, converted by `scripts/download_locomo.py`.
 
-**Models (planned for §6.2).** Extraction: gpt-oss-120B (Cerebras). Answering: Llama-3.3-70B (Groq) and gpt-oss-120B (Cerebras). Judge: Gemini Flash (Google) — different family. Diversity: one NVIDIA NIM model. Embeddings: nomic-embed-text via local Ollama.
+**Models (§6.2–6.3).** Extraction: gpt-oss-120B (Cerebras). Answering — the agent-to-agent matrix: Llama-3.3-70B (Groq), gpt-oss-120B (Cerebras), Gemini 2.5 Flash (Google), GLM-5.2 (Z.ai via NVIDIA NIM), MiniMax-M3 (via NVIDIA NIM) — five model families, so policy effects can be separated from model idiosyncrasies. Judge: Gemini 2.5 Flash — never judges its own family's staleness-critical cells without the token-F1 cross-check. Embeddings: nomic-embed-text via local Ollama.
+
+**Baselines.** NOMEM (retrieval disabled — what the answer model knows without memory; every policy must beat this floor) and P0 (memory without any forgetting policy — the "agent without policies" reference all four forgetting mechanisms are measured against).
 
 **Metrics.** Accuracy (judge), token-F1, **staleness rate** (answers containing the annotated superseded fact), tokens/question, memory-size trajectory (active facts per session), pruned count, write rejections.
 
@@ -97,7 +103,9 @@ Deterministic offline mode (MockProvider + hashing embedder) makes every experim
 
 ## 6. Results
 
-### 6.1 Smoke benchmark (synthetic, offline mock provider) — ✅ completed 2026-07-11
+*Evidential status: §6.1 and §6.4 are **harness validation** — deterministic offline runs that prove the instrument measures what it claims, in the spirit of a unit test for the experiment itself. They are not evidence for the thesis claim. The thesis claim is tested exclusively on real data with real models (§6.2, §6.3, §6.5).*
+
+### 6.1 Harness validation — synthetic benchmark, deterministic offline provider — ✅ 2026-07-11
 
 *Purpose: controlled validation of the experimental mechanism with a deterministic answerer/judge, so differences are attributable to policies alone. Absolute numbers are not comparable to LLM runs.*
 
@@ -123,15 +131,19 @@ Per-category accuracy:
 2. **Structure-blind forgetting trades one failure for another (RQ2).** TTL decay cuts staleness 4× but zeroes out `recall_old` — exactly the accuracy-collapse mode the degradation literature predicts for time-based pruning.
 3. **Structure-aware forgetting dominates (RQ3).** P2, which forgets *only what the graph's bitemporal semantics prove superseded*, achieves the best accuracy (0.93), zero staleness, and full old-fact recall, with 25% less active memory than P0. Write-gating (P3) and consolidation (P4) shrink memory but do not address staleness, confirming that the three hook points target different failure modes.
 
-### 6.2 LoCoMo with real LLMs — ⏳ pending
+### 6.2 LoCoMo with real LLMs — the main experiment + agent-to-agent analysis — ⏳ pending
 
-Blocked only on API keys (`CEREBRAS_API_KEY`, `GROQ_API_KEY`, `GEMINI_API_KEY`). Run: `make locomo-data && make locomo`. This section will be updated with: the main 5-policy × 2-model table, accuracy-vs-tokens Pareto, per-category breakdown (LoCoMo's multi-hop/temporal/adversarial categories), and memory-size trajectories. Estimated budget: ~8–12k LLM calls, within free tiers over 1–2 days with the built-in cache and rate limiter.
+Run: `make locomo-data && make locomo` (resumable; all calls disk-cached). The matrix is 6 policies (NOMEM, P0–P4) × 5 answer models (Llama-3.3-70B, gpt-oss-120B, Gemini 2.5 Flash, GLM-5.2, MiniMax-M3). This section will report: (a) the main policy table with NOMEM floor and P0 no-policy reference; (b) **agent-to-agent analysis** — whether the policy ranking is model-invariant (`figures/model_comparison.png`), and specifically whether stronger reasoners (GLM-5.2, MiniMax-M3) compensate for stale memory via in-context reasoning or amplify it via confident use of retrieved-but-superseded facts; (c) per-category breakdown (multi-hop / temporal / adversarial); (d) accuracy-vs-token Pareto; (e) memory trajectories. Estimated budget: ~15–20k calls across five providers, 2–3 days of free tiers with cache and rate limiting.
 
-### 6.3 Ablations — ⏳ planned
+### 6.3 Cross-dataset validation: LongMemEval — ⏳ pending
+
+Run: `make longmemeval-data && make longmemeval` (oracle variant, capped at 150 questions for budget; `--variant s` for the distractor-heavy stress test). LongMemEval's *knowledge-update* category is an independently-constructed staleness probe — if P2's advantage concentrates there while NOMEM/P0 gaps stay constant elsewhere, that is targeted evidence for H1 on data DRIFT's authors never designed. 6 policies × 2 models (Llama-3.3-70B, GLM-5.2).
+
+### 6.3b Ablations — ⏳ planned
 
 Retrieval k ∈ {4, 8, 16}; P1 ttl ∈ {14, 35, 70}d; P3 τ ∈ {0.8, 0.9, 0.95}; P4 period ∈ {1, 3, 5}; judge-vs-F1 agreement analysis.
 
-### 6.4 Swarm topologies (synthetic, offline mock provider) — ✅ completed 2026-07-12
+### 6.4 Harness validation — swarm topologies (offline) — ✅ 2026-07-12
 
 *Purpose: test RQ4 — whether the policy ordering from §6.1 survives multi-agent usage patterns. Same controlled mock setting as §6.1; note P1 uses ttl=14d here (vs 35d in §6.1) against the interleaved ~58-day global timeline. Figures: `results/swarm_smoke/figures/`.*
 
@@ -148,6 +160,10 @@ Retrieval k ∈ {4, 8, 16}; P1 ttl ∈ {14, 35, 70}d; P3 τ ∈ {0.8, 0.9, 0.95}
 2. **Contradiction invalidation survives multi-writer contention.** In the shared topology, 5/5 invalidations were *cross-writer* — the update fact arrived via a different agent than the original — yet P2 matched its single-agent accuracy (0.929). Because contradiction detection lives in the graph (bitemporal semantics), not in any agent, it is writer-agnostic by construction. This is the mechanism that makes P2 suitable for shared-memory agent systems.
 3. **TTL collapses catastrophically on interleaved timelines (0.143).** With sessions from multiple conversations interleaved, the global stream spans the full ~58 days and a 14-day TTL prunes nearly all old-but-true facts. TTL's failure mode *worsens* with swarm-style usage, where memory horizons stretch.
 4. **Partial observation degrades P2 gracefully** (0.929 → 0.881 ± 0.041): an agent that missed the update session cannot invalidate the old fact, but agents that saw it are unaffected. Variance is small and equal across structure-blind policies.
+
+### 6.5 Real-data swarm: model-diverse workers — ⏳ pending
+
+Run: `make swarm-real`. Workers Llama-3.3-70B / GLM-5.2 / MiniMax-M3 over shared memory with a GLM-5.2 router and Gemini judge — the "real-world simulation" configuration: heterogeneous agent families, interleaved observation, production read pattern, NOMEM floor included.
 
 ## 7. Discussion
 
@@ -181,6 +197,14 @@ DRIFT turns "when should agents forget?" from a position-paper question into a m
 16. *MemGuard: Preventing Memory Contamination in Long-Term Memory-Augmented LLMs*, arXiv:2605.28009.
 17. *Multi-Agent Memory from a Computer Architecture Perspective*, arXiv:2603.10062.
 18. Letta, *Benchmarking AI Agent Memory* (reproduction critique), letta.com/blog/benchmarking-ai-agent-memory.
+19. *STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?*, arXiv:2605.06527.
+20. *TOKI: A Bitemporal Operator Algebra for Contradiction Resolution in LLM-Agent Persistent Memory*, arXiv:2606.06240.
+21. *Don't Ask the LLM to Track Freshness: A Deterministic Recipe for Memory Conflict Resolution*, arXiv:2606.01435.
+22. *Supersede: Diagnosing and Training the Memory-Update Gap in LLM Agents*, arXiv:2606.27472.
+23. *GateMem: Benchmarking Memory Governance in Multi-Principal Shared-Memory Agents*, arXiv:2606.18829.
+24. *Governed Shared Memory for Multi-Agent LLM Systems*, arXiv:2606.24535.
+25. *Engram: A Bi-Temporal Memory Engine for LLM Agents*, arXiv:2606.09900.
+26. Wu et al., *LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory*, ICLR 2025.
 
 ## Appendix A — Reproduction
 

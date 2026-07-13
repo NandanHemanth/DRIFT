@@ -38,6 +38,16 @@ class Policy:
         return facts
 
 
+class NoMemory(Policy):
+    """Floor baseline: the agent has NO usable memory — retrieval returns nothing,
+    so the answer model sees '(no relevant memory)'. Separates what the answer
+    model knows from what memory contributes; every policy must beat this."""
+    name = "NOMEM_no_memory"
+
+    def on_retrieve(self, facts: list[Fact], now: float) -> list[Fact]:
+        return []
+
+
 class P0NoForgetting(Policy):
     """Baseline: append-only memory. Nothing is ever gated, pruned, or filtered."""
     name = "P0_no_forgetting"
@@ -129,6 +139,7 @@ class P4LLMConsolidation(Policy):
 
 
 POLICY_REGISTRY = {
+    "NOMEM": NoMemory,
     "P0": P0NoForgetting,
     "P1": P1TTLDecay,
     "P2": P2ContradictionInvalidation,

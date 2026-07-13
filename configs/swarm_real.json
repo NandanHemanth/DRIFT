@@ -19,5 +19,5 @@
      "model": "nvidia:minimaxai/minimax-m3"}
   ],
   "topologies": ["shared", "independent", "orchestrator"],
-  "policies": ["P0", "P1:ttl_days=14", "P2", "P3", "P4"]
+  "policies": ["NOMEM", "P0", "P1:ttl_days=14", "P2", "P3", "P4"]
 }

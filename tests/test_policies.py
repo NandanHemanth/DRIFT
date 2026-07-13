@@ -59,3 +59,15 @@ def test_p4_consolidation_merges_near_duplicates():
 def test_make_policy_parses_kwargs():
     p = make_policy("P1:ttl_days=14")
     assert isinstance(p, P1TTLDecay) and abs(p.ttl - 14 * DAY) < 1
+
+
+def test_nomem_baseline_retrieves_nothing():
+    """NOMEM: floor baseline — memory exists but retrieval is disabled."""
+    from drift.policies import make_policy
+    from drift.memory.graph import BitemporalGraph
+    from drift.embeddings import make_embedder
+    g = BitemporalGraph(make_embedder("hashing"))
+    g.add_fact("Alice", "lives_in", "Boston", "Alice lives in Boston", t_event=0)
+    p = make_policy("NOMEM")
+    assert p.on_write({"text": "anything"}, g) is True          # writes still land
+    assert p.on_retrieve(g.search("Where does Alice live?"), now=0.0) == []

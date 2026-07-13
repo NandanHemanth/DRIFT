@@ -33,7 +33,8 @@ answer LLM ──► LLM judge (different model family) + token-F1
 
 | ID | Policy | Mechanism |
 |---|---|---|
-| P0 | No forgetting | Append-only baseline |
+| NOMEM | No memory (floor) | Retrieval disabled — what the model knows without memory |
+| P0 | No forgetting | Append-only baseline (an agent *without* a forgetting policy) |
 | P1 | TTL decay | Prune facts older than `ttl_days` |
 | P2 | Contradiction invalidation | Exclude superseded facts at retrieval; prune after grace period (exploits bitemporal fields) |
 | P3 | Novelty gate | Reject near-duplicate writes (SAGE-style, [arXiv:2605.30711](https://arxiv.org/abs/2605.30711)) |
@@ -47,7 +48,8 @@ Core framework is **stdlib-only** (Python ≥ 3.10). No API keys needed for test
 git clone <this repo> && cd DRIFT
 pip install pytest matplotlib   # dev + figures dependencies
 
-make test       # 24 unit/integration tests, fully offline
+make test       # 25 unit/integration tests, fully offline
+make real-all   # the full real-data campaign: LoCoMo + LongMemEval + swarm + figures
 make smoke      # full pipeline on the synthetic dataset with the mock provider
 make swarm      # multi-agent topologies (shared / independent / orchestrator), offline
 make tables     # markdown result tables from results/smoke

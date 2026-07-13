@@ -24,11 +24,12 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 POLICY_LABELS = {
-    "P0": "P0 no forgetting", "P1": "P1 TTL decay", "P2": "P2 contradiction",
-    "P3": "P3 novelty gate", "P4": "P4 LLM consolidation",
+    "NOMEM": "NOMEM no memory", "P0": "P0 no forgetting", "P1": "P1 TTL decay",
+    "P2": "P2 contradiction", "P3": "P3 novelty gate", "P4": "P4 LLM consolidation",
 }
 POLICY_COLORS = {
-    "P0": "#8888aa", "P1": "#e07b39", "P2": "#2a9d8f", "P3": "#7b6fb0", "P4": "#c94f5e",
+    "NOMEM": "#555566", "P0": "#8888aa", "P1": "#e07b39", "P2": "#2a9d8f",
+    "P3": "#7b6fb0", "P4": "#c94f5e",
 }
 TOPOLOGY_MARKERS = {"shared": "o", "independent": "s", "orchestrator": "^"}
 
@@ -131,6 +132,42 @@ def fig_token_cost(cells: list[dict], out: Path):
     fig.tight_layout(); fig.savefig(out / "token_cost.png", dpi=300); plt.close(fig)
 
 
+def fig_model_comparison(cells: list[dict], out: Path):
+    """Agent-to-agent analysis: same policies, different answer models.
+
+    Only drawn when the results dir contains 2+ models. Shows whether the
+    policy ranking is model-invariant (the thesis's external-validity claim)
+    or whether some models depend more on memory hygiene than others.
+    """
+    by_model: dict[str, dict[str, float]] = {}
+    for c in cells:
+        s = c["summary"]
+        model = s.get("model")
+        if not model:
+            continue
+        by_model.setdefault(model, {})[_pid(s["policy"])] = s["accuracy"]
+    if len(by_model) < 2:
+        return
+    models = sorted(by_model)
+    pids = sorted({p for d in by_model.values() for p in d})
+    width = 0.8 / len(models)
+    fig, ax = plt.subplots(figsize=(8.5, 4.4))
+    shades = [0.95, 0.75, 0.55, 0.4, 0.3]
+    for m_i, model in enumerate(models):
+        xs = [i + m_i * width - 0.4 + width / 2 for i in range(len(pids))]
+        ys = [by_model[model].get(p, 0) for p in pids]
+        ax.bar(xs, ys, width * 0.9,
+               label=model.split(":")[-1].split("/")[-1],
+               color=[POLICY_COLORS.get(p, "#999") for p in pids],
+               alpha=shades[m_i % len(shades)], edgecolor="white")
+    ax.set_xticks(range(len(pids)), [POLICY_LABELS.get(p, p) for p in pids],
+                  rotation=20, ha="right", fontsize=8)
+    ax.set_ylim(0, 1.05)
+    ax.legend(title="answer model", frameon=False, fontsize=8)
+    _style(ax, "Agent-to-agent: policy effects across answer models", "accuracy")
+    fig.tight_layout(); fig.savefig(out / "model_comparison.png", dpi=300); plt.close(fig)
+
+
 # ------------------------------------------------------------ swarm figures
 
 def fig_swarm_topology(cells: list[dict], out: Path):
@@ -208,6 +245,7 @@ def main() -> None:
     fig_tradeoff(cells, out)
     fig_memory_growth(cells, out)
     fig_token_cost(cells, out)
+    fig_model_comparison(cells, out)
     if args.swarm:
         fig_swarm_topology(cells, out)
         fig_swarm_variance(cells, out)
