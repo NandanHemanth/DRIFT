@@ -73,6 +73,7 @@ Policies see three hooks: `on_write(fact, graph) → bool`, `after_session(graph
 | P2 | Contradiction invalidation (7d grace) | on_retrieve + after_session | **yes** | Kills staleness, preserves recall |
 | P3 | Novelty gate (τ=0.9) | on_write | no | Smaller memory, neutral accuracy |
 | P4 | LLM consolidation (every 3 sessions) | after_session | partially | Risky: may drop needed facts (arXiv:2605.12978) |
+| P5 | Topology consolidation (Graphify-inspired) | after_session | yes, but **time-blind** | Ablation: if P2 > P5, *bitemporal* structure specifically — not graph structure generally — drives the win |
 
 ### 3.4 Reproducibility engineering
 
@@ -139,9 +140,11 @@ Run: `make locomo-data && make locomo` (resumable; all calls disk-cached). The m
 
 Run: `make longmemeval-data && make longmemeval` (oracle variant, capped at 150 questions for budget; `--variant s` for the distractor-heavy stress test). LongMemEval's *knowledge-update* category is an independently-constructed staleness probe — if P2's advantage concentrates there while NOMEM/P0 gaps stay constant elsewhere, that is targeted evidence for H1 on data DRIFT's authors never designed. 6 policies × 2 models (Llama-3.3-70B, GLM-5.2).
 
-### 6.3b Ablations — ⏳ planned
+### 6.3b Ablations — ⏳ planned (P5 offline preview ✅)
 
 Retrieval k ∈ {4, 8, 16}; P1 ttl ∈ {14, 35, 70}d; P3 τ ∈ {0.8, 0.9, 0.95}; P4 period ∈ {1, 3, 5}; judge-vs-F1 agreement analysis.
+
+**Structure-vs-time ablation (P5).** P5 consolidates by graph topology (entity communities + structural support; label propagation, stdlib) but is deliberately time-blind. Offline preview on the synthetic benchmark: P5 = 0.500 acc / 0.071 staleness vs P2 = 0.929 / 0.000 and P0 = 0.714 / 0.286 — structural consolidation *underperforms even no forgetting*, because stale facts accumulate corroboration over time and structural support therefore systematically favors them. This isolates bitemporal validity windows — not graph structure per se — as the mechanism behind P2 (pending real-data confirmation). Memory graphs are exportable to Graphify-style node-link JSON + interactive HTML via `analysis/graphify_export.py` (`"save_graph": true`).
 
 ### 6.4 Harness validation — swarm topologies (offline) — ✅ 2026-07-12
 

@@ -72,8 +72,10 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
         "final_memory": memory_curves[-1] if memory_curves else {},
         "timestamp": time.time(),
     }
-    out_path.write_text(json.dumps(
-        {"summary": summary, "records": records, "memory_curves": memory_curves}, indent=1))
+    payload = {"summary": summary, "records": records, "memory_curves": memory_curves}
+    if cfg.get("save_graph"):
+        payload["graph_snapshot"] = [f.to_dict() for f in graph.facts.values()]
+    out_path.write_text(json.dumps(payload, indent=1))
     return summary
 
 

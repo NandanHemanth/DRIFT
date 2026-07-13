@@ -70,3 +70,16 @@ def test_cross_writer_invalidation_detection():
                t_event=100, provenance="agent_1")
     counts = cross_writer_invalidations(g)
     assert counts == {"invalidations": 1, "cross_writer_invalidations": 1}
+
+
+def test_save_graph_snapshot_and_export():
+    cfg = {**CFG, "save_graph": True}
+    result = run_shared("P2", DATASET, cfg)
+    snap = result["graph_snapshot"]
+    assert snap and all("subject" in f and "t_valid_start" in f for f in snap)
+    from analysis.graphify_export import facts_to_graph
+    g = facts_to_graph(snap)
+    assert g["nodes"] and g["links"]
+    assert g["graph"]["god_nodes"]
+    assert all("community" in n for n in g["nodes"])
+    assert any(l["invalidated"] for l in g["links"])  # contradictions visible in export

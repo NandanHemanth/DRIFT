@@ -141,10 +141,13 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     records = [_answer_and_judge(q, graph, policy, answerer, judge,
                                  cfg.get("retrieval_k", 8), t_last)
                for q in questions]
-    return {"summary": {**summarize(records), "n_agents": n_agents,
-                        **cross_writer_invalidations(graph),
-                        "final_memory": graph.stats()},
-            "records": records, "memory_curve": memory_curve}
+    result = {"summary": {**summarize(records), "n_agents": n_agents,
+                          **cross_writer_invalidations(graph),
+                          "final_memory": graph.stats()},
+              "records": records, "memory_curve": memory_curve}
+    if cfg.get("save_graph"):
+        result["graph_snapshot"] = [f.to_dict() for f in graph.facts.values()]
+    return result
 
 
 def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:

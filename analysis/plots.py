@@ -26,10 +26,11 @@ import matplotlib.pyplot as plt
 POLICY_LABELS = {
     "NOMEM": "NOMEM no memory", "P0": "P0 no forgetting", "P1": "P1 TTL decay",
     "P2": "P2 contradiction", "P3": "P3 novelty gate", "P4": "P4 LLM consolidation",
+    "P5": "P5 topology consolidation",
 }
 POLICY_COLORS = {
     "NOMEM": "#555566", "P0": "#8888aa", "P1": "#e07b39", "P2": "#2a9d8f",
-    "P3": "#7b6fb0", "P4": "#c94f5e",
+    "P3": "#7b6fb0", "P4": "#c94f5e", "P5": "#5aa9e6",
 }
 TOPOLOGY_MARKERS = {"shared": "o", "independent": "s", "orchestrator": "^"}
 

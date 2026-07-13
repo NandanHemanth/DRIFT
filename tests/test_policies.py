@@ -71,3 +71,31 @@ def test_nomem_baseline_retrieves_nothing():
     p = make_policy("NOMEM")
     assert p.on_write({"text": "anything"}, g) is True          # writes still land
     assert p.on_retrieve(g.search("Where does Alice live?"), now=0.0) == []
+
+
+def test_p5_topology_consolidation_is_time_blind():
+    """P5 resolves contradictions by structural support, never by time.
+
+    With equal support it keeps ONE fact per (subject, predicate) — but unlike
+    P2 it cannot know which is current. This is the designed ablation gap.
+    """
+    from drift.policies import make_policy
+    from drift.memory.graph import BitemporalGraph
+    from drift.embeddings import make_embedder
+    g = BitemporalGraph(make_embedder("hashing"))
+    g.add_fact("Alice", "lives_in", "Boston", "Alice lives in Boston", t_event=0)
+    g.add_fact("Alice", "lives_in", "Seattle", "Alice lives in Seattle", t_event=100)
+    # corroborate the STALE fact -> structural support favors Boston
+    g.add_fact("Alice", "stated", "Boston museums", "Alice loves Boston museums", t_event=50)
+    g.add_fact("Alice", "stated", "Boston walks", "Alice walks around Boston", t_event=60)
+    p = make_policy("P5:min_keep=1")
+    p.after_session(g, provider=None, now=200.0)
+    lives = [f for f in g.facts.values() if f.active and f.predicate == "lives_in"]
+    assert len(lives) == 1                      # consolidated to one fact
+    assert lives[0].object == "Boston"          # ...but kept the STALE one (time-blind)
+
+
+def test_p5_registry_and_spec():
+    from drift.policies import make_policy
+    assert make_policy("P5").name == "P5_topology_consolidation"
+    assert make_policy("P5:min_keep=3").min_keep == 3

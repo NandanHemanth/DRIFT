@@ -3,10 +3,17 @@
   "results_dir": "results/swarm_real",
   "embedder": "hashing",
   "retrieval_k": 8,
-  "n_agents": 3,
+  "n_agents": 5,
   "coverage": 0.8,
   "seed": 42,
-  "extract_models": ["cerebras:gpt-oss-120b", "groq:llama-3.3-70b-versatile", "nvidia:z-ai/glm-5.2"],
+  "save_graph": true,
+  "extract_models": [
+    "groq:llama-3.3-70b-versatile",
+    "cerebras:gpt-oss-120b",
+    "gemini:gemini-2.5-flash",
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3"
+  ],
   "answer_model": "groq:llama-3.3-70b-versatile",
   "judge_model": "gemini:gemini-2.5-flash",
   "router_model": "nvidia:z-ai/glm-5.2",
@@ -16,8 +23,12 @@
     {"id": "w1", "specialty": "old memories and long-ago events",
      "model": "nvidia:z-ai/glm-5.2"},
     {"id": "w2", "specialty": "recent events and updates",
-     "model": "nvidia:minimaxai/minimax-m3"}
+     "model": "nvidia:minimaxai/minimax-m3"},
+    {"id": "w3", "specialty": "relationships, preferences and hobbies",
+     "model": "gemini:gemini-2.5-flash"},
+    {"id": "w4", "specialty": "facts requiring combining multiple memories",
+     "model": "cerebras:gpt-oss-120b"}
   ],
   "topologies": ["shared", "independent", "orchestrator"],
-  "policies": ["NOMEM", "P0", "P1:ttl_days=14", "P2", "P3", "P4"]
+  "policies": ["NOMEM", "P0", "P1:ttl_days=14", "P2", "P3", "P4", "P5"]
 }

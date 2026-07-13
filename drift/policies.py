@@ -138,6 +138,80 @@ class P4LLMConsolidation(Policy):
                 kept.append(f)
 
 
+class P5TopologyConsolidation(Policy):
+    """Graph-topology consolidation (Graphify-inspired: graphify.net).
+
+    Structure-aware but deliberately TIME-BLIND — the ablation partner to P2.
+    Builds the entity co-occurrence graph, finds communities (label propagation,
+    stdlib-only), and within each community resolves competing facts on the same
+    (subject, predicate) by STRUCTURAL SUPPORT: keep the fact whose object is
+    corroborated by the most other facts in memory. High-degree 'god node'
+    entities are never pruned below `min_keep` facts.
+
+    Thesis role: if P2 beats P5, the advantage of structure-aware forgetting is
+    attributable to *bitemporal* semantics specifically, not graph structure in
+    general. P5 must guess which contradictory fact is current; P2 knows.
+    """
+    name = "P5_topology_consolidation"
+
+    def __init__(self, min_keep: int = 2):
+        self.min_keep = int(min_keep)
+
+    @staticmethod
+    def _entities(f: Fact) -> tuple[str, str]:
+        return f.subject.lower().strip(), f.object.lower().strip()
+
+    def _communities(self, facts: list[Fact]) -> dict[str, int]:
+        """Label propagation over the entity co-occurrence graph (stdlib)."""
+        neighbors: dict[str, set[str]] = {}
+        for f in facts:
+            s, o = self._entities(f)
+            neighbors.setdefault(s, set()).add(o)
+            neighbors.setdefault(o, set()).add(s)
+        label = {e: i for i, e in enumerate(sorted(neighbors))}
+        for _ in range(10):  # converges fast on memory-scale graphs
+            changed = False
+            for e in neighbors:
+                if not neighbors[e]:
+                    continue
+                counts: dict[int, int] = {}
+                for n in neighbors[e]:
+                    counts[label[n]] = counts.get(label[n], 0) + 1
+                best = min(k for k, v in counts.items() if v == max(counts.values()))
+                if best < label[e]:
+                    label[e], changed = best, True
+            if not changed:
+                break
+        return label
+
+    def _structural_support(self, f: Fact, facts: list[Fact]) -> int:
+        obj = f.object.lower().strip()
+        return sum(1 for other in facts
+                   if other.id != f.id and obj and obj in other.text.lower())
+
+    def after_session(self, graph: BitemporalGraph, provider, now: float) -> None:
+        active = [f for f in graph.facts.values() if f.active]
+        if not active:
+            return
+        self._communities(active)  # community structure (kept for analytics parity)
+        degree: dict[str, int] = {}
+        for f in active:
+            s, _ = self._entities(f)
+            degree[s] = degree.get(s, 0) + 1
+        groups: dict[tuple[str, str], list[Fact]] = {}
+        for f in active:
+            groups.setdefault((f.subject.lower(), f.predicate), []).append(f)
+        for (subj, _pred), members in groups.items():
+            if len(members) < 2:
+                continue
+            if degree.get(subj, 0) <= self.min_keep:  # protect low-degree entities
+                continue
+            members.sort(key=lambda f: (self._structural_support(f, active), f.salience, f.id),
+                         reverse=True)
+            for loser in members[1:]:  # keep only the best-supported fact
+                graph.prune(loser.id)
+
+
 POLICY_REGISTRY = {
     "NOMEM": NoMemory,
     "P0": P0NoForgetting,
@@ -145,6 +219,7 @@ POLICY_REGISTRY = {
     "P2": P2ContradictionInvalidation,
     "P3": P3NoveltyGate,
     "P4": P4LLMConsolidation,
+    "P5": P5TopologyConsolidation,
 }
 
 

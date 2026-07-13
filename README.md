@@ -39,6 +39,7 @@ answer LLM ──► LLM judge (different model family) + token-F1
 | P2 | Contradiction invalidation | Exclude superseded facts at retrieval; prune after grace period (exploits bitemporal fields) |
 | P3 | Novelty gate | Reject near-duplicate writes (SAGE-style, [arXiv:2605.30711](https://arxiv.org/abs/2605.30711)) |
 | P4 | LLM consolidation | Periodic LLM keep/drop review + near-duplicate merge (the risky policy per arXiv:2605.12978) |
+| P5 | Topology consolidation | Graph-community + structural-support consolidation, time-blind (Graphify-inspired ablation: separates temporal from structural awareness) |
 
 ## Setup
 

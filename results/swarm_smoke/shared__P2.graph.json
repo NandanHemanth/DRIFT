@@ -1,0 +1,229 @@
+{
+ "directed": true,
+ "multigraph": true,
+ "graph": {
+  "name": "drift_memory",
+  "n_communities": 2,
+  "god_nodes": [
+   "carol",
+   "dan",
+   "i play guitar in a local band, my favorite instrument.",
+   "i love hiking on weekends.",
+   "initech"
+  ]
+ },
+ "nodes": [
+  {
+   "id": "carol",
+   "label": "carol",
+   "degree": 6,
+   "community": 1
+  },
+  {
+   "id": "dan",
+   "label": "dan",
+   "degree": 6,
+   "community": 0
+  },
+  {
+   "id": "i play guitar in a local band, my favorite instrument.",
+   "label": "i play guitar in a local band, my favorite instrument.",
+   "degree": 2,
+   "community": 0
+  },
+  {
+   "id": "i love hiking on weekends.",
+   "label": "i love hiking on weekends.",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "initech",
+   "label": "initech",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "austin",
+   "label": "austin",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "kitten",
+   "label": "kitten",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "denver and i live near the mountains",
+   "label": "denver and i live near the mountains",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "initech has been stressful lately",
+   "label": "initech has been stressful lately",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "denver winters are colder than expected.",
+   "label": "denver winters are colder than expected.",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "hooli",
+   "label": "hooli",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "my band released our first album called midnight drive.",
+   "label": "my band released our first album called midnight drive.",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "my mentor at work is very supportive.",
+   "label": "my mentor at work is very supportive.",
+   "degree": 1,
+   "community": 1
+  }
+ ],
+ "links": [
+  {
+   "source": "carol",
+   "target": "i love hiking on weekends.",
+   "label": "stated",
+   "text": "Carol: I love hiking on weekends.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "dan",
+   "target": "i play guitar in a local band, my favorite instrument.",
+   "label": "stated",
+   "text": "Dan: I play guitar in a local band, my favorite instrument.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carol",
+   "target": "initech",
+   "label": "works_at",
+   "text": "Carol: I work at Initech, the company audits spreadsheets.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 0,
+   "t_invalid_at": 2592000
+  },
+  {
+   "source": "dan",
+   "target": "austin",
+   "label": "lives_in",
+   "text": "Dan: I live in Austin, the city has amazing tacos.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 0,
+   "t_invalid_at": 2592000
+  },
+  {
+   "source": "dan",
+   "target": "i play guitar in a local band, my favorite instrument.",
+   "label": "stated",
+   "text": "Dan: I play guitar in a local band, my favorite instrument.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1036800,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carol",
+   "target": "kitten",
+   "label": "owns_pet",
+   "text": "Carol: I adopted a kitten named Whiskers, my first pet.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1036800,
+   "t_invalid_at": null
+  },
+  {
+   "source": "dan",
+   "target": "denver and i live near the mountains",
+   "label": "lives_in",
+   "text": "Dan: I just moved to Denver and I live near the mountains.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 2592000,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carol",
+   "target": "initech has been stressful lately",
+   "label": "works_at",
+   "text": "Carol: Work at Initech has been stressful lately.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 2592000,
+   "t_invalid_at": 3888000
+  },
+  {
+   "source": "dan",
+   "target": "denver winters are colder than expected.",
+   "label": "stated",
+   "text": "Dan: Denver winters are colder than expected.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 3888000,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carol",
+   "target": "hooli",
+   "label": "works_at",
+   "text": "Carol: I quit and now work for Hooli as a product manager.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 3888000,
+   "t_invalid_at": null
+  },
+  {
+   "source": "dan",
+   "target": "my band released our first album called midnight drive.",
+   "label": "stated",
+   "text": "Dan: My band released our first album called Midnight Drive.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 5011200,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carol",
+   "target": "my mentor at work is very supportive.",
+   "label": "stated",
+   "text": "Carol: My mentor at work is very supportive.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 5011200,
+   "t_invalid_at": null
+  }
+ ]
+}
