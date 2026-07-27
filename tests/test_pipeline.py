@@ -6,7 +6,9 @@ from drift.memory.extraction import extract_facts
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer, token_f1
 from drift.policies import P0NoForgetting, P2ContradictionInvalidation
-from drift.providers import BaseProvider, Completion, DiskCache, FallbackProvider, MockProvider
+from drift.providers import (
+    BaseProvider, Completion, DiskCache, FallbackProvider, MockProvider, OpenAICompatProvider,
+)
 
 DAY = 86400.0
 
@@ -107,6 +109,15 @@ def test_runner_smoke_config_is_valid():
     dataset = json.loads(Path(cfg["dataset"]).read_text())
     assert cfg["policies"] and cfg["models"]
     assert all(c["sessions"] and c["questions"] for c in dataset["conversations"])
+
+
+def test_ollama_preset_needs_no_api_key():
+    """The local Ollama provider (used for the judge role, the single
+    highest-call-volume role in the whole campaign) must construct without
+    an API key -- Ollama's server doesn't check the Authorization header."""
+    provider = OpenAICompatProvider("ollama", "gpt-oss:20b")
+    assert provider.api_key  # placeholder, non-empty, never raises
+    assert provider.base_url == "http://localhost:11434/v1"
 
 
 def test_extract_facts_survives_malformed_json():

@@ -47,6 +47,12 @@ def load_dotenv(path: str | Path = ".env") -> None:
 load_dotenv()
 
 PROVIDER_PRESETS = {
+    # Local Ollama server (`ollama serve`), OpenAI-compatible endpoint. No API
+    # key needed -- unlimited, free, zero rate limit beyond your own hardware.
+    # rpm is set high since the real pacing constraint is local inference
+    # throughput (which Ollama's own request queue already manages), not a
+    # remote quota.
+    "ollama": {"base_url": "http://localhost:11434/v1", "key_env": "OLLAMA_API_KEY", "rpm": 300, "requires_key": False},
     "groq": {"base_url": "https://api.groq.com/openai/v1", "key_env": "GROQ_API_KEY", "rpm": 25},
     "cerebras": {"base_url": "https://api.cerebras.ai/v1", "key_env": "CEREBRAS_API_KEY", "rpm": 25},
     "nvidia": {"base_url": "https://integrate.api.nvidia.com/v1", "key_env": "NVIDIA_API_KEY", "rpm": 35},
@@ -146,7 +152,11 @@ class OpenAICompatProvider(BaseProvider):
         self.base_url = cfg["base_url"]
         self.api_key = os.environ.get(cfg["key_env"], "")
         if not self.api_key:
-            raise RuntimeError(f"Missing env var {cfg['key_env']} for provider '{preset}'")
+            if cfg.get("requires_key", True):
+                raise RuntimeError(f"Missing env var {cfg['key_env']} for provider '{preset}'")
+            # Local servers (e.g. Ollama) don't check the Authorization header
+            # at all; send a harmless placeholder rather than an empty value.
+            self.api_key = "not-needed"
         self.cache = cache or DiskCache()
         self.limiter = RateLimiter(cfg["rpm"])
         self.max_retries = max_retries

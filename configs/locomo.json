@@ -4,16 +4,15 @@
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 8,
   "extract_model": [
-    "cerebras:gpt-oss-120b",
-    "groq:llama-3.3-70b-versatile",
-    "gemini:gemini-2.5-flash",
     "nvidia:z-ai/glm-5.2",
     "nvidia:minimaxai/minimax-m3",
-    "mistral:mistral-small-latest",
-    "hf:meta-llama/Llama-3.1-8B-Instruct"
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
   ],
   "judge_model": [
-    "gemini:gemini-2.5-flash",
+    "ollama:gpt-oss:20b",
     "openrouter:openai/gpt-oss-20b:free",
     "cohere:command-r7b-12-2024"
   ],
