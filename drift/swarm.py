@@ -33,7 +33,7 @@ from drift.embeddings import make_embedder
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
-from drift.providers import make_provider
+from drift.providers import FallbackProvider, make_provider
 from drift.runner import load_dataset, staleness_hit
 
 ROUTER_SYSTEM = (
@@ -45,6 +45,20 @@ WORKERS:
 QUESTION:
 {question}
 Reply with only the worker id (e.g. w0)."""
+
+
+def _make_judge(cfg: dict, cache: str):
+    """judge_model may be a single spec or a list; a list is wrapped in a
+    FallbackProvider so one exhausted/dead judge doesn't fail the whole
+    topology cell. The judge is a neutral scorer, not the experimental
+    variable under test, so failing over between judge models doesn't
+    confound results the way silently swapping an answer/extractor model
+    would.
+    """
+    spec = cfg.get("judge_model", "mock")
+    specs = spec if isinstance(spec, list) else [spec]
+    providers = [make_provider(s, cache) for s in specs]
+    return providers[0] if len(providers) == 1 else FallbackProvider(providers)
 
 
 # --------------------------------------------------------------------- helpers
@@ -123,7 +137,7 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     cache = cfg.get("cache_dir", ".drift_cache")
     extractors = [make_provider(m, cache) for m in _cycle(cfg["extract_models"], n_agents)]
     answerer = make_provider(cfg["answer_model"], cache)
-    judge = make_provider(cfg.get("judge_model", "mock"), cache)
+    judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
     policy = make_policy(policy_spec)
@@ -158,7 +172,7 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     cache = cfg.get("cache_dir", ".drift_cache")
     extractor = make_provider(cfg["extract_models"][0], cache)
     answerer = make_provider(cfg["answer_model"], cache)
-    judge = make_provider(cfg.get("judge_model", "mock"), cache)
+    judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
     per_agent, all_records = [], []
@@ -193,7 +207,7 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
     extractor = make_provider(cfg["extract_models"][0], cache)
-    judge = make_provider(cfg.get("judge_model", "mock"), cache)
+    judge = _make_judge(cfg, cache)
     router = make_provider(cfg.get("router_model", cfg["answer_model"]), cache)
 
     workers = cfg.get("workers", [

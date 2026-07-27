@@ -57,7 +57,15 @@ def extract_facts(provider, session_lines: list[str]) -> list[dict]:
         assert isinstance(raw, list)
     except (json.JSONDecodeError, AssertionError):
         m = re.search(r"\[.*\]", completion.text, re.S)
-        raw = json.loads(m.group(0)) if m else []
+        try:
+            raw = json.loads(m.group(0)) if m else []
+        except json.JSONDecodeError:
+            # Still malformed (e.g. a truncated or comma-dropping response from
+            # a reasoning model under token pressure): treat as "no facts
+            # extracted this session" rather than crashing the whole run.
+            raw = []
+        if not isinstance(raw, list):
+            raw = []
 
     facts: list[dict] = []
     for item in raw:

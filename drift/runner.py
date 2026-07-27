@@ -17,7 +17,19 @@ from drift.embeddings import make_embedder
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
-from drift.providers import make_provider
+from drift.providers import BaseProvider, FallbackProvider, make_provider
+
+
+def _rotated_fallback(providers: list[BaseProvider], i: int) -> BaseProvider:
+    """Prefer providers[i % n] (preserves round-robin load spreading across
+    conversations) but fall back through the rest of the list on failure, so
+    one exhausted/dead provider fails over instead of failing the whole cell.
+    """
+    n = len(providers)
+    if n == 1:
+        return providers[0]
+    order = [providers[(i + j) % n] for j in range(n)]
+    return FallbackProvider(order)
 
 
 def load_dataset(path: str) -> dict:
@@ -57,8 +69,8 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
 
     records, memory_curves = [], []
     for convo_i, convo in enumerate(dataset["conversations"]):
-        extract_provider = extract_providers[convo_i % len(extract_providers)]
-        judge_provider = judge_providers[convo_i % len(judge_providers)]
+        extract_provider = _rotated_fallback(extract_providers, convo_i)
+        judge_provider = _rotated_fallback(judge_providers, convo_i)
         policy = make_policy(policy_spec)  # fresh policy state per conversation
         graph = BitemporalGraph(embedder)
         t_last = 0.0

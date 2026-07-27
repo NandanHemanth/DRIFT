@@ -15,7 +15,7 @@
     "nvidia:minimaxai/minimax-m3"
   ],
   "answer_model": "groq:llama-3.3-70b-versatile",
-  "judge_model": "gemini:gemini-2.5-flash",
+  "judge_model": ["gemini:gemini-2.5-flash", "openrouter:openai/gpt-oss-20b:free"],
   "router_model": "nvidia:z-ai/glm-5.2",
   "workers": [
     {"id": "w0", "specialty": "current state of people (where they live/work now)",

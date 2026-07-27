@@ -191,6 +191,36 @@ class OpenAICompatProvider(BaseProvider):
         raise RuntimeError(f"Provider {self.name} failed after {self.max_retries} retries: {last_err}")
 
 
+class FallbackProvider(BaseProvider):
+    """Tries each provider in order; on failure, falls through to the next.
+
+    A fixed round-robin assignment (one provider per conversation index) has
+    no resilience: if that one provider's daily quota is exhausted, every
+    cell that touches it fails outright, even though the other providers in
+    the list are perfectly healthy. This wraps an ordered list of providers
+    so a dead/exhausted one is skipped rather than fatal -- the *first*
+    provider in the list is still the "preferred" one (so load-spreading
+    behaviour from round-robin ordering is preserved), it just isn't a
+    single point of failure anymore.
+    """
+
+    def __init__(self, providers: list[BaseProvider]):
+        if not providers:
+            raise ValueError("FallbackProvider needs at least one provider")
+        self.providers = providers
+        self.name = "+".join(p.name for p in providers)
+
+    def complete(self, prompt: str, system: str = "", temperature: float = 0.0, max_tokens: int = 1024) -> Completion:
+        last_err: Exception | None = None
+        for p in self.providers:
+            try:
+                return p.complete(prompt, system=system, temperature=temperature, max_tokens=max_tokens)
+            except Exception as e:  # noqa: BLE001 - fall through to the next provider
+                last_err = e
+                continue
+        raise RuntimeError(f"All providers failed: {last_err}")
+
+
 class MockProvider(BaseProvider):
     """Deterministic offline provider for tests and smoke benchmarks.
 

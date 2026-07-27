@@ -6,9 +6,29 @@ from drift.memory.extraction import extract_facts
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer, token_f1
 from drift.policies import P0NoForgetting, P2ContradictionInvalidation
-from drift.providers import DiskCache, MockProvider
+from drift.providers import BaseProvider, Completion, DiskCache, FallbackProvider, MockProvider
 
 DAY = 86400.0
+
+
+class GarbageProvider:
+    """Always returns text that looks like a JSON list but doesn't parse,
+    e.g. a reasoning model that dropped a comma mid-response. Regression
+    test for the real crash: an uncaught JSONDecodeError inside extract_facts
+    used to kill the entire runner/swarm process instead of just yielding
+    no facts for that one session."""
+
+    name = "garbage"
+
+    def complete(self, prompt, system="", temperature=0.0, max_tokens=1024):
+        return Completion('[{"subject": "Alice" "predicate": "lives_in"}]', 10, 10)
+
+
+class AlwaysFailsProvider(BaseProvider):
+    name = "always_fails"
+
+    def complete(self, prompt, system="", temperature=0.0, max_tokens=1024):
+        raise RuntimeError("simulated quota exhaustion")
 
 
 def test_extraction_produces_functional_predicates():
@@ -72,6 +92,37 @@ def test_runner_smoke_config_is_valid():
     dataset = json.loads(Path(cfg["dataset"]).read_text())
     assert cfg["policies"] and cfg["models"]
     assert all(c["sessions"] and c["questions"] for c in dataset["conversations"])
+
+
+def test_extract_facts_survives_malformed_json():
+    """A provider whose response can't be parsed as JSON at all (not even via
+    the regex-recovered bracket match) must yield an empty LLM-derived fact
+    list for that session, not raise -- one bad extraction shouldn't crash a
+    whole campaign. Uses a line with no heuristic-matchable pattern (no
+    lives_in/works_at/owns_pet/studies phrasing) so the deterministic regex
+    upgrade pass -- which runs independently of the LLM's output and should
+    still work -- doesn't mask the assertion."""
+    facts = extract_facts(GarbageProvider(), ["Alice: My favorite color is blue."])
+    assert facts == []
+
+
+def test_fallback_provider_falls_through_to_working_provider():
+    """If the preferred provider is exhausted/dead, FallbackProvider must try
+    the next one instead of failing the whole call -- this is the fix for
+    every cell dying identically when one free-tier provider's daily quota
+    is used up."""
+    provider = FallbackProvider([AlwaysFailsProvider(), MockProvider()])
+    result = provider.complete("TASK:JUDGE\nQUESTION:\nq\nGOLD:\nSeattle\nANSWER:\nSeattle")
+    assert result.text == "CORRECT"
+
+
+def test_fallback_provider_raises_only_if_all_providers_fail():
+    provider = FallbackProvider([AlwaysFailsProvider(), AlwaysFailsProvider()])
+    try:
+        provider.complete("hi")
+        assert False, "expected RuntimeError"
+    except RuntimeError as e:
+        assert "simulated quota exhaustion" in str(e)
 
 
 def test_locomo_stratified_sample_keeps_full_sessions_caps_questions():
