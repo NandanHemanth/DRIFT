@@ -38,12 +38,20 @@ def staleness_hit(answer: str, stale_answer: str | None) -> bool:
 
 def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_path: Path) -> dict:
     embedder = make_embedder(cfg.get("embedder", "hashing"))
-    answer_provider = make_provider(model_spec, cfg.get("cache_dir", ".drift_cache"))
-    extract_provider = make_provider(cfg.get("extract_model", model_spec), cfg.get("cache_dir", ".drift_cache"))
-    judge_provider = make_provider(cfg.get("judge_model", "mock"), cfg.get("cache_dir", ".drift_cache"))
+    cache_dir = cfg.get("cache_dir", ".drift_cache")
+    answer_provider = make_provider(model_spec, cache_dir)
+    # extract_model may be a single spec or a list of specs. A list is
+    # round-robined one-per-conversation, spreading the highest-volume calls
+    # in the pipeline (extraction) across several providers' independent free
+    # tiers instead of hammering one rate limit.
+    extract_spec = cfg.get("extract_model", model_spec)
+    extract_specs = extract_spec if isinstance(extract_spec, list) else [extract_spec]
+    extract_providers = [make_provider(s, cache_dir) for s in extract_specs]
+    judge_provider = make_provider(cfg.get("judge_model", "mock"), cache_dir)
 
     records, memory_curves = [], []
-    for convo in dataset["conversations"]:
+    for convo_i, convo in enumerate(dataset["conversations"]):
+        extract_provider = extract_providers[convo_i % len(extract_providers)]
         policy = make_policy(policy_spec)  # fresh policy state per conversation
         graph = BitemporalGraph(embedder)
         t_last = 0.0

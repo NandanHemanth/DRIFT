@@ -56,6 +56,11 @@ PROVIDER_PRESETS = {
         "rpm": 8,
     },
     "openrouter": {"base_url": "https://openrouter.ai/api/v1", "key_env": "OPENROUTER_API_KEY", "rpm": 15},
+    # Extra free-tier headroom (verified working July 2026; see STORY.md "top 5"
+    # note). Free-model slugs on OpenRouter rotate — check openrouter.ai/models
+    # if one 404s and swap the model name in your config.
+    "mistral": {"base_url": "https://api.mistral.ai/v1", "key_env": "MISTRAL_API_KEY", "rpm": 4},
+    "hf": {"base_url": "https://router.huggingface.co/v1", "key_env": "HF_API_KEY", "rpm": 8},
 }
 
 

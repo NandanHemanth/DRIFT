@@ -203,6 +203,26 @@ context = "\n".join(f.text for f in facts)   # feed to your answer prompt
 
 **Choosing a policy in production:** default to P2 plus P3 composed (invalidation for staleness, novelty gate for bloat). Add P1 only for data that truly expires. Treat P4 as an explicitly gated batch job, never a per-interaction reflex. Extend the `FUNCTIONAL_PREDICATES` set in `graph.py` to your domain's mutable facts (prices, statuses, assignments); that one set is the contract that makes P2 work for you.
 
+## Bypassing free-tier rate limits
+
+The heaviest-volume step in the pipeline is extraction: every session gets one LLM call regardless of policy or answer model. On a single provider that call volume runs into the free tier's requests-per-minute ceiling fast. The fix, verified working as of July 2026:
+
+**Spread extraction across every provider you already have a key for.** `extract_model` in a config can now be a list instead of a single string; `drift/runner.py` round-robins one provider per conversation, so five conversations use five different providers' independent rate-limit buckets instead of one provider's bucket five times. This needs no new signups, only the keys already in `.env`, and it is on by default in `configs/locomo.json` and `configs/longmemeval.json`.
+
+**Top providers by free-tier headroom (checked July 2026), in the order used for round-robin:**
+
+| Provider | Free tier | Role in DRIFT |
+|---|---|---|
+| Cerebras | ~1M tokens/day, no card | Extraction (primary) |
+| Google Gemini Flash | 1,500 req/day, 1M-token context | Extraction, judge (different family from most answerers) |
+| Groq | 30 RPM / 1,000 RPD per model | Extraction, answering |
+| NVIDIA NIM | ~35-40 RPM, hosts many free models | Extraction, answering (GLM-5.2, MiniMax-M3) |
+| OpenRouter | 20 RPM / 50 free-model req/day (1,000/day once $10 credited) | Overflow; verified working free slugs change often, check `openrouter.ai/models` before relying on a specific one |
+
+Two more free OpenAI-compatible endpoints are wired into `drift/providers.py` as ready-to-use presets if you want even more headroom: Mistral La Plateforme's free Experiment tier (`mistral:<model>`, needs `MISTRAL_API_KEY`) and Hugging Face's router (`hf:<model>`, needs `HF_API_KEY`). Add either key to `.env` and reference `"mistral:mistral-small-latest"` or `"hf:<model-id>"` in any config's provider lists; no code changes needed.
+
+Rate-limit numbers on every free tier change without notice. If a cell fails with a 429, that specific cell is skipped (see below), not the whole campaign, and rerunning later after the daily quota resets picks it up for free from the cache.
+
 ## Recording everything: the evidence pack
 
 One command turns any results directory, offline or real, into a complete set of report and paper artifacts:
@@ -303,6 +323,10 @@ Follow one fact through the picture (`report_pack/architecture.png`). **Sessions
 ### 7. How do I record tables, charts, memory views, and benchmarks for my report and paper?
 
 See "Recording everything: the evidence pack" above. Short version: `make record` after any run; everything lands in `results/<dataset>/report_pack/` as markdown, CSV, PNG, and interactive HTML, including the normal-agent-vs-DRIFT-agent benchmark, pruned fact text, and per-cell memory graph views. `make real-all` produces the packs for the real campaign automatically.
+
+### 8. `make real-all` crashed with a 403 from Cerebras or Groq. Is my key wrong?
+
+No. As of July 2026 both providers sit behind Cloudflare, and the default Python network client identifies itself in a way Cloudflare's bot filter blocks before your request reaches the API, regardless of key validity. The fix (already applied): `drift/providers.py` sends a real `User-Agent` header. If a provider still fails, the campaign no longer stops: `runner.py` and `swarm.py` catch the failure, print `[fail] <cell>: <reason>`, and move to the next cell; rerun `make real-all` later and every failed cell resumes from the disk cache with no wasted calls. A related symptom, an empty answer from a reasoning model (gpt-oss, GLM-5.2, MiniMax-M3), is also handled: the client now falls back to the model's `reasoning_content` field when `content` is empty.
 
 ## Epilogue
 

@@ -3,7 +3,13 @@
   "results_dir": "results/longmemeval",
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 8,
-  "extract_model": "cerebras:gpt-oss-120b",
+  "extract_model": [
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "gemini:gemini-2.5-flash",
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3"
+  ],
   "judge_model": "gemini:gemini-2.5-flash",
   "models": [
     "groq:llama-3.3-70b-versatile",

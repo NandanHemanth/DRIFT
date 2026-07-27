@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make test *)",
+      "Bash(make smoke *)",
+      "Bash(python -m drift.runner --config configs/smoke.json --force)",
+      "Bash(git checkout *)",
+      "Bash(ollama list *)",
+      "Bash(kill %bqjbptsr3)",
+      "Bash(brew services *)",
+      "Bash(kill -9 80819)",
+      "Bash(nohup ollama serve)",
+      "Bash(disown)",
+      "Bash(python3 *)",
+      "Bash(nohup make real-all)",
+      "Bash(echo \"launched pid $!\")",
+      "Bash(kill 84749)",
+      "Bash(pkill -f \"python -m drift.runner\")",
+      "Bash(pkill -f \"python -m drift.swarm\")",
+      "Bash(ps -o pid,ppid,stat,lstart,command -p 81081)",
+      "Bash(make real-all *)"
+    ]
+  }
+}
