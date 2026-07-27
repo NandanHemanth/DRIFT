@@ -10,7 +10,7 @@
     "nvidia:z-ai/glm-5.2",
     "nvidia:minimaxai/minimax-m3"
   ],
-  "judge_model": "gemini:gemini-2.5-flash",
+  "judge_model": ["gemini:gemini-2.5-flash", "openrouter:openai/gpt-oss-20b:free"],
   "models": [
     "groq:llama-3.3-70b-versatile",
     "nvidia:z-ai/glm-5.2"

@@ -99,3 +99,22 @@ def test_p5_registry_and_spec():
     from drift.policies import make_policy
     assert make_policy("P5").name == "P5_topology_consolidation"
     assert make_policy("P5:min_keep=3").min_keep == 3
+
+
+def test_p4_survives_unparseable_llm_response():
+    """Regression test: a malformed/truncated consolidation response must not
+    crash after_session (previously: UnboundLocalError on `decision`)."""
+    from drift.policies import make_policy
+    from drift.memory.graph import BitemporalGraph
+    from drift.embeddings import make_embedder
+    from drift.providers import Completion
+
+    class GarbageProvider:
+        def complete(self, *a, **k):
+            return Completion(text="not json at all, no braces here", prompt_tokens=1, completion_tokens=1)
+
+    g = BitemporalGraph(make_embedder("hashing"))
+    g.add_fact("Alice", "stated", "loves tea", "Alice loves tea", t_event=0)
+    p = make_policy("P4:every_n=1")
+    p.after_session(g, GarbageProvider(), now=1.0)  # must not raise
+    assert sum(1 for f in g.facts.values() if f.active) == 1  # nothing dropped

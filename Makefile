@@ -47,8 +47,16 @@ figures:
 dashboard:
 	python analysis/dashboard.py results/* -o docs/dashboard.html
 
+# Downloads the full LoCoMo benchmark AND derives a stratified 300-question
+# sample (same conversations, full session histories, fewer probe questions)
+# so the 6-policy x 5-model matrix fits free-tier judge quotas (~1500/day) in
+# days rather than the ~40 days the full 1,986-question x 30-cell matrix
+# would need. configs/locomo.json points at the sample by default; rerun with
+# --sample-size omitted, or a larger value, to widen it once quota allows.
 locomo-data:
 	python scripts/download_locomo.py
+	python scripts/download_locomo.py --in data/locomo_drift.json \
+		--out data/locomo_drift_sample.json --sample-size 300
 
 locomo:
 	python -m drift.runner --config configs/locomo.json

@@ -72,3 +72,22 @@ def test_runner_smoke_config_is_valid():
     dataset = json.loads(Path(cfg["dataset"]).read_text())
     assert cfg["policies"] and cfg["models"]
     assert all(c["sessions"] and c["questions"] for c in dataset["conversations"])
+
+
+def test_locomo_stratified_sample_keeps_full_sessions_caps_questions():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from scripts.download_locomo import stratified_sample
+
+    dataset = {"name": "t", "conversations": [
+        {"id": "c0", "sessions": [{"time": 0, "lines": ["a"]}, {"time": 1, "lines": ["b"]}],
+         "questions": [{"question": f"q{i}", "answer": "x", "category": cat, "stale_answer": None}
+                       for i, cat in enumerate(["single_hop"] * 8 + ["temporal"] * 2)]},
+    ]}
+    sampled = stratified_sample(dataset, sample_size=5, seed=1)
+    assert len(sampled["conversations"][0]["sessions"]) == 2  # full history kept
+    nq = sum(len(c["questions"]) for c in sampled["conversations"])
+    assert nq <= 6  # capped near the target (rounding may add at most one per category)
+    cats = {q["category"] for c in sampled["conversations"] for q in c["questions"]}
+    assert "temporal" in cats  # minority category still represented

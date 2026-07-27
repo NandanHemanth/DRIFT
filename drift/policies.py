@@ -120,9 +120,11 @@ class P4LLMConsolidation(Policy):
             completion = provider.complete(CONSOLIDATION_PROMPT.format(facts=listing))
             try:
                 decision = json.loads(re.search(r"\{.*\}", completion.text, re.S).group(0))
-                drop = set(decision.get("drop", []))
             except (AttributeError, json.JSONDecodeError):
-                drop = set()
+                # malformed/truncated LLM response (common with reasoning models
+                # under token pressure): treat as "no opinion", keep everything
+                decision = {}
+            drop = set(decision.get("drop", []))
             keep = set(decision.get("keep", [])) if drop or decision.get("keep") else {f.id for f in chunk}
             for f in chunk:
                 if f.id in drop and f.id not in keep:

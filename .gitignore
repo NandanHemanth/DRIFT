@@ -8,6 +8,7 @@ results/*
 !results/smoke/
 !results/swarm_smoke/
 data/locomo_drift.json
+data/locomo_drift_sample.json
 data/locomo10.json
 data/longmemeval_drift.json
 .venv/

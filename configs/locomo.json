@@ -1,5 +1,5 @@
 {
-  "dataset": "data/locomo_drift.json",
+  "dataset": "data/locomo_drift_sample.json",
   "results_dir": "results/locomo",
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 8,
@@ -10,7 +10,10 @@
     "nvidia:z-ai/glm-5.2",
     "nvidia:minimaxai/minimax-m3"
   ],
-  "judge_model": "gemini:gemini-2.5-flash",
+  "judge_model": [
+    "gemini:gemini-2.5-flash",
+    "openrouter:openai/gpt-oss-20b:free"
+  ],
   "models": [
     "groq:llama-3.3-70b-versatile",
     "cerebras:gpt-oss-120b",

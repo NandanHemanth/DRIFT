@@ -223,6 +223,21 @@ Two more free OpenAI-compatible endpoints are wired into `drift/providers.py` as
 
 Rate-limit numbers on every free tier change without notice. If a cell fails with a 429, that specific cell is skipped (see below), not the whole campaign, and rerunning later after the daily quota resets picks it up for free from the cache.
 
+## Why the first real run failed everywhere, and what changed
+
+The first full-scale attempt at `make real-all` failed two different ways, worth separating clearly.
+
+**A real code bug.** `P4LLMConsolidation.after_session` crashed with `UnboundLocalError: decision` whenever the consolidation LLM returned a response with no parseable `{...}` JSON block (common with reasoning models under token pressure, or any model that adds commentary around its answer). The exception handler caught the parse failure but the line after it still referenced the never-assigned `decision` variable. Fixed: `decision` now always defaults to `{}` on a parse failure, so a malformed response degrades to "no opinion, keep everything" instead of crashing the whole campaign.
+
+**A quota design problem, not a bug.** Every cell failed with `HTTP 429` almost immediately, and the reason is arithmetic, not flakiness: `configs/locomo.json` originally specified 6 policies x 5 models = 30 cells, each judging all 1,986 LoCoMo questions with a single fixed Gemini judge. That is 59,580 judge calls against a free tier of roughly 1,500 requests/day — cell one alone (1,986 calls) already exceeds the entire day's allowance, so every subsequent cell 429s from the very first call, all day, until the quota resets at midnight. No retry or backoff logic can fix a wall that's ~40x too tall.
+
+The fix has two parts, both now default:
+
+1. **Stratified question sampling.** `scripts/download_locomo.py --sample-size 300` caps the total questions to 300 while keeping every conversation's *full session history* intact — the long multi-week timelines that make staleness testable are untouched; only the number of probe questions asked against each memory shrinks. Sampling is proportional across all five LoCoMo categories (temporal, multi-hop, single-hop, open-domain, adversarial) and seeded for reproducibility. `make locomo-data` now produces both `data/locomo_drift.json` (full, 1,986 questions, kept for anyone who wants to scale up later) and `data/locomo_drift_sample.json` (300 questions, what `configs/locomo.json` actually points at).
+2. **Judge round-robin.** `judge_model` in a config can now be a list, round-robined per conversation exactly like `extract_model` already was. `configs/locomo.json` and `configs/longmemeval.json` split judging across Gemini and an OpenRouter free model, roughly doubling the effective daily judge ceiling.
+
+With both changes: 30 cells x 300 questions = 9,000 judge calls, split across two judges (~4,500 each) against a ~1,500/day ceiling per judge — about 3 days of quota, not 40. This is disclosed in the paper as a stratified sample, not hidden; the full 1,986-question dataset remains one command away (`python scripts/download_locomo.py --in data/locomo_drift.json --sample-size 1986 --out data/locomo_full.json`, or just point a config at `data/locomo_drift.json` directly) if quota and time allow a wider run later.
+
 ## Recording everything: the evidence pack
 
 One command turns any results directory, offline or real, into a complete set of report and paper artifacts:

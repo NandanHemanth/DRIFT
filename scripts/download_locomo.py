@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 import time
 import urllib.request
 from datetime import datetime
@@ -61,11 +62,53 @@ def convert(raw: list[dict], max_conversations: int | None = None) -> dict:
     return {"name": "locomo", "conversations": conversations}
 
 
+def stratified_sample(dataset: dict, sample_size: int, seed: int = 42) -> dict:
+    """Cap total questions while keeping every conversation's full session
+    history intact (long-horizon dynamics are the point of LoCoMo; only the
+    QUESTION volume drives judge-call cost, so that is what we cap).
+
+    Sampling is proportional to each question category's share of the full
+    dataset and seeded for reproducibility. Conversations with zero sampled
+    questions are dropped from the output (nothing to ingest-and-answer for),
+    but every kept conversation retains ALL of its original sessions.
+    """
+    rng = random.Random(seed)
+    all_q = [(ci, qi, q) for ci, c in enumerate(dataset["conversations"])
+             for qi, q in enumerate(c["questions"])]
+    by_cat: dict[str, list] = {}
+    for item in all_q:
+        by_cat.setdefault(item[2]["category"], []).append(item)
+
+    total = len(all_q)
+    keep_keys: set[tuple[int, int]] = set()
+    for cat, items in by_cat.items():
+        target = max(1, round(sample_size * len(items) / total))
+        rng.shuffle(items)
+        for ci, qi, _ in items[:target]:
+            keep_keys.add((ci, qi))
+
+    sampled_conversations = []
+    for ci, convo in enumerate(dataset["conversations"]):
+        kept_qs = [q for qi, q in enumerate(convo["questions"]) if (ci, qi) in keep_keys]
+        if kept_qs:
+            sampled_conversations.append({**convo, "questions": kept_qs})
+    return {**dataset, "name": dataset.get("name", "locomo") + "_sample",
+            "conversations": sampled_conversations}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--in", dest="infile", default=None, help="local locomo10.json (skips download)")
+    parser.add_argument("--in", dest="infile", default=None,
+                        help="local locomo10.json (raw) OR an already-converted "
+                             "DRIFT-schema file (e.g. data/locomo_drift.json) to "
+                             "re-sample without re-downloading/re-converting")
     parser.add_argument("--out", default="data/locomo_drift.json")
     parser.add_argument("--max-conversations", type=int, default=None)
+    parser.add_argument("--sample-size", type=int, default=None,
+                        help="cap total questions (stratified across categories, "
+                             "full session histories kept) to fit free-tier judge "
+                             "quotas; e.g. --sample-size 300")
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
     if args.infile:
@@ -75,12 +118,23 @@ def main() -> None:
         with urllib.request.urlopen(LOCOMO_URL, timeout=120) as resp:
             raw = json.loads(resp.read())
 
-    dataset = convert(raw, args.max_conversations)
+    if isinstance(raw, dict) and "conversations" in raw:
+        dataset = raw  # already DRIFT-schema (e.g. re-sampling data/locomo_drift.json)
+    else:
+        dataset = convert(raw, args.max_conversations)
+    if args.sample_size:
+        dataset = stratified_sample(dataset, args.sample_size, args.seed)
+
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(dataset))
     n_q = sum(len(c["questions"]) for c in dataset["conversations"])
-    print(f"Wrote {out}: {len(dataset['conversations'])} conversations, {n_q} questions")
+    cats: dict[str, int] = {}
+    for c in dataset["conversations"]:
+        for q in c["questions"]:
+            cats[q["category"]] = cats.get(q["category"], 0) + 1
+    print(f"Wrote {out}: {len(dataset['conversations'])} conversations, {n_q} questions; "
+          f"categories: {cats}")
 
 
 if __name__ == "__main__":

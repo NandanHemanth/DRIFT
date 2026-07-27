@@ -47,11 +47,18 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     extract_spec = cfg.get("extract_model", model_spec)
     extract_specs = extract_spec if isinstance(extract_spec, list) else [extract_spec]
     extract_providers = [make_provider(s, cache_dir) for s in extract_specs]
-    judge_provider = make_provider(cfg.get("judge_model", "mock"), cache_dir)
+    # judge_model may also be a list, round-robined per conversation, exactly
+    # like extract_model. This splits judge-call volume (the single largest
+    # quota cost, since every question needs one) across multiple providers'
+    # independent free-tier ceilings instead of one.
+    judge_spec = cfg.get("judge_model", "mock")
+    judge_specs = judge_spec if isinstance(judge_spec, list) else [judge_spec]
+    judge_providers = [make_provider(s, cache_dir) for s in judge_specs]
 
     records, memory_curves = [], []
     for convo_i, convo in enumerate(dataset["conversations"]):
         extract_provider = extract_providers[convo_i % len(extract_providers)]
+        judge_provider = judge_providers[convo_i % len(judge_providers)]
         policy = make_policy(policy_spec)  # fresh policy state per conversation
         graph = BitemporalGraph(embedder)
         t_last = 0.0
