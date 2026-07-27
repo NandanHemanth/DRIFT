@@ -17,6 +17,7 @@ from drift.embeddings import make_embedder
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
+from drift.progress import CampaignTracker, ProgressBar
 from drift.providers import BaseProvider, FallbackProvider, make_provider
 
 
@@ -77,6 +78,9 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     judge_specs = judge_spec if isinstance(judge_spec, list) else [judge_spec]
     judge_providers = _build_providers(judge_specs, cache_dir)
 
+    total_questions = sum(len(c["questions"]) for c in dataset["conversations"])
+    bar = ProgressBar(total_questions, label="q")
+
     records, memory_curves = [], []
     for convo_i, convo in enumerate(dataset["conversations"]):
         extract_provider = _rotated_fallback(extract_providers, convo_i)
@@ -98,7 +102,12 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
                 **result, "gold": q["answer"], **verdict,
                 "stale": staleness_hit(result["answer"], q.get("stale_answer")),
             })
+            n_so_far = len(records)
+            acc_so_far = sum(r["correct"] for r in records) / n_so_far
+            stale_so_far = sum(r["stale"] for r in records) / n_so_far
+            bar.update(stats=f"acc={acc_so_far:.3f} stale={stale_so_far:.3f}")
 
+    bar.close()
     n = len(records)
     summary = {
         "policy": policy_spec, "model": model_spec, "n_questions": n,
@@ -127,13 +136,17 @@ def main() -> None:
     results_dir = Path(cfg.get("results_dir", "results"))
     results_dir.mkdir(parents=True, exist_ok=True)
 
+    total_cells = len(cfg["policies"]) * len(cfg["models"])
+    tracker = CampaignTracker(total_cells)
+    print(f"Campaign: {total_cells} cells ({len(cfg['policies'])} policies x {len(cfg['models'])} models)")
+
     summaries, failures = [], []
     for policy_spec in cfg["policies"]:
         for model_spec in cfg["models"]:
             cell = f"{policy_spec.split(':')[0]}__{model_spec.replace(':', '_').replace('/', '_')}"
             out_path = results_dir / f"{cell}.json"
             if out_path.exists() and not args.force:
-                print(f"[skip] {cell} (exists)")
+                print(f"[skip] {cell} (exists)  {tracker.cell_done()}")
                 summaries.append(json.loads(out_path.read_text())["summary"])
                 continue
             print(f"[run ] {cell}")
@@ -142,11 +155,12 @@ def main() -> None:
             except (RuntimeError, OSError) as e:
                 # One dead provider must not kill the campaign: log, move on,
                 # rerun later (completed work is cached, the cell will resume).
-                print(f"[fail] {cell}: {str(e)[:160]}")
+                print(f"[fail] {cell}: {str(e)[:160]}  {tracker.cell_done()}")
                 failures.append(cell)
                 continue
             print(f"       acc={summary['accuracy']:.3f} f1={summary['mean_f1']:.3f} "
                   f"stale={summary['staleness_rate']:.3f} tok/q={summary['mean_tokens_per_q']:.0f}")
+            print(f"       {tracker.cell_done()}")
             summaries.append(summary)
 
     table_path = results_dir / "summary_table.json"

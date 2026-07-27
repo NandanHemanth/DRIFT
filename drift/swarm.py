@@ -33,6 +33,7 @@ from drift.embeddings import make_embedder
 from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
+from drift.progress import CampaignTracker, ProgressBar
 from drift.providers import FallbackProvider, make_provider
 from drift.runner import load_dataset, staleness_hit
 
@@ -157,9 +158,16 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         memory_curve.append({"step": i, "agent": agent_id, "time": session["time"],
                              **graph.stats()})
 
-    records = [_answer_and_judge(q, graph, policy, answerer, judge,
-                                 cfg.get("retrieval_k", 8), t_last)
-               for q in questions]
+    records = []
+    bar = ProgressBar(len(questions), label="q")
+    for q in questions:
+        records.append(_answer_and_judge(q, graph, policy, answerer, judge,
+                                         cfg.get("retrieval_k", 8), t_last))
+        n_so_far = len(records)
+        acc = sum(r["correct"] for r in records) / n_so_far
+        stale = sum(r["stale"] for r in records) / n_so_far
+        bar.update(stats=f"acc={acc:.3f} stale={stale:.3f}")
+    bar.close()
     result = {"summary": {**summarize(records), "n_agents": n_agents,
                           **cross_writer_invalidations(graph),
                           "final_memory": graph.stats()},
@@ -181,6 +189,7 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
 
     sessions, questions = global_timeline(dataset)
     per_agent, all_records = [], []
+    bar = ProgressBar(n_agents * len(questions), label="q")
     for a in range(n_agents):
         rng = random.Random(cfg.get("seed", 42) + a)
         observed = [s for s in sessions if rng.random() < coverage]
@@ -190,13 +199,19 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         for session in observed:  # already time-ordered
             ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor)
             t_last = max(t_last, session["time"])
-        records = [_answer_and_judge(q, graph, policy, answerer, judge,
-                                     cfg.get("retrieval_k", 8), t_last)
-                   for q in questions]
+        records = []
+        for q in questions:
+            records.append(_answer_and_judge(q, graph, policy, answerer, judge,
+                                             cfg.get("retrieval_k", 8), t_last))
+            n_so_far = len(records)
+            acc = sum(r["correct"] for r in records) / n_so_far
+            stale = sum(r["stale"] for r in records) / n_so_far
+            bar.update(stats=f"agent={a} acc={acc:.3f} stale={stale:.3f}")
         s = summarize(records)
         per_agent.append({"agent": a, "sessions_observed": len(observed),
                           **s, "final_memory": graph.stats()})
         all_records.extend([{**r, "agent": a} for r in records])
+    bar.close()
 
     accs = [a["accuracy"] for a in per_agent]
     stales = [a["staleness_rate"] for a in per_agent]
@@ -235,6 +250,7 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         t_last = max(t_last, session["time"])
 
     records, routing = [], {w["id"]: 0 for w in workers}
+    bar = ProgressBar(len(questions), label="q")
     for q in questions:
         route = router.complete(
             ROUTER_PROMPT.format(workers=worker_desc, question=q["question"]),
@@ -244,6 +260,11 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         rec = _answer_and_judge(q, graph, policy, worker_providers[wid], judge,
                                 cfg.get("retrieval_k", 8), t_last)
         records.append({**rec, "worker": wid})
+        n_so_far = len(records)
+        acc = sum(r["correct"] for r in records) / n_so_far
+        stale = sum(r["stale"] for r in records) / n_so_far
+        bar.update(stats=f"acc={acc:.3f} stale={stale:.3f}")
+    bar.close()
 
     return {"summary": {**summarize(records), "routing": routing,
                         "final_memory": graph.stats()},
@@ -282,13 +303,18 @@ def main() -> None:
     results_dir = Path(cfg.get("results_dir", "results/swarm"))
     results_dir.mkdir(parents=True, exist_ok=True)
 
+    topologies = cfg.get("topologies", ["shared", "independent", "orchestrator"])
+    total_cells = len(topologies) * len(cfg["policies"])
+    tracker = CampaignTracker(total_cells)
+    print(f"Campaign: {total_cells} cells ({len(topologies)} topologies x {len(cfg['policies'])} policies)")
+
     summaries = []
-    for topology in cfg.get("topologies", ["shared", "independent", "orchestrator"]):
+    for topology in topologies:
         for policy_spec in cfg["policies"]:
             cell = f"{topology}__{policy_spec.split(':')[0]}"
             out_path = results_dir / f"{cell}.json"
             if out_path.exists() and not args.force:
-                print(f"[skip] {cell}")
+                print(f"[skip] {cell}  {tracker.cell_done()}")
                 summaries.append(json.loads(out_path.read_text())["summary"])
                 continue
             print(f"[run ] {cell}")
@@ -296,7 +322,7 @@ def main() -> None:
             try:
                 result = TOPOLOGIES[topology](policy_spec, dataset, cfg)
             except (RuntimeError, OSError) as e:
-                print(f"[fail] {cell}: {str(e)[:160]}  (rerun to resume)")
+                print(f"[fail] {cell}: {str(e)[:160]}  (rerun to resume)  {tracker.cell_done()}")
                 continue
             result["summary"].update({"topology": topology, "policy": policy_spec,
                                       "wall_seconds": round(time.time() - t0, 1)})
@@ -304,6 +330,7 @@ def main() -> None:
             s = result["summary"]
             print(f"       acc={s['accuracy']:.3f} stale={s['staleness_rate']:.3f} "
                   f"({s['wall_seconds']}s)")
+            print(f"       {tracker.cell_done()}")
             summaries.append(s)
 
     (results_dir / "summary_table.json").write_text(json.dumps(summaries, indent=1))
