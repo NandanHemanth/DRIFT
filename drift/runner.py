@@ -78,8 +78,14 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     judge_specs = judge_spec if isinstance(judge_spec, list) else [judge_spec]
     judge_providers = _build_providers(judge_specs, cache_dir)
 
+    # One bar spans BOTH phases (session ingestion/extraction, then Q&A) so
+    # it starts moving on the very first ingested session instead of sitting
+    # silent through the whole extraction pass -- that silence, for LoCoMo's
+    # 272 sessions, looked identical to a hung process.
+    total_sessions = sum(len(c["sessions"]) for c in dataset["conversations"])
     total_questions = sum(len(c["questions"]) for c in dataset["conversations"])
-    bar = ProgressBar(total_questions, label="q")
+    n_convos = len(dataset["conversations"])
+    bar = ProgressBar(total_sessions + total_questions, label="cell")
 
     records, memory_curves = [], []
     for convo_i, convo in enumerate(dataset["conversations"]):
@@ -92,6 +98,8 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
             ingest_session(session, graph, policy, extract_provider)
             t_last = max(t_last, session["time"])
             memory_curves.append({"conversation": convo["id"], "session": s_idx, **graph.stats()})
+            bar.update(stats=f"ingesting convo {convo_i + 1}/{n_convos}, "
+                             f"session {s_idx + 1}/{len(convo['sessions'])}")
 
         for q in convo["questions"]:
             result = answer_question(q["question"], graph, policy, answer_provider,

@@ -149,6 +149,9 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     policy = make_policy(policy_spec)
     graph = BitemporalGraph(embedder)
 
+    # One bar spans ingestion + Q&A so it moves from the first session
+    # onward instead of sitting silent through the whole extraction pass.
+    bar = ProgressBar(len(sessions) + len(questions), label="cell")
     memory_curve, t_last = [], 0.0
     for i, session in enumerate(sessions):
         agent_id = i % n_agents  # round-robin: agents take turns observing the world
@@ -157,9 +160,9 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         t_last = max(t_last, session["time"])
         memory_curve.append({"step": i, "agent": agent_id, "time": session["time"],
                              **graph.stats()})
+        bar.update(stats=f"ingesting session {i + 1}/{len(sessions)} (agent {agent_id})")
 
     records = []
-    bar = ProgressBar(len(questions), label="q")
     for q in questions:
         records.append(_answer_and_judge(q, graph, policy, answerer, judge,
                                          cfg.get("retrieval_k", 8), t_last))
@@ -188,17 +191,27 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
-    per_agent, all_records = [], []
-    bar = ProgressBar(n_agents * len(questions), label="q")
+    # Precompute each agent's observed subset up front (seeded, deterministic)
+    # so the bar's total -- and therefore its ETA -- is exact from the start,
+    # rather than only covering the Q&A phase once ingestion has already
+    # silently finished.
+    observed_per_agent = []
     for a in range(n_agents):
         rng = random.Random(cfg.get("seed", 42) + a)
-        observed = [s for s in sessions if rng.random() < coverage]
+        observed_per_agent.append([s for s in sessions if rng.random() < coverage])
+    total_ingest = sum(len(o) for o in observed_per_agent)
+    bar = ProgressBar(total_ingest + n_agents * len(questions), label="cell")
+
+    per_agent, all_records = [], []
+    for a in range(n_agents):
+        observed = observed_per_agent[a]
         policy = make_policy(policy_spec)
         graph = BitemporalGraph(embedder)
         t_last = 0.0
-        for session in observed:  # already time-ordered
+        for s_idx, session in enumerate(observed):  # already time-ordered
             ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor)
             t_last = max(t_last, session["time"])
+            bar.update(stats=f"ingesting agent {a}, session {s_idx + 1}/{len(observed)}")
         records = []
         for q in questions:
             records.append(_answer_and_judge(q, graph, policy, answerer, judge,
@@ -245,12 +258,15 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     policy = make_policy(policy_spec)
     graph = BitemporalGraph(embedder)
     t_last = 0.0
-    for session in sessions:
+    # One bar spans ingestion + Q&A so it moves from the first session
+    # onward instead of sitting silent through the whole extraction pass.
+    bar = ProgressBar(len(sessions) + len(questions), label="cell")
+    for s_idx, session in enumerate(sessions):
         ingest_session({**session, "provenance": "ingestor"}, graph, policy, extractor)
         t_last = max(t_last, session["time"])
+        bar.update(stats=f"ingesting session {s_idx + 1}/{len(sessions)}")
 
     records, routing = [], {w["id"]: 0 for w in workers}
-    bar = ProgressBar(len(questions), label="q")
     for q in questions:
         route = router.complete(
             ROUTER_PROMPT.format(workers=worker_desc, question=q["question"]),
