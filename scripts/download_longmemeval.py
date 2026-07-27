@@ -24,7 +24,7 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-HF_URL = "https://huggingface.co/datasets/xiaowu0162/longmemeval/resolve/main/longmemeval_{variant}.json"
+HF_URL = "https://huggingface.co/datasets/xiaowu0162/longmemeval/resolve/main/longmemeval_{variant}"
 
 # question_type -> DRIFT category. knowledge-update is the staleness-critical one.
 CATEGORY_MAP = {
