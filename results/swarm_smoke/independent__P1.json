@@ -72,12 +72,12 @@
    "question": "Which city does Alice live in?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "12456a6bae9a",
-    "1f735bd3d23f",
-    "59f0320982b0",
-    "a744245a604e",
-    "329bec05612a",
-    "ded5c1614b44"
+    "32be19ad0e45",
+    "49f0b5f57a46",
+    "af4b2b66e155",
+    "62383f2172b9",
+    "90091d6d183b",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -94,12 +94,12 @@
    "question": "Which company does Alice work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "59f0320982b0",
-    "12456a6bae9a",
-    "ded5c1614b44",
-    "a744245a604e",
-    "1f735bd3d23f",
-    "329bec05612a"
+    "af4b2b66e155",
+    "32be19ad0e45",
+    "d89df49cd203",
+    "62383f2172b9",
+    "49f0b5f57a46",
+    "90091d6d183b"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -116,12 +116,12 @@
    "question": "What pet did Bob adopt?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "a744245a604e",
-    "59f0320982b0",
-    "12456a6bae9a",
-    "329bec05612a",
-    "1f735bd3d23f",
-    "ded5c1614b44"
+    "62383f2172b9",
+    "af4b2b66e155",
+    "32be19ad0e45",
+    "90091d6d183b",
+    "49f0b5f57a46",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 148,
@@ -138,12 +138,12 @@
    "question": "What is Alice's favorite hobby?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "12456a6bae9a",
-    "59f0320982b0",
-    "1f735bd3d23f",
-    "a744245a604e",
-    "329bec05612a",
-    "ded5c1614b44"
+    "32be19ad0e45",
+    "af4b2b66e155",
+    "49f0b5f57a46",
+    "62383f2172b9",
+    "90091d6d183b",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -160,12 +160,12 @@
    "question": "What is Bob studying at Harvard?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "a744245a604e",
-    "59f0320982b0",
-    "12456a6bae9a",
-    "1f735bd3d23f",
-    "329bec05612a",
-    "ded5c1614b44"
+    "62383f2172b9",
+    "af4b2b66e155",
+    "32be19ad0e45",
+    "49f0b5f57a46",
+    "90091d6d183b",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 150,
@@ -182,12 +182,12 @@
    "question": "Which language did Alice start learning?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "12456a6bae9a",
-    "59f0320982b0",
-    "1f735bd3d23f",
-    "a744245a604e",
-    "329bec05612a",
-    "ded5c1614b44"
+    "32be19ad0e45",
+    "af4b2b66e155",
+    "49f0b5f57a46",
+    "62383f2172b9",
+    "90091d6d183b",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 155,
@@ -204,12 +204,12 @@
    "question": "Where did Bob visit his grandmother?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "12456a6bae9a",
-    "a744245a604e",
-    "1f735bd3d23f",
-    "59f0320982b0",
-    "329bec05612a",
-    "ded5c1614b44"
+    "32be19ad0e45",
+    "62383f2172b9",
+    "49f0b5f57a46",
+    "af4b2b66e155",
+    "90091d6d183b",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,
@@ -226,12 +226,12 @@
    "question": "What promotion did Alice get?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "12456a6bae9a",
-    "59f0320982b0",
-    "329bec05612a",
-    "1f735bd3d23f",
-    "a744245a604e",
-    "ded5c1614b44"
+    "32be19ad0e45",
+    "af4b2b66e155",
+    "90091d6d183b",
+    "49f0b5f57a46",
+    "62383f2172b9",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -248,12 +248,12 @@
    "question": "Which city does Dan live in?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "1f735bd3d23f",
-    "329bec05612a",
-    "59f0320982b0",
-    "12456a6bae9a",
-    "a744245a604e",
-    "ded5c1614b44"
+    "49f0b5f57a46",
+    "90091d6d183b",
+    "af4b2b66e155",
+    "32be19ad0e45",
+    "62383f2172b9",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -270,12 +270,12 @@
    "question": "Which company does Carol work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "59f0320982b0",
-    "ded5c1614b44",
-    "a744245a604e",
-    "12456a6bae9a",
-    "329bec05612a",
-    "1f735bd3d23f"
+    "af4b2b66e155",
+    "d89df49cd203",
+    "62383f2172b9",
+    "32be19ad0e45",
+    "90091d6d183b",
+    "49f0b5f57a46"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -292,12 +292,12 @@
    "question": "What instrument does Dan play?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "1f735bd3d23f",
-    "329bec05612a",
-    "12456a6bae9a",
-    "59f0320982b0",
-    "a744245a604e",
-    "ded5c1614b44"
+    "49f0b5f57a46",
+    "90091d6d183b",
+    "32be19ad0e45",
+    "af4b2b66e155",
+    "62383f2172b9",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -314,12 +314,12 @@
    "question": "What pet did Carol adopt?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "59f0320982b0",
-    "ded5c1614b44",
-    "1f735bd3d23f",
-    "12456a6bae9a",
-    "329bec05612a",
-    "a744245a604e"
+    "af4b2b66e155",
+    "d89df49cd203",
+    "49f0b5f57a46",
+    "32be19ad0e45",
+    "90091d6d183b",
+    "62383f2172b9"
    ],
    "retrieved_invalidated": 0,
    "tokens": 147,
@@ -336,12 +336,12 @@
    "question": "What is the name of Dan's band's first album?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "1f735bd3d23f",
-    "59f0320982b0",
-    "329bec05612a",
-    "12456a6bae9a",
-    "a744245a604e",
-    "ded5c1614b44"
+    "49f0b5f57a46",
+    "af4b2b66e155",
+    "90091d6d183b",
+    "32be19ad0e45",
+    "62383f2172b9",
+    "d89df49cd203"
    ],
    "retrieved_invalidated": 0,
    "tokens": 156,
@@ -358,12 +358,12 @@
    "question": "What does Carol love doing on weekends?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "59f0320982b0",
-    "1f735bd3d23f",
-    "a744245a604e",
-    "329bec05612a",
-    "ded5c1614b44",
-    "12456a6bae9a"
+    "af4b2b66e155",
+    "49f0b5f57a46",
+    "62383f2172b9",
+    "90091d6d183b",
+    "d89df49cd203",
+    "32be19ad0e45"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,
@@ -380,12 +380,12 @@
    "question": "Which city does Alice live in?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "1bfe504c7d4d",
-    "0623d91dd245",
-    "041daf61397a",
-    "469184880e87",
-    "2a2a6b8756ef",
-    "c78e39e8cc97"
+    "7261c0b959ce",
+    "fd5b24aae2d4",
+    "bc5d89007970",
+    "24de80773634",
+    "27d83e393eb8",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -402,12 +402,12 @@
    "question": "Which company does Alice work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "041daf61397a",
-    "1bfe504c7d4d",
-    "c78e39e8cc97",
-    "469184880e87",
-    "0623d91dd245",
-    "2a2a6b8756ef"
+    "bc5d89007970",
+    "7261c0b959ce",
+    "ab678ff7428f",
+    "24de80773634",
+    "fd5b24aae2d4",
+    "27d83e393eb8"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -424,12 +424,12 @@
    "question": "What pet did Bob adopt?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "469184880e87",
-    "041daf61397a",
-    "1bfe504c7d4d",
-    "2a2a6b8756ef",
-    "0623d91dd245",
-    "c78e39e8cc97"
+    "24de80773634",
+    "bc5d89007970",
+    "7261c0b959ce",
+    "27d83e393eb8",
+    "fd5b24aae2d4",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 148,
@@ -446,12 +446,12 @@
    "question": "What is Alice's favorite hobby?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "1bfe504c7d4d",
-    "041daf61397a",
-    "0623d91dd245",
-    "469184880e87",
-    "2a2a6b8756ef",
-    "c78e39e8cc97"
+    "7261c0b959ce",
+    "bc5d89007970",
+    "fd5b24aae2d4",
+    "24de80773634",
+    "27d83e393eb8",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -468,12 +468,12 @@
    "question": "What is Bob studying at Harvard?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "469184880e87",
-    "041daf61397a",
-    "1bfe504c7d4d",
-    "0623d91dd245",
-    "2a2a6b8756ef",
-    "c78e39e8cc97"
+    "24de80773634",
+    "bc5d89007970",
+    "7261c0b959ce",
+    "fd5b24aae2d4",
+    "27d83e393eb8",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 150,
@@ -490,12 +490,12 @@
    "question": "Which language did Alice start learning?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "1bfe504c7d4d",
-    "041daf61397a",
-    "0623d91dd245",
-    "469184880e87",
-    "2a2a6b8756ef",
-    "c78e39e8cc97"
+    "7261c0b959ce",
+    "bc5d89007970",
+    "fd5b24aae2d4",
+    "24de80773634",
+    "27d83e393eb8",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 155,
@@ -512,12 +512,12 @@
    "question": "Where did Bob visit his grandmother?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "1bfe504c7d4d",
-    "469184880e87",
-    "0623d91dd245",
-    "041daf61397a",
-    "2a2a6b8756ef",
-    "c78e39e8cc97"
+    "7261c0b959ce",
+    "24de80773634",
+    "fd5b24aae2d4",
+    "bc5d89007970",
+    "27d83e393eb8",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,
@@ -534,12 +534,12 @@
    "question": "What promotion did Alice get?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "1bfe504c7d4d",
-    "041daf61397a",
-    "2a2a6b8756ef",
-    "0623d91dd245",
-    "469184880e87",
-    "c78e39e8cc97"
+    "7261c0b959ce",
+    "bc5d89007970",
+    "27d83e393eb8",
+    "fd5b24aae2d4",
+    "24de80773634",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -556,12 +556,12 @@
    "question": "Which city does Dan live in?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0623d91dd245",
-    "2a2a6b8756ef",
-    "041daf61397a",
-    "1bfe504c7d4d",
-    "469184880e87",
-    "c78e39e8cc97"
+    "fd5b24aae2d4",
+    "27d83e393eb8",
+    "bc5d89007970",
+    "7261c0b959ce",
+    "24de80773634",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -578,12 +578,12 @@
    "question": "Which company does Carol work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "041daf61397a",
-    "c78e39e8cc97",
-    "469184880e87",
-    "1bfe504c7d4d",
-    "2a2a6b8756ef",
-    "0623d91dd245"
+    "bc5d89007970",
+    "ab678ff7428f",
+    "24de80773634",
+    "7261c0b959ce",
+    "27d83e393eb8",
+    "fd5b24aae2d4"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -600,12 +600,12 @@
    "question": "What instrument does Dan play?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0623d91dd245",
-    "2a2a6b8756ef",
-    "1bfe504c7d4d",
-    "041daf61397a",
-    "469184880e87",
-    "c78e39e8cc97"
+    "fd5b24aae2d4",
+    "27d83e393eb8",
+    "7261c0b959ce",
+    "bc5d89007970",
+    "24de80773634",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -622,12 +622,12 @@
    "question": "What pet did Carol adopt?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "041daf61397a",
-    "c78e39e8cc97",
-    "0623d91dd245",
-    "1bfe504c7d4d",
-    "2a2a6b8756ef",
-    "469184880e87"
+    "bc5d89007970",
+    "ab678ff7428f",
+    "fd5b24aae2d4",
+    "7261c0b959ce",
+    "27d83e393eb8",
+    "24de80773634"
    ],
    "retrieved_invalidated": 0,
    "tokens": 147,
@@ -644,12 +644,12 @@
    "question": "What is the name of Dan's band's first album?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0623d91dd245",
-    "041daf61397a",
-    "2a2a6b8756ef",
-    "1bfe504c7d4d",
-    "469184880e87",
-    "c78e39e8cc97"
+    "fd5b24aae2d4",
+    "bc5d89007970",
+    "27d83e393eb8",
+    "7261c0b959ce",
+    "24de80773634",
+    "ab678ff7428f"
    ],
    "retrieved_invalidated": 0,
    "tokens": 156,
@@ -666,12 +666,12 @@
    "question": "What does Carol love doing on weekends?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "041daf61397a",
-    "0623d91dd245",
-    "469184880e87",
-    "2a2a6b8756ef",
-    "c78e39e8cc97",
-    "1bfe504c7d4d"
+    "bc5d89007970",
+    "fd5b24aae2d4",
+    "24de80773634",
+    "27d83e393eb8",
+    "ab678ff7428f",
+    "7261c0b959ce"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,
@@ -688,12 +688,12 @@
    "question": "Which city does Alice live in?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "8e0e5576eca3",
-    "0fc892fc39db",
-    "cbf285307971",
-    "8b54950cbdf0",
-    "3d53b88b2e3f",
-    "91065352953b"
+    "f221005cae52",
+    "15621821f5bc",
+    "bccdfdbe5c41",
+    "e96cbf1617a9",
+    "a028006aebd7",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -710,12 +710,12 @@
    "question": "Which company does Alice work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "cbf285307971",
-    "8e0e5576eca3",
-    "91065352953b",
-    "8b54950cbdf0",
-    "0fc892fc39db",
-    "3d53b88b2e3f"
+    "bccdfdbe5c41",
+    "f221005cae52",
+    "389036ecd8d0",
+    "e96cbf1617a9",
+    "15621821f5bc",
+    "a028006aebd7"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -732,12 +732,12 @@
    "question": "What pet did Bob adopt?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "8b54950cbdf0",
-    "cbf285307971",
-    "8e0e5576eca3",
-    "3d53b88b2e3f",
-    "0fc892fc39db",
-    "91065352953b"
+    "e96cbf1617a9",
+    "bccdfdbe5c41",
+    "f221005cae52",
+    "a028006aebd7",
+    "15621821f5bc",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 148,
@@ -754,12 +754,12 @@
    "question": "What is Alice's favorite hobby?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "8e0e5576eca3",
-    "cbf285307971",
-    "0fc892fc39db",
-    "8b54950cbdf0",
-    "3d53b88b2e3f",
-    "91065352953b"
+    "f221005cae52",
+    "bccdfdbe5c41",
+    "15621821f5bc",
+    "e96cbf1617a9",
+    "a028006aebd7",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -776,12 +776,12 @@
    "question": "What is Bob studying at Harvard?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "8b54950cbdf0",
-    "cbf285307971",
-    "8e0e5576eca3",
-    "0fc892fc39db",
-    "3d53b88b2e3f",
-    "91065352953b"
+    "e96cbf1617a9",
+    "bccdfdbe5c41",
+    "f221005cae52",
+    "15621821f5bc",
+    "a028006aebd7",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 150,
@@ -798,12 +798,12 @@
    "question": "Which language did Alice start learning?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "8e0e5576eca3",
-    "cbf285307971",
-    "0fc892fc39db",
-    "8b54950cbdf0",
-    "3d53b88b2e3f",
-    "91065352953b"
+    "f221005cae52",
+    "bccdfdbe5c41",
+    "15621821f5bc",
+    "e96cbf1617a9",
+    "a028006aebd7",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 155,
@@ -820,12 +820,12 @@
    "question": "Where did Bob visit his grandmother?",
    "answer": "Bob: I am training Max for an agility competition.",
    "retrieved_ids": [
-    "8e0e5576eca3",
-    "8b54950cbdf0",
-    "0fc892fc39db",
-    "cbf285307971",
-    "3d53b88b2e3f",
-    "91065352953b"
+    "f221005cae52",
+    "e96cbf1617a9",
+    "15621821f5bc",
+    "bccdfdbe5c41",
+    "a028006aebd7",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,
@@ -842,12 +842,12 @@
    "question": "What promotion did Alice get?",
    "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "8e0e5576eca3",
-    "cbf285307971",
-    "3d53b88b2e3f",
-    "0fc892fc39db",
-    "8b54950cbdf0",
-    "91065352953b"
+    "f221005cae52",
+    "bccdfdbe5c41",
+    "a028006aebd7",
+    "15621821f5bc",
+    "e96cbf1617a9",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -864,12 +864,12 @@
    "question": "Which city does Dan live in?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0fc892fc39db",
-    "3d53b88b2e3f",
-    "cbf285307971",
-    "8e0e5576eca3",
-    "8b54950cbdf0",
-    "91065352953b"
+    "15621821f5bc",
+    "a028006aebd7",
+    "bccdfdbe5c41",
+    "f221005cae52",
+    "e96cbf1617a9",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 152,
@@ -886,12 +886,12 @@
    "question": "Which company does Carol work at?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "cbf285307971",
-    "91065352953b",
-    "8b54950cbdf0",
-    "8e0e5576eca3",
-    "3d53b88b2e3f",
-    "0fc892fc39db"
+    "bccdfdbe5c41",
+    "389036ecd8d0",
+    "e96cbf1617a9",
+    "f221005cae52",
+    "a028006aebd7",
+    "15621821f5bc"
    ],
    "retrieved_invalidated": 0,
    "tokens": 149,
@@ -908,12 +908,12 @@
    "question": "What instrument does Dan play?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0fc892fc39db",
-    "3d53b88b2e3f",
-    "8e0e5576eca3",
-    "cbf285307971",
-    "8b54950cbdf0",
-    "91065352953b"
+    "15621821f5bc",
+    "a028006aebd7",
+    "f221005cae52",
+    "bccdfdbe5c41",
+    "e96cbf1617a9",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 153,
@@ -930,12 +930,12 @@
    "question": "What pet did Carol adopt?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "cbf285307971",
-    "91065352953b",
-    "0fc892fc39db",
-    "8e0e5576eca3",
-    "3d53b88b2e3f",
-    "8b54950cbdf0"
+    "bccdfdbe5c41",
+    "389036ecd8d0",
+    "15621821f5bc",
+    "f221005cae52",
+    "a028006aebd7",
+    "e96cbf1617a9"
    ],
    "retrieved_invalidated": 0,
    "tokens": 147,
@@ -952,12 +952,12 @@
    "question": "What is the name of Dan's band's first album?",
    "answer": "Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "0fc892fc39db",
-    "cbf285307971",
-    "3d53b88b2e3f",
-    "8e0e5576eca3",
-    "8b54950cbdf0",
-    "91065352953b"
+    "15621821f5bc",
+    "bccdfdbe5c41",
+    "a028006aebd7",
+    "f221005cae52",
+    "e96cbf1617a9",
+    "389036ecd8d0"
    ],
    "retrieved_invalidated": 0,
    "tokens": 156,
@@ -974,12 +974,12 @@
    "question": "What does Carol love doing on weekends?",
    "answer": "Carol: My mentor at work is very supportive.",
    "retrieved_ids": [
-    "cbf285307971",
-    "0fc892fc39db",
-    "8b54950cbdf0",
-    "3d53b88b2e3f",
-    "91065352953b",
-    "8e0e5576eca3"
+    "bccdfdbe5c41",
+    "15621821f5bc",
+    "e96cbf1617a9",
+    "a028006aebd7",
+    "389036ecd8d0",
+    "f221005cae52"
    ],
    "retrieved_invalidated": 0,
    "tokens": 151,

@@ -1,5 +1,5 @@
 .PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean \
-        longmemeval-data longmemeval real-all
+        longmemeval-data longmemeval real-all record
 
 longmemeval-data:
 	python scripts/download_longmemeval.py --max-questions 150
@@ -19,6 +19,12 @@ real-all:
 	-python analysis/plots.py results/longmemeval
 	-python analysis/plots.py results/swarm_real --swarm
 	python analysis/dashboard.py results/* -o docs/dashboard.html
+	python analysis/record.py results/*
+
+# Evidence pack: tables (md+csv), radar, baseline-vs-DRIFT, memory/pruned-fact
+# views, per-cell graph views, architecture diagram -> results/*/report_pack/
+record:
+	python analysis/record.py results/*
 
 test:
 	python -m pytest tests/ -v

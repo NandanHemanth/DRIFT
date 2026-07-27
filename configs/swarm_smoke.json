@@ -6,10 +6,25 @@
   "n_agents": 3,
   "coverage": 0.8,
   "seed": 42,
-  "extract_models": ["mock"],
+  "extract_models": [
+    "mock"
+  ],
   "answer_model": "mock",
   "judge_model": "mock",
   "router_model": "mock",
-  "topologies": ["shared", "independent", "orchestrator"],
-  "policies": ["P0", "P1:ttl_days=14", "P2", "P3", "P4"]
+  "topologies": [
+    "shared",
+    "independent",
+    "orchestrator"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=14",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "save_graph": true
 }

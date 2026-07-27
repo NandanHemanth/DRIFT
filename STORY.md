@@ -203,6 +203,37 @@ context = "\n".join(f.text for f in facts)   # feed to your answer prompt
 
 **Choosing a policy in production:** default to P2 plus P3 composed (invalidation for staleness, novelty gate for bloat). Add P1 only for data that truly expires. Treat P4 as an explicitly gated batch job, never a per-interaction reflex. Extend the `FUNCTIONAL_PREDICATES` set in `graph.py` to your domain's mutable facts (prices, statuses, assignments); that one set is the contract that makes P2 work for you.
 
+## Recording everything: the evidence pack
+
+One command turns any results directory, offline or real, into a complete set of report and paper artifacts:
+
+```bash
+make record                                    # all results dirs at once
+python analysis/record.py results/locomo      # or one dataset at a time
+```
+
+Each `results/<dataset>/report_pack/` then contains:
+
+| Artifact | What it shows | Where it goes |
+|---|---|---|
+| `summary_table.md` / `.csv` | Every cell: policy, model, topology, accuracy, F1, staleness, tokens/q, active facts, pruned count, write rejections, cross-writer invalidations | Report tables; CSV for spreadsheets |
+| `per_category.md` / `.csv` | Accuracy per question category per policy (the table where staleness hides) | Report and paper |
+| `baseline_vs_drift.md` / `.png` | The headline benchmark: agent with no memory (NOMEM) vs agent with memory but no policy (P0) vs DRIFT agent (P2), with the delta stated | Paper figure; the one-glance argument |
+| `radar_policies.png` | Five axes per policy: accuracy, freshness, F1, memory efficiency, token efficiency | Paper or slides |
+| `figures/` | Accuracy/staleness bars, trade-off scatter, memory growth curves, token cost, model comparison (agent-to-agent), swarm topology and variance charts | Paper figures |
+| `memory_view.md` | Per cell: total vs active vs pruned facts, the actual **pruned fact text** (struck through, with writer), the **superseded facts** with invalidation times | The "what did the policy actually do" evidence |
+| `graphs/*.graph.html` / `.json` | Interactive view of the final memory graph per cell: entities sized by degree, colored by community, superseded facts as dashed red edges | Open in browser; screenshot for report |
+| `architecture.png` | The pipeline diagram with the three policy hooks marked | Paper and report |
+
+Fact-level views (pruned text, graph views) need `"save_graph": true` in the config; it is already on in every shipped config. After the real campaign, the full sequence for fresh real-data evidence is:
+
+```bash
+make real-all      # runs everything, resumable, then builds figures + dashboard + packs
+make record        # rebuild packs alone after any partial progress
+```
+
+The dashboard (`docs/dashboard.html`) stays the interactive exploration surface; the report pack is the citable, saveable record.
+
 ## Results so far, honestly labeled
 
 Controlled validation (deterministic provider, synthetic data): P2 at 0.929 accuracy / 0.000 staleness against P0's 0.714 / 0.286; P1 at 0.500; P5 at 0.500 with the corroboration pathology; ranking invariant across shared, independent, and orchestrator topologies; 5/5 cross-writer invalidations handled without loss. Real-model matrices on LoCoMo and LongMemEval: running via `make real-all`; the thesis's generality claim rests on them and the report marks them pending until they land.
@@ -218,6 +249,60 @@ Learned forgetting as a bandit over the three hooks with staleness as reward sig
 ## References
 
 Rasmussen et al., *Zep: A Temporal Knowledge Graph Architecture for Agent Memory*, arXiv:2501.13956. Packer et al., *MemGPT: Towards LLMs as Operating Systems*, arXiv:2310.08560. Chhikara et al., *Mem0*, arXiv:2504.19413. Xu et al., *A-MEM*, arXiv:2502.12110. Du, *Memory for Autonomous LLM Agents: Mechanisms, Evaluation, and Emerging Frontiers*, arXiv:2603.07670. Wang, Brahma, Henao, *SAGE: A Novelty Gate for Efficient Memory Evolution in Agentic LLMs*, arXiv:2605.30711. Zhang et al., *Useful Memories Become Faulty When Continuously Updated by LLMs*, arXiv:2605.12978. Chao et al., *STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?*, arXiv:2605.06527. Patel, *Supersede: Diagnosing and Training the Memory-Update Gap in LLM Agents*, arXiv:2606.27472. Ren et al., *GateMem: Benchmarking Memory Governance in Multi-Principal Shared-Memory Agents*, arXiv:2606.18829. Maharana et al., *Evaluating Very Long-Term Conversational Memory of LLM Agents* (LoCoMo), ACL 2024. Wu et al., *LongMemEval*, ICLR 2025. Additional context: TOKI arXiv:2606.06240, Engram arXiv:2606.09900, deterministic freshness arXiv:2606.01435, governed shared memory arXiv:2606.24535 (author lists unverified; cited in the report, omitted from the paper). Graphify (graphify.net) inspired P5 and the graph export.
+
+## FAQ
+
+### 1. What is staleness, how do we measure it, and how is it different from accuracy?
+
+Staleness is answering with a fact that was true once and has been superseded: saying Boston after Alice moved to Seattle. Accuracy asks "did the agent give the gold answer?"; staleness asks "did the agent give the *previous* answer?" These are different failures. An agent can be inaccurate by saying "I don't know" (harmless) or by confidently repeating an outdated fact (harmful, because it looks informed). Accuracy alone cannot tell these apart, and on mostly-static benchmarks an agent can score high accuracy while failing every question whose answer changed.
+
+We measure it directly: every state-change question in our data carries a `stale_answer` annotation (the superseded value), and an answer counts as stale if it contains that string. Staleness rate = stale answers / all answers. On LongMemEval the knowledge-update category serves the same role. This is the thesis's measurement contribution: making the specific failure that forgetting is supposed to fix visible as its own number.
+
+### 2. What is a controlled run, what are the six policies, and how do they contribute to the novelty?
+
+A controlled run holds every component fixed except one. In DRIFT the substrate, extraction, retrieval weights, answer prompts, and judge are identical across runs; only the forgetting policy changes. Differences in output are therefore *caused* by the policy. The strictest form uses the deterministic offline provider, where even model randomness is removed, so the same command reproduces the same numbers bit for bit.
+
+The policies, each an answer to "what should we forget":
+
+- **NOMEM** answers "everything" (retrieval disabled). It is the floor showing what the model knows without memory; every policy must beat it to justify having memory at all.
+- **P0** answers "nothing". Perfect recall of old facts, systematic staleness. This is the agent most deployments ship.
+- **P1 (TTL)** answers "whatever is old". Cheap, kills staleness, and destroys old-but-true facts; collapses on long horizons.
+- **P2 (contradiction invalidation)** answers "whatever the graph proves superseded". Reads the closed validity windows, hides those facts at retrieval, prunes after a grace period. No model calls, no learning.
+- **P3 (novelty gate)** answers "duplicates, at write time". Controls growth; cannot touch staleness because duplicates are not contradictions.
+- **P4 (LLM consolidation)** answers "whatever an LLM decides". The literature's warning made testable: costs tokens and risks dropping needed facts.
+- **P5 (topology, ablation)** answers "whatever graph structure says is redundant, ignoring time". Exists to prove the win comes from *temporal* structure specifically.
+
+The novelty contribution: these six span the design space (do nothing, time-based, structure-based, write-time, LLM-based, structure-without-time), and because they differ *only* at three hooks, comparing them is a real experiment rather than a product bake-off. No prior work runs this comparison on a fixed substrate.
+
+### 3. "The ranking is invariant across topologies, every shared-memory invalidation crossed writer boundaries without loss, and P5 lands below the no-forgetting baseline." What does this mean?
+
+Three findings in one sentence. First, whether one agent uses the memory, or three agents share it, or an orchestrator routes questions to workers, the ordering of policies by accuracy never changes (P2 first, P1 last). Policy choice matters more than system topology. Second, in the shared topology the fact that contradicts an old fact usually arrives through a *different* agent than the one that wrote the original; every single invalidation in our runs was such a cross-writer case, and P2 lost no accuracy. This is because contradiction detection happens inside the graph when a fact is written, not inside any agent, so no coordination between agents is needed. Third, P5 uses graph structure but ignores time, and it scores *below even the agent that never forgets*. The mechanism: stale facts have been in memory longer, so more neighboring facts corroborate them, and structural support therefore votes to keep exactly the facts that should die. Together: the value lives in the temporal fields, and it survives multi-agent reality.
+
+### 4. Why does P2 have the best accuracy, staleness, and cost trade-off, and how do the others rank?
+
+P2 wins because it forgets exactly the right facts and nothing else. Staleness comes from superseded facts; the bitemporal graph already recorded which facts are superseded at the moment the contradiction arrived; P2 simply reads that record and hides those facts. So it removes all staleness (0.000) without touching any old-but-true fact, which keeps recall perfect and pushes accuracy to the top (0.929 in validation). Its cost is zero: no LLM calls, no training, a filter at retrieval plus a cheap prune.
+
+The ranking in validation, with the reason attached: **P2** (0.929, forgets precisely) > **P0 = P3 = P4** (0.714, all three keep stale facts retrievable; P3 blocks only duplicates, P4's LLM review did not remove the superseded facts either) > **P1 = P5** (0.500, both destroy true facts: P1 by age, P5 by structural guessing) > **NOMEM** (0.000 with the deterministic answerer, the floor). On staleness: P2 at zero, P1 and P5 low but at the price of recall, P0/P3/P4 at 0.286. On cost: P4 is the only policy that spends tokens to run, and it bought nothing.
+
+### 5. Explain the novelty paragraph in detail: steps, impact, limitations, and effectiveness over cost, time, and space.
+
+The claim has four parts. *"Identical substrate"*: prior comparisons pit Zep against Mem0 against MemGPT, where storage, retrieval, and forgetting all differ at once; if Zep wins you cannot say why. DRIFT keeps one substrate and swaps only the policy, so results have a causal reading. *"Factorial over datasets, model families, topologies"*: the same comparison is run on synthetic + LoCoMo + LongMemEval, across five answer-model families, under three usage patterns; a finding that holds across all cells of that cube is a property of the policy, not of one dataset or one model. *"Staleness as first-class metric"*: without it, the very failure forgetting targets is invisible (see FAQ 1). *"Methodological rather than mechanical"*: the contribution is the experiment design, not a new algorithm; P2 is deliberately almost trivial. Mechanical novelty gets outdated when the next system ships; a clean experimental result about *why* a class of mechanisms works does not.
+
+Impact: system builders get a concrete, evidenced default (record validity windows, filter at retrieval, skip LLM consolidation), and the 2026 benchmark papers reporting staleness failures get an explanation of which design choices produce them.
+
+Effectiveness over cost, time, and space: P2 costs no tokens (against P4, which spends tokens every cycle), adds one timestamp comparison per retrieved fact in time, and in space actually *shrinks* memory (25% fewer active facts than P0 in validation) while non-lossy history is retained until the grace period expires. The framework itself is cheap by design: stdlib-only core, cached calls so every experiment is pay-once, and free-tier providers suffice for the whole campaign.
+
+Limitations of the claim: the controlled numbers come from a small synthetic benchmark and prove mechanism, not generality (the real-data matrix is the generality test); P2's precision is bounded by extraction identifying functional predicates; entity matching is string-based; and the staleness metric needs annotated superseded answers, which most benchmarks lack.
+
+### 6. Explain the architecture, each term, and how hybrid retrieval works. What does "three hooks" mean exactly?
+
+Follow one fact through the picture (`report_pack/architecture.png`). **Sessions** are chunks of conversation with timestamps. **Extraction** turns each session into triples: subject, predicate, object, plus the original sentence; an LLM proposes triples and a deterministic regex pass normalizes predicates like `lives_in` so contradiction detection does not depend on LLM luck. **Write gate (hook 1)**: before a fact is stored, the policy may reject it; P3 rejects near-duplicates here. **Bitemporal graph**: the store; each fact carries valid time (when true in the world), ingestion time (when learned), and provenance (which agent wrote it); if an arriving fact contradicts an existing one on a functional predicate, the old fact's validity window is closed, not deleted. **Maintenance (hook 2)**: after each session the policy may prune (P1 by age, P2 superseded-after-grace, P4 by LLM review, P5 by structure). **Retrieval**: candidate facts are scored by a fixed mixture, 0.6 times embedding cosine similarity (semantic closeness of the fact text to the question), plus 0.3 times lexical overlap (shared meaningful words), plus 0.1 times recency (newer valid-time scores slightly higher), and the top 8 survive. The mixture is hybrid because embeddings catch paraphrases while lexical overlap catches exact names and numbers that embeddings blur. **Retrieval filter (hook 3)**: the policy sees the retrieved list last; P2 removes superseded facts here, NOMEM removes everything. **Answer and judge**: the answer model sees only the surviving facts; a judge model from a different vendor grades the answer, and token-F1 provides a judge-free check.
+
+"Three hooks" means every policy is nothing but a choice of behavior at the write gate, the maintenance step, and the retrieval filter. Nothing else in the system varies. That is the entire experimental control: policies cannot differ anywhere except the places we are comparing.
+
+### 7. How do I record tables, charts, memory views, and benchmarks for my report and paper?
+
+See "Recording everything: the evidence pack" above. Short version: `make record` after any run; everything lands in `results/<dataset>/report_pack/` as markdown, CSV, PNG, and interactive HTML, including the normal-agent-vs-DRIFT-agent benchmark, pruned fact text, and per-cell memory graph views. `make real-all` produces the packs for the real campaign automatically.
 
 ## Epilogue
 

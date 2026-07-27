@@ -5,6 +5,17 @@
   "retrieval_k": 8,
   "extract_model": "mock",
   "judge_model": "mock",
-  "models": ["mock"],
-  "policies": ["P0", "P1:ttl_days=35", "P2", "P3", "P4"]
+  "models": [
+    "mock"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=35",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "save_graph": true
 }

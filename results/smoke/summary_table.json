@@ -1,5 +1,24 @@
 [
  {
+  "policy": "NOMEM",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 65.14285714285714,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 12,
+   "invalidated_active": 3,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785110974.4585104
+ },
+ {
   "policy": "P0",
   "model": "mock",
   "n_questions": 14,
@@ -16,7 +35,7 @@
    "pruned": 0,
    "write_rejections": 0
   },
-  "timestamp": 1783822696.1048615
+  "timestamp": 1785110974.471393
  },
  {
   "policy": "P1:ttl_days=35",
@@ -35,7 +54,7 @@
    "pruned": 6,
    "write_rejections": 0
   },
-  "timestamp": 1783822696.1113641
+  "timestamp": 1785110974.4815001
  },
  {
   "policy": "P2",
@@ -54,7 +73,7 @@
    "pruned": 3,
    "write_rejections": 0
   },
-  "timestamp": 1783822696.1197422
+  "timestamp": 1785110974.4931993
  },
  {
   "policy": "P3",
@@ -73,7 +92,7 @@
    "pruned": 0,
    "write_rejections": 1
   },
-  "timestamp": 1783822696.1330335
+  "timestamp": 1785110974.5096166
  },
  {
   "policy": "P4",
@@ -92,6 +111,25 @@
    "pruned": 1,
    "write_rejections": 0
   },
-  "timestamp": 1783822696.143771
+  "timestamp": 1785110974.5235975
+ },
+ {
+  "policy": "P5",
+  "model": "mock",
+  "n_questions": 14,
+  "accuracy": 0.5,
+  "mean_f1": 0.18644252572824005,
+  "staleness_rate": 0.21428571428571427,
+  "mean_tokens_per_q": 141.0,
+  "final_memory": {
+   "conversation": "convo_carol_dan",
+   "session": 4,
+   "total_facts": 12,
+   "active_facts": 5,
+   "invalidated_active": 1,
+   "pruned": 7,
+   "write_rejections": 0
+  },
+  "timestamp": 1785110974.53301
  }
 ]

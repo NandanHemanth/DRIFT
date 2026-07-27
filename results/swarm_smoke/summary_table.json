@@ -1,6 +1,26 @@
 [
  {
   "n_questions": 14,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 65.14285714285714,
+  "n_agents": 3,
+  "invalidations": 5,
+  "cross_writer_invalidations": 5,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 28,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "NOMEM",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
   "accuracy": 0.7142857142857143,
   "mean_f1": 0.2433106575963719,
   "staleness_rate": 0.2857142857142857,
@@ -100,6 +120,42 @@
   "wall_seconds": 0.0
  },
  {
+  "n_questions": 14,
+  "accuracy": 0.6428571428571429,
+  "mean_f1": 0.22917756846328277,
+  "staleness_rate": 0.07142857142857142,
+  "mean_tokens_per_q": 172.21428571428572,
+  "n_agents": 3,
+  "invalidations": 4,
+  "cross_writer_invalidations": 4,
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 11,
+   "invalidated_active": 1,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P5",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 65.14285714285714,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.0,
+  "accuracy_std": 0.0,
+  "staleness_mean": 0.0,
+  "staleness_std": 0.0,
+  "topology": "independent",
+  "policy": "NOMEM",
+  "wall_seconds": 0.0
+ },
+ {
   "n_questions": 42,
   "accuracy": 0.6666666666666666,
   "mean_f1": 0.23259637188208618,
@@ -178,6 +234,44 @@
   "topology": "independent",
   "policy": "P4",
   "wall_seconds": 0.1
+ },
+ {
+  "n_questions": 42,
+  "accuracy": 0.5,
+  "mean_f1": 0.17021219521219524,
+  "staleness_rate": 0.14285714285714285,
+  "mean_tokens_per_q": 172.16666666666666,
+  "n_agents": 3,
+  "coverage": 0.8,
+  "accuracy_mean": 0.5,
+  "accuracy_std": 0.2142857142857143,
+  "staleness_mean": 0.14285714285714285,
+  "staleness_std": 0.12371791482634838,
+  "topology": "independent",
+  "policy": "P5",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 65.14285714285714,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 28,
+   "invalidated_active": 5,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "NOMEM",
+  "wall_seconds": 0.0
  },
  {
   "n_questions": 14,
@@ -287,6 +381,28 @@
   },
   "topology": "orchestrator",
   "policy": "P4",
+  "wall_seconds": 0.0
+ },
+ {
+  "n_questions": 14,
+  "accuracy": 0.6428571428571429,
+  "mean_f1": 0.2212410605267748,
+  "staleness_rate": 0.07142857142857142,
+  "mean_tokens_per_q": 174.57142857142858,
+  "routing": {
+   "w0": 14,
+   "w1": 0,
+   "w2": 0
+  },
+  "final_memory": {
+   "total_facts": 28,
+   "active_facts": 11,
+   "invalidated_active": 1,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "topology": "orchestrator",
+  "policy": "P5",
   "wall_seconds": 0.0
  }
 ]
