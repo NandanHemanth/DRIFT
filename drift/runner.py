@@ -90,7 +90,7 @@ def main() -> None:
     results_dir = Path(cfg.get("results_dir", "results"))
     results_dir.mkdir(parents=True, exist_ok=True)
 
-    summaries = []
+    summaries, failures = [], []
     for policy_spec in cfg["policies"]:
         for model_spec in cfg["models"]:
             cell = f"{policy_spec.split(':')[0]}__{model_spec.replace(':', '_').replace('/', '_')}"
@@ -100,7 +100,14 @@ def main() -> None:
                 summaries.append(json.loads(out_path.read_text())["summary"])
                 continue
             print(f"[run ] {cell}")
-            summary = run_cell(policy_spec, model_spec, dataset, cfg, out_path)
+            try:
+                summary = run_cell(policy_spec, model_spec, dataset, cfg, out_path)
+            except (RuntimeError, OSError) as e:
+                # One dead provider must not kill the campaign: log, move on,
+                # rerun later (completed work is cached, the cell will resume).
+                print(f"[fail] {cell}: {str(e)[:160]}")
+                failures.append(cell)
+                continue
             print(f"       acc={summary['accuracy']:.3f} f1={summary['mean_f1']:.3f} "
                   f"stale={summary['staleness_rate']:.3f} tok/q={summary['mean_tokens_per_q']:.0f}")
             summaries.append(summary)
@@ -108,6 +115,8 @@ def main() -> None:
     table_path = results_dir / "summary_table.json"
     table_path.write_text(json.dumps(summaries, indent=1))
     print(f"\nWrote {table_path}")
+    if failures:
+        print(f"{len(failures)} cell(s) failed and will resume on rerun: {', '.join(failures)}")
 
 
 if __name__ == "__main__":

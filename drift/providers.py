@@ -159,12 +159,22 @@ class OpenAICompatProvider(BaseProvider):
             req = urllib.request.Request(
                 f"{self.base_url}/chat/completions",
                 data=body,
-                headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
+                headers={
+                    "Authorization": f"Bearer {self.api_key}",
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    # Cloudflare-fronted APIs (Cerebras, Groq) may 403 the
+                    # default Python-urllib user agent as a bot.
+                    "User-Agent": "drift-memory/0.1 (research; +https://github.com/NandanHemanth/DRIFT)",
+                },
             )
             try:
                 with urllib.request.urlopen(req, timeout=120) as resp:
                     data = json.loads(resp.read())
-                text = data["choices"][0]["message"]["content"]
+                msg = data["choices"][0]["message"]
+                # Reasoning models (gpt-oss, GLM, MiniMax) may return empty
+                # content when the token budget is consumed by reasoning.
+                text = msg.get("content") or msg.get("reasoning_content") or msg.get("reasoning") or ""
                 usage = data.get("usage", {})
                 pt = usage.get("prompt_tokens", estimate_tokens(system + prompt))
                 ct = usage.get("completion_tokens", estimate_tokens(text))

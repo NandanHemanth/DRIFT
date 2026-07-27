@@ -274,7 +274,11 @@ def main() -> None:
                 continue
             print(f"[run ] {cell}")
             t0 = time.time()
-            result = TOPOLOGIES[topology](policy_spec, dataset, cfg)
+            try:
+                result = TOPOLOGIES[topology](policy_spec, dataset, cfg)
+            except (RuntimeError, OSError) as e:
+                print(f"[fail] {cell}: {str(e)[:160]}  (rerun to resume)")
+                continue
             result["summary"].update({"topology": topology, "policy": policy_spec,
                                       "wall_seconds": round(time.time() - t0, 1)})
             out_path.write_text(json.dumps(result, indent=1))
