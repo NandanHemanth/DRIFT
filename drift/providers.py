@@ -60,7 +60,14 @@ PROVIDER_PRESETS = {
     # note). Free-model slugs on OpenRouter rotate — check openrouter.ai/models
     # if one 404s and swap the model name in your config.
     "mistral": {"base_url": "https://api.mistral.ai/v1", "key_env": "MISTRAL_API_KEY", "rpm": 4},
-    "hf": {"base_url": "https://router.huggingface.co/v1", "key_env": "HF_API_KEY", "rpm": 8},
+    "hf": {"base_url": "https://router.huggingface.co/v1", "key_env": "HUGGINGFACE_API_KEY", "rpm": 8},
+    # Second headroom batch added after the first real-all run exhausted
+    # Gemini's daily judge quota (see FallbackProvider in this module).
+    # Verified working July 2026 with a trial key. (Kimi/Moonshot and the
+    # aimlapi.com aggregator were also tried but both trial keys came back
+    # "insufficient balance/funds" -- those are metered, not free, so they
+    # were dropped rather than added as dead weight.)
+    "cohere": {"base_url": "https://api.cohere.com/compatibility/v1", "key_env": "COHERE_API_KEY", "rpm": 15},
 }
 
 
