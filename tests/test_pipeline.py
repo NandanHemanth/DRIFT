@@ -31,6 +31,21 @@ class AlwaysFailsProvider(BaseProvider):
         raise RuntimeError("simulated quota exhaustion")
 
 
+class CountingFailProvider(BaseProvider):
+    """Fails every call and counts how many times it was actually invoked --
+    used to prove the cooldown circuit breaker stops re-trying a provider
+    that just failed, instead of paying its retry cost on every call."""
+
+    name = "counting_fail"
+
+    def __init__(self):
+        self.calls = 0
+
+    def complete(self, prompt, system="", temperature=0.0, max_tokens=1024):
+        self.calls += 1
+        raise RuntimeError("simulated quota exhaustion")
+
+
 def test_extraction_produces_functional_predicates():
     facts = extract_facts(MockProvider(), ["Alice: I live in Boston, the city is great."])
     predicates = {f["predicate"] for f in facts}
@@ -123,6 +138,30 @@ def test_fallback_provider_raises_only_if_all_providers_fail():
         assert False, "expected RuntimeError"
     except RuntimeError as e:
         assert "simulated quota exhaustion" in str(e)
+
+
+def test_fallback_provider_cooldown_skips_a_recently_failed_provider():
+    """Regression test for the ~45s-per-call retry tax: once a provider has
+    failed once, a *new* FallbackProvider instance built with the same
+    provider name must skip it on subsequent calls (within the cooldown
+    window) rather than invoking it again and re-paying its retry cost."""
+    FallbackProvider._cooldown_until.clear()  # isolate from other tests
+    dead = CountingFailProvider()
+    dead.name = "test_dead_provider_unique_name"
+    good = MockProvider()
+
+    first = FallbackProvider([dead, good], cooldown_seconds=60)
+    result = first.complete("TASK:JUDGE\nQUESTION:\nq\nGOLD:\nSeattle\nANSWER:\nSeattle")
+    assert result.text == "CORRECT"
+    assert dead.calls == 1  # tried once, failed, fell through to the mock
+
+    # A brand-new FallbackProvider wrapping the *same* dead provider object
+    # should see it's on cooldown (class-level state) and skip straight to
+    # the working one without calling it again.
+    second = FallbackProvider([dead, good], cooldown_seconds=60)
+    second.complete("TASK:JUDGE\nQUESTION:\nq\nGOLD:\nSeattle\nANSWER:\nSeattle")
+    assert dead.calls == 1  # still 1 -- skipped this time, not retried
+    FallbackProvider._cooldown_until.clear()
 
 
 def test_locomo_stratified_sample_keeps_full_sessions_caps_questions():

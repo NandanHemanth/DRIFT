@@ -209,21 +209,42 @@ class FallbackProvider(BaseProvider):
     provider in the list is still the "preferred" one (so load-spreading
     behaviour from round-robin ordering is preserved), it just isn't a
     single point of failure anymore.
+
+    Circuit breaker: a provider that just failed is put on a cooldown
+    (default 5 minutes, shared across every FallbackProvider instance in the
+    process via a class-level dict keyed by provider name) so subsequent
+    calls skip straight past it instead of re-paying its full retry/backoff
+    cost -- observed in practice as a ~45s tax per call (rate-limiter waits
+    plus exponential backoff across OpenAICompatProvider's own retries) on
+    every single question, thousands of times over a campaign, when one
+    provider's daily quota is already exhausted for the day. If *every*
+    provider in the list is on cooldown, they're all tried anyway (paying
+    the tax once more is better than hard-failing the call).
     """
 
-    def __init__(self, providers: list[BaseProvider]):
+    _cooldown_until: dict[str, float] = {}
+    COOLDOWN_SECONDS = 300.0
+
+    def __init__(self, providers: list[BaseProvider], cooldown_seconds: float | None = None):
         if not providers:
             raise ValueError("FallbackProvider needs at least one provider")
         self.providers = providers
         self.name = "+".join(p.name for p in providers)
+        self.cooldown_seconds = self.COOLDOWN_SECONDS if cooldown_seconds is None else cooldown_seconds
 
     def complete(self, prompt: str, system: str = "", temperature: float = 0.0, max_tokens: int = 1024) -> Completion:
+        now = time.monotonic()
+        candidates = [p for p in self.providers if FallbackProvider._cooldown_until.get(p.name, 0.0) <= now]
+        if not candidates:
+            candidates = self.providers  # everyone's on cooldown -- try anyway rather than give up
+
         last_err: Exception | None = None
-        for p in self.providers:
+        for p in candidates:
             try:
                 return p.complete(prompt, system=system, temperature=temperature, max_tokens=max_tokens)
             except Exception as e:  # noqa: BLE001 - fall through to the next provider
                 last_err = e
+                FallbackProvider._cooldown_until[p.name] = time.monotonic() + self.cooldown_seconds
                 continue
         raise RuntimeError(f"All providers failed: {last_err}")
 
@@ -297,9 +318,18 @@ class MockProvider(BaseProvider):
         return best
 
 
-def make_provider(spec: str, cache_dir: str = ".drift_cache") -> BaseProvider:
-    """spec format: 'mock' or '<preset>:<model>' e.g. 'groq:llama-3.3-70b-versatile'."""
+def make_provider(spec: str, cache_dir: str = ".drift_cache", max_retries: int = 4) -> BaseProvider:
+    """spec format: 'mock' or '<preset>:<model>' e.g. 'groq:llama-3.3-70b-versatile'.
+
+    max_retries defaults to 4 (each attempt = one rate-limiter wait + one
+    request + exponential backoff sleep). Callers building a FallbackProvider
+    chain should pass a smaller value (e.g. 1-2): the chain itself is what
+    provides resilience across providers, so each individual provider doesn't
+    also need to burn a full retry-and-backoff cycle against a provider
+    that's already confirmed dead for the day -- that's what turns a single
+    exhausted free-tier quota into a ~45-second tax on every question.
+    """
     if spec == "mock":
         return MockProvider()
     preset, model = spec.split(":", 1)
-    return OpenAICompatProvider(preset, model, cache=DiskCache(cache_dir))
+    return OpenAICompatProvider(preset, model, cache=DiskCache(cache_dir), max_retries=max_retries)

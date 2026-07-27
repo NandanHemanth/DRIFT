@@ -57,7 +57,12 @@ def _make_judge(cfg: dict, cache: str):
     """
     spec = cfg.get("judge_model", "mock")
     specs = spec if isinstance(spec, list) else [spec]
-    providers = [make_provider(s, cache) for s in specs]
+    # max_retries=2 (instead of the default 4) when there's more than one
+    # judge: the fallback chain itself provides resilience, so one provider
+    # shouldn't also burn a full retry-and-backoff cycle against a provider
+    # that's already confirmed dead for the day.
+    retries = 2 if len(specs) > 1 else 4
+    providers = [make_provider(s, cache, max_retries=retries) for s in specs]
     return providers[0] if len(providers) == 1 else FallbackProvider(providers)
 
 

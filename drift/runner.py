@@ -20,6 +20,16 @@ from drift.policies import make_policy
 from drift.providers import BaseProvider, FallbackProvider, make_provider
 
 
+def _build_providers(specs: list[str], cache_dir: str) -> list[BaseProvider]:
+    """Build a role's provider list. When there's more than one provider, each
+    is built with max_retries=2 instead of the default 4: the list itself
+    (via _rotated_fallback below) is what provides resilience, so a single
+    provider doesn't also need to burn its own full retry-and-backoff cycle
+    against a provider that's already confirmed dead for the day."""
+    retries = 2 if len(specs) > 1 else 4
+    return [make_provider(s, cache_dir, max_retries=retries) for s in specs]
+
+
 def _rotated_fallback(providers: list[BaseProvider], i: int) -> BaseProvider:
     """Prefer providers[i % n] (preserves round-robin load spreading across
     conversations) but fall back through the rest of the list on failure, so
@@ -58,14 +68,14 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     # tiers instead of hammering one rate limit.
     extract_spec = cfg.get("extract_model", model_spec)
     extract_specs = extract_spec if isinstance(extract_spec, list) else [extract_spec]
-    extract_providers = [make_provider(s, cache_dir) for s in extract_specs]
+    extract_providers = _build_providers(extract_specs, cache_dir)
     # judge_model may also be a list, round-robined per conversation, exactly
     # like extract_model. This splits judge-call volume (the single largest
     # quota cost, since every question needs one) across multiple providers'
     # independent free-tier ceilings instead of one.
     judge_spec = cfg.get("judge_model", "mock")
     judge_specs = judge_spec if isinstance(judge_spec, list) else [judge_spec]
-    judge_providers = [make_provider(s, cache_dir) for s in judge_specs]
+    judge_providers = _build_providers(judge_specs, cache_dir)
 
     records, memory_curves = [], []
     for convo_i, convo in enumerate(dataset["conversations"]):
