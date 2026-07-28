@@ -8,26 +8,26 @@
   "seed": 42,
   "save_graph": true,
   "extract_models": [
-    "groq:llama-3.3-70b-versatile",
-    "cerebras:gpt-oss-120b",
-    "gemini:gemini-2.5-flash",
-    "nvidia:z-ai/glm-5.2",
-    "nvidia:minimaxai/minimax-m3"
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3",
+    "openrouter:google/gemini-3.1-flash-lite",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b",
+    "openrouter:tencent/hy3"
   ],
-  "answer_model": "groq:llama-3.3-70b-versatile",
+  "answer_model": "openrouter:z-ai/glm-5.2",
   "judge_model": ["ollama:gpt-oss:20b", "openrouter:openai/gpt-oss-20b:free", "cohere:command-r7b-12-2024"],
-  "router_model": "nvidia:z-ai/glm-5.2",
+  "router_model": "openrouter:z-ai/glm-5.2",
   "workers": [
     {"id": "w0", "specialty": "current state of people (where they live/work now)",
-     "model": "groq:llama-3.3-70b-versatile"},
+     "model": "openrouter:z-ai/glm-5.2"},
     {"id": "w1", "specialty": "old memories and long-ago events",
-     "model": "nvidia:z-ai/glm-5.2"},
+     "model": "openrouter:minimax/minimax-m3"},
     {"id": "w2", "specialty": "recent events and updates",
-     "model": "nvidia:minimaxai/minimax-m3"},
+     "model": "openrouter:google/gemini-3.1-flash-lite"},
     {"id": "w3", "specialty": "relationships, preferences and hobbies",
-     "model": "gemini:gemini-2.5-flash"},
+     "model": "openrouter:nvidia/nemotron-3-ultra-550b-a55b"},
     {"id": "w4", "specialty": "facts requiring combining multiple memories",
-     "model": "cerebras:gpt-oss-120b"}
+     "model": "openrouter:tencent/hy3"}
   ],
   "topologies": ["shared", "independent", "orchestrator"],
   "policies": ["NOMEM", "P0", "P1:ttl_days=14", "P2", "P3", "P4", "P5"]

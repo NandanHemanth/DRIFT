@@ -13,8 +13,8 @@
   ],
   "judge_model": ["ollama:gpt-oss:20b", "openrouter:openai/gpt-oss-20b:free", "cohere:command-r7b-12-2024"],
   "models": [
-    "groq:llama-3.3-70b-versatile",
-    "nvidia:z-ai/glm-5.2"
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3"
   ],
   "policies": ["NOMEM", "P0", "P1:ttl_days=35", "P2", "P3", "P4"]
 }

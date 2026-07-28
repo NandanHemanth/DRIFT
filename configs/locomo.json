@@ -17,11 +17,11 @@
     "cohere:command-r7b-12-2024"
   ],
   "models": [
-    "groq:llama-3.3-70b-versatile",
-    "cerebras:gpt-oss-120b",
-    "gemini:gemini-2.5-flash",
-    "nvidia:z-ai/glm-5.2",
-    "nvidia:minimaxai/minimax-m3"
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3",
+    "openrouter:google/gemini-3.1-flash-lite",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b",
+    "openrouter:tencent/hy3"
   ],
   "policies": ["NOMEM", "P0", "P1:ttl_days=35", "P2", "P3", "P4"]
 }
