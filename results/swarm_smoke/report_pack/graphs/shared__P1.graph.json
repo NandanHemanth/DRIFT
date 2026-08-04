@@ -197,7 +197,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -208,8 +208,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "agent_0",
-   "t_valid_start": 0,
-   "t_invalid_at": 2160000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707436800.0
   },
   {
    "source": "alice",
@@ -219,8 +219,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "agent_0",
-   "t_valid_start": 0,
-   "t_invalid_at": 2160000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707436800.0
   },
   {
    "source": "bob",
@@ -230,7 +230,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -241,7 +241,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -252,7 +252,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -263,7 +263,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -274,7 +274,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -285,7 +285,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -296,7 +296,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -307,7 +307,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -318,7 +318,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -329,7 +329,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -340,7 +340,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -351,7 +351,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -362,7 +362,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -373,7 +373,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -384,7 +384,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 2592000,
+   "t_valid_start": 1707868800.0,
    "t_invalid_at": null
   },
   {
@@ -395,8 +395,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "agent_2",
-   "t_valid_start": 2592000,
-   "t_invalid_at": 3888000
+   "t_valid_start": 1707868800.0,
+   "t_invalid_at": 1709164800.0
   },
   {
    "source": "alice",
@@ -406,7 +406,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -417,7 +417,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -428,7 +428,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -439,7 +439,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -450,7 +450,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -461,7 +461,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 4752000,
+   "t_valid_start": 1710028800.0,
    "t_invalid_at": null
   },
   {
@@ -472,7 +472,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 4752000,
+   "t_valid_start": 1710028800.0,
    "t_invalid_at": null
   },
   {
@@ -483,7 +483,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   },
   {
@@ -494,7 +494,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   }
  ]

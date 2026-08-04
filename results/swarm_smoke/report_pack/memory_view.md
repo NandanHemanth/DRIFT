@@ -93,11 +93,11 @@ policy `NOMEM` · model `-` · topology `shared`
 - total facts ever written: 28
 - active at end: 28 · pruned: 0 · write rejections: 0 · superseded still visible: 5
 - **superseded facts** (5):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__NOMEM.graph.html` · data: `graphs/shared__NOMEM.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P0
@@ -105,11 +105,11 @@ policy `P0` · model `-` · topology `shared`
 - total facts ever written: 28
 - active at end: 28 · pruned: 0 · write rejections: 0 · superseded still visible: 5
 - **superseded facts** (5):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__P0.graph.html` · data: `graphs/shared__P0.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P1
@@ -138,9 +138,9 @@ policy `P1:ttl_days=14` · model `-` · topology `shared`
     - ~~Carol: Work at Initech has been stressful lately.~~ (written by agent_2)
     - ~~Alice: The coffee shops in my new neighborhood are amazing.~~ (written by agent_0)
 - **superseded facts** (3):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__P1.graph.html` · data: `graphs/shared__P1.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P2
@@ -154,11 +154,11 @@ policy `P2` · model `-` · topology `shared`
     - ~~Dan: I live in Austin, the city has amazing tacos.~~ (written by agent_1)
     - ~~Carol: Work at Initech has been stressful lately.~~ (written by agent_2)
 - **superseded facts** (5):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__P2.graph.html` · data: `graphs/shared__P2.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P3
@@ -166,11 +166,11 @@ policy `P3` · model `-` · topology `shared`
 - total facts ever written: 25
 - active at end: 25 · pruned: 0 · write rejections: 3 · superseded still visible: 5
 - **superseded facts** (5):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__P3.graph.html` · data: `graphs/shared__P3.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P4
@@ -182,38 +182,38 @@ policy `P4` · model `-` · topology `shared`
     - ~~Bob: I am studying biology at Harvard.~~ (written by agent_0)
     - ~~Dan: I play guitar in a local band, my favorite instrument.~~ (written by agent_1)
 - **superseded facts** (5):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
-    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=3888000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
+    - Carol: Work at Initech has been stressful lately.  ->  invalidated at t=1709164800.0
 - interactive graph: `graphs/shared__P4.graph.html` · data: `graphs/shared__P4.graph.json` · communities: 4 · god nodes: alice, bob, carol
 
 ## shared__P5
 policy `P5` · model `-` · topology `shared`
 - total facts ever written: 28
-- active at end: 11 · pruned: 17 · write rejections: 0 · superseded still visible: 1
+- active at end: 11 · pruned: 17 · write rejections: 0 · superseded still visible: 2
 - **pruned fact text** (17):
-    - ~~Alice: My favorite hobby is painting landscapes.~~ (written by agent_0)
+    - ~~Alice: I live in Boston, the city is great for museums.~~ (written by agent_0)
     - ~~Alice: I work at Acme Corp, the company makes robotics.~~ (written by agent_0)
-    - ~~Dan: I play guitar in a local band, my favorite instrument.~~ (written by agent_1)
-    - ~~Carol: I work at Initech, the company audits spreadsheets.~~ (written by agent_1)
-    - ~~Dan: I live in Austin, the city has amazing tacos.~~ (written by agent_1)
+    - ~~Alice: My favorite hobby is painting landscapes.~~ (written by agent_2)
     - ~~Bob: The weather has been rainy lately.~~ (written by agent_2)
     - ~~Alice: I started learning Spanish this month.~~ (written by agent_2)
     - ~~Dan: I play guitar in a local band, my favorite instrument.~~ (written by agent_0)
     - ~~Bob: My puppy Max learned to fetch.~~ (written by agent_1)
-    - ~~Alice: I moved to Seattle recently and I live downtown.~~ (written by agent_1)
+    - ~~Dan: I just moved to Denver and I live near the mountains.~~ (written by agent_2)
     - ~~Carol: Work at Initech has been stressful lately.~~ (written by agent_2)
     - ~~Alice: The coffee shops in my new neighborhood are amazing.~~ (written by agent_0)
     - ~~Bob: I visited my grandmother in Chicago last weekend.~~ (written by agent_0)
     - ~~Bob: I am studying biology at Harvard.~~ (written by agent_0)
     - ~~Dan: Denver winters are colder than expected.~~ (written by agent_1)
+    - ~~Carol: I quit and now work for Hooli as a product manager.~~ (written by agent_1)
     - ~~Alice: I got promoted to senior engineer at Globex Industries.~~ (written by agent_2)
+    - ~~Dan: My band released our first album called Midnight Drive.~~ (written by agent_0)
     - ~~Carol: My mentor at work is very supportive.~~ (written by agent_0)
 - **superseded facts** (4):
-    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=2160000
-    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=2160000
-    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=2592000
-    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=2592000
+    - Alice: I live in Boston, the city is great for museums.  ->  invalidated at t=1707436800.0
+    - Alice: I work at Acme Corp, the company makes robotics.  ->  invalidated at t=1707436800.0
+    - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
+    - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0
 - interactive graph: `graphs/shared__P5.graph.html` · data: `graphs/shared__P5.graph.json` · communities: 4 · god nodes: alice, bob, carol

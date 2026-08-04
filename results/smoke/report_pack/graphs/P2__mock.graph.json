@@ -101,7 +101,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -112,7 +112,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -123,8 +123,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "conversation",
-   "t_valid_start": 0,
-   "t_invalid_at": 2592000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707868800.0
   },
   {
    "source": "dan",
@@ -134,8 +134,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "conversation",
-   "t_valid_start": 0,
-   "t_invalid_at": 2592000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707868800.0
   },
   {
    "source": "dan",
@@ -145,7 +145,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -156,7 +156,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -167,7 +167,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 2592000,
+   "t_valid_start": 1707868800.0,
    "t_invalid_at": null
   },
   {
@@ -178,8 +178,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "conversation",
-   "t_valid_start": 2592000,
-   "t_invalid_at": 3888000
+   "t_valid_start": 1707868800.0,
+   "t_invalid_at": 1709164800.0
   },
   {
    "source": "dan",
@@ -189,7 +189,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -200,7 +200,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -211,7 +211,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   },
   {
@@ -222,7 +222,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "conversation",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   }
  ]

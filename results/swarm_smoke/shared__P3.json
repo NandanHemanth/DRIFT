@@ -2,9 +2,9 @@
  "summary": {
   "n_questions": 14,
   "accuracy": 0.7142857142857143,
-  "mean_f1": 0.2433106575963719,
+  "mean_f1": 0.18990421343362524,
   "staleness_rate": 0.2857142857142857,
-  "mean_tokens_per_q": 173.5,
+  "mean_tokens_per_q": 284.0,
   "n_agents": 3,
   "invalidations": 5,
   "cross_writer_invalidations": 5,
@@ -24,322 +24,322 @@
    "conversation": "convo_alice_bob",
    "category": "current_state",
    "question": "Which city does Alice live in?",
-   "answer": "Alice: I live in Boston, the city is great for museums.",
+   "answer": "[2024-01-15] [superseded 2024-02-09] Alice: I live in Boston, the city is great for museums.",
    "retrieved_ids": [
-    "c0af02a97cbb",
-    "72605fffff74",
-    "10c17d8fb65e",
-    "384e74964502",
-    "2de51f385154",
-    "392b289591d9",
-    "d33c496d3ccc",
-    "0de895273b36"
+    "bd87dd2852f4",
+    "e8fc062120b4",
+    "6a673b2cbfa7",
+    "2fe58dd588ad",
+    "766022125557",
+    "4ba17700b044",
+    "4d61c161db05",
+    "b8e6a75e5d70"
    ],
    "retrieved_invalidated": 3,
-   "tokens": 180,
+   "tokens": 304,
    "gold": "Seattle",
    "correct": false,
    "f1": 0.0,
-   "judge_tokens": 56,
+   "judge_tokens": 65,
    "stale": true
   },
   {
    "conversation": "convo_alice_bob",
    "category": "current_state",
    "question": "Which company does Alice work at?",
-   "answer": "Alice: I work at Acme Corp, the company makes robotics.",
+   "answer": "[2024-01-15] [superseded 2024-02-09] Alice: I work at Acme Corp, the company makes robotics.",
    "retrieved_ids": [
-    "d33c496d3ccc",
-    "0de895273b36",
-    "df44e08856c6",
-    "7eac4bec55fb",
-    "a6c5110e5b46",
-    "392b289591d9",
-    "3186ff6f0267",
-    "10c17d8fb65e"
+    "4d61c161db05",
+    "b8e6a75e5d70",
+    "10cbc21c5bf3",
+    "e45f0ab09f3a",
+    "26826f463397",
+    "4ba17700b044",
+    "e7fa9344012d",
+    "6a673b2cbfa7"
    ],
    "retrieved_invalidated": 3,
-   "tokens": 177,
+   "tokens": 302,
    "gold": "Globex Industries",
    "correct": false,
    "f1": 0.0,
-   "judge_tokens": 59,
+   "judge_tokens": 68,
    "stale": true
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_old",
    "question": "What pet did Bob adopt?",
-   "answer": "Bob: I adopted a puppy named Max, my first pet.",
+   "answer": "[2024-01-15] Bob: I adopted a puppy named Max, my first pet.",
    "retrieved_ids": [
-    "389a7ebf0fac",
-    "a3be2daf4beb",
-    "87ee2ee7574f",
-    "5174216cfd16",
-    "5d0055698905",
-    "14d2e532e425",
-    "c67ae4fe5307",
-    "7eac4bec55fb"
+    "2ae52ca2851d",
+    "6a024d3084f1",
+    "cad09619f550",
+    "fc4f66f0379b",
+    "bf54cd3d778b",
+    "61cb8a6e832e",
+    "60a3a5aabae5",
+    "e45f0ab09f3a"
    ],
    "retrieved_invalidated": 0,
-   "tokens": 160,
+   "tokens": 260,
    "gold": "a puppy named Max",
    "correct": true,
-   "f1": 0.5714285714285715,
-   "judge_tokens": 53,
+   "f1": 0.47058823529411764,
+   "judge_tokens": 57,
    "stale": false
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_old",
    "question": "What is Alice's favorite hobby?",
-   "answer": "Alice: My favorite hobby is painting landscapes.",
+   "answer": "[2024-01-15] Alice: My favorite hobby is painting landscapes.",
    "retrieved_ids": [
-    "c1e097ccdeff",
-    "2de51f385154",
-    "392b289591d9",
-    "e4258e7f6a0c",
-    "d33c496d3ccc",
-    "c0af02a97cbb",
-    "7eac4bec55fb",
-    "10c17d8fb65e"
+    "78a458ad513f",
+    "766022125557",
+    "4ba17700b044",
+    "22e0ac7f707c",
+    "4d61c161db05",
+    "bd87dd2852f4",
+    "e45f0ab09f3a",
+    "6a673b2cbfa7"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 172,
+   "tokens": 278,
    "gold": "painting landscapes",
    "correct": true,
-   "f1": 0.4444444444444445,
-   "judge_tokens": 56,
+   "f1": 0.33333333333333337,
+   "judge_tokens": 59,
    "stale": false
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_recent",
    "question": "What is Bob studying at Harvard?",
-   "answer": "Bob: I am studying biology at Harvard.",
+   "answer": "[2024-01-15] Bob: I am studying biology at Harvard.",
    "retrieved_ids": [
-    "3dab6a680b27",
-    "5174216cfd16",
-    "a3be2daf4beb",
-    "7eac4bec55fb",
-    "87ee2ee7574f",
-    "392b289591d9",
-    "5d0055698905",
-    "384e74964502"
+    "5dbf45d4f6a9",
+    "fc4f66f0379b",
+    "6a024d3084f1",
+    "e45f0ab09f3a",
+    "cad09619f550",
+    "4ba17700b044",
+    "bf54cd3d778b",
+    "2fe58dd588ad"
    ],
    "retrieved_invalidated": 0,
-   "tokens": 164,
+   "tokens": 264,
    "gold": "biology",
    "correct": true,
-   "f1": 0.25,
-   "judge_tokens": 51,
+   "f1": 0.18181818181818182,
+   "judge_tokens": 54,
    "stale": false
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_old",
    "question": "Which language did Alice start learning?",
-   "answer": "Alice: I started learning Spanish this month.",
+   "answer": "[2024-01-25] Alice: I started learning Spanish this month.",
    "retrieved_ids": [
-    "e4258e7f6a0c",
-    "392b289591d9",
-    "2de51f385154",
-    "d33c496d3ccc",
-    "10c17d8fb65e",
-    "c0af02a97cbb",
-    "c1e097ccdeff",
-    "7eac4bec55fb"
+    "22e0ac7f707c",
+    "4ba17700b044",
+    "766022125557",
+    "4d61c161db05",
+    "6a673b2cbfa7",
+    "bd87dd2852f4",
+    "78a458ad513f",
+    "e45f0ab09f3a"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 174,
+   "tokens": 279,
    "gold": "Spanish",
    "correct": true,
-   "f1": 0.25,
-   "judge_tokens": 55,
+   "f1": 0.18181818181818182,
+   "judge_tokens": 58,
    "stale": false
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_recent",
    "question": "Where did Bob visit his grandmother?",
-   "answer": "Bob: I visited my grandmother in Chicago last weekend.",
+   "answer": "[2024-02-24] Bob: I visited my grandmother in Chicago last weekend.",
    "retrieved_ids": [
-    "a3be2daf4beb",
-    "87ee2ee7574f",
-    "392b289591d9",
-    "5174216cfd16",
-    "389a7ebf0fac",
-    "df44e08856c6",
-    "5d0055698905",
-    "3186ff6f0267"
+    "6a024d3084f1",
+    "cad09619f550",
+    "4ba17700b044",
+    "fc4f66f0379b",
+    "2ae52ca2851d",
+    "10cbc21c5bf3",
+    "bf54cd3d778b",
+    "e7fa9344012d"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 175,
+   "tokens": 281,
    "gold": "Chicago",
    "correct": true,
-   "f1": 0.19999999999999998,
-   "judge_tokens": 56,
+   "f1": 0.15384615384615385,
+   "judge_tokens": 59,
    "stale": false
   },
   {
    "conversation": "convo_alice_bob",
    "category": "recall_recent",
    "question": "What promotion did Alice get?",
-   "answer": "Alice: I got promoted to senior engineer at Globex Industries.",
+   "answer": "[2024-03-10] Alice: I got promoted to senior engineer at Globex Industries.",
    "retrieved_ids": [
-    "392b289591d9",
-    "2de51f385154",
-    "d33c496d3ccc",
-    "10c17d8fb65e",
-    "5d0055698905",
-    "e4258e7f6a0c",
-    "0de895273b36",
-    "c0af02a97cbb"
+    "4ba17700b044",
+    "766022125557",
+    "4d61c161db05",
+    "6a673b2cbfa7",
+    "bf54cd3d778b",
+    "22e0ac7f707c",
+    "b8e6a75e5d70",
+    "bd87dd2852f4"
    ],
    "retrieved_invalidated": 2,
-   "tokens": 177,
+   "tokens": 288,
    "gold": "senior engineer",
    "correct": true,
-   "f1": 0.33333333333333337,
-   "judge_tokens": 58,
+   "f1": 0.2666666666666667,
+   "judge_tokens": 61,
    "stale": false
   },
   {
    "conversation": "convo_carol_dan",
    "category": "current_state",
    "question": "Which city does Dan live in?",
-   "answer": "Dan: I live in Austin, the city has amazing tacos.",
+   "answer": "[2024-01-15] [superseded 2024-02-14] Dan: I live in Austin, the city has amazing tacos.",
    "retrieved_ids": [
-    "72605fffff74",
-    "384e74964502",
-    "c0af02a97cbb",
-    "8e368eed1d01",
-    "5d0055698905",
-    "64542648977d",
-    "10c17d8fb65e",
-    "2de51f385154"
+    "e8fc062120b4",
+    "2fe58dd588ad",
+    "bd87dd2852f4",
+    "dcb4a28096cf",
+    "bf54cd3d778b",
+    "ae155423f851",
+    "6a673b2cbfa7",
+    "766022125557"
    ],
    "retrieved_invalidated": 2,
-   "tokens": 180,
+   "tokens": 298,
    "gold": "Denver",
    "correct": false,
    "f1": 0.0,
-   "judge_tokens": 54,
+   "judge_tokens": 63,
    "stale": true
   },
   {
    "conversation": "convo_carol_dan",
    "category": "current_state",
    "question": "Which company does Carol work at?",
-   "answer": "Carol: I work at Initech, the company audits spreadsheets.",
+   "answer": "[2024-01-15] [superseded 2024-02-14] Carol: I work at Initech, the company audits spreadsheets.",
    "retrieved_ids": [
-    "a6c5110e5b46",
-    "df44e08856c6",
-    "7eac4bec55fb",
-    "3186ff6f0267",
-    "d33c496d3ccc",
-    "0de895273b36",
-    "5d0055698905",
-    "5174216cfd16"
+    "26826f463397",
+    "10cbc21c5bf3",
+    "e45f0ab09f3a",
+    "e7fa9344012d",
+    "4d61c161db05",
+    "b8e6a75e5d70",
+    "bf54cd3d778b",
+    "fc4f66f0379b"
    ],
    "retrieved_invalidated": 3,
-   "tokens": 173,
+   "tokens": 296,
    "gold": "Hooli",
    "correct": false,
    "f1": 0.0,
-   "judge_tokens": 57,
+   "judge_tokens": 66,
    "stale": true
   },
   {
    "conversation": "convo_carol_dan",
    "category": "recall_old",
    "question": "What instrument does Dan play?",
-   "answer": "Dan: I play guitar in a local band, my favorite instrument.",
+   "answer": "[2024-01-15] Dan: I play guitar in a local band, my favorite instrument.",
    "retrieved_ids": [
-    "64542648977d",
-    "5d0055698905",
-    "8e368eed1d01",
-    "384e74964502",
-    "392b289591d9",
-    "72605fffff74",
-    "7eac4bec55fb",
-    "d33c496d3ccc"
+    "ae155423f851",
+    "bf54cd3d778b",
+    "dcb4a28096cf",
+    "2fe58dd588ad",
+    "4ba17700b044",
+    "e8fc062120b4",
+    "e45f0ab09f3a",
+    "4d61c161db05"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 177,
+   "tokens": 283,
    "gold": "guitar",
    "correct": true,
-   "f1": 0.16666666666666669,
-   "judge_tokens": 55,
+   "f1": 0.13333333333333333,
+   "judge_tokens": 59,
    "stale": false
   },
   {
    "conversation": "convo_carol_dan",
    "category": "recall_old",
    "question": "What pet did Carol adopt?",
-   "answer": "Carol: I adopted a kitten named Whiskers, my first pet.",
+   "answer": "[2024-01-27] Carol: I adopted a kitten named Whiskers, my first pet.",
    "retrieved_ids": [
-    "7eac4bec55fb",
-    "c67ae4fe5307",
-    "3186ff6f0267",
-    "a6c5110e5b46",
-    "5d0055698905",
-    "c35992da79fd",
-    "df44e08856c6",
-    "389a7ebf0fac"
+    "e45f0ab09f3a",
+    "60a3a5aabae5",
+    "e7fa9344012d",
+    "26826f463397",
+    "bf54cd3d778b",
+    "33db74a738f5",
+    "10cbc21c5bf3",
+    "2ae52ca2851d"
    ],
    "retrieved_invalidated": 2,
-   "tokens": 167,
+   "tokens": 280,
    "gold": "a kitten named Whiskers",
    "correct": true,
-   "f1": 0.5714285714285715,
-   "judge_tokens": 57,
+   "f1": 0.47058823529411764,
+   "judge_tokens": 61,
    "stale": false
   },
   {
    "conversation": "convo_carol_dan",
    "category": "recall_recent",
    "question": "What is the name of Dan's band's first album?",
-   "answer": "Dan: My band released our first album called Midnight Drive.",
+   "answer": "[2024-03-13] Dan: My band released our first album called Midnight Drive.",
    "retrieved_ids": [
-    "8e368eed1d01",
-    "384e74964502",
-    "5d0055698905",
-    "64542648977d",
-    "7eac4bec55fb",
-    "2de51f385154",
-    "72605fffff74",
-    "c67ae4fe5307"
+    "dcb4a28096cf",
+    "2fe58dd588ad",
+    "bf54cd3d778b",
+    "ae155423f851",
+    "e45f0ab09f3a",
+    "766022125557",
+    "e8fc062120b4",
+    "60a3a5aabae5"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 185,
+   "tokens": 290,
    "gold": "Midnight Drive",
    "correct": true,
-   "f1": 0.33333333333333337,
-   "judge_tokens": 61,
+   "f1": 0.2666666666666667,
+   "judge_tokens": 65,
    "stale": false
   },
   {
    "conversation": "convo_carol_dan",
    "category": "recall_old",
    "question": "What does Carol love doing on weekends?",
-   "answer": "Carol: I love hiking on weekends.",
+   "answer": "[2024-01-15] Carol: I love hiking on weekends.",
    "retrieved_ids": [
-    "c35992da79fd",
-    "7eac4bec55fb",
-    "5d0055698905",
-    "3186ff6f0267",
-    "a6c5110e5b46",
-    "8e368eed1d01",
-    "5174216cfd16",
-    "384e74964502"
+    "33db74a738f5",
+    "e45f0ab09f3a",
+    "bf54cd3d778b",
+    "e7fa9344012d",
+    "26826f463397",
+    "dcb4a28096cf",
+    "fc4f66f0379b",
+    "2fe58dd588ad"
    ],
    "retrieved_invalidated": 1,
-   "tokens": 168,
+   "tokens": 273,
    "gold": "hiking",
    "correct": true,
-   "f1": 0.2857142857142857,
-   "judge_tokens": 51,
+   "f1": 0.19999999999999998,
+   "judge_tokens": 54,
    "stale": false
   }
  ],
@@ -347,7 +347,7 @@
   {
    "step": 0,
    "agent": 0,
-   "time": 0,
+   "time": 1705276800.0,
    "total_facts": 5,
    "active_facts": 5,
    "invalidated_active": 0,
@@ -357,7 +357,7 @@
   {
    "step": 1,
    "agent": 1,
-   "time": 0,
+   "time": 1705276800.0,
    "total_facts": 9,
    "active_facts": 9,
    "invalidated_active": 0,
@@ -367,7 +367,7 @@
   {
    "step": 2,
    "agent": 2,
-   "time": 864000,
+   "time": 1706140800.0,
    "total_facts": 11,
    "active_facts": 11,
    "invalidated_active": 0,
@@ -377,7 +377,7 @@
   {
    "step": 3,
    "agent": 0,
-   "time": 1036800,
+   "time": 1706313600.0,
    "total_facts": 12,
    "active_facts": 12,
    "invalidated_active": 0,
@@ -387,7 +387,7 @@
   {
    "step": 4,
    "agent": 1,
-   "time": 2160000,
+   "time": 1707436800.0,
    "total_facts": 15,
    "active_facts": 15,
    "invalidated_active": 2,
@@ -397,7 +397,7 @@
   {
    "step": 5,
    "agent": 2,
-   "time": 2592000,
+   "time": 1707868800.0,
    "total_facts": 17,
    "active_facts": 17,
    "invalidated_active": 4,
@@ -407,7 +407,7 @@
   {
    "step": 6,
    "agent": 0,
-   "time": 3456000,
+   "time": 1708732800.0,
    "total_facts": 19,
    "active_facts": 19,
    "invalidated_active": 4,
@@ -417,7 +417,7 @@
   {
    "step": 7,
    "agent": 1,
-   "time": 3888000,
+   "time": 1709164800.0,
    "total_facts": 21,
    "active_facts": 21,
    "invalidated_active": 5,
@@ -427,7 +427,7 @@
   {
    "step": 8,
    "agent": 2,
-   "time": 4752000,
+   "time": 1710028800.0,
    "total_facts": 23,
    "active_facts": 23,
    "invalidated_active": 5,
@@ -437,7 +437,7 @@
   {
    "step": 9,
    "agent": 0,
-   "time": 5011200,
+   "time": 1710288000.0,
    "total_facts": 25,
    "active_facts": 25,
    "invalidated_active": 5,
@@ -451,8 +451,8 @@
    "predicate": "stated",
    "object": "My favorite hobby is painting landscapes.",
    "text": "Alice: My favorite hobby is painting landscapes.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -714,7 +714,7 @@
     0.0,
     0.0
    ],
-   "id": "c1e097ccdeff",
+   "id": "78a458ad513f",
    "active": true
   },
   {
@@ -722,9 +722,9 @@
    "predicate": "lives_in",
    "object": "Boston",
    "text": "Alice: I live in Boston, the city is great for museums.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2160000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707436800.0,
    "salience": 1.0,
    "provenance": "agent_0",
    "embedding": [
@@ -985,7 +985,7 @@
     0.0,
     0.0
    ],
-   "id": "c0af02a97cbb",
+   "id": "bd87dd2852f4",
    "active": true
   },
   {
@@ -993,9 +993,9 @@
    "predicate": "works_at",
    "object": "Acme Corp",
    "text": "Alice: I work at Acme Corp, the company makes robotics.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2160000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707436800.0,
    "salience": 1.0,
    "provenance": "agent_0",
    "embedding": [
@@ -1256,7 +1256,7 @@
     0.0,
     0.0
    ],
-   "id": "0de895273b36",
+   "id": "b8e6a75e5d70",
    "active": true
   },
   {
@@ -1264,8 +1264,8 @@
    "predicate": "owns_pet",
    "object": "puppy",
    "text": "Bob: I adopted a puppy named Max, my first pet.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -1527,7 +1527,7 @@
     0.0,
     0.0
    ],
-   "id": "389a7ebf0fac",
+   "id": "2ae52ca2851d",
    "active": true
   },
   {
@@ -1535,8 +1535,8 @@
    "predicate": "studies",
    "object": "biology",
    "text": "Bob: I am studying biology at Harvard.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -1798,7 +1798,7 @@
     0.0,
     0.0
    ],
-   "id": "3dab6a680b27",
+   "id": "5dbf45d4f6a9",
    "active": true
   },
   {
@@ -1806,8 +1806,8 @@
    "predicate": "stated",
    "object": "I love hiking on weekends.",
    "text": "Carol: I love hiking on weekends.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -2069,7 +2069,7 @@
     0.0,
     0.0
    ],
-   "id": "c35992da79fd",
+   "id": "33db74a738f5",
    "active": true
   },
   {
@@ -2077,8 +2077,8 @@
    "predicate": "stated",
    "object": "I play guitar in a local band, my favorite instrument.",
    "text": "Dan: I play guitar in a local band, my favorite instrument.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -2340,7 +2340,7 @@
     0.0,
     0.0
    ],
-   "id": "64542648977d",
+   "id": "ae155423f851",
    "active": true
   },
   {
@@ -2348,9 +2348,9 @@
    "predicate": "works_at",
    "object": "Initech",
    "text": "Carol: I work at Initech, the company audits spreadsheets.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2592000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707868800.0,
    "salience": 1.0,
    "provenance": "agent_1",
    "embedding": [
@@ -2611,7 +2611,7 @@
     0.0,
     0.0
    ],
-   "id": "df44e08856c6",
+   "id": "10cbc21c5bf3",
    "active": true
   },
   {
@@ -2619,9 +2619,9 @@
    "predicate": "lives_in",
    "object": "Austin",
    "text": "Dan: I live in Austin, the city has amazing tacos.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2592000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707868800.0,
    "salience": 1.0,
    "provenance": "agent_1",
    "embedding": [
@@ -2882,7 +2882,7 @@
     0.0,
     0.0
    ],
-   "id": "72605fffff74",
+   "id": "e8fc062120b4",
    "active": true
   },
   {
@@ -2890,8 +2890,8 @@
    "predicate": "stated",
    "object": "The weather has been rainy lately.",
    "text": "Bob: The weather has been rainy lately.",
-   "t_valid_start": 864000,
-   "t_ingested": 864000,
+   "t_valid_start": 1706140800.0,
+   "t_ingested": 1706140800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_2",
@@ -3153,7 +3153,7 @@
     0.0,
     0.0
    ],
-   "id": "14d2e532e425",
+   "id": "61cb8a6e832e",
    "active": true
   },
   {
@@ -3161,8 +3161,8 @@
    "predicate": "stated",
    "object": "I started learning Spanish this month.",
    "text": "Alice: I started learning Spanish this month.",
-   "t_valid_start": 864000,
-   "t_ingested": 864000,
+   "t_valid_start": 1706140800.0,
+   "t_ingested": 1706140800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_2",
@@ -3424,7 +3424,7 @@
     0.0,
     0.0
    ],
-   "id": "e4258e7f6a0c",
+   "id": "22e0ac7f707c",
    "active": true
   },
   {
@@ -3432,8 +3432,8 @@
    "predicate": "owns_pet",
    "object": "kitten",
    "text": "Carol: I adopted a kitten named Whiskers, my first pet.",
-   "t_valid_start": 1036800,
-   "t_ingested": 1036800,
+   "t_valid_start": 1706313600.0,
+   "t_ingested": 1706313600.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -3695,7 +3695,7 @@
     0.0,
     0.0
    ],
-   "id": "c67ae4fe5307",
+   "id": "60a3a5aabae5",
    "active": true
   },
   {
@@ -3703,8 +3703,8 @@
    "predicate": "stated",
    "object": "My puppy Max learned to fetch.",
    "text": "Bob: My puppy Max learned to fetch.",
-   "t_valid_start": 2160000,
-   "t_ingested": 2160000,
+   "t_valid_start": 1707436800.0,
+   "t_ingested": 1707436800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -3966,7 +3966,7 @@
     0.0,
     0.0
    ],
-   "id": "87ee2ee7574f",
+   "id": "cad09619f550",
    "active": true
   },
   {
@@ -3974,8 +3974,8 @@
    "predicate": "lives_in",
    "object": "Seattle recently and I live downtown",
    "text": "Alice: I moved to Seattle recently and I live downtown.",
-   "t_valid_start": 2160000,
-   "t_ingested": 2160000,
+   "t_valid_start": 1707436800.0,
+   "t_ingested": 1707436800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -4237,7 +4237,7 @@
     0.0,
     0.0
    ],
-   "id": "10c17d8fb65e",
+   "id": "6a673b2cbfa7",
    "active": true
   },
   {
@@ -4245,8 +4245,8 @@
    "predicate": "works_at",
    "object": "Globex Industries",
    "text": "Alice: I now work at Globex Industries.",
-   "t_valid_start": 2160000,
-   "t_ingested": 2160000,
+   "t_valid_start": 1707436800.0,
+   "t_ingested": 1707436800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -4508,7 +4508,7 @@
     0.0,
     0.0
    ],
-   "id": "d33c496d3ccc",
+   "id": "4d61c161db05",
    "active": true
   },
   {
@@ -4516,8 +4516,8 @@
    "predicate": "lives_in",
    "object": "Denver and I live near the mountains",
    "text": "Dan: I just moved to Denver and I live near the mountains.",
-   "t_valid_start": 2592000,
-   "t_ingested": 2592000,
+   "t_valid_start": 1707868800.0,
+   "t_ingested": 1707868800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_2",
@@ -4779,7 +4779,7 @@
     0.0,
     0.0
    ],
-   "id": "384e74964502",
+   "id": "2fe58dd588ad",
    "active": true
   },
   {
@@ -4787,9 +4787,9 @@
    "predicate": "works_at",
    "object": "Initech has been stressful lately",
    "text": "Carol: Work at Initech has been stressful lately.",
-   "t_valid_start": 2592000,
-   "t_ingested": 2592000,
-   "t_invalid_at": 3888000,
+   "t_valid_start": 1707868800.0,
+   "t_ingested": 1707868800.0,
+   "t_invalid_at": 1709164800.0,
    "salience": 1.0,
    "provenance": "agent_2",
    "embedding": [
@@ -5050,7 +5050,7 @@
     0.0,
     0.0
    ],
-   "id": "a6c5110e5b46",
+   "id": "26826f463397",
    "active": true
   },
   {
@@ -5058,8 +5058,8 @@
    "predicate": "stated",
    "object": "The coffee shops in my new neighborhood are amazing.",
    "text": "Alice: The coffee shops in my new neighborhood are amazing.",
-   "t_valid_start": 3456000,
-   "t_ingested": 3456000,
+   "t_valid_start": 1708732800.0,
+   "t_ingested": 1708732800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -5321,7 +5321,7 @@
     0.0,
     0.0
    ],
-   "id": "2de51f385154",
+   "id": "766022125557",
    "active": true
   },
   {
@@ -5329,8 +5329,8 @@
    "predicate": "stated",
    "object": "I visited my grandmother in Chicago last weekend.",
    "text": "Bob: I visited my grandmother in Chicago last weekend.",
-   "t_valid_start": 3456000,
-   "t_ingested": 3456000,
+   "t_valid_start": 1708732800.0,
+   "t_ingested": 1708732800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -5592,7 +5592,7 @@
     0.0,
     0.0
    ],
-   "id": "a3be2daf4beb",
+   "id": "6a024d3084f1",
    "active": true
   },
   {
@@ -5600,8 +5600,8 @@
    "predicate": "stated",
    "object": "Denver winters are colder than expected.",
    "text": "Dan: Denver winters are colder than expected.",
-   "t_valid_start": 3888000,
-   "t_ingested": 3888000,
+   "t_valid_start": 1709164800.0,
+   "t_ingested": 1709164800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -5863,7 +5863,7 @@
     0.0,
     0.0
    ],
-   "id": "5d0055698905",
+   "id": "bf54cd3d778b",
    "active": true
   },
   {
@@ -5871,8 +5871,8 @@
    "predicate": "works_at",
    "object": "Hooli",
    "text": "Carol: I quit and now work for Hooli as a product manager.",
-   "t_valid_start": 3888000,
-   "t_ingested": 3888000,
+   "t_valid_start": 1709164800.0,
+   "t_ingested": 1709164800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_1",
@@ -6134,7 +6134,7 @@
     0.0,
     0.0
    ],
-   "id": "3186ff6f0267",
+   "id": "e7fa9344012d",
    "active": true
   },
   {
@@ -6142,8 +6142,8 @@
    "predicate": "stated",
    "object": "I got promoted to senior engineer at Globex Industries.",
    "text": "Alice: I got promoted to senior engineer at Globex Industries.",
-   "t_valid_start": 4752000,
-   "t_ingested": 4752000,
+   "t_valid_start": 1710028800.0,
+   "t_ingested": 1710028800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_2",
@@ -6405,7 +6405,7 @@
     0.0,
     0.0
    ],
-   "id": "392b289591d9",
+   "id": "4ba17700b044",
    "active": true
   },
   {
@@ -6413,8 +6413,8 @@
    "predicate": "stated",
    "object": "I am training Max for an agility competition.",
    "text": "Bob: I am training Max for an agility competition.",
-   "t_valid_start": 4752000,
-   "t_ingested": 4752000,
+   "t_valid_start": 1710028800.0,
+   "t_ingested": 1710028800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_2",
@@ -6676,7 +6676,7 @@
     0.0,
     0.0
    ],
-   "id": "5174216cfd16",
+   "id": "fc4f66f0379b",
    "active": true
   },
   {
@@ -6684,8 +6684,8 @@
    "predicate": "stated",
    "object": "My band released our first album called Midnight Drive.",
    "text": "Dan: My band released our first album called Midnight Drive.",
-   "t_valid_start": 5011200,
-   "t_ingested": 5011200,
+   "t_valid_start": 1710288000.0,
+   "t_ingested": 1710288000.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -6947,7 +6947,7 @@
     0.0,
     0.0
    ],
-   "id": "8e368eed1d01",
+   "id": "dcb4a28096cf",
    "active": true
   },
   {
@@ -6955,8 +6955,8 @@
    "predicate": "stated",
    "object": "My mentor at work is very supportive.",
    "text": "Carol: My mentor at work is very supportive.",
-   "t_valid_start": 5011200,
-   "t_ingested": 5011200,
+   "t_valid_start": 1710288000.0,
+   "t_ingested": 1710288000.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "agent_0",
@@ -7218,7 +7218,7 @@
     0.0,
     0.0
    ],
-   "id": "7eac4bec55fb",
+   "id": "e45f0ab09f3a",
    "active": true
   }
  ]

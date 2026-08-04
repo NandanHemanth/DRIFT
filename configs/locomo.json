@@ -2,7 +2,7 @@
   "dataset": "data/locomo_drift_sample.json",
   "results_dir": "results/locomo",
   "embedder": "ollama:nomic-embed-text",
-  "retrieval_k": 8,
+  "retrieval_k": 25,
   "extract_model": [
     "nvidia:z-ai/glm-5.2",
     "nvidia:minimaxai/minimax-m3",
@@ -23,5 +23,12 @@
     "openrouter:nvidia/nemotron-3-ultra-550b-a55b",
     "openrouter:tencent/hy3"
   ],
-  "policies": ["NOMEM", "P0", "P1:ttl_days=35", "P2", "P3", "P4"]
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=35",
+    "P2",
+    "P3",
+    "P4"
+  ]
 }

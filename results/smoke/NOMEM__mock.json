@@ -6,7 +6,7 @@
   "accuracy": 0.0,
   "mean_f1": 0.0,
   "staleness_rate": 0.0,
-  "mean_tokens_per_q": 65.14285714285714,
+  "mean_tokens_per_q": 135.78571428571428,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -16,7 +16,7 @@
    "pruned": 0,
    "write_rejections": 0
   },
-  "timestamp": 1785110974.4585104
+  "timestamp": 1785859460.828893
  },
  "records": [
   {
@@ -26,7 +26,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 135,
    "gold": "Seattle",
    "correct": false,
    "f1": 0.0,
@@ -40,7 +40,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 136,
    "gold": "Globex Industries",
    "correct": false,
    "f1": 0.0,
@@ -54,7 +54,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 63,
+   "tokens": 133,
    "gold": "a puppy named Max",
    "correct": false,
    "f1": 0.0,
@@ -68,7 +68,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 135,
    "gold": "painting landscapes",
    "correct": false,
    "f1": 0.0,
@@ -82,7 +82,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 136,
    "gold": "biology",
    "correct": false,
    "f1": 0.0,
@@ -96,7 +96,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 67,
+   "tokens": 138,
    "gold": "Spanish",
    "correct": false,
    "f1": 0.0,
@@ -110,7 +110,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 66,
+   "tokens": 137,
    "gold": "Chicago",
    "correct": false,
    "f1": 0.0,
@@ -124,7 +124,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 64,
+   "tokens": 135,
    "gold": "senior engineer",
    "correct": false,
    "f1": 0.0,
@@ -138,7 +138,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 64,
+   "tokens": 135,
    "gold": "Denver",
    "correct": false,
    "f1": 0.0,
@@ -152,7 +152,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 136,
    "gold": "Hooli",
    "correct": false,
    "f1": 0.0,
@@ -166,7 +166,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 65,
+   "tokens": 135,
    "gold": "guitar",
    "correct": false,
    "f1": 0.0,
@@ -180,7 +180,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 63,
+   "tokens": 134,
    "gold": "a kitten named Whiskers",
    "correct": false,
    "f1": 0.0,
@@ -194,7 +194,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 68,
+   "tokens": 139,
    "gold": "Midnight Drive",
    "correct": false,
    "f1": 0.0,
@@ -208,7 +208,7 @@
    "answer": "I don't know.",
    "retrieved_ids": [],
    "retrieved_invalidated": 0,
-   "tokens": 67,
+   "tokens": 137,
    "gold": "hiking",
    "correct": false,
    "f1": 0.0,
@@ -314,8 +314,8 @@
    "predicate": "stated",
    "object": "I love hiking on weekends.",
    "text": "Carol: I love hiking on weekends.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -577,7 +577,7 @@
     0.0,
     0.0
    ],
-   "id": "bbfb43a8eaa0",
+   "id": "96efce26fdcf",
    "active": true
   },
   {
@@ -585,8 +585,8 @@
    "predicate": "stated",
    "object": "I play guitar in a local band, my favorite instrument.",
    "text": "Dan: I play guitar in a local band, my favorite instrument.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -848,7 +848,7 @@
     0.0,
     0.0
    ],
-   "id": "f03a29cefc6d",
+   "id": "032f9316f0cb",
    "active": true
   },
   {
@@ -856,9 +856,9 @@
    "predicate": "works_at",
    "object": "Initech",
    "text": "Carol: I work at Initech, the company audits spreadsheets.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2592000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707868800.0,
    "salience": 1.0,
    "provenance": "conversation",
    "embedding": [
@@ -1119,7 +1119,7 @@
     0.0,
     0.0
    ],
-   "id": "2734778f023b",
+   "id": "8486b5f56afb",
    "active": true
   },
   {
@@ -1127,9 +1127,9 @@
    "predicate": "lives_in",
    "object": "Austin",
    "text": "Dan: I live in Austin, the city has amazing tacos.",
-   "t_valid_start": 0,
-   "t_ingested": 0,
-   "t_invalid_at": 2592000,
+   "t_valid_start": 1705276800.0,
+   "t_ingested": 1705276800.0,
+   "t_invalid_at": 1707868800.0,
    "salience": 1.0,
    "provenance": "conversation",
    "embedding": [
@@ -1390,7 +1390,7 @@
     0.0,
     0.0
    ],
-   "id": "10885322eecf",
+   "id": "bdb5f0851786",
    "active": true
   },
   {
@@ -1398,8 +1398,8 @@
    "predicate": "stated",
    "object": "I play guitar in a local band, my favorite instrument.",
    "text": "Dan: I play guitar in a local band, my favorite instrument.",
-   "t_valid_start": 1036800,
-   "t_ingested": 1036800,
+   "t_valid_start": 1706313600.0,
+   "t_ingested": 1706313600.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -1661,7 +1661,7 @@
     0.0,
     0.0
    ],
-   "id": "3f2f156877b1",
+   "id": "1485acdcec2f",
    "active": true
   },
   {
@@ -1669,8 +1669,8 @@
    "predicate": "owns_pet",
    "object": "kitten",
    "text": "Carol: I adopted a kitten named Whiskers, my first pet.",
-   "t_valid_start": 1036800,
-   "t_ingested": 1036800,
+   "t_valid_start": 1706313600.0,
+   "t_ingested": 1706313600.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -1932,7 +1932,7 @@
     0.0,
     0.0
    ],
-   "id": "d4abc74db22f",
+   "id": "a6476d0606ce",
    "active": true
   },
   {
@@ -1940,8 +1940,8 @@
    "predicate": "lives_in",
    "object": "Denver and I live near the mountains",
    "text": "Dan: I just moved to Denver and I live near the mountains.",
-   "t_valid_start": 2592000,
-   "t_ingested": 2592000,
+   "t_valid_start": 1707868800.0,
+   "t_ingested": 1707868800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -2203,7 +2203,7 @@
     0.0,
     0.0
    ],
-   "id": "6d78642f013b",
+   "id": "6cefe8ed1dff",
    "active": true
   },
   {
@@ -2211,9 +2211,9 @@
    "predicate": "works_at",
    "object": "Initech has been stressful lately",
    "text": "Carol: Work at Initech has been stressful lately.",
-   "t_valid_start": 2592000,
-   "t_ingested": 2592000,
-   "t_invalid_at": 3888000,
+   "t_valid_start": 1707868800.0,
+   "t_ingested": 1707868800.0,
+   "t_invalid_at": 1709164800.0,
    "salience": 1.0,
    "provenance": "conversation",
    "embedding": [
@@ -2474,7 +2474,7 @@
     0.0,
     0.0
    ],
-   "id": "3380c32af9c0",
+   "id": "82e3ec1fbef7",
    "active": true
   },
   {
@@ -2482,8 +2482,8 @@
    "predicate": "stated",
    "object": "Denver winters are colder than expected.",
    "text": "Dan: Denver winters are colder than expected.",
-   "t_valid_start": 3888000,
-   "t_ingested": 3888000,
+   "t_valid_start": 1709164800.0,
+   "t_ingested": 1709164800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -2745,7 +2745,7 @@
     0.0,
     0.0
    ],
-   "id": "2a042c4b882b",
+   "id": "c84aca410de9",
    "active": true
   },
   {
@@ -2753,8 +2753,8 @@
    "predicate": "works_at",
    "object": "Hooli",
    "text": "Carol: I quit and now work for Hooli as a product manager.",
-   "t_valid_start": 3888000,
-   "t_ingested": 3888000,
+   "t_valid_start": 1709164800.0,
+   "t_ingested": 1709164800.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -3016,7 +3016,7 @@
     0.0,
     0.0
    ],
-   "id": "f8f75b8224bf",
+   "id": "ac44f766e151",
    "active": true
   },
   {
@@ -3024,8 +3024,8 @@
    "predicate": "stated",
    "object": "My band released our first album called Midnight Drive.",
    "text": "Dan: My band released our first album called Midnight Drive.",
-   "t_valid_start": 5011200,
-   "t_ingested": 5011200,
+   "t_valid_start": 1710288000.0,
+   "t_ingested": 1710288000.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -3287,7 +3287,7 @@
     0.0,
     0.0
    ],
-   "id": "471677f1167d",
+   "id": "d844d33eb5d2",
    "active": true
   },
   {
@@ -3295,8 +3295,8 @@
    "predicate": "stated",
    "object": "My mentor at work is very supportive.",
    "text": "Carol: My mentor at work is very supportive.",
-   "t_valid_start": 5011200,
-   "t_ingested": 5011200,
+   "t_valid_start": 1710288000.0,
+   "t_ingested": 1710288000.0,
    "t_invalid_at": null,
    "salience": 1.0,
    "provenance": "conversation",
@@ -3558,7 +3558,7 @@
     0.0,
     0.0
    ],
-   "id": "a5df6338d615",
+   "id": "438e73a7fe2c",
    "active": true
   }
  ]

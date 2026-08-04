@@ -2,7 +2,7 @@
   "dataset": "data/longmemeval_drift.json",
   "results_dir": "results/longmemeval",
   "embedder": "ollama:nomic-embed-text",
-  "retrieval_k": 8,
+  "retrieval_k": 25,
   "extract_model": [
     "nvidia:z-ai/glm-5.2",
     "nvidia:minimaxai/minimax-m3",
@@ -11,10 +11,21 @@
     "hf:meta-llama/Llama-3.1-8B-Instruct",
     "mistral:mistral-small-latest"
   ],
-  "judge_model": ["ollama:gpt-oss:20b", "openrouter:openai/gpt-oss-20b:free", "cohere:command-r7b-12-2024"],
+  "judge_model": [
+    "ollama:gpt-oss:20b",
+    "openrouter:openai/gpt-oss-20b:free",
+    "cohere:command-r7b-12-2024"
+  ],
   "models": [
     "openrouter:z-ai/glm-5.2",
     "openrouter:minimax/minimax-m3"
   ],
-  "policies": ["NOMEM", "P0", "P1:ttl_days=35", "P2", "P3", "P4"]
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=35",
+    "P2",
+    "P3",
+    "P4"
+  ]
 }

@@ -1,82 +1,182 @@
 {
-  "name": "synthetic_smoke",
-  "description": "Offline smoke dataset: 2 conversations, 5 sessions each, with fact updates (city moves, job changes), duplicates (novelty-gate probes), and staleness probes. Times are epoch seconds at day granularity.",
-  "conversations": [
+ "name": "synthetic_smoke",
+ "description": "Offline smoke dataset: 2 conversations, 5 sessions each, with fact updates (city moves, job changes), duplicates (novelty-gate probes), and staleness probes. Times are epoch seconds at day granularity.",
+ "conversations": [
+  {
+   "id": "convo_alice_bob",
+   "sessions": [
     {
-      "id": "convo_alice_bob",
-      "sessions": [
-        {"time": 0, "lines": [
-          "Alice: I live in Boston, the city is great for museums.",
-          "Alice: I work at Acme Corp, the company makes robotics.",
-          "Bob: I adopted a puppy named Max, my first pet.",
-          "Alice: My favorite hobby is painting landscapes.",
-          "Bob: I am studying biology at Harvard."
-        ]},
-        {"time": 864000, "lines": [
-          "Alice: My favorite hobby is painting landscapes.",
-          "Bob: The weather has been rainy lately.",
-          "Alice: I started learning Spanish this month."
-        ]},
-        {"time": 2160000, "lines": [
-          "Alice: I moved to Seattle recently and I live downtown.",
-          "Alice: I now work at Globex Industries.",
-          "Bob: My puppy Max learned to fetch."
-        ]},
-        {"time": 3456000, "lines": [
-          "Bob: I am studying biology at Harvard.",
-          "Alice: The coffee shops in my new neighborhood are amazing.",
-          "Bob: I visited my grandmother in Chicago last weekend."
-        ]},
-        {"time": 4752000, "lines": [
-          "Alice: I got promoted to senior engineer at Globex Industries.",
-          "Bob: I am training Max for an agility competition."
-        ]}
-      ],
-      "questions": [
-        {"question": "Which city does Alice live in?", "answer": "Seattle", "category": "current_state", "stale_answer": "Boston"},
-        {"question": "Which company does Alice work at?", "answer": "Globex Industries", "category": "current_state", "stale_answer": "Acme Corp"},
-        {"question": "What pet did Bob adopt?", "answer": "a puppy named Max", "category": "recall_old", "stale_answer": null},
-        {"question": "What is Alice's favorite hobby?", "answer": "painting landscapes", "category": "recall_old", "stale_answer": null},
-        {"question": "What is Bob studying at Harvard?", "answer": "biology", "category": "recall_recent", "stale_answer": null},
-        {"question": "Which language did Alice start learning?", "answer": "Spanish", "category": "recall_old", "stale_answer": null},
-        {"question": "Where did Bob visit his grandmother?", "answer": "Chicago", "category": "recall_recent", "stale_answer": null},
-        {"question": "What promotion did Alice get?", "answer": "senior engineer", "category": "recall_recent", "stale_answer": null}
-      ]
+     "time": 1705276800.0,
+     "lines": [
+      "Alice: I live in Boston, the city is great for museums.",
+      "Alice: I work at Acme Corp, the company makes robotics.",
+      "Bob: I adopted a puppy named Max, my first pet.",
+      "Alice: My favorite hobby is painting landscapes.",
+      "Bob: I am studying biology at Harvard."
+     ]
     },
     {
-      "id": "convo_carol_dan",
-      "sessions": [
-        {"time": 0, "lines": [
-          "Carol: I work at Initech, the company audits spreadsheets.",
-          "Dan: I live in Austin, the city has amazing tacos.",
-          "Carol: I love hiking on weekends.",
-          "Dan: I play guitar in a local band, my favorite instrument."
-        ]},
-        {"time": 1036800, "lines": [
-          "Carol: I adopted a kitten named Whiskers, my first pet.",
-          "Dan: I play guitar in a local band, my favorite instrument."
-        ]},
-        {"time": 2592000, "lines": [
-          "Dan: I just moved to Denver and I live near the mountains.",
-          "Carol: Work at Initech has been stressful lately."
-        ]},
-        {"time": 3888000, "lines": [
-          "Carol: I quit and now work for Hooli as a product manager.",
-          "Dan: Denver winters are colder than expected."
-        ]},
-        {"time": 5011200, "lines": [
-          "Dan: My band released our first album called Midnight Drive.",
-          "Carol: My mentor at work is very supportive."
-        ]}
-      ],
-      "questions": [
-        {"question": "Which city does Dan live in?", "answer": "Denver", "category": "current_state", "stale_answer": "Austin"},
-        {"question": "Which company does Carol work at?", "answer": "Hooli", "category": "current_state", "stale_answer": "Initech"},
-        {"question": "What instrument does Dan play?", "answer": "guitar", "category": "recall_old", "stale_answer": null},
-        {"question": "What pet did Carol adopt?", "answer": "a kitten named Whiskers", "category": "recall_old", "stale_answer": null},
-        {"question": "What is the name of Dan's band's first album?", "answer": "Midnight Drive", "category": "recall_recent", "stale_answer": null},
-        {"question": "What does Carol love doing on weekends?", "answer": "hiking", "category": "recall_old", "stale_answer": null}
-      ]
+     "time": 1706140800.0,
+     "lines": [
+      "Alice: My favorite hobby is painting landscapes.",
+      "Bob: The weather has been rainy lately.",
+      "Alice: I started learning Spanish this month."
+     ]
+    },
+    {
+     "time": 1707436800.0,
+     "lines": [
+      "Alice: I moved to Seattle recently and I live downtown.",
+      "Alice: I now work at Globex Industries.",
+      "Bob: My puppy Max learned to fetch."
+     ]
+    },
+    {
+     "time": 1708732800.0,
+     "lines": [
+      "Bob: I am studying biology at Harvard.",
+      "Alice: The coffee shops in my new neighborhood are amazing.",
+      "Bob: I visited my grandmother in Chicago last weekend."
+     ]
+    },
+    {
+     "time": 1710028800.0,
+     "lines": [
+      "Alice: I got promoted to senior engineer at Globex Industries.",
+      "Bob: I am training Max for an agility competition."
+     ]
     }
-  ]
+   ],
+   "questions": [
+    {
+     "question": "Which city does Alice live in?",
+     "answer": "Seattle",
+     "category": "current_state",
+     "stale_answer": "Boston"
+    },
+    {
+     "question": "Which company does Alice work at?",
+     "answer": "Globex Industries",
+     "category": "current_state",
+     "stale_answer": "Acme Corp"
+    },
+    {
+     "question": "What pet did Bob adopt?",
+     "answer": "a puppy named Max",
+     "category": "recall_old",
+     "stale_answer": null
+    },
+    {
+     "question": "What is Alice's favorite hobby?",
+     "answer": "painting landscapes",
+     "category": "recall_old",
+     "stale_answer": null
+    },
+    {
+     "question": "What is Bob studying at Harvard?",
+     "answer": "biology",
+     "category": "recall_recent",
+     "stale_answer": null
+    },
+    {
+     "question": "Which language did Alice start learning?",
+     "answer": "Spanish",
+     "category": "recall_old",
+     "stale_answer": null
+    },
+    {
+     "question": "Where did Bob visit his grandmother?",
+     "answer": "Chicago",
+     "category": "recall_recent",
+     "stale_answer": null
+    },
+    {
+     "question": "What promotion did Alice get?",
+     "answer": "senior engineer",
+     "category": "recall_recent",
+     "stale_answer": null
+    }
+   ]
+  },
+  {
+   "id": "convo_carol_dan",
+   "sessions": [
+    {
+     "time": 1705276800.0,
+     "lines": [
+      "Carol: I work at Initech, the company audits spreadsheets.",
+      "Dan: I live in Austin, the city has amazing tacos.",
+      "Carol: I love hiking on weekends.",
+      "Dan: I play guitar in a local band, my favorite instrument."
+     ]
+    },
+    {
+     "time": 1706313600.0,
+     "lines": [
+      "Carol: I adopted a kitten named Whiskers, my first pet.",
+      "Dan: I play guitar in a local band, my favorite instrument."
+     ]
+    },
+    {
+     "time": 1707868800.0,
+     "lines": [
+      "Dan: I just moved to Denver and I live near the mountains.",
+      "Carol: Work at Initech has been stressful lately."
+     ]
+    },
+    {
+     "time": 1709164800.0,
+     "lines": [
+      "Carol: I quit and now work for Hooli as a product manager.",
+      "Dan: Denver winters are colder than expected."
+     ]
+    },
+    {
+     "time": 1710288000.0,
+     "lines": [
+      "Dan: My band released our first album called Midnight Drive.",
+      "Carol: My mentor at work is very supportive."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Which city does Dan live in?",
+     "answer": "Denver",
+     "category": "current_state",
+     "stale_answer": "Austin"
+    },
+    {
+     "question": "Which company does Carol work at?",
+     "answer": "Hooli",
+     "category": "current_state",
+     "stale_answer": "Initech"
+    },
+    {
+     "question": "What instrument does Dan play?",
+     "answer": "guitar",
+     "category": "recall_old",
+     "stale_answer": null
+    },
+    {
+     "question": "What pet did Carol adopt?",
+     "answer": "a kitten named Whiskers",
+     "category": "recall_old",
+     "stale_answer": null
+    },
+    {
+     "question": "What is the name of Dan's band's first album?",
+     "answer": "Midnight Drive",
+     "category": "recall_recent",
+     "stale_answer": null
+    },
+    {
+     "question": "What does Carol love doing on weekends?",
+     "answer": "hiking",
+     "category": "recall_old",
+     "stale_answer": null
+    }
+   ]
+  }
+ ]
 }

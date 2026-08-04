@@ -194,10 +194,10 @@
    "target": "my favorite hobby is painting landscapes.",
    "label": "stated",
    "text": "Alice: My favorite hobby is painting landscapes.",
-   "active": false,
+   "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -205,11 +205,11 @@
    "target": "boston",
    "label": "lives_in",
    "text": "Alice: I live in Boston, the city is great for museums.",
-   "active": true,
+   "active": false,
    "invalidated": true,
    "provenance": "agent_0",
-   "t_valid_start": 0,
-   "t_invalid_at": 2160000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707436800.0
   },
   {
    "source": "alice",
@@ -219,8 +219,8 @@
    "active": false,
    "invalidated": true,
    "provenance": "agent_0",
-   "t_valid_start": 0,
-   "t_invalid_at": 2160000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707436800.0
   },
   {
    "source": "bob",
@@ -230,7 +230,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -241,7 +241,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -252,7 +252,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -260,10 +260,10 @@
    "target": "i play guitar in a local band, my favorite instrument.",
    "label": "stated",
    "text": "Dan: I play guitar in a local band, my favorite instrument.",
-   "active": false,
+   "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 0,
+   "t_valid_start": 1705276800.0,
    "t_invalid_at": null
   },
   {
@@ -271,32 +271,32 @@
    "target": "initech",
    "label": "works_at",
    "text": "Carol: I work at Initech, the company audits spreadsheets.",
-   "active": false,
+   "active": true,
    "invalidated": true,
    "provenance": "agent_1",
-   "t_valid_start": 0,
-   "t_invalid_at": 2592000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707868800.0
   },
   {
    "source": "dan",
    "target": "austin",
    "label": "lives_in",
    "text": "Dan: I live in Austin, the city has amazing tacos.",
-   "active": false,
+   "active": true,
    "invalidated": true,
    "provenance": "agent_1",
-   "t_valid_start": 0,
-   "t_invalid_at": 2592000
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1707868800.0
   },
   {
    "source": "alice",
    "target": "my favorite hobby is painting landscapes.",
    "label": "stated",
    "text": "Alice: My favorite hobby is painting landscapes.",
-   "active": true,
+   "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -307,7 +307,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -318,7 +318,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 864000,
+   "t_valid_start": 1706140800.0,
    "t_invalid_at": null
   },
   {
@@ -329,7 +329,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -340,7 +340,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 1036800,
+   "t_valid_start": 1706313600.0,
    "t_invalid_at": null
   },
   {
@@ -351,7 +351,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -359,10 +359,10 @@
    "target": "seattle recently and i live downtown",
    "label": "lives_in",
    "text": "Alice: I moved to Seattle recently and I live downtown.",
-   "active": false,
+   "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -373,7 +373,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 2160000,
+   "t_valid_start": 1707436800.0,
    "t_invalid_at": null
   },
   {
@@ -381,10 +381,10 @@
    "target": "denver and i live near the mountains",
    "label": "lives_in",
    "text": "Dan: I just moved to Denver and I live near the mountains.",
-   "active": true,
+   "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 2592000,
+   "t_valid_start": 1707868800.0,
    "t_invalid_at": null
   },
   {
@@ -395,7 +395,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 2592000,
+   "t_valid_start": 1707868800.0,
    "t_invalid_at": null
   },
   {
@@ -406,7 +406,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -417,7 +417,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -428,7 +428,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 3456000,
+   "t_valid_start": 1708732800.0,
    "t_invalid_at": null
   },
   {
@@ -439,7 +439,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -447,10 +447,10 @@
    "target": "hooli",
    "label": "works_at",
    "text": "Carol: I quit and now work for Hooli as a product manager.",
-   "active": true,
+   "active": false,
    "invalidated": false,
    "provenance": "agent_1",
-   "t_valid_start": 3888000,
+   "t_valid_start": 1709164800.0,
    "t_invalid_at": null
   },
   {
@@ -461,7 +461,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 4752000,
+   "t_valid_start": 1710028800.0,
    "t_invalid_at": null
   },
   {
@@ -472,7 +472,7 @@
    "active": true,
    "invalidated": false,
    "provenance": "agent_2",
-   "t_valid_start": 4752000,
+   "t_valid_start": 1710028800.0,
    "t_invalid_at": null
   },
   {
@@ -480,10 +480,10 @@
    "target": "my band released our first album called midnight drive.",
    "label": "stated",
    "text": "Dan: My band released our first album called Midnight Drive.",
-   "active": true,
+   "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   },
   {
@@ -494,7 +494,7 @@
    "active": false,
    "invalidated": false,
    "provenance": "agent_0",
-   "t_valid_start": 5011200,
+   "t_valid_start": 1710288000.0,
    "t_invalid_at": null
   }
  ]

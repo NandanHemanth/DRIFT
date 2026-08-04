@@ -192,3 +192,36 @@ def test_locomo_stratified_sample_keeps_full_sessions_caps_questions():
     assert nq <= 6  # capped near the target (rounding may add at most one per category)
     cats = {q["category"] for c in sampled["conversations"] for q in c["questions"]}
     assert "temporal" in cats  # minority category still represented
+
+
+def test_render_fact_surfaces_valid_time():
+    """The bitemporal fields must reach the answer prompt: before this, only
+    f.text was sent, so 'when did X happen' was unanswerable by construction."""
+    from drift.pipeline import render_fact
+    g = BitemporalGraph(HashingEmbedder())
+    f = g.add_fact("Alice", "lives_in", "Boston", "Alice: I live in Boston.",
+                   t_event=1_684_000_000.0)
+    rendered = render_fact(f)
+    assert rendered.startswith("[2023-05-13]")
+    assert "Alice: I live in Boston." in rendered
+    assert "superseded" not in rendered
+
+
+def test_render_fact_marks_superseded():
+    g = BitemporalGraph(HashingEmbedder())
+    g.add_fact("Alice", "lives_in", "Boston", "Alice: I live in Boston.",
+               t_event=1_684_000_000.0)
+    g.add_fact("Alice", "lives_in", "Seattle", "Alice: I moved to Seattle.",
+               t_event=1_686_000_000.0)
+    from drift.pipeline import render_fact
+    old = next(f for f in g.facts.values() if f.object == "Boston")
+    assert old.invalidated
+    assert "superseded" in render_fact(old)
+
+
+def test_render_fact_tolerates_zero_timestamp():
+    """Synthetic datasets use t=0 sentinels; those must not emit a 1970 date."""
+    from drift.pipeline import render_fact
+    g = BitemporalGraph(HashingEmbedder())
+    f = g.add_fact("Bob", "likes", "tea", "Bob: I like tea.", t_event=0.0)
+    assert render_fact(f) == "Bob: I like tea."

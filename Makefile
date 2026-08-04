@@ -1,5 +1,5 @@
 .PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean \
-        longmemeval-data longmemeval real-all record
+        longmemeval-data longmemeval real-all record ku-data ku
 
 longmemeval-data:
 	python scripts/download_longmemeval.py --max-questions 150
@@ -7,16 +7,31 @@ longmemeval-data:
 longmemeval:
 	python -m drift.runner --config configs/longmemeval.json
 
+# LongMemEval knowledge-update staleness benchmark. The only dataset in the repo
+# where the staleness metric can actually fire on real (non-synthetic) data:
+# stale_answer is derived from the pre-update value marked in LongMemEval's own
+# has_answer turns. Built from the 's' variant (~50 haystack sessions/question)
+# so forgetting policies face realistic retrieval pressure.
+# Needs `ollama serve` running for the annotator; ~78 cached calls.
+ku-data:
+	python scripts/build_longmemeval_ku.py --variant s
+
+ku:
+	python -m drift.runner --config configs/longmemeval_ku.json
+
 # The full real-data campaign. Everything is resumable: rerun after any
 # interruption or quota exhaustion and completed cells / cached calls are free.
 real-all:
 	-python scripts/download_locomo.py
 	-python scripts/download_longmemeval.py --max-questions 150
+	-python scripts/build_longmemeval_ku.py --variant s
 	python -m drift.runner --config configs/locomo.json
 	python -m drift.runner --config configs/longmemeval.json
+	python -m drift.runner --config configs/longmemeval_ku.json
 	python -m drift.swarm --config configs/swarm_real.json
 	-python analysis/plots.py results/locomo
 	-python analysis/plots.py results/longmemeval
+	-python analysis/plots.py results/longmemeval_ku
 	-python analysis/plots.py results/swarm_real --swarm
 	python analysis/dashboard.py results/* -o docs/dashboard.html
 	python analysis/record.py results/*

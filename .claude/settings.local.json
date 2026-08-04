@@ -18,7 +18,10 @@
       "Bash(pkill -f \"python -m drift.runner\")",
       "Bash(pkill -f \"python -m drift.swarm\")",
       "Bash(ps -o pid,ppid,stat,lstart,command -p 81081)",
-      "Bash(make real-all *)"
+      "Bash(make real-all *)",
+      "Bash(git clone *)",
+      "Bash(./setup)",
+      "Bash(brew install *)"
     ]
   }
 }
