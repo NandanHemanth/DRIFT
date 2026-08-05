@@ -25,6 +25,17 @@ FUNCTIONAL_PREDICATES = {
     "lives_in", "works_at", "job", "relationship_status", "owns_pet", "studies", "located_in", "age",
 }
 
+# Speech-act predicates: these record that an utterance happened, not a state that
+# can be superseded, so they never trigger contradiction -- not even under "*".
+# Without this guard a degenerate extraction (every fact coming back as
+# `speaker / stated / <whole line>`) makes every new fact contradict the previous
+# one: measured 379 of 380 facts invalidated on a corpus whose true count is 133.
+# That failure is silent and looks exactly like a policy result.
+NEVER_FUNCTIONAL = {
+    "stated", "said", "says", "mentioned", "asked", "noted", "reported",
+    "told", "wrote", "discussed", "talked_about", "utterance",
+}
+
 
 @dataclass
 class Fact:
@@ -74,6 +85,8 @@ class BitemporalGraph:
         )
 
     def _is_functional(self, predicate: str) -> bool:
+        if predicate.strip().lower() in NEVER_FUNCTIONAL:
+            return False
         if self.functional_predicates == "*":
             return True
         return predicate in self.functional_predicates

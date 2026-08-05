@@ -89,6 +89,9 @@ figures:
 	python analysis/plots.py results/smoke
 	python analysis/plots.py results/swarm_smoke --swarm
 	-python analysis/plots.py results/locomo
+	-python analysis/plots.py results/longmemeval
+	-python analysis/plots.py results/longmemeval_ku
+	-python analysis/plots.py results/factconsolidation
 	-python analysis/plots.py results/swarm_real --swarm
 
 dashboard:

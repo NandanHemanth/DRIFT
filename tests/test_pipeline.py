@@ -350,3 +350,22 @@ def test_runner_functional_predicates_config_hook():
     assert _functional_predicates({}) is None                       # substrate default
     assert _functional_predicates({"functional_predicates": "*"}) == "*"
     assert _functional_predicates({"functional_predicates": ["a", "b"]}) == {"a", "b"}
+
+
+def test_speech_act_predicates_never_invalidate_even_under_wildcard():
+    """A degenerate extraction returns `speaker / stated / <whole line>` for every
+    fact; under "*" that made each new fact supersede the previous one -- 379 of
+    380 facts invalidated on a corpus whose true count is 133. Silent, and it
+    looks exactly like a policy result."""
+    g = BitemporalGraph(HashingEmbedder(), functional_predicates="*")
+    g.add_fact("user", "stated", "line one", "a", t_event=0.0)
+    g.add_fact("user", "stated", "line two", "b", t_event=100.0)
+    g.add_fact("user", "said", "line three", "c", t_event=200.0)
+    assert g.stats()["invalidated_active"] == 0
+
+
+def test_wildcard_still_invalidates_real_predicates():
+    g = BitemporalGraph(HashingEmbedder(), functional_predicates="*")
+    g.add_fact("Thomas Kyd", "born_in_city", "London", "a", t_event=0.0)
+    g.add_fact("Thomas Kyd", "born_in_city", "Leeds", "b", t_event=100.0)
+    assert g.stats()["invalidated_active"] == 1
