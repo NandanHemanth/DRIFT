@@ -7,24 +7,37 @@ longmemeval-data:
 longmemeval:
 	python -m drift.runner --config configs/longmemeval.json
 
-# LongMemEval knowledge-update staleness benchmark. The only dataset in the repo
-# where the staleness metric can actually fire on real (non-synthetic) data:
-# stale_answer is derived from the pre-update value marked in LongMemEval's own
-# has_answer turns. Built from the 's' variant (~50 haystack sessions/question)
-# so forgetting policies face realistic retrieval pressure.
-# Needs `ollama serve` running for the annotator; ~78 cached calls.
+# LongMemEval knowledge-update staleness benchmark: the only dataset in the repo
+# where staleness can fire on real (non-synthetic) data. stale_answer is derived
+# from the pre-update value marked in LongMemEval's own has_answer turns.
+#
+# Two builds, forming a haystack-size ablation on the SAME 78 questions:
+#   ku-data    'oracle'  ~2.6 sessions/question  (~200 total) -- cheap, ~1h ingest
+#   ku-data-s  's' capped at 12 sessions/question (~900 total) -- retrieval pressure
+# The uncapped 's' variant (~50/question, 3.7k sessions, ~9.6M extraction tokens)
+# is NOT deliverable on free-tier providers: their per-minute token ceilings
+# throttle a ~3k-token session prompt to roughly one call a minute.
+#
+# The annotator defaults to local ollama:gpt-oss:20b, so `ollama serve` must be
+# running. Pass --annotator groq:llama-3.3-70b-versatile to use a hosted one.
 ku-data:
-	python scripts/build_longmemeval_ku.py --variant s
+	python scripts/build_longmemeval_ku.py --variant oracle
+
+ku-data-s:
+	python scripts/build_longmemeval_ku.py --variant s --max-sessions 12
 
 ku:
 	python -m drift.runner --config configs/longmemeval_ku.json
+
+ku-s:
+	python -m drift.runner --config configs/longmemeval_ku_s.json
 
 # The full real-data campaign. Everything is resumable: rerun after any
 # interruption or quota exhaustion and completed cells / cached calls are free.
 real-all:
 	-python scripts/download_locomo.py
 	-python scripts/download_longmemeval.py --max-questions 150
-	-python scripts/build_longmemeval_ku.py --variant s
+	-python scripts/build_longmemeval_ku.py --variant oracle
 	python -m drift.runner --config configs/locomo.json
 	python -m drift.runner --config configs/longmemeval.json
 	python -m drift.runner --config configs/longmemeval_ku.json

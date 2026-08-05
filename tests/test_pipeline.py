@@ -225,3 +225,53 @@ def test_render_fact_tolerates_zero_timestamp():
     g = BitemporalGraph(HashingEmbedder())
     f = g.add_fact("Bob", "likes", "tea", "Bob: I like tea.", t_event=0.0)
     assert render_fact(f) == "Bob: I like tea."
+
+
+def test_ku_builder_parses_reasoning_model_replies():
+    """gpt-oss:20b (the default annotator) emits a thought trace and puts the
+    answer last; taking the first line silently zeroed out every annotation."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    from build_longmemeval_ku import clean_stale
+
+    reasoning = ("We need the old value. Earlier they said 27:12.\n"
+                 "The current answer is 25:50.\n27:12")
+    assert clean_stale(reasoning, "25:50") == "27:12"
+    assert clean_stale("<think>hmm</think>\nthree", "four") == "three"
+    assert clean_stale("Answer: $350,000", "$400,000") == "$350,000"
+    # empty content (reasoning ate the whole token budget) must not annotate
+    assert clean_stale("", "25:50") is None
+
+
+def test_ku_builder_rejects_ambiguous_stale_values():
+    """staleness_hit is a substring test, so bare polarity tokens or a restated
+    gold answer would manufacture false positives."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    from build_longmemeval_ku import clean_stale
+
+    assert clean_stale("No.", "Yes.") is None          # ambiguous polarity
+    assert clean_stale("four", "four") is None          # same as gold
+    assert clean_stale("NONE", "four") is None
+    assert clean_stale("a" * 80, "four") is None        # too long to ever match
+    assert clean_stale("$350,000", "$400,000") == "$350,000"   # good value kept
+
+
+def test_ku_builder_keeps_all_evidence_sessions_when_budgeting():
+    """Capping distractors must never drop a session that carries the answer."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    from build_longmemeval_ku import budget_sessions
+
+    item = {"question_id": "q1",
+            "haystack_session_ids": [f"s{i}" for i in range(20)],
+            "answer_session_ids": ["s3", "s17"]}
+    sessions = [{"time": float(i), "lines": [f"line {i}"]} for i in range(20)]
+    out = budget_sessions(item, sessions, max_sessions=5, seed=42)
+    assert len(out) == 5
+    kept = {s["lines"][0] for s in out}
+    assert "line 3" in kept and "line 17" in kept       # evidence survives
+    assert out == sorted(out, key=lambda s: s["time"])  # stays time-ordered

@@ -40,6 +40,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import random
 import re
 import sys
 import urllib.request
@@ -110,6 +111,32 @@ AMBIGUOUS = {
 }
 
 
+def _final_line(raw: str) -> str:
+    """Pull the answer out of a possibly-reasoning reply.
+
+    Reasoning models (gpt-oss, GLM, MiniMax) emit a thought trace and put the
+    actual answer last -- and `providers.py` falls back to `reasoning_content`
+    when `content` is empty, so the trace can arrive here verbatim. Taking the
+    first line (the naive choice) yields a fragment of reasoning, which then
+    trips the length guard and silently drops every item.
+    """
+    s = (raw or "").strip()
+    if not s:
+        return ""
+    # drop common trace wrappers, then take the last non-empty line
+    s = re.sub(r"<think>.*?</think>", " ", s, flags=re.S | re.I)
+    s = re.sub(r"^\s*(analysis|thinking|reasoning)\s*:.*$", "", s,
+               flags=re.M | re.I)
+    lines = [ln.strip() for ln in s.splitlines() if ln.strip()]
+    if not lines:
+        return ""
+    last = lines[-1]
+    # strip lead-ins like "Answer:", "Old value:", "final:"
+    last = re.sub(r"^(the\s+)?(old\s+value|answer|final|result|output)\s*[:\-]\s*",
+                  "", last, flags=re.I).strip()
+    return last
+
+
 def clean_stale(raw: str, gold: str) -> str | None:
     """Normalize the model's reply into a usable stale_answer, or None.
 
@@ -118,8 +145,7 @@ def clean_stale(raw: str, gold: str) -> str | None:
     that are just the gold answer restated, and short/ambiguous tokens that
     would false-positive against ordinary prose.
     """
-    s = (raw or "").strip().strip('"').strip("'").strip()
-    s = s.split("\n")[0].strip()
+    s = _final_line(raw).strip().strip('"').strip("'").strip()
     if not s or s.upper().startswith("NONE"):
         return None
     if len(s) > 60 or len(s.split()) > 8:
@@ -135,7 +161,36 @@ def clean_stale(raw: str, gold: str) -> str | None:
     return s
 
 
-def build(raw: list[dict], provider, variant: str, limit: int | None) -> tuple[dict, list[dict]]:
+def budget_sessions(item: dict, sessions: list[dict], max_sessions: int,
+                    seed: int) -> list[dict]:
+    """Keep every evidence session, then fill up to `max_sessions` with a seeded
+    sample of distractors.
+
+    The `s` variant ships ~50 haystack sessions per question. Across 78 questions
+    that is 3,707 sessions and ~9.6M tokens of extraction -- which the free-tier
+    extraction providers cannot deliver: their per-minute *token* ceilings (not
+    just request ceilings) throttle a ~3k-token session prompt to roughly one
+    call a minute, and the first build managed only a few hundred calls in seven
+    hours before every cell failed. Capping distractors keeps the property that
+    actually mattered (real retrieval pressure, vs `oracle`'s 2.6 sessions where
+    a forgetting policy has nothing to forget) at a tractable extraction cost.
+    """
+    if max_sessions <= 0 or len(sessions) <= max_sessions:
+        return sessions
+    ids = item.get("haystack_session_ids", [])
+    ev_idx = {ids.index(sid) for sid in item.get("answer_session_ids", []) if sid in ids}
+    evidence = [s for i, s in enumerate(sessions) if i in ev_idx]
+    others = [s for i, s in enumerate(sessions) if i not in ev_idx]
+    room = max(0, max_sessions - len(evidence))
+    rng = random.Random(seed + hash(str(item.get("question_id", ""))) % 10_000)
+    picked = rng.sample(others, min(room, len(others)))
+    out = evidence + picked
+    out.sort(key=lambda s: s["time"])
+    return out
+
+
+def build(raw: list[dict], provider, variant: str, limit: int | None,
+          max_sessions: int = 12, seed: int = 42) -> tuple[dict, list[dict]]:
     ku = [x for x in raw if x.get("question_type") == "knowledge-update"]
     if limit:
         ku = ku[:limit]
@@ -149,10 +204,14 @@ def build(raw: list[dict], provider, variant: str, limit: int | None) -> tuple[d
         if len(ev) >= 2 and len({d for d, _ in ev}) >= 2:
             earlier = ev[0][1]
             try:
+                # max_tokens must leave room for a reasoning trace: gpt-oss:20b
+                # (the default local annotator) spends its whole budget thinking
+                # at 32 tokens and returns empty content, which silently zeroed
+                # out every annotation on the first build.
                 reply = provider.complete(
                     STALE_PROMPT.format(question=item["question"], answer=gold,
                                         earlier=earlier[:1500]),
-                    system=STALE_SYSTEM, max_tokens=32).text
+                    system=STALE_SYSTEM, max_tokens=512).text
                 stale = clean_stale(reply, gold)
             except Exception as e:  # noqa: BLE001 - one bad item must not kill the build
                 print(f"  ! {item.get('question_id')}: {str(e)[:80]}")
@@ -169,6 +228,7 @@ def build(raw: list[dict], provider, variant: str, limit: int | None) -> tuple[d
                 sessions.append({"time": parse_date(dates[i]) if i < len(dates) else float(i * 86400),
                                  "lines": lines})
         sessions.sort(key=lambda s: s["time"])
+        sessions = budget_sessions(item, sessions, max_sessions, seed)
 
         conversations.append({
             "id": str(item.get("question_id", f"ku_{len(conversations)}")),
@@ -201,6 +261,11 @@ def main() -> None:
     ap.add_argument("--in", dest="infile", default=None)
     ap.add_argument("--out", default=None)
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--max-sessions", type=int, default=12,
+                    help="sessions kept per question (evidence always kept, distractors "
+                         "sampled to fill). The full 's' variant's ~50 is ~9.6M extraction "
+                         "tokens and is not deliverable on free-tier providers. 0 = keep all.")
+    ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--annotator", default="ollama:gpt-oss:20b",
                     help="provider:model used to extract old values (cached, ~78 calls)")
     ap.add_argument("--review-csv", default="data/longmemeval_ku_review.csv")
@@ -218,15 +283,31 @@ def main() -> None:
 
     provider = make_provider(args.annotator, ".drift_cache")
     print(f"Annotating stale_answer with {args.annotator} (cached) ...")
-    dataset, review = build(raw, provider, args.variant, args.limit)
+    dataset, review = build(raw, provider, args.variant, args.limit,
+                            max_sessions=args.max_sessions, seed=args.seed)
+
+    n_sess = sum(len(c["sessions"]) for c in dataset["conversations"])
+    n_chars = sum(len(l) for c in dataset["conversations"] for s in c["sessions"] for l in s["lines"])
+    n_stale = sum(1 for c in dataset["conversations"] for q in c["questions"] if q["stale_answer"])
+
+    # A dataset with no stale_answer annotations is useless for this benchmark --
+    # staleness_hit() can never fire, which is exactly the hole this script exists
+    # to fill. Refuse to write it rather than let a silent zero reach a campaign.
+    if n_stale == 0:
+        print("\nERROR: 0 questions were annotated with stale_answer -- refusing to write.")
+        print("  The annotator returned nothing usable for every item. Common cause: a")
+        print("  reasoning model with too small a token budget returning empty content.")
+        print(f"  Try a non-reasoning annotator, e.g.:")
+        print(f"    python {Path(__file__).name} --variant {args.variant} "
+              f"--annotator groq:llama-3.3-70b-versatile")
+        raise SystemExit(1)
 
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(dataset))
 
-    n_sess = sum(len(c["sessions"]) for c in dataset["conversations"])
-    n_stale = sum(1 for c in dataset["conversations"] for q in c["questions"] if q["stale_answer"])
-    print(f"Wrote {out}: {len(dataset['conversations'])} questions, {n_sess} sessions, "
-          f"{n_stale} with stale_answer")
+    print(f"Wrote {out}: {len(dataset['conversations'])} questions, {n_sess} sessions "
+          f"({n_sess/max(1,len(dataset['conversations'])):.1f}/question), "
+          f"~{n_chars/4/1e6:.1f}M extraction tokens, {n_stale} with stale_answer")
 
     if args.review_csv:
         rp = Path(args.review_csv)

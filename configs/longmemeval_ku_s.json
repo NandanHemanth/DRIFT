@@ -1,0 +1,33 @@
+{
+  "dataset": "data/longmemeval_ku_s.json",
+  "results_dir": "results/longmemeval_ku_s",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ],
+  "judge_model": [
+    "ollama:gpt-oss:20b",
+    "openrouter:openai/gpt-oss-20b:free",
+    "cohere:command-r7b-12-2024"
+  ],
+  "models": [
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=35",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ]
+}
