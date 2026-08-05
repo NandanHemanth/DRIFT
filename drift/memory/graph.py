@@ -54,11 +54,29 @@ class Fact:
 
 
 class BitemporalGraph:
-    def __init__(self, embedder):
+    def __init__(self, embedder, functional_predicates: set[str] | str | None = None):
+        """functional_predicates selects which predicates admit only one true
+        object at a time, and therefore trigger contradiction handling.
+
+        The default set is tuned to personal-life conversation (lives_in,
+        works_at, ...), which silently makes contradiction a no-op on any corpus
+        outside that domain -- a fact-consolidation corpus where every predicate
+        is functional would record zero invalidations, so P2 would look inert
+        for reasons that have nothing to do with the policy. Pass an explicit
+        set, or "*" to treat every predicate as functional.
+        """
         self.embedder = embedder
         self.facts: dict[str, Fact] = {}
         self.pruned_count = 0
         self.write_rejections = 0
+        self.functional_predicates: set[str] | str = (
+            FUNCTIONAL_PREDICATES if functional_predicates is None else functional_predicates
+        )
+
+    def _is_functional(self, predicate: str) -> bool:
+        if self.functional_predicates == "*":
+            return True
+        return predicate in self.functional_predicates
 
     # ------------------------------------------------------------------ write
     def add_fact(self, subject: str, predicate: str, object_: str, text: str,
@@ -69,7 +87,7 @@ class BitemporalGraph:
             provenance=provenance, salience=salience,
             embedding=self.embedder.embed(text),
         )
-        if predicate in FUNCTIONAL_PREDICATES:
+        if self._is_functional(predicate):
             for other in self.facts.values():
                 if (other.active and not other.invalidated
                         and other.subject.lower() == fact.subject.lower()
@@ -141,7 +159,7 @@ class BitemporalGraph:
 
     def snapshot(self) -> "BitemporalGraph":
         """Deep-ish copy so policies can be compared from an identical base graph."""
-        g = BitemporalGraph(self.embedder)
+        g = BitemporalGraph(self.embedder, self.functional_predicates)
         for f in self.facts.values():
             g.facts[f.id] = Fact.from_dict(f.to_dict())
         return g

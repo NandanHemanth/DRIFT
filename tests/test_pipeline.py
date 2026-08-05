@@ -310,3 +310,43 @@ def test_ku_builder_extracts_inline_reasoning_conclusion():
     assert clean_stale("previous value was Chicago", "the suburbs") == "Chicago"
     # genuinely truncated mid-quote -> refuse rather than emit a fragment
     assert clean_stale('The earlier message says 27:12. So old value is "27:', "25:50") is None
+
+
+def test_functional_predicates_default_is_domain_specific():
+    """The default set only covers personal-life predicates, so contradiction is
+    a silent no-op on any other domain -- the reason P2 looked inert on a
+    fact-consolidation corpus."""
+    g = BitemporalGraph(HashingEmbedder())
+    g.add_fact("goaltender", "associated_sport", "ice hockey", "a", t_event=0.0)
+    g.add_fact("goaltender", "associated_sport", "pesapallo", "b", t_event=100.0)
+    assert g.stats()["invalidated_active"] == 0
+
+
+def test_functional_predicates_wildcard_enables_contradiction():
+    g = BitemporalGraph(HashingEmbedder(), functional_predicates="*")
+    g.add_fact("goaltender", "associated_sport", "ice hockey", "a", t_event=0.0)
+    g.add_fact("goaltender", "associated_sport", "pesapallo", "b", t_event=100.0)
+    assert g.stats()["invalidated_active"] == 1
+    old = next(f for f in g.facts.values() if f.object == "ice hockey")
+    assert old.invalidated and old.t_invalid_at == 100.0
+
+
+def test_functional_predicates_explicit_set():
+    g = BitemporalGraph(HashingEmbedder(), functional_predicates={"associated_sport"})
+    g.add_fact("goaltender", "associated_sport", "ice hockey", "a", t_event=0.0)
+    g.add_fact("goaltender", "associated_sport", "pesapallo", "b", t_event=100.0)
+    g.add_fact("x", "unlisted_pred", "one", "c", t_event=0.0)
+    g.add_fact("x", "unlisted_pred", "two", "d", t_event=100.0)
+    assert g.stats()["invalidated_active"] == 1   # only the listed predicate
+
+
+def test_snapshot_preserves_functional_predicates():
+    g = BitemporalGraph(HashingEmbedder(), functional_predicates="*")
+    assert g.snapshot().functional_predicates == "*"
+
+
+def test_runner_functional_predicates_config_hook():
+    from drift.runner import _functional_predicates
+    assert _functional_predicates({}) is None                       # substrate default
+    assert _functional_predicates({"functional_predicates": "*"}) == "*"
+    assert _functional_predicates({"functional_predicates": ["a", "b"]}) == {"a", "b"}

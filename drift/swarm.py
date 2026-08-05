@@ -35,7 +35,7 @@ from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
 from drift.progress import CampaignTracker, ProgressBar
 from drift.providers import FallbackProvider, make_provider
-from drift.runner import load_dataset, staleness_hit
+from drift.runner import _functional_predicates, load_dataset, staleness_hit
 
 ROUTER_SYSTEM = (
     "You route a question to the best specialist. Reply with exactly one worker id."
@@ -147,7 +147,7 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
 
     sessions, questions = global_timeline(dataset)
     policy = make_policy(policy_spec)
-    graph = BitemporalGraph(embedder)
+    graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
 
     # One bar spans ingestion + Q&A so it moves from the first session
     # onward instead of sitting silent through the whole extraction pass.
@@ -206,7 +206,7 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     for a in range(n_agents):
         observed = observed_per_agent[a]
         policy = make_policy(policy_spec)
-        graph = BitemporalGraph(embedder)
+        graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
         t_last = 0.0
         for s_idx, session in enumerate(observed):  # already time-ordered
             ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor)
@@ -256,7 +256,7 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
 
     sessions, questions = global_timeline(dataset)
     policy = make_policy(policy_spec)
-    graph = BitemporalGraph(embedder)
+    graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
     t_last = 0.0
     # One bar spans ingestion + Q&A so it moves from the first session
     # onward instead of sitting silent through the whole extraction pass.

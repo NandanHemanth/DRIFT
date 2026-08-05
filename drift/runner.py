@@ -43,6 +43,19 @@ def _rotated_fallback(providers: list[BaseProvider], i: int) -> BaseProvider:
     return FallbackProvider(order)
 
 
+def _functional_predicates(cfg: dict):
+    """Config hook for which predicates admit one true object at a time.
+
+    Accepts "*" (every predicate is functional -- right for fact-consolidation
+    corpora) or an explicit list. Omitted keeps the substrate default, so
+    existing configs are unaffected.
+    """
+    fp = cfg.get("functional_predicates")
+    if fp is None or fp == "*":
+        return fp
+    return set(fp)
+
+
 def load_dataset(path: str) -> dict:
     """Dataset schema:
     {"conversations": [{"id": str, "sessions": [{"time": float, "lines": [str]}],
@@ -61,6 +74,7 @@ def staleness_hit(answer: str, stale_answer: str | None) -> bool:
 
 def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_path: Path) -> dict:
     embedder = make_embedder(cfg.get("embedder", "hashing"))
+    fp = _functional_predicates(cfg)
     cache_dir = cfg.get("cache_dir", ".drift_cache")
     answer_provider = make_provider(model_spec, cache_dir)
     # extract_model may be a single spec or a list of specs. A list is
@@ -92,7 +106,7 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
         extract_provider = _rotated_fallback(extract_providers, convo_i)
         judge_provider = _rotated_fallback(judge_providers, convo_i)
         policy = make_policy(policy_spec)  # fresh policy state per conversation
-        graph = BitemporalGraph(embedder)
+        graph = BitemporalGraph(embedder, functional_predicates=fp)
         t_last = 0.0
         for s_idx, session in enumerate(convo["sessions"]):
             ingest_session(session, graph, policy, extract_provider)

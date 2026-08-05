@@ -1,5 +1,6 @@
 .PHONY: test smoke locomo tables swarm swarm-real figures dashboard clean \
-        longmemeval-data longmemeval real-all record ku-data ku
+        longmemeval-data longmemeval real-all record ku-data ku ku-data-s ku-s \
+        fc-data fc
 
 longmemeval-data:
 	python scripts/download_longmemeval.py --max-questions 150
@@ -32,19 +33,37 @@ ku:
 ku-s:
 	python -m drift.runner --config configs/longmemeval_ku_s.json
 
+# MemoryAgentBench FactConsolidation (ICLR 2026, arXiv:2507.05257, MIT).
+# The strongest staleness benchmark available: later facts overwrite earlier ones
+# on the same (subject, predicate) and the gold answer is always the latest
+# value, so stale_answer is recoverable without an LLM annotator -- 65/100
+# questions on the 6k split, vs 0/300 on LoCoMo and 0/150 on LongMemEval.
+# Needs `functional_predicates: "*"` (set in the config): the substrate default
+# only covers personal-life predicates, under which this corpus records zero
+# invalidations and P2 looks inert for reasons unrelated to the policy.
+# --context {6k,32k,64k,262k} is a built-in retrieval-pressure ablation.
+fc-data:
+	python scripts/download_factconsolidation.py --context 6k --hop sh
+
+fc:
+	python -m drift.runner --config configs/factconsolidation.json
+
 # The full real-data campaign. Everything is resumable: rerun after any
 # interruption or quota exhaustion and completed cells / cached calls are free.
 real-all:
 	-python scripts/download_locomo.py
 	-python scripts/download_longmemeval.py --max-questions 150
 	-python scripts/build_longmemeval_ku.py --variant oracle
+	-python scripts/download_factconsolidation.py --context 6k --hop sh
 	python -m drift.runner --config configs/locomo.json
 	python -m drift.runner --config configs/longmemeval.json
 	python -m drift.runner --config configs/longmemeval_ku.json
+	python -m drift.runner --config configs/factconsolidation.json
 	python -m drift.swarm --config configs/swarm_real.json
 	-python analysis/plots.py results/locomo
 	-python analysis/plots.py results/longmemeval
 	-python analysis/plots.py results/longmemeval_ku
+	-python analysis/plots.py results/factconsolidation
 	-python analysis/plots.py results/swarm_real --swarm
 	python analysis/dashboard.py results/* -o docs/dashboard.html
 	python analysis/record.py results/*
