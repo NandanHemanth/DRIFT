@@ -207,7 +207,11 @@ def test_render_fact_surfaces_valid_time():
     assert "superseded" not in rendered
 
 
-def test_render_fact_marks_superseded():
+def test_render_fact_hides_supersession_by_default():
+    """t_invalid_at is the output of contradiction detection, and acting on it is
+    what P2 does. Printing it for every policy would give P0 P2's mechanism for
+    free -- observed live as P0 scoring 0.86 accuracy with 0.000 staleness on a
+    corpus built entirely from superseded facts."""
     g = BitemporalGraph(HashingEmbedder())
     g.add_fact("Alice", "lives_in", "Boston", "Alice: I live in Boston.",
                t_event=1_684_000_000.0)
@@ -216,7 +220,17 @@ def test_render_fact_marks_superseded():
     from drift.pipeline import render_fact
     old = next(f for f in g.facts.values() if f.object == "Boston")
     assert old.invalidated
-    assert "superseded" in render_fact(old)
+    assert "superseded" not in render_fact(old)
+    assert "superseded" in render_fact(old, show_supersession=True)
+
+
+def test_answer_system_prompt_carries_no_conflict_resolution_policy():
+    """The prompt may say what the date prefix is; it must not say how to pick
+    between disagreeing facts, which is the policy's job."""
+    from drift.pipeline import ANSWER_SYSTEM
+    lowered = ANSWER_SYSTEM.lower()
+    for leak in ("most recent", "no longer current", "superseded", "prefer"):
+        assert leak not in lowered, f"prompt leaks policy logic: {leak!r}"
 
 
 def test_render_fact_tolerates_zero_timestamp():

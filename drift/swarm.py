@@ -124,8 +124,10 @@ def summarize(records: list[dict]) -> dict:
 
 
 def _answer_and_judge(q: dict, graph: BitemporalGraph, policy, provider,
-                      judge_provider, k: int, now: float) -> dict:
-    result = answer_question(q["question"], graph, policy, provider, k=k, now=now)
+                      judge_provider, k: int, now: float,
+                      show_supersession: bool = False) -> dict:
+    result = answer_question(q["question"], graph, policy, provider, k=k, now=now,
+                             show_supersession=show_supersession)
     verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider)
     return {
         "conversation": q["conversation"], "category": q.get("category", "single_hop"),

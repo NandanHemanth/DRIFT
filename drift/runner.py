@@ -117,7 +117,8 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
 
         for q in convo["questions"]:
             result = answer_question(q["question"], graph, policy, answer_provider,
-                                     k=cfg.get("retrieval_k", 8), now=t_last)
+                                     k=cfg.get("retrieval_k", 8), now=t_last,
+                                     show_supersession=cfg.get("show_supersession", False))
             verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider)
             records.append({
                 "conversation": convo["id"], "category": q.get("category", "single_hop"),
