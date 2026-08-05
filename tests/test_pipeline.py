@@ -275,3 +275,38 @@ def test_ku_builder_keeps_all_evidence_sessions_when_budgeting():
     kept = {s["lines"][0] for s in out}
     assert "line 3" in kept and "line 17" in kept       # evidence survives
     assert out == sorted(out, key=lambda s: s["time"])  # stays time-ordered
+
+
+def test_cache_key_separates_different_max_tokens():
+    """A reasoning model given 32 tokens returns a truncated trace and given 512
+    returns the answer -- those must not share a cache entry, or raising the
+    budget silently replays the response generated under the old one."""
+    from drift.providers import DiskCache
+    a = DiskCache.key("ollama", "gpt-oss:20b", "p", 0.0, max_tokens=32)
+    b = DiskCache.key("ollama", "gpt-oss:20b", "p", 0.0, max_tokens=512)
+    assert a != b
+
+
+def test_cache_key_stable_for_default_max_tokens():
+    """Existing caches must stay warm: keys for default-budget calls (extraction,
+    answering, judging) are unchanged whether or not max_tokens is passed."""
+    from drift.providers import DiskCache
+    omitted = DiskCache.key("nvidia", "m", "p", 0.0)
+    explicit = DiskCache.key("nvidia", "m", "p", 0.0, max_tokens=DiskCache.DEFAULT_MAX_TOKENS)
+    assert omitted == explicit
+
+
+def test_ku_builder_extracts_inline_reasoning_conclusion():
+    """gpt-oss states its conclusion inside the sentence rather than on its own
+    line: '...So old value is "three".' Taking the whole line would trip the
+    length guard and drop the item."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+    from build_longmemeval_ku import clean_stale
+
+    assert clean_stale('We need the old value. So old value is "three".', "four") == "three"
+    assert clean_stale("The old value is $350,000", "$400,000") == "$350,000"
+    assert clean_stale("previous value was Chicago", "the suburbs") == "Chicago"
+    # genuinely truncated mid-quote -> refuse rather than emit a fragment
+    assert clean_stale('The earlier message says 27:12. So old value is "27:', "25:50") is None

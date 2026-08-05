@@ -131,6 +131,26 @@ def _final_line(raw: str) -> str:
     if not lines:
         return ""
     last = lines[-1]
+
+    # A reasoning model often states its conclusion inline rather than on its own
+    # line -- e.g. 'We need to extract... So old value is "three".' Pull the value
+    # out of that sentence before falling back to the whole line, which would be
+    # rejected as too long.
+    m = re.search(
+        r"(?:old\s+value|previous\s+value|answer|it\s+was|used\s+to\s+be)\s*"
+        r"(?:is|was|:)?\s*[\"'“]([^\"'”]{1,60})[\"'”]",
+        last, flags=re.I)
+    if m:
+        return m.group(1).strip()
+    m = re.search(r"(?:old\s+value|previous\s+value)\s*(?:is|was|:)\s*([^.\n]{1,60})",
+                  last, flags=re.I)
+    if m:
+        return m.group(1).strip()
+    # last resort: a trailing quoted span anywhere in the line
+    q = re.findall(r"[\"'“]([^\"'”]{1,60})[\"'”]", last)
+    if q:
+        return q[-1].strip()
+
     # strip lead-ins like "Answer:", "Old value:", "final:"
     last = re.sub(r"^(the\s+)?(old\s+value|answer|final|result|output)\s*[:\-]\s*",
                   "", last, flags=re.I).strip()

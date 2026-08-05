@@ -99,10 +99,28 @@ class DiskCache:
     def _path(self, key: str) -> Path:
         return self.dir / f"{key}.json"
 
+    DEFAULT_MAX_TOKENS = 1024
+
     @staticmethod
-    def key(provider: str, model: str, prompt: str, temperature: float) -> str:
-        payload = json.dumps([provider, model, prompt, temperature], sort_keys=True)
-        return hashlib.sha256(payload.encode()).hexdigest()
+    def key(provider: str, model: str, prompt: str, temperature: float,
+            max_tokens: int | None = None) -> str:
+        """Content-address a completion request.
+
+        max_tokens participates in the key because it materially changes the
+        response: a reasoning model given 32 tokens returns a truncated thought
+        trace, and given 512 returns the actual answer. Omitting it meant those
+        two requests collided, so raising a token budget silently replayed the
+        response generated under the old one -- which is exactly how a fixed
+        annotator kept returning the broken output it was supposed to fix.
+
+        It is folded in only when it differs from DEFAULT_MAX_TOKENS, so keys
+        for the overwhelming majority of calls (extraction, answering, judging,
+        which all use the default) are unchanged and existing caches stay warm.
+        """
+        payload = [provider, model, prompt, temperature]
+        if max_tokens is not None and max_tokens != DiskCache.DEFAULT_MAX_TOKENS:
+            payload.append({"max_tokens": max_tokens})
+        return hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
 
     def get(self, key: str) -> dict | None:
         p = self._path(key)
@@ -162,7 +180,8 @@ class OpenAICompatProvider(BaseProvider):
         self.max_retries = max_retries
 
     def complete(self, prompt: str, system: str = "", temperature: float = 0.0, max_tokens: int = 1024) -> Completion:
-        ckey = DiskCache.key(self.name, self.model, system + "\n" + prompt, temperature)
+        ckey = DiskCache.key(self.name, self.model, system + "\n" + prompt, temperature,
+                             max_tokens=max_tokens)
         hit = self.cache.get(ckey)
         if hit is not None:
             return Completion(hit["text"], hit["pt"], hit["ct"], cached=True)
