@@ -43,13 +43,54 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import urllib.parse
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-PARQUET_URL = ("https://huggingface.co/datasets/ai-hyz/MemoryAgentBench/"
-               "resolve/main/data/Conflict_Resolution-00000-of-00001.parquet")
+# Read rows over the HF datasets-server JSON API rather than the parquet file.
+# DRIFT's core is stdlib-only (pyproject.toml: dependencies = []), and pulling in
+# pyarrow just to read eight rows would break that for every user of the repo.
+ROWS_API = "https://datasets-server.huggingface.co/rows"
+HF_DATASET = "ai-hyz/MemoryAgentBench"
+HF_SPLIT = "Conflict_Resolution"
+
+
+def fetch_row(offset: int, timeout: int = 180) -> dict | None:
+    """One row of the Conflict_Resolution split, or None past the end."""
+    q = urllib.parse.urlencode({"dataset": HF_DATASET, "config": "default",
+                                "split": HF_SPLIT, "offset": offset, "length": 1})
+    with urllib.request.urlopen(f"{ROWS_API}?{q}", timeout=timeout) as resp:
+        payload = json.loads(resp.read())
+    rows = payload.get("rows") or []
+    if not rows:
+        return None
+    if rows[0].get("truncated_cells"):
+        raise SystemExit(
+            f"row {offset} came back truncated ({rows[0]['truncated_cells']}). "
+            "The API caps very large cells; use a smaller --context.")
+    return rows[0]["row"]
+
+
+def split_name(row: dict) -> str:
+    ids = (row.get("metadata") or {}).get("qa_pair_ids") or [""]
+    return str(ids[0]).rsplit("_no", 1)[0]
+
+
+def find_split(want: str, max_rows: int = 16) -> dict:
+    """Scan rows for the requested split, fetching one at a time so the huge
+    262k-token rows are never downloaded unless they are the one asked for."""
+    seen = []
+    for offset in range(max_rows):
+        row = fetch_row(offset)
+        if row is None:
+            break
+        name = split_name(row)
+        seen.append(name)
+        if name == want:
+            return row
+    raise SystemExit(f"no split matching {want!r}. available: {sorted(set(seen))}")
 
 # Connectors that separate subject from object in FactConsolidation statements.
 # Ordered longest-first so "is located in the continent of" wins over " is ".
@@ -152,26 +193,11 @@ def main() -> None:
 
     out = Path(args.out or f"data/factconsolidation_{args.hop}_{args.context}.json")
 
-    try:
-        import pyarrow.parquet as pq
-    except ImportError:
-        raise SystemExit("needs pyarrow:  pip install pyarrow")
-
-    tmp = Path("/tmp/_fc.parquet")
-    if not tmp.exists():
-        print(f"Downloading {PARQUET_URL} ...")
-        urllib.request.urlretrieve(PARQUET_URL, tmp)
-
-    rows = pq.read_table(tmp).to_pylist()
     want = f"factconsolidation_{args.hop}_{args.context}"
-    match = [r for r in rows
-             if str((r.get("metadata") or {}).get("qa_pair_ids", [""])[0]).startswith(want)]
-    if not match:
-        avail = sorted({str((r.get("metadata") or {}).get("qa_pair_ids", [""])[0]).rsplit("_no", 1)[0]
-                        for r in rows})
-        raise SystemExit(f"no split matching {want!r}. available: {avail}")
+    print(f"Fetching {HF_DATASET} [{HF_SPLIT}] -> {want} ...")
+    row = find_split(want)
 
-    convo = convert(match[0], args.facts_per_session, args.day_step)
+    convo = convert(row, args.facts_per_session, args.day_step)
     dataset = {"name": want, "conversations": [convo]}
 
     out.parent.mkdir(parents=True, exist_ok=True)
