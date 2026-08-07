@@ -5,11 +5,11 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "drift-memory"
 version = "1.0.0"
-description = "DRIFT: a controlled framework for choosing a forgetting policy in LLM agent memory over a bitemporal knowledge graph"
+description = "DRIFT (Decay Rates In Forgetful biTemporal memory): a controlled framework for choosing a forgetting policy in LLM agent memory"
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
-authors = [{ name = "Nandan Hemanth" }]
+authors = [{ name = "Nandan Hemanth" }, { name = "Hao Wang" }]
 keywords = ["llm", "agents", "memory", "forgetting", "knowledge-graph", "bitemporal"]
 classifiers = [
   "Intended Audience :: Science/Research",

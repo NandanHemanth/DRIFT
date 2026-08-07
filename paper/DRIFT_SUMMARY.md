@@ -1,4 +1,6 @@
-# DRIFT: a one-page summary
+# DRIFT: Decay Rates in Forgetful Bitemporal Memory
+
+*One-page summary*
 
 **Nandan Hemanth, Hao Wang** · Stevens Institute of Technology · August 2026
 Full report: [`REPORT.md`](REPORT.md) · Code: <https://github.com/nandanhemanth/DRIFT>

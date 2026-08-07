@@ -1,4 +1,4 @@
-"""DRIFT: Decay and Retention In Forgetful Temporal-graph memory.
+"""DRIFT: Decay Rates In Forgetful biTemporal memory.
 
 A controlled framework for choosing a forgetting policy in LLM agent memory
 over a bitemporal knowledge-graph substrate.

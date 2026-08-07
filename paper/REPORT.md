@@ -1,10 +1,10 @@
-# When Should Agents Forget?
+# DRIFT: Decay Rates in Forgetful Bitemporal Memory
 
-## A Controlled Study of Forgetting Policies in Bitemporal Knowledge-Graph Agent Memory
+## A Controlled Study of Forgetting Policies in LLM Agent Memory
 
 **Authors:** Nandan Hemanth, Hao Wang
 **Affiliation:** Stevens Institute of Technology
-**Framework:** DRIFT (Decay and Retention In Forgetful Temporal-graph memory) v1.0.0
+**Framework:** DRIFT (Decay Rates In Forgetful biTemporal memory) v1.0.0
 **Code, data and artifacts:** [`../README.md`](../README.md)
 **Date:** August 2026
 

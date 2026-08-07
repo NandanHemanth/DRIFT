@@ -1,6 +1,6 @@
 # DRIFT
 
-**Decay and Retention In Forgetful Temporal-graph memory.**
+**Decay Rates in Forgetful Bitemporal Memory.**
 
 A controlled framework for answering one question about your agent: **which forgetting policy should its memory use?**
 
@@ -391,8 +391,7 @@ Then add `"P6"` to a config's `policies` list. Spec strings take arguments: `"P6
 ```bibtex
 @misc{hemanth2026drift,
   author = {Hemanth, Nandan and Wang, Hao},
-  title  = {{DRIFT}: A Controlled Study of Forgetting Policies in
-            Bitemporal Knowledge-Graph Agent Memory},
+  title  = {{DRIFT}: Decay Rates in Forgetful Bitemporal Memory},
   year   = {2026},
   school = {Stevens Institute of Technology},
   note   = {https://github.com/nandanhemanth/DRIFT}
