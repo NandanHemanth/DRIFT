@@ -6,7 +6,7 @@ Guidance for Claude Code (claude.ai/code) when working in this repository.
 
 DRIFT is a research framework for comparing *forgetting policies* in LLM agent memory over a fixed bitemporal knowledge-graph substrate. The independent variable under test is always the policy (NOMEM, P0-P5); everything else (substrate, retrieval, extraction, judging) is held constant.
 
-Read `README.md` first, then `paper/REPORT.md` for the full write-up and `paper/REPO_GUIDE.md` for a paper-shaped map of claims to code.
+Read `README.md` first, then `paper/REPORT.md` for the full write-up, which maps every numeric claim to the code and data that produce it.
 
 The core is **stdlib-only** (`pyproject.toml`: `dependencies = []`). No network or API keys are needed to run tests or the offline smoke benchmark; only `pytest` (dev) and `matplotlib` (analysis) are ever required.
 
@@ -20,7 +20,7 @@ scripts/          benchmark converters and results compaction
 tests/            99 offline tests
 data/             converted datasets
 artifacts/        everything the runs produced (results, replays, dashboard)
-paper/            REPORT.md, references/, REPO_GUIDE.md, LaTeX sources
+paper/            REPORT.md, DRIFT_SUMMARY.md, references/, LaTeX sources
 ```
 
 `PYTHONPATH=src` is exported by the Makefile, so no install is needed to run anything. `pip install -e .` also works and is what a third-party project uses.
@@ -90,6 +90,6 @@ Key modules:
 
 - Runner/swarm failures are caught per cell so one dead provider does not kill a campaign. Completed cells are cached; the run resumes rather than being retried in a loop.
 - Contradiction closing is non-destructive by design: only a policy's `after_session`/`on_retrieve` hooks hide or delete data. Keep that separation when touching `graph.py` or `policies.py`.
-- `paper/REPORT.md` and `paper/REPO_GUIDE.md` map specific numeric claims to exact code paths. If you change substrate, policy or metric behaviour, check whether a cited claim needs updating.
+- `paper/REPORT.md` maps specific numeric claims to exact code paths. If you change substrate, policy or metric behaviour, check whether a cited claim needs updating.
 - Result cells are stored with embeddings stripped (`make compact`, 230 MB to 6 MB). Nothing in `src/analysis/` reads the vectors; they are recomputed on every run.
 - Prose in this repo avoids em dashes. Keep it that way.
