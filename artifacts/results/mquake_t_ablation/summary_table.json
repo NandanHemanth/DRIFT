@@ -1,0 +1,59 @@
+[
+ {
+  "policy": "P0",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.84375,
+  "mean_f1": 0.9726731601731601,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 734.0,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 1,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785985722.430596
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.9801136363636364,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 732.5625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 1,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785987376.3533041
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8020833333333334,
+  "mean_f1": 0.831712962962963,
+  "staleness_rate": 0.14583333333333334,
+  "mean_tokens_per_q": 726.9895833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 351,
+   "active_facts": 351,
+   "invalidated_active": 0,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "timestamp": 1785989699.984056
+ }
+]

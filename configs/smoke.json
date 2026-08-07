@@ -1,6 +1,6 @@
 {
   "dataset": "data/synthetic_smoke.json",
-  "results_dir": "results/smoke",
+  "results_dir": "artifacts/results/smoke",
   "embedder": "hashing",
   "retrieval_k": 8,
   "extract_model": "mock",

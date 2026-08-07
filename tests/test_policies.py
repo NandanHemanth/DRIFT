@@ -62,7 +62,7 @@ def test_make_policy_parses_kwargs():
 
 
 def test_nomem_baseline_retrieves_nothing():
-    """NOMEM: floor baseline — memory exists but retrieval is disabled."""
+    """NOMEM: floor baseline - memory exists but retrieval is disabled."""
     from drift.policies import make_policy
     from drift.memory.graph import BitemporalGraph
     from drift.embeddings import make_embedder
@@ -76,7 +76,7 @@ def test_nomem_baseline_retrieves_nothing():
 def test_p5_topology_consolidation_is_time_blind():
     """P5 resolves contradictions by structural support, never by time.
 
-    With equal support it keeps ONE fact per (subject, predicate) — but unlike
+    With equal support it keeps ONE fact per (subject, predicate) - but unlike
     P2 it cannot know which is current. This is the designed ablation gap.
     """
     from drift.policies import make_policy

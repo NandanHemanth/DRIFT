@@ -1,0 +1,1159 @@
+{
+ "conversations": [
+  {
+   "id": "mquake_t_sh",
+   "sessions": [
+    {
+     "time": 1704067200.0,
+     "lines": [
+      "user: The head of government of Wichita is Jeff Longwell."
+     ]
+    },
+    {
+     "time": 1704153600.0,
+     "lines": [
+      "user: The headquarters of Mozilla Corporation is located in the city of Mountain View.",
+      "user: The capital of Czech Socialist Republic is Prague.",
+      "user: rugby was created in the country of England.",
+      "user: Pink Floyd was created in the country of United Kingdom.",
+      "user: Dom Mintoff is a citizen of Malta.",
+      "user: Choi Kyung-ju is a citizen of South Korea.",
+      "user: The head of state of South Korea is Moon Jae-in.",
+      "user: The head of government of Italy is Giuseppe Conte."
+     ]
+    },
+    {
+     "time": 1704240000.0,
+     "lines": [
+      "user: The company that produced Aston Martin DB7 is Aston Martin Lagonda.",
+      "user: European Baseball Championship is associated with the sport of baseball.",
+      "user: Levi Woodbury is a citizen of United States of America.",
+      "user: The Highlanders is a citizen of Scotland.",
+      "user: Antonis Remos is a citizen of Greece."
+     ]
+    },
+    {
+     "time": 1704326400.0,
+     "lines": [
+      "user: The head of government of Marseille is Jean-Claude Gaudin.",
+      "user: Noam Dar is a citizen of Israel.",
+      "user: Petra Cetkovsk\u00e1 is a citizen of Czech Republic."
+     ]
+    },
+    {
+     "time": 1704412800.0,
+     "lines": [
+      "user: Jim Davis is a citizen of United States of America.",
+      "user: Bachir Gemayel is a citizen of Lebanon.",
+      "user: Leandro Locsin is a citizen of Philippines.",
+      "user: The head of government of Boston is Marty Walsh.",
+      "user: Sakis Rouvas is a citizen of Greece.",
+      "user: Martynas Ma\u017evydas is a citizen of Lithuania.",
+      "user: George Brandis is a citizen of Australia.",
+      "user: The head of government of Prague is Zden\u011bk H\u0159ib.",
+      "user: Wong Kar-wai is a citizen of Hong Kong.",
+      "user: Nonito Donaire is a citizen of Philippines.",
+      "user: The headquarters of Annapurna Pictures is located in the city of Los Angeles.",
+      "user: Mister Geppetto's child is Pinocchio."
+     ]
+    },
+    {
+     "time": 1704499200.0,
+     "lines": [
+      "user: Ahn Seong-ki is a citizen of South Korea.",
+      "user: The headquarters of HBO is located in the city of New York City.",
+      "user: Hirohiko Araki is famous for JoJo's Bizarre Adventure.",
+      "user: R. D. Blackmore is famous for Lorna Doone.",
+      "user: The New Saints F.C. is associated with the sport of association football.",
+      "user: Omar Karami is a citizen of Lebanon.",
+      "user: The headquarters of Suncor Energy is located in the city of Calgary.",
+      "user: The head of state of Sri Lanka is Maithripala Sirisena.",
+      "user: The head of government of Cincinnati is John Cranley.",
+      "user: The head of state of Kosovo is Hashim Tha\u00e7i.",
+      "user: Kim Joo-hyuk is a citizen of South Korea."
+     ]
+    },
+    {
+     "time": 1704585600.0,
+     "lines": [
+      "user: The head of government of New Zealand is Jacinda Ardern.",
+      "user: The head of government of Philippines is Rodrigo Duterte.",
+      "user: Quadrophenia was performed by The Who.",
+      "user: The head of government of Berlin is Michael M\u00fcller."
+     ]
+    },
+    {
+     "time": 1704672000.0,
+     "lines": [
+      "user: The head of government of Tucson is Jonathan Rothschild.",
+      "user: The head of government of Italy is Giorgia Meloni.",
+      "user: The head of state of Dominican Republic is Danilo Medina.",
+      "user: The head of government of New York City is Bill de Blasio.",
+      "user: Benjamin Mazar is a citizen of Israel.",
+      "user: Oasis was created in the country of United Kingdom.",
+      "user: Robert Baer is employed by Central Intelligence Agency.",
+      "user: Nogi Maresuke is a citizen of Japan.",
+      "user: Antonis Samaras is a citizen of Greece.",
+      "user: Blanka Vla\u0161i\u0107 is a citizen of Croatia.",
+      "user: The head of government of Boston is Michelle Wu.",
+      "user: The head of state of Lebanon is Michel Aoun."
+     ]
+    },
+    {
+     "time": 1704758400.0,
+     "lines": [
+      "user: Norihiko Hibino is a citizen of Japan.",
+      "user: Santo Cilauro is a citizen of Australia.",
+      "user: The head of government of Ecuador is Len\u00edn Moreno.",
+      "user: Vang Pao is a citizen of Laos.",
+      "user: The head of government of New York City is Eric Adams.",
+      "user: B1A4 was created in the country of South Korea.",
+      "user: Bleach was created in the country of Japan.",
+      "user: Nobuhiro Watsuki is famous for Rurouni Kenshin.",
+      "user: Naoko Takeuchi is famous for Sailor Moon.",
+      "user: Alternative Press was created in the country of United States of America.",
+      "user: The univeristy where Greg Nickels was educated is University of Washington."
+     ]
+    },
+    {
+     "time": 1704844800.0,
+     "lines": [
+      "user: The head of government of Cincinnati is Aftab Pureval.",
+      "user: The head of government of Philippines is Bongbong Marcos.",
+      "user: Jonathan Raban is a citizen of United Kingdom.",
+      "user: The headquarters of Mozilla Corporation is located in the city of San Francisco.",
+      "user: The company that produced AMC AMX is American Motors Corporation.",
+      "user: Peter Jackson is a citizen of New Zealand.",
+      "user: Ross Taylor is a citizen of New Zealand."
+     ]
+    },
+    {
+     "time": 1704931200.0,
+     "lines": [
+      "user: Walther Wever is a citizen of Germany.",
+      "user: The headquarters of Annie E. Casey Foundation is located in the city of Baltimore.",
+      "user: Maarja-Liis Ilus is a citizen of Estonia.",
+      "user: Shahid Khaqan Abbasi is a citizen of Pakistan.",
+      "user: The head of state of Ecuador is Len\u00edn Moreno.",
+      "user: The head of government of Czech Republic is Andrej Babi\u0161.",
+      "user: Android Jelly Bean was developed by Google.",
+      "user: Adam Gilchrist is a citizen of Australia.",
+      "user: The head of state of Panama is Juan Carlos Varela.",
+      "user: The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.",
+      "user: The chief executive officer of McDonald's is Steve Easterbrook.",
+      "user: Arturo Vidal is a citizen of Chile.",
+      "user: The head of government of San Juan is Carmen Yul\u00edn Cruz."
+     ]
+    },
+    {
+     "time": 1705017600.0,
+     "lines": [
+      "user: Vicky Leandros is a citizen of Greece.",
+      "user: Tom\u00e1\u0161 Berdych is a citizen of Czech Republic.",
+      "user: The type of music that Eric Paslay plays is country music.",
+      "user: The univeristy where Christine Gregoire was educated is University of Washington.",
+      "user: Shinhwa was created in the country of South Korea.",
+      "user: Dave Duncan is associated with the sport of baseball."
+     ]
+    },
+    {
+     "time": 1705104000.0,
+     "lines": [
+      "user: The head of government of Hong Kong is Carrie Lam.",
+      "user: Kanon was created in the country of Japan.",
+      "user: The head of state of Mauritania is Mohamed Ould Abdel Aziz.",
+      "user: The head of government of Los Angeles is Eric Garcetti.",
+      "user: The head of state of Lebanon is Najib Mikati.",
+      "user: The headquarters of Lebensborn is located in the city of Berlin.",
+      "user: John Woo is a citizen of Hong Kong.",
+      "user: Aung San is a citizen of Myanmar."
+     ]
+    },
+    {
+     "time": 1705190400.0,
+     "lines": [
+      "user: The head of state of Israel is Reuven Rivlin.",
+      "user: The head of state of Zambia is Edgar Lungu.",
+      "user: The head of government of United Kingdom is Boris Johnson.",
+      "user: The head coach of Norway national football team is Lars Lagerb\u00e4ck.",
+      "user: The headquarters of Annapurna Pictures is located in the city of Vietnam.",
+      "user: Pierre Gemayel is a citizen of Lebanon.",
+      "user: The head of state of Estonia is Kersti Kaljulaid.",
+      "user: The headquarters of Johns Hopkins University Press is located in the city of Baltimore."
+     ]
+    },
+    {
+     "time": 1705276800.0,
+     "lines": [
+      "user: The head of government of Pakistan is Imran Khan.",
+      "user: The head of government of Sweden is Stefan L\u00f6fven.",
+      "user: The head of government of Laos is Thongloun Sisoulith.",
+      "user: Ne Win is a citizen of Myanmar.",
+      "user: The head of government of Pittsburgh is Bill Peduto.",
+      "user: The head of government of United States of America is Donald Trump.",
+      "user: The head of government of Lithuania is Saulius Skvernelis.",
+      "user: Milo\u0161 Zeman is a citizen of Czech Republic."
+     ]
+    },
+    {
+     "time": 1705363200.0,
+     "lines": [
+      "user: The head of government of Lebanon is Saad Hariri.",
+      "user: The head of government of Tucson is Regina Romero.",
+      "user: The head of government of San Diego is Kevin Faulconer.",
+      "user: Ichij\u014d is a citizen of Japan.",
+      "user: Mohammad-Ali Rajai is a citizen of Iran.",
+      "user: Humayun Saeed is a citizen of Pakistan.",
+      "user: Stephen Constantine is a citizen of England."
+     ]
+    },
+    {
+     "time": 1705449600.0,
+     "lines": [
+      "user: The head of government of Taipei is Ko Wen-je.",
+      "user: Roberto Bola\u00f1o is a citizen of Chile.",
+      "user: Selangor FA is associated with the sport of association football.",
+      "user: The head of government of Lithuania is Ingrida \u0160imonyt\u0117.",
+      "user: Moammar Rana is a citizen of Pakistan.",
+      "user: Kl\u00e1ra Koukalov\u00e1 is a citizen of Czech Republic.",
+      "user: The head of government of Baltimore is Catherine E. Pugh."
+     ]
+    },
+    {
+     "time": 1705536000.0,
+     "lines": [
+      "user: The head of government of Germany is Angela Merkel.",
+      "user: Highway to Hell was performed by AC/DC.",
+      "user: The headquarters of Scientific American is located in the city of New York City.",
+      "user: Ren\u00e1ta Tomanov\u00e1 is a citizen of Czech Republic.",
+      "user: The head of government of Nashville is David Briley.",
+      "user: The head of state of United States of America is Donald Trump.",
+      "user: The head of government of Chile is Sebastian Pi\u00f1era.",
+      "user: The head of state of Croatia is Kolinda Grabar-Kitarovi\u0107.",
+      "user: The head of government of Wichita is Brandon Whipple.",
+      "user: Thomas Hutchinson was born in the city of Boston.",
+      "user: Giacomo Meyerbeer is a citizen of Germany.",
+      "user: The head of state of Mauritania is Mohamed Ould Ghazouani.",
+      "user: The head of government of Norway is Erna Solberg.",
+      "user: Choi Ji-woo is a citizen of South Korea."
+     ]
+    },
+    {
+     "time": 1705622400.0,
+     "lines": [
+      "user: The head of state of Slovenia is Borut Pahor.",
+      "user: Nambaryn Enkhbayar is a citizen of Mongolia.",
+      "user: The head of government of Taipei is Chiang Wan-an.",
+      "user: Kate Havnevik is a citizen of Norway.",
+      "user: The head of government of Germany is Olaf Scholz.",
+      "user: Egil Olsen is a citizen of Norway.",
+      "user: Iain De Caestecker is a citizen of United Kingdom.",
+      "user: Peter Cosgrove is a citizen of Australia.",
+      "user: The univeristy where Jan Hus was educated is Charles University."
+     ]
+    },
+    {
+     "time": 1705708800.0,
+     "lines": [
+      "user: The headquarters of Yamaha Corporation is located in the city of Hamamatsu.",
+      "user: The head of government of Panama is Juan Carlos Varela.",
+      "user: Lucie Hradeck\u00e1 is a citizen of Czech Republic.",
+      "user: Felix Hausdorff is a citizen of Germany.",
+      "user: The head of government of Berlin is Franziska Giffey.",
+      "user: The head of government of Marseille is Beno\u00eet Payan.",
+      "user: Sporting Gij\u00f3n is associated with the sport of association football.",
+      "user: Georgios Tsolakoglou is a citizen of Greece.",
+      "user: The head of state of Panama is Laurentino Cortizo.",
+      "user: Mo Udall is employed by University of Arizona.",
+      "user: The head of government of Pittsburgh is Ed Gainey.",
+      "user: The head of government of Honduras is Juan Orlando Hern\u00e1ndez.",
+      "user: Paul Samwell-Smith is a citizen of United Kingdom.",
+      "user: The head of government of United States of America is Joe Biden.",
+      "user: Samir Kassir is a citizen of Lebanon."
+     ]
+    },
+    {
+     "time": 1705795200.0,
+     "lines": [
+      "user: Asian Baseball Championship is associated with the sport of baseball.",
+      "user: The headquarters of Scientific American is located in the city of Los Angeles.",
+      "user: Kay Bailey Hutchison is a citizen of United States of America.",
+      "user: Gustav Bauer died in the city of Berlin.",
+      "user: The head of state of Croatia is Zoran Milanovi\u0107.",
+      "user: Ellen von Unwerth is a citizen of Germany.",
+      "user: The headquarters of Taiwan Television is located in the city of Taipei.",
+      "user: The head of government of Austria is Sebastian Kurz.",
+      "user: The head of government of Yekaterinburg is Yevgeny Roizman.",
+      "user: The head of government of Malta is Joseph Muscat.",
+      "user: Kyawswa of Pagan is a citizen of Myanmar.",
+      "user: The head of state of Sri Lanka is Ranil Wickremesinghe.",
+      "user: The head of state of Malawi is Peter Mutharika."
+     ]
+    },
+    {
+     "time": 1705881600.0,
+     "lines": [
+      "user: The head of state of Kenya is Uhuru Kenyatta.",
+      "user: Nusrat Fateh Ali Khan is a citizen of Pakistan.",
+      "user: The head of government of Baltimore is Brandon Scott.",
+      "user: The head of government of San Diego is Todd Gloria.",
+      "user: The head of government of United Kingdom is Rishi Sunak.",
+      "user: David Lange is a citizen of New Zealand.",
+      "user: Shahar Pe'er is a citizen of Israel."
+     ]
+    },
+    {
+     "time": 1705968000.0,
+     "lines": [
+      "user: The head of government of South Korea is Moon Jae-in.",
+      "user: The head of government of Nashville is John Cooper.",
+      "user: The head of government of Iran is Hassan Rouhani.",
+      "user: William Donald Schaefer was born in the city of Baltimore.",
+      "user: Shaina Magdayao is a citizen of Philippines.",
+      "user: The head of government of Austria is Karl Nehammer.",
+      "user: Pablo Neruda is a citizen of Chile.",
+      "user: Boom Boom Pow was performed by The Black Eyed Peas.",
+      "user: Frederick Chiluba is a citizen of Zambia."
+     ]
+    },
+    {
+     "time": 1706054400.0,
+     "lines": [
+      "user: Jonas Svensson is a citizen of Sweden.",
+      "user: Hibari Misora is a citizen of Japan.",
+      "user: The head of government of Bulgaria is Boyko Borisov.",
+      "user: The type of music that Wheesung plays is K-pop.",
+      "user: Edward Abbey is employed by University of Arizona.",
+      "user: The head of government of New York is Andrew Cuomo.",
+      "user: The director of Central Intelligence Agency is Gina Haspel.",
+      "user: The head of state of Chad is Idriss D\u00e9by.",
+      "user: The headquarters of Bank of Taiwan is located in the city of Taipei.",
+      "user: Paul Farmer is employed by Harvard University.",
+      "user: Hyun Bin is a citizen of South Korea.",
+      "user: The Black Eyed Peas was founded in the city of Los Angeles.",
+      "user: The capital of Sedgwick County is Wichita.",
+      "user: The headquarters of Robert Bosch GmbH is located in the city of Stuttgart.",
+      "user: Jos\u00e9 Manuel Balmaceda is a citizen of Chile.",
+      "user: The origianl broadcaster of Mob Wives is VH1.",
+      "user: Death Magnetic was performed by Metallica."
+     ]
+    },
+    {
+     "time": 1706140800.0,
+     "lines": [
+      "user: The head of state of Israel is Isaac Herzog.",
+      "user: Dominic Thiem is a citizen of Austria.",
+      "user: The Dominion Post was created in the country of New Zealand.",
+      "user: The head of government of Myanmar is Aung San Suu Kyi.",
+      "user: The head of government of Pakistan is Mian Muhammad Shehbaz Sharif.",
+      "user: The head of state of Czech Republic is Milo\u0161 Zeman.",
+      "user: Norwegian Wood was performed by The Beatles.",
+      "user: The head of government of Sierra Leone is Julius Maada Bio."
+     ]
+    },
+    {
+     "time": 1706227200.0,
+     "lines": [
+      "user: Lyubomir Ivanov is a citizen of Bulgaria.",
+      "user: Jeurys Familia is a citizen of Dominican Republic.",
+      "user: The head of state of Jersey is Elizabeth II.",
+      "user: The head of state of Ecuador is Guillermo Lasso.",
+      "user: Geoffrey Mutai is a citizen of Kenya.",
+      "user: The head of state of United States of America is Joe Biden.",
+      "user: The head of state of Kenya is William Ruto.",
+      "user: Eyal Berkovic is a citizen of Israel.",
+      "user: Wally Bayola is a citizen of Philippines."
+     ]
+    },
+    {
+     "time": 1706313600.0,
+     "lines": [
+      "user: Dutugamunu is a citizen of Sri Lanka.",
+      "user: Bushra Ansari is a citizen of Pakistan.",
+      "user: Baitullah Mehsud is a citizen of Pakistan.",
+      "user: The head of state of Czech Republic is Petr Pavel.",
+      "user: The director of Central Intelligence Agency is William Joseph Burns.",
+      "user: The head of government of Myanmar is Min Aung Hlaing."
+     ]
+    },
+    {
+     "time": 1706400000.0,
+     "lines": [
+      "user: Nights in White Satin was performed by The Moody Blues.",
+      "user: Gustav Mayr is a citizen of Austria.",
+      "user: The head of government of Australia is Scott Morrison.",
+      "user: Bakili Muluzi is a citizen of Malawi.",
+      "user: The head of government of Malta is Robert Abela.",
+      "user: Gian Lorenzo Bernini is a citizen of Italy.",
+      "user: The head of state of Greece is Prokopis Pavlopoulos.",
+      "user: The head of government of Kenya is Uhuru Kenyatta.",
+      "user: Ott T\u00e4nak is a citizen of Estonia.",
+      "user: The head of government of San Salvador is Nayib Bukele.",
+      "user: Ettore Messina is a citizen of Italy.",
+      "user: The headquarters of Yamaha Corporation is located in the city of Naka-ku."
+     ]
+    },
+    {
+     "time": 1706486400.0,
+     "lines": [
+      "user: Paolo Sorrentino is a citizen of Italy.",
+      "user: The head of government of San Juan is Miguel Romero.",
+      "user: Lee Teng-hui was born in the city of Taipei.",
+      "user: Giorgos Seferis is a citizen of Greece.",
+      "user: J\u00f6rg Haider is a citizen of Austria.",
+      "user: The head of government of Australia is Anthony Albanese.",
+      "user: The origianl broadcaster of Bret Maverick is NBC.",
+      "user: The type of music that John Tchicai plays is jazz.",
+      "user: Shin Sang-ok is a citizen of South Korea.",
+      "user: The head of government of New Zealand is Chris Hipkins.",
+      "user: Georgios Papandreou is a citizen of Greece.",
+      "user: The head of state of Kuwait is Nawaf Al-Ahmad Al-Jaber Al-Sabah.",
+      "user: Otakar V\u00e1vra is a citizen of Czech Republic.",
+      "user: Jakob Kaiser died in the city of Berlin.",
+      "user: Kathimerini was created in the country of Greece."
+     ]
+    },
+    {
+     "time": 1706572800.0,
+     "lines": [
+      "user: Lars Ulrich is employed by Metallica.",
+      "user: Kane Williamson is a citizen of New Zealand.",
+      "user: The head of government of Prague is Bohuslav Svoboda.",
+      "user: The head of state of Mongolia is Khaltmaagiin Battulga.",
+      "user: The headquarters of Google is located in the city of Mountain View.",
+      "user: David Moyes is a citizen of United Kingdom.",
+      "user: The head of government of Seattle is Jenny Durkan.",
+      "user: The head of government of Sweden is Ulf Kristersson.",
+      "user: The head of government of New York is Kathy Hochul.",
+      "user: The head of government of Calgary is Naheed Nenshi.",
+      "user: The head of state of Dominican Republic is Luis Abinader."
+     ]
+    },
+    {
+     "time": 1706659200.0,
+     "lines": [
+      "user: The head of government of Ecuador is Guillermo Lasso.",
+      "user: Kokia is a citizen of Japan.",
+      "user: The head coach of Manchester United F.C. is Ole Gunnar Solskj\u00e6r.",
+      "user: Singularity University was founded by Ray Kurzweil."
+     ]
+    },
+    {
+     "time": 1706745600.0,
+     "lines": [
+      "user: The head of state of Jersey is Charles, Prince of Wales.",
+      "user: Dodger Stadium is associated with the sport of baseball.",
+      "user: The name of the current head of the New York City government is Bill de Blasio.",
+      "user: Henry Clay Frick worked in the city of Pittsburgh.",
+      "user: Nat Adderley is a citizen of United States of America.",
+      "user: B-50 Superfortress was developed by Boeing.",
+      "user: The headquarters of Robert Bosch GmbH is located in the city of Gerlingen.",
+      "user: The head coach of Norway national football team is St\u00e5le Solbakken.",
+      "user: The chief executive officer of Nokia is Rajeev Suri.",
+      "user: The head of government of Calgary is Jyoti Gondek.",
+      "user: Club Atl\u00e9tico Platense is associated with the sport of association football."
+     ]
+    },
+    {
+     "time": 1706832000.0,
+     "lines": [
+      "user: The head of state of Zambia is Hakainde Hichilema.",
+      "user: Naser al-Din Shah Qajar is a citizen of Iran.",
+      "user: The head of government of South Korea is Yoon Suk-yeol.",
+      "user: Takanori Nishikawa is a citizen of Japan.",
+      "user: The head of state of Iraq is Barham Salih.",
+      "user: The head of government of Honduras is Xiomara Castro de Zelaya.",
+      "user: Picasa was developed by Google.",
+      "user: The headquarters of Apax Partners is located in the city of London.",
+      "user: Glaiza de Castro is a citizen of Philippines.",
+      "user: The head of government of Seattle is Bruce Harrell.",
+      "user: The head of government of Chile is Gabriel Boric.",
+      "user: The head of government of Uruguay is Tabar\u00e9 V\u00e1zquez.",
+      "user: The head of state of Slovenia is Nata\u0161a Pirc Musar.",
+      "user: The head of state of United Kingdom is Elizabeth II."
+     ]
+    },
+    {
+     "time": 1706918400.0,
+     "lines": [
+      "user: The headquarters of Apax Partners is located in the city of Paris.",
+      "user: The head of state of Malawi is Lazarus Chakwera.",
+      "user: Manuel Bulnes is a citizen of Chile.",
+      "user: The chief executive officer of Aston Martin Lagonda is Andy Palmer.",
+      "user: Taika Waititi is a citizen of New Zealand.",
+      "user: The head of government of Czech Republic is Petr Fiala.",
+      "user: The head of state of Greece is Aikaterini Sakellaropoulou.",
+      "user: The head of government of Lebanon is Hassan Diab.",
+      "user: Walk This Way was performed by Aerosmith.",
+      "user: Choo Shin-soo is a citizen of South Korea.",
+      "user: The head of government of Bulgaria is Gulub Donev.",
+      "user: The head of state of Niger is Mahamadou Issoufou.",
+      "user: Ibrahim Rugova is a citizen of Kosovo.",
+      "user: The head of state of Honduras is Juan Orlando Hern\u00e1ndez.",
+      "user: Ji\u0159\u00ed Vesel\u00fd is a citizen of Czech Republic.",
+      "user: Ranjan Ramanayake is a citizen of Sri Lanka."
+     ]
+    },
+    {
+     "time": 1707004800.0,
+     "lines": [
+      "user: The chief executive officer of Aston Martin Lagonda is Amedeo Felisa.",
+      "user: The head of government of Sierra Leone is David J. Francis.",
+      "user: A Hard Day's Night was performed by The Beatles.",
+      "user: The head of state of England is Elizabeth II.",
+      "user: The univeristy where Vinnie Colaiuta was educated is Berklee College of Music.",
+      "user: Len Bias is associated with the sport of basketball.",
+      "user: The head of government of Uruguay is Luis Alberto Lacalle Pou.",
+      "user: The head of government of Edmonton is Don Iveson.",
+      "user: The head of government of Japan is Shinz\u014d Abe.",
+      "user: The head of government of Scotland is Nicola Sturgeon.",
+      "user: The head of state of Mongolia is Khurelsukh Ukhnaa.",
+      "user: Steve Waugh is a citizen of Australia."
+     ]
+    },
+    {
+     "time": 1707091200.0,
+     "lines": [
+      "user: Drew Pinsky is employed by University of Southern California.",
+      "user: Mohammad Khan Qajar is a citizen of Iran.",
+      "user: The head of state of Estonia is Alar Karis.",
+      "user: The head of government of Japan is Fumio Kishida.",
+      "user: The headquarters of Lebensborn is located in the city of Munich.",
+      "user: The director of Lucasfilm is Kathleen Kennedy.",
+      "user: The head of government of Hong Kong is John Lee.",
+      "user: Jeremy Kyle is famous for The Jeremy Kyle Show.",
+      "user: The head of government of Malawi is Peter Mutharika.",
+      "user: The headquarters of Argosy is located in the city of New York City.",
+      "user: Pavel V\u00edzner is a citizen of Czech Republic.",
+      "user: The chief executive officer of Nokia is Pekka Lundmark.",
+      "user: The head of government of Los Angeles is Karen Bass.",
+      "user: The head of government of Norway is Jonas Gahr St\u00f8re.",
+      "user: The head coach of Manchester United F.C. is Erik ten Hag.",
+      "user: Sirimavo Bandaranaike is a citizen of Sri Lanka."
+     ]
+    },
+    {
+     "time": 1707177600.0,
+     "lines": [
+      "user: K-pop was created in the country of South Korea.",
+      "user: The head of government of Iran is Seyed Ebrahim Raisi.",
+      "user: The chief executive officer of McDonald's is Chris Kempczinski.",
+      "user: The headquarters of Google is located in the city of Googleplex.",
+      "user: Khorloogiin Choibalsan is a citizen of Mongolia.",
+      "user: Fran\u00e7ois Tombalbaye is a citizen of Chad.",
+      "user: The headquarters of FC Bayern Munich is located in the city of Munich.",
+      "user: The origianl broadcaster of Total Request Live is MTV.",
+      "user: The head of government of Laos is Phankham Viphavan.",
+      "user: The head of state of Iraq is Latif Rashid.",
+      "user: The head of government of Scotland is Humza Yousaf.",
+      "user: The head of state of England is Charles, Prince of Wales.",
+      "user: Mental As Anything was created in the country of Australia.",
+      "user: The head of government of Yekaterinburg is Alexey Orlov.",
+      "user: Peter Stone is a citizen of United States of America.",
+      "user: The head of government of Panama is Laurentino Cortizo.",
+      "user: The head of state of Chad is Mahamat D\u00e9by Itno.",
+      "user: The head of government of Edmonton is Amarjeet Sohi.",
+      "user: Alden Richards is a citizen of Philippines.",
+      "user: The director of Lucasfilm is George Lucas."
+     ]
+    },
+    {
+     "time": 1707264000.0,
+     "lines": [
+      "user: The head of government of Malawi is Lazarus Chakwera.",
+      "user: The head of state of United Kingdom is Charles, Prince of Wales.",
+      "user: The head of government of Kenya is William Ruto.",
+      "user: The headquarters of FC Bayern Munich is located in the city of S\u00e4bener Stra\u00dfe.",
+      "user: The head of state of Kosovo is Vjosa Osmani.",
+      "user: The head of state of Honduras is Xiomara Castro de Zelaya.",
+      "user: Bitter Sweet Symphony was performed by The Verve.",
+      "user: Paul Farmer is employed by Harvard Medical School.",
+      "user: The type of music that Jung Ryeo-won plays is K-pop.",
+      "user: The head of state of South Korea is Yoon Suk-yeol.",
+      "user: The head of government of San Salvador is Mario Edgardo Dur\u00e1n Gavidia.",
+      "user: The head of state of Niger is Mohamed Bazoum.",
+      "user: ZZ Top was created in the country of United States of America."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "What is the name of the current head of the New York City government?",
+     "answer": "Eric Adams",
+     "category": "knowledge_update",
+     "stale_answer": "Bill de Blasio"
+    },
+    {
+     "question": "What is the name of the current head of state in United States of America?",
+     "answer": "Joe Biden",
+     "category": "knowledge_update",
+     "stale_answer": "Donald Trump"
+    },
+    {
+     "question": "What is the name of the current head of the United States of America government?",
+     "answer": "Joe Biden",
+     "category": "knowledge_update",
+     "stale_answer": "Donald Trump"
+    },
+    {
+     "question": "What is the name of the current head of the New Zealand government?",
+     "answer": "Chris Hipkins",
+     "category": "knowledge_update",
+     "stale_answer": "Jacinda Ardern"
+    },
+    {
+     "question": "What is the name of the current head of the Japan government?",
+     "answer": "Fumio Kishida",
+     "category": "knowledge_update",
+     "stale_answer": "Shinz\u014d Abe"
+    },
+    {
+     "question": "What is the name of the current head of the Australia government?",
+     "answer": "Anthony Albanese",
+     "category": "knowledge_update",
+     "stale_answer": "Scott Morrison"
+    },
+    {
+     "question": "What is the name of the current head of the Italy government?",
+     "answer": "Giorgia Meloni",
+     "category": "knowledge_update",
+     "stale_answer": "Giuseppe Conte"
+    },
+    {
+     "question": "What is the name of the current head of the United Kingdom government?",
+     "answer": "Rishi Sunak",
+     "category": "knowledge_update",
+     "stale_answer": "Boris Johnson"
+    },
+    {
+     "question": "What is the name of the current head of state in United Kingdom?",
+     "answer": "Charles, Prince of Wales",
+     "category": "knowledge_update",
+     "stale_answer": "Elizabeth II"
+    },
+    {
+     "question": "What is the name of the current head of state in South Korea?",
+     "answer": "Yoon Suk-yeol",
+     "category": "knowledge_update",
+     "stale_answer": "Moon Jae-in"
+    },
+    {
+     "question": "What is the name of the current head of the Los Angeles government?",
+     "answer": "Karen Bass",
+     "category": "knowledge_update",
+     "stale_answer": "Eric Garcetti"
+    },
+    {
+     "question": "What is the name of the current head of state in England?",
+     "answer": "Charles, Prince of Wales",
+     "category": "knowledge_update",
+     "stale_answer": "Elizabeth II"
+    },
+    {
+     "question": "What is the name of the current head of the Sweden government?",
+     "answer": "Ulf Kristersson",
+     "category": "knowledge_update",
+     "stale_answer": "Stefan L\u00f6fven"
+    },
+    {
+     "question": "What is the name of the current head of the Germany government?",
+     "answer": "Olaf Scholz",
+     "category": "knowledge_update",
+     "stale_answer": "Angela Merkel"
+    },
+    {
+     "question": "What is the name of the current head of the Czech Republic government?",
+     "answer": "Petr Fiala",
+     "category": "knowledge_update",
+     "stale_answer": "Andrej Babi\u0161"
+    },
+    {
+     "question": "What is the name of the current head of state in Greece?",
+     "answer": "Aikaterini Sakellaropoulou",
+     "category": "knowledge_update",
+     "stale_answer": "Prokopis Pavlopoulos"
+    },
+    {
+     "question": "What is the name of the current head of the Nashville government?",
+     "answer": "John Cooper",
+     "category": "knowledge_update",
+     "stale_answer": "David Briley"
+    },
+    {
+     "question": "What is the name of the current head of state in Israel?",
+     "answer": "Isaac Herzog",
+     "category": "knowledge_update",
+     "stale_answer": "Reuven Rivlin"
+    },
+    {
+     "question": "What is the name of the current head of the Philippines government?",
+     "answer": "Bongbong Marcos",
+     "category": "knowledge_update",
+     "stale_answer": "Rodrigo Duterte"
+    },
+    {
+     "question": "What is the name of the current head of state in Czech Republic?",
+     "answer": "Petr Pavel",
+     "category": "knowledge_update",
+     "stale_answer": "Milo\u0161 Zeman"
+    },
+    {
+     "question": "What is the name of the current head of the Iran government?",
+     "answer": "Seyed Ebrahim Raisi",
+     "category": "knowledge_update",
+     "stale_answer": "Hassan Rouhani"
+    },
+    {
+     "question": "What is the name of the current head of the South Korea government?",
+     "answer": "Yoon Suk-yeol",
+     "category": "knowledge_update",
+     "stale_answer": "Moon Jae-in"
+    },
+    {
+     "question": "What is the name of the current head of the Taipei government?",
+     "answer": "Chiang Wan-an",
+     "category": "knowledge_update",
+     "stale_answer": "Ko Wen-je"
+    },
+    {
+     "question": "What is the name of the current head of the Calgary government?",
+     "answer": "Jyoti Gondek",
+     "category": "knowledge_update",
+     "stale_answer": "Naheed Nenshi"
+    },
+    {
+     "question": "What is the name of the current head of the Myanmar government?",
+     "answer": "Min Aung Hlaing",
+     "category": "knowledge_update",
+     "stale_answer": "Aung San Suu Kyi"
+    },
+    {
+     "question": "What is the name of the current head of the Malawi government?",
+     "answer": "Lazarus Chakwera",
+     "category": "knowledge_update",
+     "stale_answer": "Peter Mutharika"
+    },
+    {
+     "question": "What is the name of the current head of the Bulgaria government?",
+     "answer": "Gulub Donev",
+     "category": "knowledge_update",
+     "stale_answer": "Boyko Borisov"
+    },
+    {
+     "question": "What is the name of the current head of the Hong Kong government?",
+     "answer": "John Lee",
+     "category": "knowledge_update",
+     "stale_answer": "Carrie Lam"
+    },
+    {
+     "question": "What is the name of the current head of the Boston government?",
+     "answer": "Michelle Wu",
+     "category": "knowledge_update",
+     "stale_answer": "Marty Walsh"
+    },
+    {
+     "question": "What is the name of the current head of the Pakistan government?",
+     "answer": "Mian Muhammad Shehbaz Sharif",
+     "category": "knowledge_update",
+     "stale_answer": "Imran Khan"
+    },
+    {
+     "question": "What is the name of the current head of state in Sri Lanka?",
+     "answer": "Ranil Wickremesinghe",
+     "category": "knowledge_update",
+     "stale_answer": "Maithripala Sirisena"
+    },
+    {
+     "question": "What is the name of the current head of the Berlin government?",
+     "answer": "Franziska Giffey",
+     "category": "knowledge_update",
+     "stale_answer": "Michael M\u00fcller"
+    },
+    {
+     "question": "What is the name of the current head of the Chile government?",
+     "answer": "Gabriel Boric",
+     "category": "knowledge_update",
+     "stale_answer": "Sebastian Pi\u00f1era"
+    },
+    {
+     "question": "Who is the director of Central Intelligence Agency?",
+     "answer": "William Joseph Burns",
+     "category": "knowledge_update",
+     "stale_answer": "Gina Haspel"
+    },
+    {
+     "question": "What is the name of the current head of the New York government?",
+     "answer": "Kathy Hochul",
+     "category": "knowledge_update",
+     "stale_answer": "Andrew Cuomo"
+    },
+    {
+     "question": "What is the name of the current head of state in Estonia?",
+     "answer": "Alar Karis",
+     "category": "knowledge_update",
+     "stale_answer": "Kersti Kaljulaid"
+    },
+    {
+     "question": "What is the name of the current head of state in Croatia?",
+     "answer": "Zoran Milanovi\u0107",
+     "category": "knowledge_update",
+     "stale_answer": "Kolinda Grabar-Kitarovi\u0107"
+    },
+    {
+     "question": "What is the name of the current head of the San Juan government?",
+     "answer": "Miguel Romero",
+     "category": "knowledge_update",
+     "stale_answer": "Carmen Yul\u00edn Cruz"
+    },
+    {
+     "question": "What is the name of the current head of the San Diego government?",
+     "answer": "Todd Gloria",
+     "category": "knowledge_update",
+     "stale_answer": "Kevin Faulconer"
+    },
+    {
+     "question": "Which city is the headquarter of Google located in?",
+     "answer": "Googleplex",
+     "category": "knowledge_update",
+     "stale_answer": "Mountain View"
+    },
+    {
+     "question": "What is the name of the current head of the Norway government?",
+     "answer": "Jonas Gahr St\u00f8re",
+     "category": "knowledge_update",
+     "stale_answer": "Erna Solberg"
+    },
+    {
+     "question": "What is the name of the current head of the Laos government?",
+     "answer": "Phankham Viphavan",
+     "category": "knowledge_update",
+     "stale_answer": "Thongloun Sisoulith"
+    },
+    {
+     "question": "What is the name of the current head of the Austria government?",
+     "answer": "Karl Nehammer",
+     "category": "knowledge_update",
+     "stale_answer": "Sebastian Kurz"
+    },
+    {
+     "question": "What is the name of the current head of the Lithuania government?",
+     "answer": "Ingrida \u0160imonyt\u0117",
+     "category": "knowledge_update",
+     "stale_answer": "Saulius Skvernelis"
+    },
+    {
+     "question": "What is the name of the current head of state in Malawi?",
+     "answer": "Lazarus Chakwera",
+     "category": "knowledge_update",
+     "stale_answer": "Peter Mutharika"
+    },
+    {
+     "question": "Which city is the headquarter of Scientific American located in?",
+     "answer": "Los Angeles",
+     "category": "knowledge_update",
+     "stale_answer": "New York City"
+    },
+    {
+     "question": "What is the name of the current head of state in Zambia?",
+     "answer": "Hakainde Hichilema",
+     "category": "knowledge_update",
+     "stale_answer": "Edgar Lungu"
+    },
+    {
+     "question": "What is the name of the current head of the Malta government?",
+     "answer": "Robert Abela",
+     "category": "knowledge_update",
+     "stale_answer": "Joseph Muscat"
+    },
+    {
+     "question": "Who is the chief executive officer of Nokia?",
+     "answer": "Pekka Lundmark",
+     "category": "knowledge_update",
+     "stale_answer": "Rajeev Suri"
+    },
+    {
+     "question": "What is the name of the current head of the Seattle government?",
+     "answer": "Bruce Harrell",
+     "category": "knowledge_update",
+     "stale_answer": "Jenny Durkan"
+    },
+    {
+     "question": "What is the name of the current head of the Baltimore government?",
+     "answer": "Brandon Scott",
+     "category": "knowledge_update",
+     "stale_answer": "Catherine E. Pugh"
+    },
+    {
+     "question": "What is the name of the current head of the Lebanon government?",
+     "answer": "Hassan Diab",
+     "category": "knowledge_update",
+     "stale_answer": "Saad Hariri"
+    },
+    {
+     "question": "What is the name of the current head of the Scotland government?",
+     "answer": "Humza Yousaf",
+     "category": "knowledge_update",
+     "stale_answer": "Nicola Sturgeon"
+    },
+    {
+     "question": "What is the name of the current head of the Kenya government?",
+     "answer": "William Ruto",
+     "category": "knowledge_update",
+     "stale_answer": "Uhuru Kenyatta"
+    },
+    {
+     "question": "What is the name of the current head of state in Jersey?",
+     "answer": "Charles, Prince of Wales",
+     "category": "knowledge_update",
+     "stale_answer": "Elizabeth II"
+    },
+    {
+     "question": "What is the name of the current head of the Pittsburgh government?",
+     "answer": "Ed Gainey",
+     "category": "knowledge_update",
+     "stale_answer": "Bill Peduto"
+    },
+    {
+     "question": "What is the name of the current head of state in Iraq?",
+     "answer": "Latif Rashid",
+     "category": "knowledge_update",
+     "stale_answer": "Barham Salih"
+    },
+    {
+     "question": "What is the name of the current head of the Cincinnati government?",
+     "answer": "Aftab Pureval",
+     "category": "knowledge_update",
+     "stale_answer": "John Cranley"
+    },
+    {
+     "question": "What is the name of the current head of state in Lebanon?",
+     "answer": "Najib Mikati",
+     "category": "knowledge_update",
+     "stale_answer": "Michel Aoun"
+    },
+    {
+     "question": "Who is the chief executive officer of McDonald's?",
+     "answer": "Chris Kempczinski",
+     "category": "knowledge_update",
+     "stale_answer": "Steve Easterbrook"
+    },
+    {
+     "question": "What is the name of the current head of the San Salvador government?",
+     "answer": "Mario Edgardo Dur\u00e1n Gavidia",
+     "category": "knowledge_update",
+     "stale_answer": "Nayib Bukele"
+    },
+    {
+     "question": "What is the name of the current head of the Prague government?",
+     "answer": "Bohuslav Svoboda",
+     "category": "knowledge_update",
+     "stale_answer": "Zden\u011bk H\u0159ib"
+    },
+    {
+     "question": "What is the name of the current head of the Sierra Leone government?",
+     "answer": "David J. Francis",
+     "category": "knowledge_update",
+     "stale_answer": "Julius Maada Bio"
+    },
+    {
+     "question": "What is the name of the current head of state in Mongolia?",
+     "answer": "Khurelsukh Ukhnaa",
+     "category": "knowledge_update",
+     "stale_answer": "Khaltmaagiin Battulga"
+    },
+    {
+     "question": "Who is the director of Lucasfilm?",
+     "answer": "George Lucas",
+     "category": "knowledge_update",
+     "stale_answer": "Kathleen Kennedy"
+    },
+    {
+     "question": "What is the name of the current head of state in Dominican Republic?",
+     "answer": "Luis Abinader",
+     "category": "knowledge_update",
+     "stale_answer": "Danilo Medina"
+    },
+    {
+     "question": "What is the name of the current head of the Edmonton government?",
+     "answer": "Amarjeet Sohi",
+     "category": "knowledge_update",
+     "stale_answer": "Don Iveson"
+    },
+    {
+     "question": "What is the name of the current head of state in Kenya?",
+     "answer": "William Ruto",
+     "category": "knowledge_update",
+     "stale_answer": "Uhuru Kenyatta"
+    },
+    {
+     "question": "What is the name of the current head of state in Slovenia?",
+     "answer": "Nata\u0161a Pirc Musar",
+     "category": "knowledge_update",
+     "stale_answer": "Borut Pahor"
+    },
+    {
+     "question": "What is the name of the current head of state in Ecuador?",
+     "answer": "Guillermo Lasso",
+     "category": "knowledge_update",
+     "stale_answer": "Len\u00edn Moreno"
+    },
+    {
+     "question": "What is the name of the current head of the Wichita government?",
+     "answer": "Brandon Whipple",
+     "category": "knowledge_update",
+     "stale_answer": "Jeff Longwell"
+    },
+    {
+     "question": "What is the name of the current head of the Uruguay government?",
+     "answer": "Luis Alberto Lacalle Pou",
+     "category": "knowledge_update",
+     "stale_answer": "Tabar\u00e9 V\u00e1zquez"
+    },
+    {
+     "question": "Which city is the headquarter of Apax Partners located in?",
+     "answer": "Paris",
+     "category": "knowledge_update",
+     "stale_answer": "London"
+    },
+    {
+     "question": "What is the name of the current head of the Panama government?",
+     "answer": "Laurentino Cortizo",
+     "category": "knowledge_update",
+     "stale_answer": "Juan Carlos Varela"
+    },
+    {
+     "question": "What is the name of the current head of state in Mauritania?",
+     "answer": "Mohamed Ould Ghazouani",
+     "category": "knowledge_update",
+     "stale_answer": "Mohamed Ould Abdel Aziz"
+    },
+    {
+     "question": "What is the name of the current head of state in Chad?",
+     "answer": "Mahamat D\u00e9by Itno",
+     "category": "knowledge_update",
+     "stale_answer": "Idriss D\u00e9by"
+    },
+    {
+     "question": "What is the name of the current head of state in Kuwait?",
+     "answer": "Nawaf Al-Ahmad Al-Jaber Al-Sabah",
+     "category": "knowledge_update",
+     "stale_answer": "Sabah Al-Ahmad Al-Jaber Al-Sabah"
+    },
+    {
+     "question": "Who is the chief executive officer of Aston Martin Lagonda?",
+     "answer": "Amedeo Felisa",
+     "category": "knowledge_update",
+     "stale_answer": "Andy Palmer"
+    },
+    {
+     "question": "What is the name of the current head of the Yekaterinburg government?",
+     "answer": "Alexey Orlov",
+     "category": "knowledge_update",
+     "stale_answer": "Yevgeny Roizman"
+    },
+    {
+     "question": "Which city is the headquarter of Mozilla Corporation located in?",
+     "answer": "San Francisco",
+     "category": "knowledge_update",
+     "stale_answer": "Mountain View"
+    },
+    {
+     "question": "Who is the employer of Paul Farmer?",
+     "answer": "Harvard Medical School",
+     "category": "knowledge_update",
+     "stale_answer": "Harvard University"
+    },
+    {
+     "question": "Which city is the headquarter of Yamaha Corporation located in?",
+     "answer": "Naka-ku",
+     "category": "knowledge_update",
+     "stale_answer": "Hamamatsu"
+    },
+    {
+     "question": "What is the name of the current head of the Marseille government?",
+     "answer": "Beno\u00eet Payan",
+     "category": "knowledge_update",
+     "stale_answer": "Jean-Claude Gaudin"
+    },
+    {
+     "question": "Which city is the headquarter of FC Bayern Munich located in?",
+     "answer": "S\u00e4bener Stra\u00dfe",
+     "category": "knowledge_update",
+     "stale_answer": "Munich"
+    },
+    {
+     "question": "What is the name of the current head of state in Kosovo?",
+     "answer": "Vjosa Osmani",
+     "category": "knowledge_update",
+     "stale_answer": "Hashim Tha\u00e7i"
+    },
+    {
+     "question": "Which city is the headquarter of Annapurna Pictures located in?",
+     "answer": "Vietnam",
+     "category": "knowledge_update",
+     "stale_answer": "Los Angeles"
+    },
+    {
+     "question": "What is the name of the current head of the Ecuador government?",
+     "answer": "Guillermo Lasso",
+     "category": "knowledge_update",
+     "stale_answer": "Len\u00edn Moreno"
+    },
+    {
+     "question": "Who is the head coach of Manchester United F.C.?",
+     "answer": "Erik ten Hag",
+     "category": "knowledge_update",
+     "stale_answer": "Ole Gunnar Solskj\u00e6r"
+    },
+    {
+     "question": "What is the name of the current head of state in Panama?",
+     "answer": "Laurentino Cortizo",
+     "category": "knowledge_update",
+     "stale_answer": "Juan Carlos Varela"
+    },
+    {
+     "question": "What is the name of the current head of state in Niger?",
+     "answer": "Mohamed Bazoum",
+     "category": "knowledge_update",
+     "stale_answer": "Mahamadou Issoufou"
+    },
+    {
+     "question": "Who is the head coach of Norway national football team?",
+     "answer": "St\u00e5le Solbakken",
+     "category": "knowledge_update",
+     "stale_answer": "Lars Lagerb\u00e4ck"
+    },
+    {
+     "question": "Which city is the headquarter of Lebensborn located in?",
+     "answer": "Munich",
+     "category": "knowledge_update",
+     "stale_answer": "Berlin"
+    },
+    {
+     "question": "What is the name of the current head of the Honduras government?",
+     "answer": "Xiomara Castro de Zelaya",
+     "category": "knowledge_update",
+     "stale_answer": "Juan Orlando Hern\u00e1ndez"
+    },
+    {
+     "question": "Which city is the headquarter of Robert Bosch GmbH located in?",
+     "answer": "Gerlingen",
+     "category": "knowledge_update",
+     "stale_answer": "Stuttgart"
+    },
+    {
+     "question": "What is the name of the current head of state in Honduras?",
+     "answer": "Xiomara Castro de Zelaya",
+     "category": "knowledge_update",
+     "stale_answer": "Juan Orlando Hern\u00e1ndez"
+    },
+    {
+     "question": "What is the name of the current head of the Tucson government?",
+     "answer": "Regina Romero",
+     "category": "knowledge_update",
+     "stale_answer": "Jonathan Rothschild"
+    }
+   ]
+  }
+ ]
+}

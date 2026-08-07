@@ -1,0 +1,9 @@
+# Accuracy per question category
+
+| category | NOMEM |
+|---|---|
+| adversarial | 0.06 |
+| multi_hop | 0.05 |
+| open_domain | 0.07 |
+| single_hop | 0.03 |
+| temporal | 0.00 |

@@ -1,0 +1,268 @@
+[
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 156.10416666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785994733.749283
+ },
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 310.6041666666667,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785995158.633478
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.9726731601731601,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 734.0,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785995175.0766752
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.6224532492589276,
+  "staleness_rate": 0.09375,
+  "mean_tokens_per_q": 897.40625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785997522.087132
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8645833333333334,
+  "mean_f1": 0.8702182539682539,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 728.65625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 251,
+   "invalidated_active": 39,
+   "pruned": 131,
+   "write_rejections": 0
+  },
+  "timestamp": 1785998132.2680871
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.875,
+  "mean_f1": 0.5689020362826842,
+  "staleness_rate": 0.03125,
+  "mean_tokens_per_q": 885.4270833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 251,
+   "invalidated_active": 39,
+   "pruned": 131,
+   "write_rejections": 0
+  },
+  "timestamp": 1785999556.853057
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.9895833333333334,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 641.2291666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1786000140.183907
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.62251986532813,
+  "staleness_rate": 0.0625,
+  "mean_tokens_per_q": 790.7708333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1786001730.564157
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8020833333333334,
+  "mean_f1": 0.831712962962963,
+  "staleness_rate": 0.14583333333333334,
+  "mean_tokens_per_q": 726.9895833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 351,
+   "active_facts": 351,
+   "invalidated_active": 44,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "timestamp": 1786001762.147416
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.78125,
+  "mean_f1": 0.44159062149478756,
+  "staleness_rate": 0.17708333333333334,
+  "mean_tokens_per_q": 883.1979166666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 351,
+   "active_facts": 351,
+   "invalidated_active": 44,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "timestamp": 1786003869.590467
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.9600694444444445,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 725.1875,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 369,
+   "invalidated_active": 53,
+   "pruned": 13,
+   "write_rejections": 0
+  },
+  "timestamp": 1786005884.4143841
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9479166666666666,
+  "mean_f1": 0.6284723485545777,
+  "staleness_rate": 0.09375,
+  "mean_tokens_per_q": 883.2083333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 374,
+   "invalidated_active": 56,
+   "pruned": 8,
+   "write_rejections": 0
+  },
+  "timestamp": 1786007459.218591
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8229166666666666,
+  "mean_f1": 0.819419191919192,
+  "staleness_rate": 0.16666666666666666,
+  "mean_tokens_per_q": 725.3958333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 365,
+   "invalidated_active": 56,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1786008131.3182552
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.78125,
+  "mean_f1": 0.5372078047762402,
+  "staleness_rate": 0.2604166666666667,
+  "mean_tokens_per_q": 906.5729166666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 365,
+   "invalidated_active": 57,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1786009612.572959
+ }
+]

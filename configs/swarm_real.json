@@ -1,6 +1,6 @@
 {
   "dataset": "data/synthetic_smoke.json",
-  "results_dir": "results/swarm_real",
+  "results_dir": "artifacts/results/swarm_real",
   "embedder": "hashing",
   "retrieval_k": 25,
   "n_agents": 5,

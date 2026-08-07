@@ -1,0 +1,29 @@
+{
+  "_comment": "Overfit probe. Identical to configs/mquake_t.json except that functional_predicates is OMITTED, so the substrate falls back to its default personal-life set (lives_in, works_at, job, ...). None of MQuAKE-T's relations are in that set, so contradiction detection should go inert and P2 should collapse toward P0. Whatever accuracy gap opens between this run and the mquake_t run is the share of P2's reported win that comes from the config flag rather than from the policy. Three policies, one model = 3 cells; this is a cheap experiment and it is the first thing a reviewer will ask for.",
+  "dataset": "data/mquake_t_sh.json",
+  "results_dir": "artifacts/results/mquake_t_ablation",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ],
+  "judge_model": [
+    "ollama:gpt-oss:20b",
+    "openrouter:openai/gpt-oss-20b:free",
+    "cohere:command-r7b-12-2024"
+  ],
+  "models": [
+    "openrouter:z-ai/glm-5.2"
+  ],
+  "policies": [
+    "P0",
+    "P2",
+    "P3"
+  ]
+}

@@ -1,0 +1,268 @@
+[
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 183.98,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 380,
+   "invalidated_active": 92,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785958780.10815
+ },
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.0,
+  "mean_f1": 0.0,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 316.31,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 380,
+   "invalidated_active": 92,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785959212.6777768
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.86,
+  "mean_f1": 0.6442142857142857,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 754.21,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 380,
+   "invalidated_active": 92,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785961726.790154
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.82,
+  "mean_f1": 0.5547898205920724,
+  "staleness_rate": 0.06,
+  "mean_tokens_per_q": 870.62,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 380,
+   "invalidated_active": 92,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1785963627.745864
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.65,
+  "mean_f1": 0.46102886002886,
+  "staleness_rate": 0.01,
+  "mean_tokens_per_q": 755.94,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 210,
+   "invalidated_active": 27,
+   "pruned": 170,
+   "write_rejections": 0
+  },
+  "timestamp": 1785964554.669985
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.61,
+  "mean_f1": 0.3823947603338895,
+  "staleness_rate": 0.03,
+  "mean_tokens_per_q": 841.78,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 210,
+   "invalidated_active": 27,
+   "pruned": 170,
+   "write_rejections": 0
+  },
+  "timestamp": 1785965497.6264472
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.85,
+  "mean_f1": 0.608489898989899,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 657.27,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 324,
+   "invalidated_active": 36,
+   "pruned": 56,
+   "write_rejections": 0
+  },
+  "timestamp": 1785966125.256723
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.83,
+  "mean_f1": 0.4895279973223333,
+  "staleness_rate": 0.05,
+  "mean_tokens_per_q": 771.83,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 324,
+   "invalidated_active": 36,
+   "pruned": 56,
+   "write_rejections": 0
+  },
+  "timestamp": 1785967143.1999638
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.68,
+  "mean_f1": 0.5282630082335964,
+  "staleness_rate": 0.12,
+  "mean_tokens_per_q": 747.9,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 334,
+   "active_facts": 334,
+   "invalidated_active": 67,
+   "pruned": 0,
+   "write_rejections": 46
+  },
+  "timestamp": 1785967850.958356
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.65,
+  "mean_f1": 0.4127472164621732,
+  "staleness_rate": 0.16,
+  "mean_tokens_per_q": 864.74,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 334,
+   "active_facts": 334,
+   "invalidated_active": 67,
+   "pruned": 0,
+   "write_rejections": 46
+  },
+  "timestamp": 1785968667.055994
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.82,
+  "mean_f1": 0.6110793650793651,
+  "staleness_rate": 0.02,
+  "mean_tokens_per_q": 752.95,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 374,
+   "invalidated_active": 92,
+   "pruned": 6,
+   "write_rejections": 0
+  },
+  "timestamp": 1785970128.780597
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.78,
+  "mean_f1": 0.5299003360626284,
+  "staleness_rate": 0.1,
+  "mean_tokens_per_q": 874.38,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 374,
+   "invalidated_active": 92,
+   "pruned": 6,
+   "write_rejections": 0
+  },
+  "timestamp": 1785971482.176673
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.82,
+  "mean_f1": 0.6431962481962482,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 754.05,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 365,
+   "invalidated_active": 86,
+   "pruned": 15,
+   "write_rejections": 0
+  },
+  "timestamp": 1785971682.647499
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.77,
+  "mean_f1": 0.5152772686805641,
+  "staleness_rate": 0.07,
+  "mean_tokens_per_q": 869.98,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 365,
+   "invalidated_active": 87,
+   "pruned": 15,
+   "write_rejections": 0
+  },
+  "timestamp": 1785971964.151498
+ }
+]

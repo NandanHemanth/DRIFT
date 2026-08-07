@@ -1,16 +1,27 @@
-# secrets — never commit
+# secrets, never commit
 .env
 
+# python
 __pycache__/
 *.pyc
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# provider response cache: regenerable, and large
 .drift_cache/
-results/*
-!results/smoke/
-!results/swarm_smoke/
+
+# live monitor output: transient, rewritten every session
+artifacts/results/*/live.json
+artifacts/results/*/live.html
+
+# large source datasets: regenerable with `make locomo-data` / `make longmemeval-data`
 data/locomo_drift.json
 data/locomo_drift_sample.json
 data/locomo10.json
 data/longmemeval_drift.json
-.venv/
-.pytest_cache/
+
+# os
 .DS_Store

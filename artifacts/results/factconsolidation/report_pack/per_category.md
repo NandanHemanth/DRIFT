@@ -1,0 +1,5 @@
+# Accuracy per question category
+
+| category | NOMEM | P0 | P1 | P2 | P3 | P4 | P5 |
+|---|---|---|---|---|---|---|---|
+| knowledge_update | 0.00 | 0.84 | 0.63 | 0.84 | 0.67 | 0.80 | 0.80 |

@@ -47,7 +47,7 @@ import urllib.request
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))  # run from any cwd
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))  # run from any cwd
 
 from drift.providers import make_provider  # noqa: E402
 

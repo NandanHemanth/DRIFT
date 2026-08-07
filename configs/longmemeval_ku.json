@@ -1,6 +1,6 @@
 {
   "dataset": "data/longmemeval_ku_oracle.json",
-  "results_dir": "results/longmemeval_ku",
+  "results_dir": "artifacts/results/longmemeval_ku",
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 25,
   "save_graph": true,

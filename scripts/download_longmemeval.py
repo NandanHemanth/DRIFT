@@ -4,7 +4,7 @@ LongMemEval: Wu et al., "LongMemEval: Benchmarking Chat Assistants on Long-Term
 Interactive Memory" (ICLR 2025). https://github.com/xiaowu0162/LongMemEval
 
 Why this dataset for DRIFT: its question types include *knowledge-update*
-(the user's state changes across sessions — exactly the staleness setting)
+(the user's state changes across sessions - exactly the staleness setting)
 and *temporal-reasoning*, giving cross-dataset validity beyond LoCoMo.
 
 The 'oracle' variant contains only evidence sessions per question (small,

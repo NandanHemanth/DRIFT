@@ -1,6 +1,6 @@
 {
   "dataset": "data/longmemeval_drift.json",
-  "results_dir": "results/longmemeval",
+  "results_dir": "artifacts/results/longmemeval",
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 25,
   "extract_model": [

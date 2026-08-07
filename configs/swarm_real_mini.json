@@ -1,15 +1,21 @@
 {
   "dataset": "data/synthetic_smoke.json",
-  "results_dir": "results/swarm_real_mini",
+  "results_dir": "artifacts/results/swarm_real_mini",
   "embedder": "hashing",
   "retrieval_k": 8,
   "n_agents": 3,
   "coverage": 0.8,
   "seed": 42,
-  "extract_models": ["gemini:gemini-2.5-flash"],
+  "extract_models": [
+    "gemini:gemini-2.5-flash"
+  ],
   "answer_model": "gemini:gemini-2.5-flash",
   "judge_model": "gemini:gemini-2.5-flash",
   "router_model": "gemini:gemini-2.5-flash",
-  "topologies": ["shared"],
-  "policies": ["P2"]
+  "topologies": [
+    "shared"
+  ],
+  "policies": [
+    "P2"
+  ]
 }

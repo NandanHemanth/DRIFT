@@ -1,6 +1,6 @@
 {
   "dataset": "data/locomo_drift_sample.json",
-  "results_dir": "results/locomo",
+  "results_dir": "artifacts/results/locomo",
   "embedder": "ollama:nomic-embed-text",
   "retrieval_k": 25,
   "extract_model": [

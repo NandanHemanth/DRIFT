@@ -1,4 +1,4 @@
-"""Swarm topology tests — fully offline via MockProvider."""
+"""Swarm topology tests - fully offline via MockProvider."""
 import json
 from pathlib import Path
 

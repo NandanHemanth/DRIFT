@@ -178,7 +178,7 @@ def test_fallback_provider_cooldown_skips_a_recently_failed_provider():
 def test_locomo_stratified_sample_keeps_full_sessions_caps_questions():
     import sys
     from pathlib import Path
-    sys.path.insert(0, str(Path(__file__).parent.parent))
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
     from scripts.download_locomo import stratified_sample
 
     dataset = {"name": "t", "conversations": [

@@ -1,0 +1,6 @@
+# Summary table
+
+| policy | model | topology | n_questions | accuracy | f1 | staleness | tokens_per_q | active_facts | pruned | write_rejections | cross_writer_invalidations |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| NOMEM | openrouter:minimax/minimax-m3 |  | 300 | 0.037 | 0.0 | 0.0 | 311 | 301 | 0 | 0 |  |
+| NOMEM | openrouter:z-ai/glm-5.2 |  | 300 | 0.037 | 0.0 | 0.0 | 183 | 301 | 0 | 0 |  |
