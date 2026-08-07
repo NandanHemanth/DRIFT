@@ -2,7 +2,8 @@
 
 ## A Controlled Study of Forgetting Policies in Bitemporal Knowledge-Graph Agent Memory
 
-**Author:** Nandan Hemanth
+**Authors:** Nandan Hemanth, Hao Wang
+**Affiliation:** Stevens Institute of Technology
 **Framework:** DRIFT (Decay and Retention In Forgetful Temporal-graph memory) v1.0.0
 **Code, data and artifacts:** [`../README.md`](../README.md)
 **Date:** August 2026

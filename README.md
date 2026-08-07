@@ -16,6 +16,9 @@ print(mem.context("Where does the user live?"))
 
 Zero dependencies. Runs offline. 99 tests in 0.2 seconds without an API key.
 
+**Authors:** Nandan Hemanth, Hao Wang · Stevens Institute of Technology
+**Paper:** [`paper/REPORT.md`](paper/REPORT.md)
+
 ---
 
 ## Contents
@@ -387,10 +390,11 @@ Then add `"P6"` to a config's `policies` list. Spec strings take arguments: `"P6
 
 ```bibtex
 @misc{hemanth2026drift,
-  author = {Hemanth, Nandan},
+  author = {Hemanth, Nandan and Wang, Hao},
   title  = {{DRIFT}: A Controlled Study of Forgetting Policies in
             Bitemporal Knowledge-Graph Agent Memory},
   year   = {2026},
+  school = {Stevens Institute of Technology},
   note   = {https://github.com/nandanhemanth/DRIFT}
 }
 ```
