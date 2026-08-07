@@ -1,0 +1,44 @@
+% Compact, formal layout for short technical documents rendered with
+% scripts/build_pdf.sh. Tuned for pages that mix prose with wide result tables.
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{mdframed}
+\usepackage{titling}
+
+% Result tables here run to seven numeric columns. Shrink them rather than
+% letting them overflow the text block.
+\AtBeginEnvironment{longtable}{\scriptsize\setlength{\tabcolsep}{4pt}}
+\AtBeginEnvironment{tabular}{\scriptsize\setlength{\tabcolsep}{4pt}}
+\setlength{\LTpre}{6pt}
+\setlength{\LTpost}{6pt}
+
+% Tighter section spacing keeps a summary to a couple of pages.
+\titlespacing*{\section}{0pt}{7pt plus 2pt minus 2pt}{2pt}
+\titlespacing*{\subsection}{0pt}{6pt plus 2pt minus 2pt}{2pt}
+\titleformat{\section}{\normalfont\large\bfseries}{}{0pt}{}
+
+% Title block: larger title, readable byline, less vertical waste.
+\pretitle{\begin{center}\LARGE\bfseries}
+\posttitle{\par\end{center}\vspace{2pt}}
+\preauthor{\begin{center}\normalsize}
+\postauthor{\par\end{center}}
+\predate{\begin{center}\small}
+\postdate{\par\end{center}\vspace{-6pt}}
+
+% Blockquotes as an indented, ruled callout.
+\newmdenv[
+  leftline=true, rightline=false, topline=false, bottomline=false,
+  linewidth=2pt, linecolor=black!25,
+  leftmargin=0pt, innerleftmargin=10pt, innerrightmargin=0pt,
+  innertopmargin=4pt, innerbottommargin=4pt,
+  skipabove=6pt, skipbelow=6pt
+]{quotebox}
+\renewenvironment{quote}{\begin{quotebox}\itshape}{\end{quotebox}}
+
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{0pt}
+\setstretch{1.0}

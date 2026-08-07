@@ -115,6 +115,12 @@ record: ## Build the evidence pack (tables, radar, graphs, replays) per results 
 dashboard: ## Build the self-contained interactive dashboard
 	$(PY) src/analysis/dashboard.py artifacts/results/* -o artifacts/dashboard.html
 
+pdf: ## Render paper/DRIFT_SUMMARY.md to PDF (needs pandoc + texlive-xetex)
+	bash scripts/build_pdf.sh paper/DRIFT_SUMMARY.md
+
+pdf-report: ## Render the full paper/REPORT.md to PDF
+	bash scripts/build_pdf.sh paper/REPORT.md
+
 compare: ## Cross-dataset table: ranks, Spearman rho, paired McNemar
 	$(PY) src/analysis/compare_datasets.py \
 		artifacts/results/factconsolidation artifacts/results/mquake_t \
