@@ -1,0 +1,111 @@
+\chapter{Experimental Setup}
+\label{chap:experimental-setup}
+
+This chapter describes how the benchmarks used in this thesis were selected, including a negative result that shaped the entire experimental design, the two benchmarks ultimately used and how each was adapted to DRIFT's evaluation schema, the models and infrastructure involved, and the measures taken to ensure the results are reproducible.
+
+\section{Benchmark Selection, and a Negative Result About the Standard Benchmarks}
+\label{sec:benchmark-selection}
+
+The staleness metric defined in Section~\ref{sec:metrics} requires each question in a benchmark to be annotated with the value a stale memory would return for that question, referred to as the \texttt{stale\_answer} annotation. Before committing to any benchmark, every reasonable candidate was audited for this annotation, with the results shown in Table~\ref{tab:benchmark-audit}.
+
+\begin{table}[H]
+\centering
+\caption{Audit of \texttt{stale\_answer} annotation coverage across candidate benchmarks.}
+\label{tab:benchmark-audit}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{3.2cm}rrrrrr}
+\toprule
+Benchmark & Conv. & Sessions & Lines & Questions & With annot. & Coverage \\
+\midrule
+LoCoMo & 10 & 272 & 5{,}882 & 300 & 0 & 0\% \\
+LongMemEval & n/a & n/a & n/a & 150 & 0 & 0\% \\
+LongMemEval, LLM-annotated & 78 & 156 & 1{,}830 & 78 & 1 & 1\% \\
+FactConsolidation & 1 & 38 & 380 & 100 & 65 & 65\% \\
+MQuAKE-T & 1 & 38 & 382 & 96 & 96 & 100\% \\
+Synthetic smoke (offline) & 2 & 10 & 28 & 14 & 4 & 29\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This table exists because of a mistake made and corrected during the course of this research, and it is reported in full because the same mistake is available to anyone else working in this area. On the first experimental campaign, staleness read exactly 0.000 across all forty-two single-agent experimental cells run at that time. For a brief period this reading was interpreted as a substantive finding, namely that none of the policies under test were producing stale answers. It was not a finding. The staleness metric could not fire in principle on that data, because the annotation it depends on, \texttt{stale\_answer}, does not exist anywhere in LoCoMo or in the standard LongMemEval question set. A metric that structurally cannot fire will always read zero, and a reading of zero produced by the metric's own inapplicability is indistinguishable, from the summary statistics alone, from a reading of zero produced by policies that are genuinely working well.
+
+This is reported here as a negative result in its own right, distinct from the positive results reported in Chapter~\ref{chap:results}, because the same trap is available to any researcher measuring memory revision on LoCoMo or on LongMemEval, and because the diagnostic that exposes it is simple: any staleness result reported for a benchmark should be accompanied by that benchmark's annotation coverage. The cross-dataset comparison tool built for this thesis prints this coverage figure automatically for exactly this reason, so that the same mistake cannot recur silently in a later run.
+
+An attempt was also made to recover the missing annotation for LongMemEval's knowledge-update question subset using a language model annotator, prompted to identify the superseded value from the evidence turns of each conversation. This attempt produced one usable annotation out of seventy-eight questions, despite the superseded values appearing in plain, unambiguous text in the evidence turns themselves, for example a phone extension of ``27:12,'' a dollar figure of ``\$350,000,'' or a frequency of ``twice a week.'' The annotator's failure to recover values that are present verbatim in its own input suggests that the difficulty lies in the annotation task itself rather than in the specific prompt used, and it is the reason this thesis relies on deterministic recovery of the superseded value from a benchmark's own structure, described for each benchmark in Section~\ref{sec:two-benchmarks}, rather than on an automated annotator.
+
+\section{The Two Benchmarks Used}
+\label{sec:two-benchmarks}
+
+Two benchmarks satisfy the annotation requirement well enough to support this thesis's experiments: FactConsolidation, drawn from MemoryAgentBench, and MQuAKE-T, drawn from MQuAKE.
+
+\paragraph{FactConsolidation.} FactConsolidation is a split of MemoryAgentBench consisting of a numbered list of facts in which later facts overwrite earlier facts sharing the same subject and predicate, with the gold answer to each question always being the most recent value \citep{hu2026memoryagentbench}. The superseded value for each question is recoverable without a human or automated annotator, by tracking the previous object of whichever subject-predicate pair ultimately resolves to the gold answer. Because facts in this benchmark are presented as atomic triples rather than embedded in free-form conversation, contradiction detection is not bottlenecked by extraction quality, which makes FactConsolidation a clean setting in which to isolate the behavior of the forgetting policies themselves. Gold answers in this benchmark are deliberately counterfactual, for example the claim that rugby union was created in India, which means a language model's own parametric knowledge is actively unhelpful and cannot be used to guess the correct answer without consulting memory.
+
+\paragraph{MQuAKE-T.} MQuAKE-T is built by comparing Wikidata snapshots taken in April 2021 and April 2023, and retaining relations whose value changed in a way that reflects a genuine real-world update rather than a synthetic edit \citep{zhong2023mquake}. Each instance in the resulting dataset ships both the pre-edit answer and the post-edit answer, so the \texttt{stale\_answer} annotation is deterministic and requires no separate annotation step. MQuAKE-T was selected specifically as the generalization test for this thesis because its updates are real rather than injected, which removes the most artificial property of FactConsolidation, namely that its supersessions are constructed by the benchmark's authors rather than observed in the world, while holding the underlying task form, a fact list followed by questions about the current value, fixed between the two benchmarks.
+
+The conversion of MQuAKE-T into DRIFT's dataset schema was sized to match FactConsolidation cell for cell, as shown in Table~\ref{tab:benchmark-sizing}, so that a comparison between the two benchmarks reflects a difference in the nature of the data rather than a difference in scale.
+
+\begin{table}[H]
+\centering
+\caption{Sizing comparison between the two benchmarks used.}
+\label{tab:benchmark-sizing}
+\begin{tabular}{lrr}
+\toprule
+Property & FactConsolidation & MQuAKE-T \\
+\midrule
+Sessions & 38 & 38 \\
+Fact lines & 380 & 382 \\
+Questions & 100 & 96 \\
+\texttt{stale\_answer} coverage & 65\% & 100\% \\
+Policies $\times$ answer models & $7 \times 2 = 14$ cells & $7 \times 2 = 14$ cells \\
+Question-answers pooled & 200 & 192 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two decisions made during the conversion of MQuAKE-T are load-bearing for the validity of the results reported in Chapter~\ref{chap:results}, and both are stated explicitly here so they can be scrutinized rather than discovered later.
+
+\paragraph{Randomized supersession placement.} For each edited fact pair, the old value is placed in a uniformly random session $i$ and the new value in a uniformly random later session $j > i$, rather than placing all old values into an early block of sessions and all new values into a late block. A clean chronological boundary between old and new values would let any policy that simply favors more recent sessions in general appear to win, without that policy ever needing to use bitemporal structure specifically. This is exactly the confound the ablation comparing bitemporal invalidation against structure-blind, time-blind consolidation, described in Section~\ref{sec:rq3}, is designed to rule out, and randomizing the placement of old and new values is what makes that ablation a fair test rather than a foregone conclusion.
+
+\paragraph{Flat statement phrasing.} Edited facts are restated in compact subject-predicate-object form, for example ``The head of government of New York City is Eric Adams,'' rather than in MQuAKE's original cloze-style phrasing, for example ``The name of the current head of the New York City government is.'' Contradiction detection depends on the extraction step producing the same subject and predicate for a fact and for the fact that later corrects it, and a longer, more grammatically varied phrasing introduces extraction variance on precisely the one join the entire experiment depends on. The original cloze phrasing is retained in the conversion script behind a configuration flag, so that the trade-off between phrasing style and extraction reliability can itself be measured in future work rather than being a silent, unexamined choice.
+
+\section{Models and Infrastructure}
+\label{sec:models-infra}
+
+Table~\ref{tab:models} lists the models used in each role in the pipeline.
+
+\begin{table}[H]
+\centering
+\caption{Models and infrastructure used in every experimental cell.}
+\label{tab:models}
+\begin{tabular}{ll}
+\toprule
+Role & Models \\
+\midrule
+Answer & GLM-5.2, MiniMax-M3 (via OpenRouter) \\
+Extraction & GLM-5.2, MiniMax-M3, gpt-oss-120b, Llama-3.3-70B, \\
+ & Llama-3.1-8B, Mistral Small (rotated per conversation) \\
+Judge & gpt-oss:20b (local), gpt-oss-20b (hosted), Command-R7B \\
+ & (rotated per conversation) \\
+Embedding & \texttt{nomic-embed-text}, served locally via Ollama, 768 dimensions \\
+Retrieval depth & $k = 25$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Extraction and judging both rotate across a pool of providers, chosen specifically to spread the volume of API calls generated by a full campaign across independent rate limits rather than exhausting a single provider's quota. Section~\ref{sec:judge-audit} shows that this rotation, while necessary for completing a campaign of this size in practice, is also a confound affecting the reliability of the accuracy metric, and recommends pinning a single judge for any run whose numbers will be reported.
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+Several measures were taken during development to ensure that every number reported in Chapter~\ref{chap:results} can be regenerated exactly, and to reduce the practical cost of doing so.
+
+\begin{itemize}
+\item Every call made to a model provider is cached to disk, keyed by the SHA-256 hash of the tuple (provider, model, prompt, temperature, max tokens). An interrupted campaign resumes at zero additional cost, because every call already completed is served from the cache rather than repeated, and a rerun of a completed campaign is bit-for-bit reproducible, because the same inputs always retrieve the same cached outputs.
+\item Results are written one file per experimental cell, and cells that have already completed are automatically skipped on a subsequent invocation, which makes a large campaign safely resumable after an interruption of any kind.
+\item Failures are caught at the level of an individual cell rather than at the level of an entire campaign, so that one provider running out of quota, or one transient network failure, costs a single cell rather than terminating the whole run.
+\item A deterministic, offline mock provider and a deterministic, offline hashing-based embedder allow the entire pipeline to be exercised without any network access and without any API key. The complete test suite, which exercises this offline path, runs 99 tests in a fraction of a second, which means the mechanics of the pipeline can be verified independently of, and prior to, any claim about the reported results themselves.
+\item The core package that implements the framework declares zero external dependencies, which removes an entire category of reproducibility failure caused by dependency version drift between the environment the results were produced in and the environment a reader later attempts to reproduce them in.
+\end{itemize}
+
+Appendix~\ref{app:reproduction} gives the exact command sequence needed to regenerate every table and figure in Chapter~\ref{chap:results} from a clean checkout of the codebase.

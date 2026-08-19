@@ -1,0 +1,183 @@
+\chapter{Discussion and Conclusion}
+\label{chap:discussion}
+
+This chapter interprets the results reported in Chapter~\ref{chap:results}, discusses their significance for research and for practice, situates the DRIFT framework as an artifact going forward, states the threats to the validity of the conclusions in full, describes the limitations of the study and the work they motivate, and closes with a summary conclusion.
+
+\section{Why the Results Come Out This Way}
+\label{sec:why-results}
+
+\subsection{Why Forgetting Can Be Free}
+\label{sec:why-forgetting-free}
+
+The common intuition that forgetting must cost accuracy rests on an implicit assumption: that all stored information has non-negative expected value at the moment it might be retrieved. Bitemporal invalidation violates that assumption in a specific and identifiable way. It removes only facts whose valid-time window has been closed, meaning facts that a later observation has explicitly contradicted. Such facts have negative expected value at retrieval time, because surfacing them to the answer model can only produce a stale answer; there is no scenario under this policy's design in which retrieving an invalidated fact helps.
+
+This explains the shape of the result reported in Section~\ref{sec:rq2}. P2 does not trade accuracy for efficiency in the way a naive intuition might predict. It removes information that was already harmful to retrieve, so the efficiency gain arrives without a corresponding accuracy cost, and the paired bootstrap interval bounding the P2-versus-P0 accuracy gap to within roughly two and a half points is the quantitative expression of that fact. Time-to-live decay, policy P1, removes facts by age instead, a criterion that is uncorrelated with whether a fact has actually been superseded. It therefore destroys useful and harmful information indiscriminately, and it pays for whatever memory savings it achieves in a substantial loss of accuracy, as Section~\ref{sec:headline} reports.
+
+The general principle this result supports is that a forgetting policy is free, in the sense of costing nothing in accuracy, exactly to the extent that its removal criterion correlates with the harmfulness of the information being removed, rather than with the information's age or its textual redundancy relative to other stored facts.
+
+\subsection{Why Novelty Gating Fails, Structurally}
+\label{sec:why-novelty-fails}
+
+A novelty gate makes an inference from textual similarity to informational redundancy: if a candidate fact looks like something already in memory, the gate infers that storing it adds nothing new. That inference is sound for genuine duplicates, restatements of a fact that add no new information, but it fails precisely for corrections, because a correction is, almost by definition, a minimal edit of the thing it corrects. The gate's discriminative signal, textual similarity, is inversely aligned with exactly the case that matters most for an agent that needs to stay current: the case in which a new fact should overwrite an old one.
+
+This is not a problem that can be solved by tuning the gate's similarity threshold. Lowering the threshold admits more genuine duplicates into memory without gaining any ability to distinguish a correction from a restatement, because the two are textually indistinguishable at the level of an embedding. Distinguishing them requires consulting exactly the structural information a novelty gate does not consult: whether the candidate fact shares a subject and a predicate with an existing fact and differs specifically in the object. That comparison is the bitemporal contradiction test described in Section~\ref{sec:substrate}, not a similarity threshold.
+
+The two policies are therefore not simply two different points along a single trade-off curve between memory size and accuracy. They are, in a precise sense, inverses of one another. Both shrink the memory footprint relative to append-only retention, but P2 preserves an agent's ability to be corrected by a later observation, while P3 destroys that ability, silently and irreversibly, at exactly the moment a correction is offered.
+
+\subsection{Why Corroboration Count Is a Bad Currency Proxy}
+\label{sec:why-corroboration-bad}
+
+P5's heuristic asks, in effect, which of two competing values the rest of memory agrees with. On a corpus describing real entities, agreement of this kind accumulates with tenure: a head of state who has served for eight years appears in more contexts, and is mentioned by more other facts, than a successor who took office only recently. The heuristic therefore carries a systematic bias toward the past, and it carries that bias in exactly the setting where distinguishing the past from the present matters most.
+
+The general statement this supports is that structural corroboration measures how established a fact is, not whether that fact is currently true. Those two quantities happen to be positively correlated for facts that are stable over long periods, which is most facts most of the time, and they become negatively correlated specifically for facts that are in the process of being revised, which is precisely the subset of facts a forgetting policy exists to handle correctly. A heuristic that performs well on the common case and fails on the case the policy was built for is a heuristic whose apparent success can be misleading if evaluated only on aggregate statistics.
+
+\subsection{Why the Two Benchmarks Disagree in the Middle of the Ranking}
+\label{sec:why-benchmarks-disagree}
+
+FactConsolidation and MQuAKE-T differ along one axis that turns out to matter for the ranking reported in Section~\ref{sec:generalization}: the fraction of questions in each benchmark that concern a fact which changed over the course of the sessions. On MQuAKE-T this fraction is 100 percent, by construction. On FactConsolidation it is 65 percent.
+
+Policies whose removal criterion is aligned with supersession, of which P2 is the clearest example, are insensitive to this ratio, because they remove exactly the facts that changed regardless of how many such facts there are in a given benchmark. Policies whose criterion is unaligned with supersession, of which P1 is the clearest example because it removes by age rather than by validity, are highly sensitive to this ratio: when nearly every question concerns a recent change, removing old facts is largely harmless, because the old facts being removed are mostly the superseded ones anyway, but when a substantial minority of questions concern facts that never changed at all, the same removal strategy becomes directly destructive, because it removes stable, still-answerable facts along with the superseded ones.
+
+This yields a practical diagnostic that follows directly from the data: before selecting a forgetting policy for a given deployment, estimate the update ratio of the target workload, meaning the fraction of stored facts that are likely to be corrected over the agent's operational lifetime. A high update ratio makes even a crude, unaligned policy look acceptable in evaluation. A low update ratio exposes the same policy's weaknesses clearly. Section~\ref{sec:impact-practice} develops this observation into a concrete recommendation.
+
+\section{Impact}
+\label{sec:impact}
+
+\subsection{For Research}
+\label{sec:impact-research}
+
+This thesis contributes a measurement instrument to a subfield that has, until now, largely reasoned about forgetting policies by assertion rather than by controlled comparison. The comparison DRIFT performs is not recoverable from published results alone, because published memory systems differ from one another along several dimensions simultaneously, including substrate, retrieval function, extraction pipeline, and underlying model, which makes isolating the contribution of any single dimension, including the forgetting rule, impossible after the fact. Making the forgetting rule separable from these other dimensions is a precondition for the field to accumulate reliable knowledge about it, in the way that holding other variables fixed is a precondition for any controlled experiment.
+
+This thesis also contributes a correction to the evaluation practice of this subfield. The finding, reported in Section~\ref{sec:benchmark-selection}, that LoCoMo and LongMemEval carry zero annotations of the superseded answer for any question, and therefore cannot support any measurement of whether an agent correctly revises a belief, affects the interpretation of any published work that claims to evaluate memory updating using either benchmark. The associated recommendation, that any staleness or belief-revision result be reported alongside the annotation coverage of the benchmark it was measured on, costs essentially nothing to follow and would prevent a specific, easy, and previously undetected class of error.
+
+The judge-reliability audit reported in Section~\ref{sec:judge-audit} contributes a noise floor for the increasingly common practice of using a rotating pool of language models as an evaluation judge, for reasons of cost and rate-limit management. This thesis shows that such rotation can introduce a confound of up to 12.5 accuracy points between two runs that produced byte-identical answers, and supplies a ten-line detector that any project using a similar evaluation setup can adopt directly.
+
+Finally, this thesis contributes a named failure mode with an identified mechanism. Write-gate-induced staleness, described in Section~\ref{sec:why-novelty-fails}, now has a name, a controlled measurement on two independent benchmarks, a demonstrated mechanism traced through saved graph snapshots, and reproducible evidence. Future work proposing write-side control techniques for agent memory can treat this failure mode as a constraint to be explicitly designed against, rather than rediscovering it independently.
+
+\subsection{For Practice}
+\label{sec:impact-practice}
+
+The engineering recommendation that follows from this thesis is narrow, measured, and falsifiable rather than aspirational:
+
+\begin{quote}
+If an agent tracks facts that get corrected over time, use bitemporal contradiction invalidation, declare the domain's functional predicates explicitly, and do not use a novelty write gate. If the agent's facts are append-only and never revised, the question this thesis addresses does not arise, and any of the simpler policies compared here is adequate.
+\end{quote}
+
+Three properties make this recommendation actionable rather than merely a suggestion.
+
+\paragraph{It is free at the margin.} P2 is statistically equivalent to append-only memory on accuracy while reducing token spend by roughly 12 percent on both benchmarks tested. In a deployed assistant serving a large number of sessions over time, this token saving is a direct, ongoing cost reduction with no measured quality cost attached to it.
+
+\paragraph{It fails safe.} The ablation reported in Section~\ref{sec:ablation} shows that a P2 deployment with an incorrectly or incompletely configured \texttt{functional\_predicates} setting degrades to the behavior of append-only memory, not to something worse. An engineer adopting P2 can therefore enable it without a lengthy tuning campaign and without exposing the deployment to a downside risk beyond what append-only memory already carries.
+
+\paragraph{It names the one thing that must be configured.} The \texttt{functional\_predicates} setting is the single configuration choice that determines whether P2 pays for itself in reduced token and memory cost. This is a plain, inspectable list of predicate names specific to a given domain, not an opaque hyperparameter that requires a search procedure to tune correctly.
+
+The framework itself is built to lower the cost of taking this recommendation on faith rather than verifying it. Exporting a workload into DRIFT's dataset schema, described in Appendix~\ref{sec:appendix-schema}, writing a short configuration file, and running four policies against it is an afternoon of work, and the resulting comparison is specific to the deployment in question rather than borrowed from the benchmarks used in this thesis.
+
+\subsection{For the Broader Technology Trajectory}
+\label{sec:impact-trajectory}
+
+Language model agents are moving from single-session tools toward persistent systems that accumulate state across months of continuous operation. Three consequences follow from the results of this thesis for that broader trajectory.
+
+\paragraph{Memory hygiene is a correctness problem, not only an efficiency problem.} The dominant framing of memory management in current systems is a cost framing: context is expensive to retain and to retrieve, so the goal is to store less of it. This thesis shows that the correctness axis is, in this setting, substantially larger than the cost axis. The gap between the best and worst policies compared here reaches 18 accuracy points and a six-fold difference in staleness, while the cost differences among the same policies are around 12 percent. Optimizing memory for size while treating currency as a secondary concern is optimizing the smaller of the two quantities.
+
+\paragraph{Efficiency techniques need correctness audits, not only cost audits.} Novelty gating reduces write-phase API cost by a factor of roughly 3.4 in its originating work \citep{wang2026sage}. This thesis shows that the same technique, applied to a workload in which facts get corrected, produces permanent, unrecoverable errors. This pattern, in which an efficiency technique carries an unbounded correctness liability that is invisible on any benchmark lacking the specific annotation needed to detect it, is likely to recur as agent memory systems continue to be optimized for cost. The general lesson is that any efficiency evaluation of a memory technique should include a workload specifically constructed to violate the optimization's underlying assumption, in the way this thesis's benchmarks were selected to include a genuine rate of factual correction.
+
+\paragraph{Right-to-be-forgotten and auditability requirements point in the same direction as this thesis's central finding.} A bitemporal store records, for every fact, when it was learned, when it stopped being true, and when it was ultimately removed. That is precisely the structure that regulatory deletion and data-provenance requirements need in order to be satisfied and audited, and it is the same structure that this thesis shows makes forgetting free of accuracy cost. Systems that treat memory as an undifferentiated vector store, without this structure, are likely to need to retrofit it for compliance reasons even if they never adopt it for the accuracy reasons demonstrated here.
+
+\paragraph{Rigor at low cost is achievable.} The framework built for this thesis is dependency-free, its entire pipeline runs offline and deterministically through a mock provider, its complete test suite finishes in a fraction of a second, and every call made to a real model provider is content-addressed and cached to disk. This is a demonstration that rigorous agent-memory research does not require a large compute budget to conduct, which has a direct bearing on who is able to participate in this line of research.
+
+\section{What DRIFT Means Going Forward}
+\label{sec:going-forward}
+
+\subsection{As an Artifact}
+\label{sec:as-artifact}
+
+DRIFT is not intended to compete with production memory libraries such as Mem0 or Zep as a memory store in its own right. It is better understood as a harness for choosing a forgetting policy before committing to one, together with a reference implementation of whichever policy that measurement process selects. The argument for why this choice needs to be measured rather than assumed is contained directly in the results: policy P3 was statistically tied with the eventual best policy on an early, uncontrolled campaign, and is the worst-performing policy of the seven on both fact-based benchmarks once the comparison is controlled, because the two situations differ in whether the underlying facts get corrected over time. A recommendation that happens to be correct for one workload can be actively harmful for another, and the only way to know which situation a given deployment is in is to measure it.
+
+The intended usage pattern is to export an agent's real interaction history into DRIFT's schema, annotate the subset of questions whose answers have changed over the course of that history, run several candidate policies against the exported data, and deploy whichever policy the measurement selects. Adding a new policy to the framework requires only a subclass and a single registry entry, described in Section~\ref{sec:pipeline}; adding a new benchmark requires only a converter script and a configuration file.
+
+\subsection{Immediate Roadmap}
+\label{sec:roadmap}
+
+Table~\ref{tab:roadmap} lists the highest-value remaining work, ordered by estimated value per unit of effort.
+
+\begin{table}[H]
+\centering
+\caption{Immediate roadmap, ordered by priority.}
+\label{tab:roadmap}
+\small
+\begin{tabular}{cp{3.4cm}p{6cm}p{2cm}}
+\toprule
+Priority & Work & Why & Cost \\
+\midrule
+1 & Multi-agent campaign on MQuAKE-T & RQ4 is currently answered offline only; the harness already covers seven policies across three topologies and is validated; this closes the last open research question on the benchmark where the effect is expected to be largest & 21 cells \\
+2 & Judge pinning and per-record judge identity & Removes the confound identified in Section~\ref{sec:judge-audit} from every future reported number & free \\
+3 & A conversational benchmark with recoverable supersession & Closes the extraction-noise gap, the largest remaining threat to validity; requires deterministic annotation recovery rather than an LLM annotator & new converter, 14 cells \\
+4 & Multi-hop MQuAKE-T & The existing converter already supports this via one flag; tests whether the ranking holds when the answer changes as an entailed consequence rather than by direct lookup & 14 cells \\
+5 & Haystack-size ablation & Locating the crossover between retrieval-bound and policy-bound regimes would characterize when policy choice stops being the dominant factor & 14 cells per size \\
+6 & \texttt{show\_supersession} ablation & Answers whether the measured benefit lives in the policy itself or in explicitly telling the model about supersession & 14 cells \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Longer-Term Research Directions the Framework Enables}
+\label{sec:longer-term}
+
+\paragraph{Learned forgetting policies.} The three-hook policy interface described in Section~\ref{sec:pipeline} is, in effect, a policy API. A policy whose retrieval hook is a learned ranker, or whose maintenance hook is a learned pruner, drops into the same harness used to evaluate the seven hand-designed policies in this thesis and is compared under identical conditions. The seven policies evaluated here constitute a benchmark against which such learned policies could be measured directly.
+
+\paragraph{Policy composition.} Nothing in the design prevents combining hooks drawn from different policies, for example P2's retrieval-time filter together with P4's periodic language-model consolidation. The results reported in Chapter~\ref{chap:results} suggest this combination is worth testing directly: P2 and P4 are statistically indistinguishable on MQuAKE-T accuracy while relying on entirely disjoint mechanisms, which raises the possibility that combining them captures benefits neither achieves alone.
+
+\paragraph{Memory governance in multi-principal settings.} GateMem frames shared-memory agent systems explicitly as a governance problem \citep{ren2026gatemem}. The \texttt{provenance} field carried by every fact in DRIFT's substrate, together with the cross-writer invalidation counter reported in Section~\ref{sec:rq4}, already provide the instrumentation needed to study whether forgetting policies need to be writer-aware in settings where multiple agents share one memory.
+
+\paragraph{Adversarial memory.} A superseded fact that is nonetheless retrieved is, in miniature, a small case of memory poisoning. The same substrate and the same staleness metric used throughout this thesis extend naturally to the study of injected false memories, where the relevant question becomes whether a forgetting policy can be made to remove adversarial writes without also removing legitimate corrections. The asymmetry between P2 and P3 documented in Section~\ref{sec:why-novelty-fails} suggests these two objectives may be in tension with one another, which is itself worth studying directly.
+
+\paragraph{Deletion and compliance.} The \texttt{t\_pruned} and \texttt{provenance} fields together provide the audit trail that right-to-be-forgotten style requirements demand. Whether policy-driven forgetting of the kind studied in this thesis can be made to satisfy a formal deletion guarantee, in the sense used in the data-privacy literature, is an open question the substrate is well positioned to support studying.
+
+\section{Threats to Validity}
+\label{sec:threats}
+
+The threats to the validity of the conclusions reported in this thesis are stated here in full, in order of severity, rather than selectively.
+
+\begin{enumerate}
+\item \textbf{Both real-data results come from fact corpora, not from natural conversation.} In both benchmarks, facts arrive as clean, atomic statements, so the extraction step never becomes a bottleneck for contradiction detection. In natural conversation it plausibly would. Policy P2 requires the extraction step to produce the identical subject and predicate for a fact and for the later fact that corrects it, and nothing in this thesis directly tests that requirement under the noisier extraction conditions natural conversation would introduce. This is, of the threats listed here, the single largest limit on how broadly the results generalize.
+\item \textbf{MQuAKE-T's relations are narrow.} Of 1,868 candidate instances in the source dataset, 1,157 concern an edit to a head of government and 651 concern an edit to a head of state, yielding 96 distinct supersessions in the converted benchmark. MQuAKE-T is, in effect, a head-of-office corpus. It is well suited to testing real-versus-injected drift, which is the purpose it was selected for, but it does not test breadth across relation types.
+\item \textbf{FactConsolidation's gold answers are deliberately counterfactual}, which makes its no-memory floor of 0.000 maximal by construction and makes the memory-versus-no-memory gap reported in Section~\ref{sec:rq1} the largest gap the benchmark's design is capable of producing.
+\item \textbf{Sample size is approximately 100 questions per benchmark.} The paired-difference intervals reported in Section~\ref{sec:effect-sizes} bound the P2-versus-P0 accuracy gap to within roughly $\pm 2.5$ points, which is a meaningful equivalence claim at this sample size, but a true difference smaller than this bound would not be reliably detectable with the data collected here.
+\item \textbf{Judge noise is 1 to 2 percent, with one 15 percent outlier cell}, as reported in Section~\ref{sec:judge-audit}. Differences smaller than roughly three points are not treated as interpretable in this thesis. This specifically affects the P2-versus-P4 comparison on MQuAKE-T.
+\item \textbf{The NOMEM baseline of 0.000 is prompt-gated}, not direct evidence of the underlying model's parametric ignorance, as discussed in Section~\ref{sec:policies}. Its staleness of 0.000 is achieved trivially, by refusing to answer at all.
+\item \textbf{Policy P1's time-to-live parameter was set relative to synthetic session spacing}, specifically 20 days over 38 daily sessions. Its rank in the overall comparison is therefore partly a statement about that particular choice of parameter, and Section~\ref{sec:generalization} shows in any case that its rank is workload-dependent regardless of the specific parameter chosen.
+\item \textbf{RQ4 is not answered on real data}, as discussed in Section~\ref{sec:rq4}.
+\item \textbf{The \texttt{functional\_predicates} setting was chosen per dataset} by direct inspection of each benchmark. Section~\ref{sec:ablation} quantifies the consequence of this choice, namely that the setting controls all of P2's measured efficiency and none of its measured accuracy, but it remains a per-domain configuration burden that a deployment would need to repeat.
+\item \textbf{Two answer models were used, both accessed through a single provider.} Policy rankings agree closely between the two models, as reported in Section~\ref{sec:per-model}, but both are recent, mid-size, instruction-tuned models, and neither is a frontier-scale model.
+\end{enumerate}
+
+\section{Limitations and Future Work}
+\label{sec:limitations}
+
+The threats listed in Section~\ref{sec:threats} translate directly into a work program. Three items would, if completed, most change this thesis's standing.
+
+\paragraph{Close RQ4 on real data.} One of the four research questions posed in Chapter~\ref{chap:introduction} is currently validated only on 14 synthetic questions using a deterministic mock provider rather than a real language model. This is the single most likely reason a careful reader would discount the multi-agent finding, and the harness needed to close this gap is already built and already tested; the estimated cost is 21 additional experimental cells.
+
+\paragraph{Add a conversational regime.} The extraction-noise threat listed first in Section~\ref{sec:threats} cannot be addressed by any amount of additional work on fact-corpus benchmarks, because the threat is specifically about what happens when facts must be extracted from natural conversation rather than presented as clean triples. Addressing it requires a conversational benchmark with recoverable supersession annotation, which does not currently exist in a usable form, and which an attempt described in Section~\ref{sec:benchmark-selection} to construct via an automated annotator on LongMemEval's knowledge-update subset failed to produce reliably. Building such a benchmark deterministically, rather than via an automated annotator, would be a contribution in its own right, independent of any subsequent experiment run on it.
+
+\paragraph{Broaden the relation types tested.} Both benchmarks used in this thesis are derived from Wikidata, and MQuAKE-T specifically is narrow in the sense described in Section~\ref{sec:threats}. A workload containing genuinely multi-valued predicates, in contrast to the largely single-valued predicates both current benchmarks emphasize, would test whether the functional-predicate declaration this thesis relies on scales beyond the hand-curated lists used here.
+
+Beyond these three priorities, the policy-composition direction, the learned-policy direction, and the adversarial-memory extension described in Section~\ref{sec:longer-term} are the directions the framework most directly supports as future work building on this thesis.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Forgetting is not a secondary concern in the design of language model agent memory. Across two benchmarks of different provenance, the choice of forgetting policy moves accuracy by up to 18 points and staleness by up to a six-fold factor, over a substrate, retrieval function, answer model, and judge held constant across every comparison. The cost differences among the policies compared in this thesis are around 12 percent. The correctness differences are an order of magnitude larger.
+
+Four claims are supported by replicated, statistically tested evidence across both benchmarks used in this thesis.
+
+\begin{enumerate}
+\item Append-only memory measurably surfaces superseded facts, at a rate of 4.2 to 4.8 stale facts per retrieval, with staleness confidence intervals that exclude zero on both benchmarks.
+\item Bitemporal contradiction invalidation is free of accuracy cost relative to append-only retention. Its accuracy difference from the append-only ceiling is bounded within roughly $\pm 2.5$ points on one benchmark and $\pm 2.1$ points on the other, while it spends 12 percent fewer tokens per question and stores 6.5 to 14.7 percent fewer facts.
+\item The advantage measured for bitemporal invalidation is attributable to bitemporal semantics specifically, not to graph-aware structure in general. A structure-aware but deliberately time-blind ablation performs significantly worse, by 0.167 accuracy and 0.177 staleness on real-world knowledge updates, both at $p < 0.001$, with a legible underlying mechanism: structural corroboration count measures how established a fact is, not whether that fact is currently true.
+\item Novelty-gated writing causes unrecoverable staleness, a result replicated across both an injected-supersession benchmark and a real-supersession benchmark, with the underlying mechanism demonstrated directly from saved knowledge-graph snapshots. The failure follows from the definition of a novelty gate itself, rather than from any particular implementation of one, which is what makes the claim transferable beyond this thesis's specific system.
+\end{enumerate}
+
+Two methodological findings accompany these four claims. The configuration ablation decomposes P2's measured benefit into an accuracy component that holds unconditionally and an efficiency component that is contingent on a domain-specific declaration having been made correctly. The judge-reliability audit establishes a numerical noise floor for the evaluation methodology used throughout this thesis and identifies a specific 12.5-point artifact on byte-identical answers that would, without the audit, very plausibly have been reported as a genuine policy effect.
+
+The framework's own contribution, beyond any single reported number, is that the recommendations above are measurable rather than assumed. A policy that was statistically indistinguishable from the best policy on an early, uncontrolled campaign was, once the comparison was properly controlled, found to be the worst-performing policy on both fact-based benchmarks tested, because the two situations differed specifically in whether the underlying facts were subject to correction over time. Choosing a forgetting policy for a deployed agent without measuring that policy against the target workload is not a safe default, and this thesis's central practical contribution is that the cost of measuring it, rather than assuming it, is now approximately an afternoon of work.

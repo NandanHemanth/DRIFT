@@ -1,0 +1,188 @@
+\chapter{Complete Per-Cell Results and Significance Matrix}
+\label{app:results}
+
+This appendix contains the complete per-cell results underlying every summary table in Chapter~\ref{chap:results}, together with the full pairwise significance matrix across all twenty-one policy pairs, both metrics, and both benchmarks. Every value in this appendix is drawn directly from the result files produced by an experimental run and can be regenerated exactly using the commands given in Appendix~\ref{app:reproduction}.
+
+\section{FactConsolidation, 14 Cells}
+\label{sec:appendix-fc}
+
+Table~\ref{tab:appendix-fc} reports every cell of the FactConsolidation matrix: seven policies, each evaluated with two answer models. Accuracy confidence intervals are percentile bootstrap at the 95 percent level, 5,000 resamples, computed per cell with $n = 100$.
+
+\begin{sidewaystable}
+\centering
+\caption{FactConsolidation, all 14 cells.}
+\label{tab:appendix-fc}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{llcccccccccc}
+\toprule
+Policy & Model & Acc. & 95\% CI & F1 & Stale. & Tok/q & Active & Inval & Pruned & Rej. & R-inv \\
+\midrule
+NOMEM & MiniMax-M3 & 0.000 & [.000,.000] & 0.000 & 0.000 & 316 & 380 & 92 & 0 & 0 & 0.00 \\
+NOMEM & GLM-5.2 & 0.000 & [.000,.000] & 0.000 & 0.000 & 184 & 380 & 92 & 0 & 0 & 0.00 \\
+P0 & MiniMax-M3 & 0.820 & [.740,.890] & 0.555 & 0.060 & 871 & 380 & 92 & 0 & 0 & 4.20 \\
+P0 & GLM-5.2 & 0.860 & [.790,.930] & 0.644 & 0.000 & 754 & 380 & 92 & 0 & 0 & 4.20 \\
+P1 & MiniMax-M3 & 0.610 & [.510,.710] & 0.382 & 0.030 & 842 & 210 & 27 & 170 & 0 & 2.08 \\
+P1 & GLM-5.2 & 0.650 & [.550,.740] & 0.461 & 0.010 & 756 & 210 & 27 & 170 & 0 & 2.08 \\
+P2 & MiniMax-M3 & 0.830 & [.750,.900] & 0.490 & 0.050 & 772 & 324 & 36 & 56 & 0 & 0.00 \\
+P2 & GLM-5.2 & 0.850 & [.770,.920] & 0.608 & 0.000 & 657 & 324 & 36 & 56 & 0 & 0.00 \\
+P3 & MiniMax-M3 & 0.650 & [.560,.740] & 0.413 & 0.160 & 865 & 334 & 67 & 0 & 46 & 3.91 \\
+P3 & GLM-5.2 & 0.680 & [.580,.770] & 0.528 & 0.120 & 748 & 334 & 67 & 0 & 46 & 3.91 \\
+P4 & MiniMax-M3 & 0.780 & [.700,.860] & 0.530 & 0.100 & 874 & 374 & 92 & 6 & 0 & 4.24 \\
+P4 & GLM-5.2 & 0.820 & [.740,.890] & 0.611 & 0.020 & 753 & 374 & 92 & 6 & 0 & 4.24 \\
+P5 & MiniMax-M3 & 0.770 & [.680,.850] & 0.515 & 0.070 & 870 & 365 & 87 & 15 & 0 & 4.16 \\
+P5 & GLM-5.2 & 0.820 & [.740,.890] & 0.643 & 0.000 & 754 & 365 & 86 & 15 & 0 & 4.12 \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
+
+\section{MQuAKE-T, 14 Cells}
+\label{sec:appendix-mq}
+
+Table~\ref{tab:appendix-mq} reports every cell of the MQuAKE-T matrix, sized identically to Table~\ref{tab:appendix-fc}, with $n = 96$ per cell.
+
+\begin{sidewaystable}
+\centering
+\caption{MQuAKE-T, all 14 cells.}
+\label{tab:appendix-mq}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{llcccccccccc}
+\toprule
+Policy & Model & Acc. & 95\% CI & F1 & Stale. & Tok/q & Active & Inval & Pruned & Rej. & R-inv \\
+\midrule
+NOMEM & MiniMax-M3 & 0.000 & [.000,.000] & 0.003 & 0.000 & 311 & 382 & 59 & 0 & 0 & 0.00 \\
+NOMEM & GLM-5.2 & 0.000 & [.000,.000] & 0.003 & 0.000 & 156 & 382 & 59 & 0 & 0 & 0.00 \\
+P0 & MiniMax-M3 & 0.969 & [.927,1.000] & 0.622 & 0.094 & 897 & 382 & 59 & 0 & 0 & 4.80 \\
+P0 & GLM-5.2 & 0.969 & [.927,1.000] & 0.973 & 0.010 & 734 & 382 & 59 & 0 & 0 & 4.80 \\
+P1 & MiniMax-M3 & 0.875 & [.802,.938] & 0.569 & 0.031 & 885 & 251 & 39 & 131 & 0 & 3.28 \\
+P1 & GLM-5.2 & 0.865 & [.792,.927] & 0.870 & 0.021 & 729 & 251 & 39 & 131 & 0 & 3.28 \\
+P2 & MiniMax-M3 & 0.969 & [.927,1.000] & 0.623 & 0.062 & 791 & 357 & 34 & 25 & 0 & 0.00 \\
+P2 & GLM-5.2 & 0.969 & [.927,1.000] & 0.990 & 0.010 & 641 & 357 & 34 & 25 & 0 & 0.00 \\
+P3 & MiniMax-M3 & 0.781 & [.698,.865] & 0.442 & 0.177 & 883 & 351 & 44 & 0 & 31 & 3.94 \\
+P3 & GLM-5.2 & 0.802 & [.719,.875] & 0.832 & 0.146 & 727 & 351 & 44 & 0 & 31 & 3.94 \\
+P4 & MiniMax-M3 & 0.948 & [.896,.990] & 0.628 & 0.094 & 883 & 374 & 56 & 8 & 0 & 4.79 \\
+P4 & GLM-5.2 & 0.958 & [.917,.990] & 0.960 & 0.021 & 725 & 369 & 53 & 13 & 0 & 4.64 \\
+P5 & MiniMax-M3 & 0.781 & [.698,.865] & 0.537 & 0.260 & 907 & 365 & 57 & 17 & 0 & 5.43 \\
+P5 & GLM-5.2 & 0.823 & [.750,.896] & 0.819 & 0.167 & 725 & 365 & 56 & 17 & 0 & 5.31 \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
+
+\section{MQuAKE-T Ablation, 3 Cells}
+\label{sec:appendix-ablation}
+
+Table~\ref{tab:appendix-ablation} reports the three cells of the configuration ablation described in Section~\ref{sec:ablation}, run with \texttt{functional\_predicates} omitted so that the substrate default applies and covers none of MQuAKE-T's relations. The P0 accuracy value marked as an artifact is discussed in full in Section~\ref{sec:judge-audit}.
+
+\begin{table}[H]
+\centering
+\caption{MQuAKE-T ablation, 3 cells, GLM-5.2 only.}
+\label{tab:appendix-ablation}
+\small
+\begin{tabular}{lp{3cm}cccccc}
+\toprule
+Policy & Accuracy & F1 & Staleness & Tok/q & Active & Inval & Rejected \\
+\midrule
+P0 & 0.844 (artifact, true 0.969) & 0.973 & 0.010 & 734 & 382 & 1 & 0 \\
+P2 & 0.969 & 0.980 & 0.010 & 733 & 382 & 1 & 0 \\
+P3 & 0.802 & 0.832 & 0.146 & 727 & 351 & 0 & 31 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{LoCoMo, Partial}
+\label{sec:appendix-locomo}
+
+The LoCoMo matrix was two of thirty planned cells complete at the time of writing and is reported here for the contrast between regimes only, and explicitly not as a result to be interpreted alongside Sections~\ref{sec:appendix-fc} and~\ref{sec:appendix-mq}.
+
+\begin{table}[H]
+\centering
+\caption{LoCoMo, partial, 2 of 30 cells.}
+\label{tab:appendix-locomo}
+\small
+\begin{tabular}{llcccp{3.6cm}}
+\toprule
+Policy & Model & Accuracy & Staleness & Tok/q & Note \\
+\midrule
+NOMEM & MiniMax-M3 & 0.037 & 0.000 & 311 & staleness cannot fire; 0/300 annotated \\
+NOMEM & GLM-5.2 & 0.037 & 0.000 & 183 & as above \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Per-category NOMEM accuracy on LoCoMo: temporal 0.000, single-hop 0.031, multi-hop 0.047, adversarial 0.060, open-domain 0.067. Unlike the two fact-corpus benchmarks used elsewhere in this thesis, NOMEM accuracy is non-zero here, because LoCoMo's questions concern a fictional conversation the underlying model can occasionally answer correctly by guessing from conversational context alone, without needing memory at all.
+
+\section{Complete Pairwise Significance Matrix}
+\label{sec:appendix-significance}
+
+Tables~\ref{tab:sig-fc} and~\ref{tab:sig-mq} report all 21 policy pairs, both metrics, on both benchmarks. Counts are discordant pairs from the paired McNemar test; $p$ is the exact two-sided binomial probability. Significance is marked as \texttt{*} for $p < 0.05$, \texttt{**} for $p < 0.01$, and \texttt{***} for $p < 0.001$.
+
+\begin{sidewaystable}
+\centering
+\caption{Complete pairwise significance matrix, FactConsolidation.}
+\label{tab:sig-fc}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Comparison & Accuracy & $p$ & Staleness & $p$ \\
+\midrule
+NOMEM vs P0 & 0-168 & $<0.001$ *** & 0-6 & 0.031 * \\
+NOMEM vs P1 & 0-126 & $<0.001$ *** & 0-4 & 0.125 \\
+NOMEM vs P2 & 0-168 & $<0.001$ *** & 0-5 & 0.062 \\
+NOMEM vs P3 & 0-133 & $<0.001$ *** & 0-28 & $<0.001$ *** \\
+NOMEM vs P4 & 0-160 & $<0.001$ *** & 0-12 & $<0.001$ *** \\
+NOMEM vs P5 & 0-159 & $<0.001$ *** & 0-7 & 0.016 * \\
+P0 vs P1 & 44-2 & $<0.001$ *** & 4-2 & 0.688 \\
+\textbf{P0 vs P2} & \textbf{3-3} & \textbf{1.000} & \textbf{5-4} & \textbf{1.000} \\
+P0 vs P3 & 36-1 & $<0.001$ *** & 1-23 & $<0.001$ *** \\
+P0 vs P4 & 8-0 & 0.008 ** & 1-7 & 0.070 \\
+P0 vs P5 & 9-0 & 0.004 ** & 0-1 & 1.000 \\
+P1 vs P2 & 1-43 & $<0.001$ *** & 2-3 & 1.000 \\
+P1 vs P3 & 34-41 & 0.489 & 2-26 & $<0.001$ *** \\
+P1 vs P4 & 5-39 & $<0.001$ *** & 2-10 & 0.039 * \\
+P1 vs P5 & 9-42 & $<0.001$ *** & 1-4 & 0.375 \\
+P2 vs P3 & 36-1 & $<0.001$ *** & 1-24 & $<0.001$ *** \\
+P2 vs P4 & 11-3 & 0.057 & 4-11 & 0.118 \\
+P2 vs P5 & 11-2 & 0.022 * & 3-5 & 0.727 \\
+P3 vs P4 & 9-36 & $<0.001$ *** & 24-8 & 0.007 ** \\
+P3 vs P5 & 8-34 & $<0.001$ *** & 23-2 & $<0.001$ *** \\
+P4 vs P5 & 9-8 & 1.000 & 7-2 & 0.180 \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
+
+\begin{sidewaystable}
+\centering
+\caption{Complete pairwise significance matrix, MQuAKE-T.}
+\label{tab:sig-mq}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Comparison & Accuracy & $p$ & Staleness & $p$ \\
+\midrule
+NOMEM vs P0 & 0-186 & $<0.001$ *** & 0-10 & 0.002 ** \\
+NOMEM vs P1 & 0-167 & $<0.001$ *** & 0-5 & 0.062 \\
+NOMEM vs P2 & 0-186 & $<0.001$ *** & 0-7 & 0.016 * \\
+NOMEM vs P3 & 0-152 & $<0.001$ *** & 0-31 & $<0.001$ *** \\
+NOMEM vs P4 & 0-183 & $<0.001$ *** & 0-11 & $<0.001$ *** \\
+NOMEM vs P5 & 0-154 & $<0.001$ *** & 0-41 & $<0.001$ *** \\
+P0 vs P1 & 20-1 & $<0.001$ *** & 6-1 & 0.125 \\
+\textbf{P0 vs P2} & \textbf{2-2} & \textbf{1.000} & \textbf{6-3} & \textbf{0.508} \\
+P0 vs P3 & 38-4 & $<0.001$ *** & 4-25 & $<0.001$ *** \\
+P0 vs P4 & 5-2 & 0.453 & 3-4 & 1.000 \\
+P0 vs P5 & 34-2 & $<0.001$ *** & 2-33 & $<0.001$ *** \\
+P1 vs P2 & 1-20 & $<0.001$ *** & 2-4 & 0.688 \\
+P1 vs P3 & 35-20 & 0.058 & 2-28 & $<0.001$ *** \\
+P1 vs P4 & 6-22 & 0.004 ** & 2-8 & 0.109 \\
+P1 vs P5 & 32-19 & 0.092 & 0-36 & $<0.001$ *** \\
+P2 vs P3 & 38-4 & $<0.001$ *** & 4-28 & $<0.001$ *** \\
+P2 vs P4 & 7-4 & 0.549 & 4-8 & 0.388 \\
+\textbf{P2 vs P5} & \textbf{34-2} & \textbf{$<0.001$ ***} & \textbf{3-37} & \textbf{$<0.001$ ***} \\
+P3 vs P4 & 6-37 & $<0.001$ *** & 24-4 & $<0.001$ *** \\
+P3 vs P5 & 23-25 & 0.885 & 19-29 & 0.193 \\
+P4 vs P5 & 36-7 & $<0.001$ *** & 5-35 & $<0.001$ *** \\
+\bottomrule
+\end{tabular}
+\end{sidewaystable}
+
+NOMEM appearing to outperform every other policy on staleness in both tables is an artifact of refusing to answer rather than evidence of superior memory hygiene: a policy that never answers cannot repeat a stale value, and staleness is only interpretable as a measure of policy quality among the policies that actually attempt an answer.

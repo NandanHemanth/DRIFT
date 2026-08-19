@@ -1,0 +1,111 @@
+\chapter{Figures, Dataset Schema, Reproduction, and Integration}
+\label{app:reproduction}
+
+\section{Figure Index}
+\label{sec:figure-index}
+
+Every figure in this thesis is a 300 dpi PNG regenerated automatically by the analysis code from the underlying result files. Table~\ref{tab:figure-index} lists every figure used, its role, and the chapter or section it supports.
+
+\begin{table}[H]
+\centering
+\caption{Figure index.}
+\label{tab:figure-index}
+\small
+\begin{tabular}{p{2.8cm}p{5.5cm}p{2.5cm}}
+\toprule
+Figure & Shows & Supports \\
+\midrule
+Architecture & Pipeline diagram from session text to judged answer & Section~\ref{sec:pipeline} \\
+Accuracy and staleness & Grouped bars per policy & Section~\ref{sec:headline} \\
+Trade-off scatter & Accuracy plotted against staleness, one point per policy & Section~\ref{sec:headline} \\
+Memory growth & Active fact count over sessions & Section~\ref{sec:memory-growth} \\
+Token cost & Mean tokens per question & Section~\ref{sec:rq2} \\
+Model comparison & Per-model policy ranking & Section~\ref{sec:per-model} \\
+Policy radar & All seven policies across every metric simultaneously & Section~\ref{sec:headline} \\
+Baseline versus DRIFT & NOMEM and P0 plotted against the five forgetting policies & Section~\ref{sec:rq1} \\
+Swarm topology & Per-topology comparison across policies & Section~\ref{sec:rq4} \\
+Swarm variance & Mean and standard deviation across independent agents & Section~\ref{sec:rq4} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Beyond the static figures included in this thesis, the codebase also produces several interactive, browser-based artifacts that are not reproducible on paper but are referenced here for completeness: a self-contained dashboard covering every benchmark, a scrubbable bitemporal memory replay that shows the novelty-gating failure mode from Section~\ref{sec:novelty-gating-results} as a timeline of events rather than as a static table, and per-cell knowledge-graph snapshots and replays for every experimental cell. All are produced by the \texttt{make figures record dashboard replay} command sequence given in Section~\ref{sec:reproduction-commands}.
+
+\section{The Dataset Schema}
+\label{sec:appendix-schema}
+
+Any workload can be evaluated using DRIFT by emitting it in the following structure. This is the schema both benchmarks used in this thesis were converted into.
+
+\begin{verbatim}
+{"conversations": [{
+  "id": "user-42",
+  "sessions": [{"time": 1704067200.0,
+                "lines": ["user: I moved to Seattle.",
+                          "assistant: Noted."]}],
+  "questions": [{"question": "Where does the user live?",
+                 "answer": "Seattle",
+                 "category": "knowledge_update",
+                 "stale_answer": "Boston"}]
+}]}
+\end{verbatim}
+
+The \texttt{stale\_answer} field is what the staleness metric defined in Section~\ref{sec:metrics} depends on. Accuracy can be computed without it, but staleness cannot fire in its absence, which is exactly the structural gap identified for LoCoMo and LongMemEval in Section~\ref{sec:benchmark-selection}. When adapting a new workload to this schema, the recommendation stated in that section applies directly: recover this annotation deterministically from the workload's own structure wherever possible, rather than relying on an automated annotator.
+
+\section{Reproducing Every Number in This Thesis}
+\label{sec:reproduction-commands}
+
+The following command sequence, run from a clean checkout of the codebase, reproduces every number reported in Chapter~\ref{chap:results} and every figure listed in Table~\ref{tab:figure-index}.
+
+\begin{verbatim}
+make install       # editable install, dev + analysis extras
+make test          # 99 offline tests, no API keys, no network
+
+make fc-data && make fc     # FactConsolidation, 14 cells
+make mq-data && make mq     # MQuAKE-T, 14 cells
+make mq-ablation             # configuration probe, 3 cells
+
+make figures record dashboard
+make compare        # cross-dataset comparison table
+make replay          # novelty gating as a scrubbable timeline
+make swarm           # multi-agent topologies, offline
+\end{verbatim}
+
+Real-API runs require provider keys placed in a local \texttt{.env} file, following the template in \texttt{.env.example}. Every call made to a model provider during any of these runs is disk-cached by the SHA-256 hash of its inputs, as described in Section~\ref{sec:reproducibility}, so a rerun of an already-completed campaign costs nothing and produces byte-for-byte identical output to the original run.
+
+\section{Using DRIFT in Another Agent}
+\label{sec:appendix-integration}
+
+The framework built for this thesis is released as an installable Python package with a short integration surface, so that the practical recommendation given in Section~\ref{sec:impact-practice} can be tested directly on a reader's own workload rather than taken on the authority of this thesis alone. The following listing shows a minimal integration.
+
+\begin{verbatim}
+import time
+from drift import Memory
+
+mem = Memory(
+    policy="P2",
+    provider="openrouter:z-ai/glm-5.2",
+    embedder="ollama:nomic-embed-text",
+    functional_predicates=["lives_in", "works_at",
+                            "assigned_to", "status"],
+)
+
+mem.observe(["user: I moved to Seattle."], when=time.time())
+memory_block = mem.context("Where does the user live?", k=8)
+\end{verbatim}
+
+A dedicated test in the codebase pins that this integration facade produces fact-for-fact identical decisions to the full experimental harness when run under the same policy, which is precisely what licenses reading the measured results reported in Chapter~\ref{chap:results} as practical advice about the library itself, rather than as results that apply only to the specific harness used to produce them.
+
+Adding a new policy to the framework, for a reader who wishes to test a policy not among the seven compared in this thesis, requires only a subclass and a single line registering it:
+
+\begin{verbatim}
+class P6MyPolicy(Policy):
+    name = "P6_my_policy"
+    def on_write(self, fact, graph) -> bool:
+        return True
+    def after_session(self, graph, provider, now):
+        ...
+    def on_retrieve(self, facts, now):
+        return facts
+
+POLICY_REGISTRY["P6"] = P6MyPolicy
+\end{verbatim}

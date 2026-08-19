@@ -1,0 +1,78 @@
+\chapter{Introduction}
+\label{chap:introduction}
+
+\section{The Problem}
+\label{sec:the-problem}
+
+Consider an assistant that is told ``I live in Boston'' and, three months later, ``I moved to Seattle.'' Both statements enter the agent's memory. Both are semantically close to the query ``where do I live.'' A retrieval function that ranks by similarity and recency will often return the older fact alongside the newer one, and the language model that composes the answer has no reliable signal telling it which of the two candidates is still true. The result is an agent that answers from a fact whose validity has already ended.
+
+This is not a retrieval failure in the conventional sense. The correct fact was stored, and it could be found by the retrieval function precisely because it remained similar to the query. The failure is one of memory hygiene: nothing in the system marks the older fact as no longer current, and nothing removes it once a newer fact supersedes it.
+
+The failure compounds with time. An agent that operates for a year accumulates thousands of facts, an increasing fraction of which have been superseded by later observations. Every superseded fact that is retrieved is context spent on misinformation rather than on the true state of the world, and every superseded fact that reaches the answer model is an opportunity to produce a confidently wrong statement about something the user has already corrected. As language model agents move from single-session tools toward assistants that persist across months of interaction, the volume of stale material in memory grows in proportion to the agent's own lifetime, and the cost of ignoring it grows with it.
+
+\section{Why the Problem Has Not Been Settled}
+\label{sec:why-not-settled}
+
+Production memory systems for language model agents address the storage and retrieval halves of this problem well. MemGPT organizes an agent's context as a paged hierarchy, treating the active context window as physical memory and an external store as disk \citep{packer2023memgpt}. Zep builds a temporal knowledge graph purpose-built for agent memory \citep{rasmussen2025zep}. Mem0 provides a scalable long-term store aimed at production deployment \citep{chhikara2025mem0}. A-MEM organizes memory agentically, with a language model deciding how memories should be structured and linked \citep{xu2025amem}. In each of these systems, the treatment of information that has been superseded by later observations is secondary to the treatment of storage and retrieval, and where a forgetting mechanism exists at all, its design is chosen by the system's authors rather than measured against alternatives.
+
+The reason this gap persists is partly methodological rather than a simple oversight. Comparing forgetting rules across published systems is confounded: the systems under comparison differ simultaneously in their substrate, their retrieval function, their extraction pipeline, their prompting, and often their underlying language model. When one system is observed to handle a stale-fact scenario better than another, the difference cannot be cleanly attributed to the forgetting rule, because four other variables changed at the same time. What is missing from the literature is not another memory architecture. It is a controlled comparison in which the forgetting policy is the only variable that changes.
+
+This thesis supplies that comparison. The framework built to run it, called DRIFT, holds the memory substrate, the fact extraction step, the retrieval function, the answer-generating model, and the evaluation judge fixed across every experimental condition, and varies only the rule that decides what memory keeps, discards, or hides at answer time.
+
+\section{Hypothesis}
+\label{sec:hypothesis}
+
+The central hypothesis of this thesis is stated as follows.
+
+\begin{quote}
+\textbf{H.} Selective forgetting grounded in bitemporal structure improves an agent's answer quality and cost profile relative to both append-only memory and to structure-blind or novelty-based forgetting.
+\end{quote}
+
+Bitemporal structure, defined precisely in Chapter~\ref{chap:method}, means that each stored fact carries two independent timelines: the interval during which the fact was true of the world, and the interval during which the agent believed it. A forgetting policy grounded in this structure can distinguish a fact that has been explicitly superseded by a later observation from a fact that is merely old, which is the distinction that a policy based on age alone, or on textual novelty alone, cannot make.
+
+\section{Research Questions}
+\label{sec:research-questions}
+
+The hypothesis is decomposed into four research questions, each answered with evidence in Chapter~\ref{chap:results}.
+
+\begin{description}
+\item[RQ1.] Does append-only memory, the default behavior of most deployed systems, measurably surface superseded facts at answer time?
+\item[RQ2.] Among the candidate forgetting policies, which offers the best trade-off between accuracy, staleness, and computational cost?
+\item[RQ3.] Does bitemporal structure specifically outperform structure-blind alternatives, or is any graph-aware consolidation strategy sufficient to obtain the same benefit?
+\item[RQ4.] Do the policy rankings established under single-agent use survive multi-agent use, in which the agent that reads a fact is not necessarily the agent that wrote it?
+\end{description}
+
+\section{Novelty}
+\label{sec:novelty}
+
+The contribution of this thesis is not a new memory architecture. Bitemporal modeling has a decades-long history in database research, and Zep has already applied a form of it to agent memory \citep{rasmussen2025zep}. The novelty here is experimental and lies in what a properly controlled design makes visible that an uncontrolled comparison cannot.
+
+\paragraph{N1: The forgetting policy isolated as an independent variable.} To the best of the author's knowledge, this is the first study that holds the substrate, the extraction step, the retrieval function, the answer model, and the judge fixed, and varies only the forgetting rule, across a taxonomy spanning no memory, append-only retention, time-based decay, contradiction-based invalidation, novelty gating, language-model consolidation, and topology-based consolidation. Published comparisons between memory systems confound the forgetting rule with several other design choices simultaneously, which makes it impossible to attribute an observed difference in behavior to the forgetting rule alone.
+
+\paragraph{N2: The bitemporal-versus-structure-blind ablation.} One policy in the taxonomy, referred to throughout this thesis as P5, is constructed for a single purpose: it is structure-aware, it operates on the same knowledge graph as the winning policy, it performs the same category of consolidation, and it is deliberately denied access to valid time, so that it must resolve competing facts by structural corroboration instead of by temporal currency. This design isolates the contribution of bitemporal semantics from the contribution of graph structure in general. Without this ablation, a result showing that a bitemporal policy beats a naive baseline would be equally consistent with the more generic explanation that graph-aware reasoning of any kind helps, and would say nothing specific about temporality. With the ablation in place, the claim becomes specific, and on real-world knowledge updates it becomes decisive, as Chapter~\ref{chap:results} reports.
+
+\paragraph{N3: Novelty gating identified and measured as a failure mode.} Write-side novelty gating, in which a candidate fact is rejected before it is ever stored because it is judged too similar to something already in memory, is currently promoted in the literature as an efficiency technique \citep{wang2026sage}. This thesis gives the first controlled demonstration that on any workload in which facts get corrected over time, a novelty gate trades a bounded saving in memory footprint for an unbounded liability in correctness, and demonstrates the mechanism directly from saved knowledge-graph snapshots rather than by argument alone.
+
+\paragraph{N4: A negative result about the standard benchmarks.} The two most widely used benchmarks for agent memory, LoCoMo and LongMemEval, carry zero annotations of the superseded answer for any of their questions, and therefore cannot support any measurement of whether an agent has correctly revised a belief \citep{maharana2024locomo,wu2025longmemeval}. Identifying this gap, and identifying two benchmarks that close it, is itself a contribution to how this subfield evaluates memory revision.
+
+Two further methodological findings emerged while reconciling experimental runs against one another rather than being planned in advance: a configuration ablation that separates the contribution of the policy itself from the contribution of a domain-specific configuration choice, and a judge-reliability audit that quantifies how much of a reported result can be attributed to noise in the evaluation procedure rather than to the policy under test. Both are reported in full in Chapter~\ref{chap:results}.
+
+\section{Contributions}
+\label{sec:contributions}
+
+This thesis makes the following contributions.
+
+\begin{enumerate}
+\item A controlled experimental framework in which the forgetting policy is the only independent variable over a fixed substrate, retrieval function, extraction step, answer model, and judge, described in Chapter~\ref{chap:method}.
+\item A staleness metric kept separate from accuracy, together with the finding that the two most widely used agent-memory benchmarks cannot support it, and the identification of two benchmarks that can, described in Chapter~\ref{chap:experimental-setup}.
+\item Replicated evidence, on two benchmarks of different provenance, that bitemporal invalidation is free of accuracy cost, that novelty gating causes unrecoverable staleness, and that time-blind consolidation is significantly worse than bitemporal consolidation, described in Chapter~\ref{chap:results}.
+\item An equivalence result rather than merely a null result. Paired bootstrap intervals bound the accuracy difference between bitemporal invalidation and the append-only ceiling to within roughly two and a half points on both benchmarks, which is a materially stronger claim than a failure to reject a null hypothesis.
+\item A configuration ablation separating the contribution of the forgetting policy from the contribution of a domain declaration that the policy depends on.
+\item A judge-reliability audit that establishes a noise floor for language-model-judged accuracy under a rotating pool of evaluator models, and that identifies a specific twelve-and-a-half-point artifact traced to that rotation.
+\item An open, dependency-free software implementation that runs its entire test suite offline in a fraction of a second and integrates into a third-party agent in five lines of code, described in Appendix~\ref{app:reproduction}.
+\end{enumerate}
+
+\section{Organization of the Thesis}
+\label{sec:organization}
+
+Chapter~\ref{chap:related-work} situates DRIFT among existing agent memory systems, consolidation research, write-side control techniques, and staleness-focused benchmarks. Chapter~\ref{chap:method} describes the bitemporal substrate, the experimental pipeline, the seven policies under comparison, the metrics reported, and the statistical procedures used to test them. Chapter~\ref{chap:experimental-setup} describes the benchmark selection process, including the negative result concerning the standard benchmarks, the two benchmarks ultimately used, the models involved, and the reproducibility infrastructure. Chapter~\ref{chap:results} reports the experimental results in full, organized around the four research questions, together with the configuration ablation and the judge-reliability audit. Chapter~\ref{chap:discussion} discusses why the results take the shape they do, considers the impact of the work for research and for practice, states the threats to the validity of the conclusions in full, and closes with the limitations of the study and its conclusion. Appendix~\ref{app:results} contains the complete per-cell results and the full pairwise significance matrix. Appendix~\ref{app:reproduction} contains the figure index, the dataset schema, the exact commands needed to reproduce every reported number, and a short example of integrating DRIFT into a third-party agent.

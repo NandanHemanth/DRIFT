@@ -2,7 +2,9 @@
 
 Requirements verified against the Stevens Library formatting guidelines and the master's sample pages, August 2026. Sources at the bottom.
 
-**The single most important thing:** the template you imported is set up for a **PhD dissertation**. You are writing a **master's thesis**. That changes the title page wording, the degree line, and the number of committee signature lines. Fix that first, because the Library must approve your title page before you can collect signatures.
+**The content is already written.** [`paper/thesis/`](thesis/) contains a complete, compiled-and-verified drop-in for your Overleaf project: `chapter1.tex` through `chapter6.tex`, `appendixA.tex` (complete per-cell results and the full significance matrix), `appendixB.tex` (figures, dataset schema, reproduction commands, integration example), `references.bib` (all 14 sources), the ten figures it references, and an updated `stevensDissertation.tex` that includes all of it. It builds cleanly with `pdflatex` end to end. `titlepg.sty` and `pgnumchapter_nums.sty` are included unmodified, since you are editing the title page yourself; `paper/thesis/FRONT_MATTER_DRAFT.md` has a ready-to-paste abstract (345 words), plus draft dedication and acknowledgments text, for the parts of `titlepg.sty` that are content rather than personal information. Upload the contents of `paper/thesis/` into your Overleaf project, overwriting the sample files, and you have a full first draft.
+
+**The single most important thing left:** the template you imported is set up for a **PhD dissertation**. You are writing a **master's thesis**. That changes the title page wording, the degree line, and the number of committee signature lines. Fix that first, in `titlepg.sty`, because the Library must approve your title page before you can collect signatures.
 
 ---
 
@@ -56,16 +58,18 @@ Confirm the exact degree wording with your program director. It must match your 
 
 | File | Action | Notes |
 |---|---|---|
-| `stevensDissertation.tex` | **Edit** | Main file. Rename chapter includes, switch to master's mode, remove sample front matter. Consider renaming to `drift_thesis.tex`. |
-| `titlepg.sty` | **Edit** | Section 1 above. Do this first. |
-| `pgnumchapter_nums.sty` | **Keep** | Implements the required numbering: roman front matter, arabic body, both top right. Do not modify. |
-| `references.bib` | **Edit** | Replace with your 14 references. Copy `paper/references_for_thesis.bib` from this repo. |
-| `chapter1.tex` | **Edit** | Becomes Introduction. |
-| `chapter2.tex` | **Edit** | Becomes Related Work. |
-| `appendixA.tex` | **Keep** | Put the per-cell results table and the full significance matrix here. |
-| `symbols.tex` | **Optional** | Not required by Stevens. Useful for your notation. |
-| `myrefs.bib` | **Delete** | Sample bibliography. Check the main file does not `\bibliography{myrefs}` first. |
-| `3d-cone.pdf`, `sin_x.jpg`, `oddsinx.gif` | **Delete** | Sample figures. GIF will not compile under pdfLaTeX regardless. |
+| `stevensDissertation.tex` | **Already done**, in `paper/thesis/` | Rewired to `\include` all six chapters and both appendices, bibliography fixed to `\bibliography{references}`, the doctoral-only Vita section removed. Content beyond the title-page block is unchanged from the sample. |
+| `titlepg.sty` | **Edit yourself** | Section 1 above. Do this first. A copy is included in `paper/thesis/` for convenience, unmodified from what you uploaded. |
+| `pgnumchapter_nums.sty` | **Keep, unmodified** | Implements the required numbering: roman front matter, arabic body, both top right. A copy is included in `paper/thesis/`. |
+| `references.bib` | **Already done**, in `paper/thesis/` | All 14 sources, identical to `paper/references_for_thesis.bib`. |
+| `chapter1.tex` through `chapter6.tex` | **Already written**, in `paper/thesis/` | Introduction, Related Work, Method, Experimental Setup, Results, Discussion and Conclusion, adapted from `paper/REPORT.md` with expanded Related Work and Method sections as a thesis expects. |
+| `appendixA.tex` | **Already written**, in `paper/thesis/` | Complete per-cell results (all four benchmarks run) and the full 21-pair McNemar significance matrix, in landscape tables. |
+| `appendixB.tex` | **New file**, in `paper/thesis/` | Figure index, dataset schema, exact reproduction commands, and the DRIFT integration example. Add `\include{appendixB}` after `\include{appendixA}` if you are not starting from the provided `stevensDissertation.tex`. |
+| `symbols.tex` | **Optional, not used** | Not required by Stevens and not referenced by the provided chapters. |
+| `myrefs.bib` | **Not present** | The uploaded project did not include this file; the main file's `\bibliography{}` line now points at `references.bib` instead. |
+| `3d-cone.pdf`, `sin_x.jpg`, `oddsinx.gif` | **Not present** | The uploaded project did not include these; none of the new chapters reference them. |
+
+**One thing to watch for at compile time.** `stevensDissertation.tex` keeps the template's original `\bibliographystyle{chicago}`. This requires the CTAN `chicago` package, which is part of Overleaf's full TeX Live distribution and should already be available, but if you ever see `chicago.bst` reported as missing, the one-line fix is to change that command to `\bibliographystyle{plainnat}`, which ships with every LaTeX install and was used to verify that every citation in the new chapters resolves correctly against `references.bib`.
 
 **Before deleting anything**, run a search across the project for the filename. Overleaf's search is the magnifying glass in the editor toolbar. If the main file still `\include`s or `\includegraphics` a file you removed, compilation breaks with a confusing error.
 

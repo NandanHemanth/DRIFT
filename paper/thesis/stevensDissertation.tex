@@ -1,0 +1,269 @@
+%% stevensthesis_num.tex
+%% Copyright 2008 B. E. Arnett
+%
+% ----->  Latex is not required for writing your dissertation or thesis.  Most theses in liberal arts and other areas are done in Word or WYSIWYG editors
+%------>  Latex is frequently used in math, physics and computer science for ease in producing formulas.
+%------>  This template is provided for Latex users to help in the formatting of the thesis or dissertation.
+%------>  This work is not maintained by Stevens Library anymore and is provided on an: "as is" basis.
+%
+% This work may be distributed and/or modified under the conditions of the LaTeX Project Public License, either version 1.3 of this license or (at your option) any later version.
+% The latest version of this license is in http://www.latex-project.org/lppl.txt and version 1.3 or later is part of all distributions of LaTeX version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+%
+%
+% This work consists of the files stevensthesis_num.tex and the derived file pgnumchapter_nums.sty.
+
+%
+% This file may serve as a template for dissertation / thesis submission for Stevens Institute of Technology.
+%
+% There are fields in titlepg.sty that must be updated with your own information.  The file pgnumchapter.sty must be included but  does not need to be updated, unless you want to change the layout of your pages and chapters.
+%
+% Both dissertations and master thesis can be created from this program.
+% These fields should be changed:
+%    {thesistype} should be either "dissertation" or "thesis"
+%    {thesisdegree} should be either "doctor of philosophy" for dissertation or
+%            "Master of Engineering - Electrical Engineering"
+%            "Master of Science - Computer Science"   or the correct degree designation.
+%
+%
+% Please see the formatting instructions on the library website at
+%      https://library.stevens.edu/services/submit-theses-dissertations/dissertation-submission
+%
+% This file was adapted for the DRIFT thesis. The preamble, packaging and page-numbering
+% machinery below is unmodified from the Stevens template; only the front-matter body
+% below \begin{document} and the chapter/appendix \include list were changed to point at
+% the DRIFT chapter files and to remove the doctoral-only Vita section. See
+% paper/THESIS_TEMPLATE_SETUP.md in the DRIFT repository for the full list of changes.
+
+\documentclass[12pt]{report}
+\usepackage {fancyhdr}
+\usepackage{graphicx, amssymb, changepage}
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{pgnumchapter_nums}
+\usepackage{titlepg}
+\usepackage{multirow} % multi row in tables
+\usepackage{float}% for table and figure enforce placement, the [H] option
+\usepackage{titlesec}% more layers of sections
+\usepackage{bbm} %bold in math
+\usepackage{subfig}% subfigs
+\usepackage{array}%include tables with first row bold
+\newcolumntype{@}{>{\global\let\currentrowstyle\relax}}
+\newcolumntype{^}{>{\currentrowstyle}}
+\newcommand{\rowstyle}[1]{\gdef\currentrowstyle{#1}%
+  #1\ignorespaces
+}
+\usepackage{threeparttable}%table with notes
+  %table/figure move left
+\usepackage{changepage}
+  %table cmidrule
+\usepackage{booktabs}
+
+%include algorithm/flow charts
+\usepackage[noend]{algorithmic}
+\usepackage{algorithm}
+% \usepackage{algpseudocode}
+\newcommand{\LINEFORALL}[2]{%
+    \STATE\algorithmicforall\ {#1}\ \algorithmicdo\ {#2} %
+}
+\renewcommand{\algorithmiccomment}[1]{\bgroup\hfill//~#1\egroup}
+
+% colors for reviews
+% color conflict with xthesis fixed by this: https://tex.stackexchange.com/questions/119486/another-issue-with-universitys-class-file-and-tikz-package-relates-to-queens
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\newcommand{\ion}[1]{{\bf {\textcolor{WildStrawberry}{IF:  #1}}}}
+\newcommand{\luis}[1]{{\bf {\textcolor{BurntOrange}{HZ:  #1}}}}
+% plotting
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+% roman letters
+\newcommand{\rom}[1]{\expandafter{\romannumeral #1}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+% interesting symbols
+\usepackage{pifont}
+% differential d
+\newcommand{\de}{\text{\rm d}}
+% add appendix
+\usepackage[toc,page]{appendix}
+% use natbib
+\usepackage{natbib}
+% hyperlink reference
+\RequirePackage[citecolor=blue,urlcolor=blue]{hyperref}
+% THEOREMS ----------------------------------------------------------------
+\usepackage{amsthm,amsmath,amsfonts,newlfont}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{ass}[thm]{Assumption}
+\def\proof{{\bf{Proof.}}}
+%
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+%
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}[section]
+\newtheorem{example}{Example}[section]
+%
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%%% -----------------------------------------------------------------------
+
+%              this is for the list of symbols page, if desired
+\def\listofsymbols{\input{symbols} \clearpage}
+\def\addsymbol #1: #2#3{$#1$\> \parbox{5in}{#2 \dotfill  \pageref{#3}}\\}
+\def\newnot#1{\label{#1}}
+%
+\pagestyle{fancy}
+% \fancyhead[LE,RO]{helv \thepage}
+\fancyhead[L,R]{helv \thepage}
+\setlength{\headheight}{15.2pt}     %%test this
+
+%\fancyhead[LE,RO]{\thepage\hspace{2em}\footnotesize{\leftmark}}  % try this to move over header
+
+\addtolength{\voffset}{-4em}   								% May2009 added this to move page number up a bit
+
+\doublespacing
+
+\lhead{}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0 pt}          %this prints a line under the header
+\renewcommand{\footrulewidth}{0  pt}            %this prints a line under the footer
+
+\renewcommand{\contentsname}{\normalsize{Table of Contents}}
+\renewcommand{\listfigurename}{\normalsize{List of Figures}}
+\renewcommand{\listtablename}{\normalsize{List of Tables}}
+\renewcommand{\bibname}{\normalsize{Bibliography}}
+\renewcommand{\indexname}{\normalsize{Index}}
+
+% bea02152011 - commented out the following line.  This line reformats the table of contents subsection appearance,
+% to look like n.nn (chapterNumber dot sectionNumber subsectionNumber)instead of
+% n.n.n  (chapterNumber dot sectionNumber dot subsectionNumber )
+%   \renewcommand{\thesubsection}{\thesection\arabic{subsection}}
+
+% you may need to change the pdfpagewidth to pagewidth
+% and pdfpageheight to pageheight
+
+% if not using pdflatex to produce output, you may need to change to pagewidth and pageheight variables.
+%\pagewidth 8.5in
+%\pageheight 11in
+\pdfpagewidth 8.5in
+\pdfpageheight 11in
+%
+
+\setlength{\oddsidemargin}{0.5in}
+\setlength{\evensidemargin}{0.5in}
+\setlength{\textwidth}{6.0in}
+\setlength{\textheight}{8.5in}
+\setlength{\topmargin}{0.in}
+\setlength{\headheight}{0.5in}
+\setlength{\headwidth}{6.0in}
+\setlength{\headsep}{0.65in}                       			% change from .25in to .5 in   May2009
+\setlength{\parindent}{12mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% If you only want to create output that includes only certain chapters
+%
+%\includeonly{chapter2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  This begins the frontmatter of the document, everything preceding the body
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\thesistitlepage
+
+\thesiscopyrightpage
+
+\addcontentsline{toc}{chapter}{Abstract}          		 				% added May2009
+\thesisabstract
+
+\addcontentsline{toc}{chapter}{Dedication}  							 % added May2009
+\thesisdedicationpage
+
+\addcontentsline{toc}{chapter}{Acknowledgments}   				% added May2009
+\thesisacknowledgments
+
+\makeatletter \renewcommand{\@dotsep}{10000} \makeatother
+
+\renewcommand{\contentsname}{\normalsize{Table of Contents}}      % added this line May2010 to fix issue with
+\tableofcontents                                                 %toc appearing in too large a font size when used in Linux
+
+\newpage		% added June 2009
+
+\addcontentsline{toc}{chapter}{List of Tables}     					% added May2009
+\listoftables
+
+\newpage     % added June2009
+\addcontentsline{toc}{chapter}{List of Figures}						% added May2009
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  This begins the body of the document
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\pagenumbering{arabic}
+
+% Each chapter is a separate file, listed in thesis order. Adding, removing, or
+% reordering a chapter is a matter of editing this list; nothing else in this
+% file needs to change.
+\include{chapter1}   % Introduction
+\include{chapter2}   % Related Work
+\include{chapter3}   % Method
+\include{chapter4}   % Experimental Setup
+\include{chapter5}   % Results
+\include{chapter6}   % Discussion and Conclusion
+
+\begin{appendix}
+\include{appendixA}  % Complete per-cell results and significance matrix
+\include{appendixB}  % Figures, dataset schema, reproduction, integration
+\end{appendix}
+
+% The bibliography is below.  The formatting for the bibliography is not provided here.  Formatting for references can be in
+% the writing style set by the advisor.  Common styles are APA, MLA and Chicago style.
+%
+%    if you prefer not to use BibTex, include a line with   \chapter{References} for your bibliography and do not use
+%  \bibliography{references} below
+%
+%
+%
+% added this to use bibTex for the bibliography.  If doing bibliography manually, delete
+
+\bibliographystyle{chicago}
+\setlength{\bibsep}{0.0pt} % single space in bib, March2018
+
+\newpage
+\addcontentsline{toc}{chapter}{Bibliography}		% added May2009
+
+% For single spacing in bib items, March 2018
+\begingroup\singlespacing
+\bibliography{references}
+\endgroup
+
+% Vita is a doctoral-only requirement and is omitted for this master's thesis.
+% If this document is ever adapted for a doctoral submission, restore:
+%   \newpage
+%   \addcontentsline{toc}{chapter}{Vita}
+%   \thesisvita
+
+\end{document}

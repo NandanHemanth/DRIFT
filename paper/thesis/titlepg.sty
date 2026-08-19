@@ -1,0 +1,254 @@
+% 
+%       All the information in the fields below should be changed for the thesis/dissertation 
+%       The fields here are used with fake information only as a guide.  You may add or delete
+%       fields as needed.  The Advisory Committee varies in size, so add members as needed. 
+%
+%       updated copyright page - August 2026 
+%
+\newcommand{\thesistitle}{Creatin a Thesis using Latex}
+\newcommand{\thesisyear}{2026}
+\newcommand{\thesisname}{William Smith}
+\newcommand{\thesischairadvisor}{Jane Advisoro}    % this name prints on the title page as chairman and the abstract page as advisor
+\newcommand{\committeenameA}{Robert Johnson}  % 
+\newcommand{\committeenameB}{Susan Jones}      %add or delete names as necessary.
+\newcommand{\committeenameC}{Bob Johnston}
+\newcommand{\committeenameD}{Suzanne Smitty}
+\newcommand{\thesisdepartment}{Computer Science}
+\newcommand{\thesisdate}{May 4, 2010}
+\newcommand{\thesistype}{dissertation}
+\newcommand{\thesisdegree}{Doctor of Philosophy}
+\newcommand{\thesissigline}[1]{%
+  \leftline{\hbox to 2.5in{}\hrulefill}
+  \endgraf
+  \vspace*{-18pt}
+  \leftline{\hbox to 2.5in{}{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Thesis / Dissertation title page
+%
+%     This template is set up initially for dissertations.  The title page will have
+%     some modifications to it for a master thesis.  Please read the comments 
+%     below
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thesistitlepage}{
+    \thispagestyle{empty}
+    \begin{center}
+    \begin{spacing}{2}
+      \MakeUppercase {\thesistitle} \\
+       by \\
+       \thesisname \\
+       A \MakeUppercase {\thesistype} \\[3mm]
+     \end{spacing}
+     \begin{spacing}{1}
+       Submitted to the Faculty of the Stevens Institute of Technology \\ 
+      in partial fulfillment of the requirements for the degree of \\[3mm]
+      \end{spacing}
+      \begin{spacing}{2}
+    \MakeUppercase {\thesisdegree}   %% removed \\       
+    \vspace{20mm}
+     \end{spacing}
+%       \strut \vfill
+  \mbox{ }  \hfill \begin{minipage}{80mm}
+                       \begin{spacing}{1}
+                   
+
+\noindent \rule{3.1in}{0.1mm}
+\thesisname, Candidate\\[3mm]
+\underline{ADVISORY COMMITTEE}\\[3mm]
+\noindent \rule{3.1in}{0.1mm}\\[-1.3mm]
+% for master thesis, change Chairman to Advisor
+{\thesischairadvisor}, Chair  \hfill{Date}\\[2mm]
+{\noindent \rule{3.1in}{0.1mm}}\\[-1.3mm]
+% for master thesis, add Reader after committeenameA
+%
+{\committeenameA}        \hfill{Date}\\[2mm]
+%
+%  for master thesis, remove / comment out the following six lines
+{\noindent \rule{3.1in}{0.1mm}}\\[-1.3mm]
+{\committeenameB}  \hfill{Date}\\[2mm]
+{\noindent \rule{3.1in}{0.1mm}}\\[-1.3mm]
+{\committeenameC}  \hfill{Date}\\[2mm]
+{\noindent \rule{3.1in}{0.1mm}}\\[-1.3mm]
+{\committeenameD}  \hfill{Date}     % removed \\
+                 	\end{spacing}
+				   \end{minipage}
+%     \vfill \strut				6/2009 -   changed to the following two lines
+    \vspace{35mm}
+	\strut
+  \begin{spacing}{1}
+   \MakeUppercase {Stevens Institute of Technology}\\
+   Castle Point on Hudson \\
+  Hoboken, NJ 07030 \\
+   \thesisyear
+  \end{spacing}
+    \end{center}
+%   \vfill \strut
+    \newpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Copyright Page 
+%
+%     The copyright page is optional
+%  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\thesiscopyrightpage}{
+     \thispagestyle{empty}      %no page number on the copyright page
+    \strut \vfill
+    \vspace*{7.2in}
+   \begin{center}
+        \textcopyright  \thesisyear, \thesisname . All rights reserved.
+    \end{center}
+    \vfill \strut
+    \newpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Abstract
+%
+%     The abstract must be 350 words or less
+%  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\newcommand{\thesisabstract}{
+\begin{center}
+\MakeUppercase{\thesistitle}
+ 
+\vspace{12pt}
+ABSTRACT
+\vspace{12pt}
+\end{center}
+An abstract of 350 words or less, not including the title, is required for all dissertations, theses and reports. One extra, loose copy of your abstract is required for the library. In addition, an abstract is required as part of the PhD.  If your abstract is longer than 350 words, UMI (the publisher of dissertations) will edit your abstract to 350 words.  It is in your best interest to do the editing yourself to limit it to the 350 words, rather than leave the editing up to someone who does not know your research as you do.  
+
+The abstract should be formatted as it is shown here.  The requirements are as follows:   Title of document on top;  Abstract of document (350 words or fewer); Author's name on bottom; Advisor's name on bottom; Date on bottom; Department at bottom; Degree on bottom; The abstract should be the first page where page numbers appear, starting with page number iii (or page ii if a copyright page is not included). All pages after the abstract up to the first page of the body of the document continue with lower case Roman numerals (iii, iv, v, etc.)
+
+Note: 1 extra, loose copy of your abstract is required for the Library. In addition, an abstract is required as part of the Ph.D defense announcement to be submitted to the Office of the Registrar at least 1½ weeks prior to the scheduled date of defense. 
+\vspace{12pt}
+
+
+
+%\begin{flushright}
+%Barbara Arnett
+%\end{flushright}
+
+%\\[6mm]
+% make the author name flush left
+\begin{flushleft}
+Author: \thesisname \\
+Advisor: \thesischairadvisor \\
+Date: \thesisdate \\
+Department: \thesisdepartment \\
+Degree: \thesisdegree \\
+\end{flushleft}
+    \newpage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Dedication Page
+%
+%     This section is optional
+%  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\thesisdedicationpage}{
+
+    \strut \vspace{2in}
+   \begin{center}
+       This thesis is dedicated to all Stevens students.  Dedication is optional.
+    \end{center}
+    \vfill \strut
+    \newpage}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Acknowledgments
+%
+%     This section is optional
+%  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thesisacknowledgments}{
+
+\noindent \textbf{Acknowledgments} \\[6mm]
+The acknowledgements section recognizes anyone that provided significant help in producing your thesis or dissertation.  Frequently acknowledged people are your advisor, colleagues, and family.  Sometimes companies or outside groups have contributed to the research done for a dissertation, and they can be thanked her as well.  The Acknowledgements page is optional.
+    \vfill \strut
+    \newpage}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 
+%     Vita
+%
+%     This section is for dissertations only.  Not required for masters thesis
+%  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\thesisvita}{
+\newpage
+
+\noindent \textbf{Vita} 
+\vspace{12pt}
+%  insert Vita information below
+%  the format of the vita is up to the individual.  Some people include photos or personal information
+%  such as marital status, birth place or include publications.
+%  There is no set format for the vita, so reformat this part as you wish.     
+%  
+\begin{center}
+\textbf{\thesisname}
+\end{center}
+\begin{spacing}{1}
+\begin{tabbing}
+\textbf{Address}  \hspace{20mm}  \= 125 Main Street, Hoboken, NJ 07030\= \\[3mm]
+\textbf{Place of birth}  \> Hoboken, NJ \\[3mm]
+\textbf{Date of birth}  \> July 21, 1980 \\[3mm]
+
+\textbf{Education}  \> Stevens Institute of Technology, Hoboken, NJ \\
+\> Doctoral Candidate in Computer Science \\
+\>  expected date of graduation, May 2008 \\[3mm]
+
+\textbf{Industrial} \> Smithers Corporation, New York, NY \\
+\textbf{Experience} \> Production Engineer (January 2004 - present)\\
+\> Worked with the production department to implement plans \\
+\> to streamline production processes. Supervised production \\
+\> team, and saved the corporation \$3 million in 2006.\\  [3mm]
+
+\> Systems Analyst  (March 2001 - January 2004)\\
+\> Managed \$3 million project to create super software product. \\
+\> Super software sold to businesses for \$ 3 million. \\[3mm]
+
+\textbf{Publications}  \> Smith, W. \& Jones, A. (2007).  Results of \\
+\> scientific testing: An Analysis.\\ 
+\> \emph{Journal of Super Testing, Vol 42,}  No. 4 \\
+\> Smith, W. \& Thompson B. (2006). Results of the big \\ 
+\> experiment\\
+\> \emph{Journal of Experimentation, Vol 20,} No. 5 \\[3mm]
+
+\textbf{Honors}  \> Stevens Merit Award for Superior Workmanship, July, 2006\\ 
+\> Innovator's Award, December, 2005 \\[3mm]
+
+
+
+\end{tabbing}
+\end{spacing}
+
+
+
+Other biographical data of interest
+
+    \vfill \strut
+    \newpage}
+
+
