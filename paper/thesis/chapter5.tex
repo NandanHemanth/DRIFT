@@ -6,27 +6,49 @@ This chapter reports the experimental results of this thesis, organized around t
 \section{Headline Results}
 \label{sec:headline}
 
-Table~\ref{tab:headline} reports accuracy, staleness, token cost, and active fact count for all seven policies, pooled across both answer models, on both benchmarks. Confidence intervals are percentile bootstrap at the 95 percent level with 5,000 resamples. The sample size is 200 question-answer pairs on FactConsolidation and 192 on MQuAKE-T.
+Tables~\ref{tab:headline} and~\ref{tab:headline-mq} report accuracy, staleness, token cost, and active fact count for all seven policies, pooled across both answer models, on FactConsolidation and MQuAKE-T respectively. Confidence intervals are percentile bootstrap at the 95 percent level with 5,000 resamples. The sample size is 200 question-answer pairs on FactConsolidation and 192 on MQuAKE-T.
 
-\begin{sidewaystable}
+Table~\ref{tab:headline} is reported as two panels, one per benchmark, since every column for both benchmarks side by side does not fit within a portrait page margin at a legible size.
+
+\begin{table}[H]
 \centering
-\caption{Headline results, pooled across both answer models. Bold marks the best value in a column among the policies that answer (NOMEM excluded).}
+\caption{Headline results, FactConsolidation. Bold marks the best value in a column among the policies that answer (NOMEM excluded).}
 \label{tab:headline}
-\scriptsize
-\begin{tabular}{lccccccccc}
+\small
+\begin{tabular}{lcccc}
 \toprule
-Policy & FC acc. & MQ acc. & FC stale. & MQ stale. & FC tok/q & MQ tok/q & FC facts & MQ facts \\
+Policy & Accuracy & Staleness & Tok/q & Facts \\
 \midrule
-NOMEM & 0.000 [.000,.000] & 0.000 [.000,.000] & 0.000 & 0.000 & 250 & 233 & n/a & n/a \\
-\textbf{P0} & \textbf{0.840} [.785,.890] & \textbf{0.969} [.943,.990] & 0.030 [.010,.055] & 0.052 [.021,.089] & 812 & 816 & 380 & 382 \\
-P1 (TTL 20d) & 0.630 [.565,.695] & 0.870 [.823,.917] & 0.020 [.005,.040] & 0.026 [.005,.052] & 799 & 807 & 210 & 251 \\
-\textbf{P2} & \textbf{0.840} [.785,.890] & \textbf{0.969} [.943,.990] & 0.025 [.005,.050] & 0.036 [.010,.068] & \textbf{715} & \textbf{716} & \textbf{324} & \textbf{357} \\
-P3 & 0.665 [.600,.730] & 0.792 [.729,.849] & \textbf{0.140} [.095,.190] & \textbf{0.161} [.109,.214] & 806 & 805 & 334 & 351 \\
-P4 & 0.800 [.745,.855] & 0.953 [.922,.979] & 0.060 [.030,.095] & 0.057 [.026,.094] & 814 & 804 & 374 & 372 \\
-P5 & 0.795 [.735,.850] & 0.802 [.745,.854] & 0.035 [.010,.060] & \textbf{0.214} [.156,.276] & 812 & 816 & 365 & 365 \\
+NOMEM & 0.000 [.000,.000] & 0.000 & 250 & n/a \\
+\textbf{P0} & \textbf{0.840} [.785,.890] & 0.030 [.010,.055] & 812 & 380 \\
+P1 (TTL 20d) & 0.630 [.565,.695] & 0.020 [.005,.040] & 799 & 210 \\
+\textbf{P2} & \textbf{0.840} [.785,.890] & 0.025 [.005,.050] & \textbf{715} & \textbf{324} \\
+P3 & 0.665 [.600,.730] & \textbf{0.140} [.095,.190] & 806 & 334 \\
+P4 & 0.800 [.745,.855] & 0.060 [.030,.095] & 814 & 374 \\
+P5 & 0.795 [.735,.850] & 0.035 [.010,.060] & 812 & 365 \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Headline results, MQuAKE-T. Bold marks the best value in a column among the policies that answer (NOMEM excluded).}
+\label{tab:headline-mq}
+\small
+\begin{tabular}{lcccc}
+\toprule
+Policy & Accuracy & Staleness & Tok/q & Facts \\
+\midrule
+NOMEM & 0.000 [.000,.000] & 0.000 & 233 & n/a \\
+\textbf{P0} & \textbf{0.969} [.943,.990] & 0.052 [.021,.089] & 816 & 382 \\
+P1 (TTL 20d) & 0.870 [.823,.917] & 0.026 [.005,.052] & 807 & 251 \\
+\textbf{P2} & \textbf{0.969} [.943,.990] & 0.036 [.010,.068] & \textbf{716} & \textbf{357} \\
+P3 & 0.792 [.729,.849] & \textbf{0.161} [.109,.214] & 805 & 351 \\
+P4 & 0.953 [.922,.979] & 0.057 [.026,.094] & 804 & 372 \\
+P5 & 0.802 [.745,.854] & \textbf{0.214} [.156,.276] & 816 & 365 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Figure~\ref{fig:accuracy-staleness} plots this table directly. Figure~\ref{fig:tradeoff} places each policy in accuracy-staleness space, and Figure~\ref{fig:token-cost} plots the token-cost column.
 
@@ -63,14 +85,15 @@ Figure~\ref{fig:accuracy-staleness} plots this table directly. Figure~\ref{fig:t
 
 Comparing two independently computed confidence intervals for overlap is a weak form of evidence, because it does not use the fact that every policy is evaluated on the same set of questions. Table~\ref{tab:effect-sizes} instead bootstraps the paired per-question difference directly, which is the correct estimator whenever the compared conditions share their evaluation set, as is the case for every comparison in this thesis.
 
-\begin{sidewaystable}
+\begin{table}[H]
 \centering
 \caption{Effect sizes from paired bootstrap on the per-question difference. FC is FactConsolidation, MQ is MQuAKE-T.}
 \label{tab:effect-sizes}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{llllll}
 \toprule
-Benchmark & Comparison & Metric & Delta & 95\% CI & Excludes 0 \\
+Bench. & Comparison & Metric & Delta & 95\% CI & Excl. 0 \\
 \midrule
 FC & P2 minus P0 & accuracy & +0.000 & [-0.025, +0.025] & no \\
 FC & P2 minus P0 & staleness & -0.005 & [-0.035, +0.025] & no \\
@@ -92,7 +115,7 @@ MQ & P2 minus P1 & accuracy & +0.099 & [+0.057, +0.146] & yes \\
 MQ & P0 minus NOMEM & accuracy & +0.969 & [+0.943, +0.990] & yes \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
 This is the strongest form of the evidence supporting RQ2, addressed in Section~\ref{sec:rq2} below. The accuracy difference between P2 and the append-only ceiling is not merely a failure to detect a difference; it is bounded within roughly two and a half percentage points on FactConsolidation and roughly two and one tenth percentage points on MQuAKE-T. Reporting a bound on the difference, rather than only reporting that a test failed to reach significance, is what turns this result into an equivalence claim, addressed in more depth in Section~\ref{sec:why-forgetting-free}.
 

@@ -8,12 +8,12 @@ This appendix contains the complete per-cell results underlying every summary ta
 
 Table~\ref{tab:appendix-fc} reports every cell of the FactConsolidation matrix: seven policies, each evaluated with two answer models. Accuracy confidence intervals are percentile bootstrap at the 95 percent level, 5,000 resamples, computed per cell with $n = 100$.
 
-\begin{sidewaystable}
+\begin{table}[H]
 \centering
 \caption{FactConsolidation, all 14 cells.}
 \label{tab:appendix-fc}
-\scriptsize
-\setlength{\tabcolsep}{3.2pt}
+\tiny
+\setlength{\tabcolsep}{2.6pt}
 \begin{tabular}{llcccccccccc}
 \toprule
 Policy & Model & Acc. & 95\% CI & F1 & Stale. & Tok/q & Active & Inval & Pruned & Rej. & R-inv \\
@@ -34,19 +34,19 @@ P5 & MiniMax-M3 & 0.770 & [.680,.850] & 0.515 & 0.070 & 870 & 365 & 87 & 15 & 0 
 P5 & GLM-5.2 & 0.820 & [.740,.890] & 0.643 & 0.000 & 754 & 365 & 86 & 15 & 0 & 4.12 \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
 \section{MQuAKE-T, 14 Cells}
 \label{sec:appendix-mq}
 
 Table~\ref{tab:appendix-mq} reports every cell of the MQuAKE-T matrix, sized identically to Table~\ref{tab:appendix-fc}, with $n = 96$ per cell.
 
-\begin{sidewaystable}
+\begin{table}[H]
 \centering
 \caption{MQuAKE-T, all 14 cells.}
 \label{tab:appendix-mq}
-\scriptsize
-\setlength{\tabcolsep}{3.2pt}
+\tiny
+\setlength{\tabcolsep}{2.6pt}
 \begin{tabular}{llcccccccccc}
 \toprule
 Policy & Model & Acc. & 95\% CI & F1 & Stale. & Tok/q & Active & Inval & Pruned & Rej. & R-inv \\
@@ -67,7 +67,7 @@ P5 & MiniMax-M3 & 0.781 & [.698,.865] & 0.537 & 0.260 & 907 & 365 & 57 & 17 & 0 
 P5 & GLM-5.2 & 0.823 & [.750,.896] & 0.819 & 0.167 & 725 & 365 & 56 & 17 & 0 & 5.31 \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
 \section{MQuAKE-T Ablation, 3 Cells}
 \label{sec:appendix-ablation}
@@ -117,11 +117,12 @@ Per-category NOMEM accuracy on LoCoMo: temporal 0.000, single-hop 0.031, multi-h
 
 Tables~\ref{tab:sig-fc} and~\ref{tab:sig-mq} report all 21 policy pairs, both metrics, on both benchmarks. Counts are discordant pairs from the paired McNemar test; $p$ is the exact two-sided binomial probability. Significance is marked as \texttt{*} for $p < 0.05$, \texttt{**} for $p < 0.01$, and \texttt{***} for $p < 0.001$.
 
-\begin{sidewaystable}
+\begin{table}[H]
 \centering
 \caption{Complete pairwise significance matrix, FactConsolidation.}
 \label{tab:sig-fc}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcccc}
 \toprule
 Comparison & Accuracy & $p$ & Staleness & $p$ \\
@@ -149,13 +150,14 @@ P3 vs P5 & 8-34 & $<0.001$ *** & 23-2 & $<0.001$ *** \\
 P4 vs P5 & 9-8 & 1.000 & 7-2 & 0.180 \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
-\begin{sidewaystable}
+\begin{table}[H]
 \centering
 \caption{Complete pairwise significance matrix, MQuAKE-T.}
 \label{tab:sig-mq}
 \small
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lcccc}
 \toprule
 Comparison & Accuracy & $p$ & Staleness & $p$ \\
@@ -183,6 +185,6 @@ P3 vs P5 & 23-25 & 0.885 & 19-29 & 0.193 \\
 P4 vs P5 & 36-7 & $<0.001$ *** & 5-35 & $<0.001$ *** \\
 \bottomrule
 \end{tabular}
-\end{sidewaystable}
+\end{table}
 
 NOMEM appearing to outperform every other policy on staleness in both tables is an artifact of refusing to answer rather than evidence of superior memory hygiene: a policy that never answers cannot repeat a stale value, and staleness is only interpretable as a measure of policy quality among the policies that actually attempt an answer.

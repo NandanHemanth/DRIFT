@@ -110,21 +110,17 @@
 ABSTRACT
 \vspace{12pt}
 \end{center}
-An abstract of 350 words or less, not including the title, is required for all dissertations, theses and reports. One extra, loose copy of your abstract is required for the library. In addition, an abstract is required as part of the PhD.  If your abstract is longer than 350 words, UMI (the publisher of dissertations) will edit your abstract to 350 words.  It is in your best interest to do the editing yourself to limit it to the 350 words, rather than leave the editing up to someone who does not know your research as you do.  
+Long-lived language model agents accumulate memories that go stale. A fact true when written is later superseded, but retrieval keeps surfacing the old value, and the agent answers from a fact that no longer holds. Research on agent memory has concentrated on storage and retrieval; the rule deciding what memory discards has been treated as an implementation detail rather than as an object of study.
 
-The abstract should be formatted as it is shown here.  The requirements are as follows:   Title of document on top;  Abstract of document (350 words or fewer); Author's name on bottom; Advisor's name on bottom; Date on bottom; Department at bottom; Degree on bottom; The abstract should be the first page where page numbers appear, starting with page number iii (or page ii if a copyright page is not included). All pages after the abstract up to the first page of the body of the document continue with lower case Roman numerals (iii, iv, v, etc.)
+This thesis isolates that rule. DRIFT holds a bitemporal knowledge graph substrate, the fact extraction step, the retrieval function, the answer model, and the evaluation judge fixed, and varies only the forgetting policy across seven conditions spanning a no-memory floor, an append-only baseline, and five forgetting strategies drawn from current systems. The framework is evaluated on two public benchmarks that annotate the superseded answer, an annotation the staleness metric requires and that the two most widely used agent-memory benchmarks do not provide.
 
-Note: 1 extra, loose copy of your abstract is required for the Library. In addition, an abstract is required as part of the Ph.D defense announcement to be submitted to the Office of the Registrar at least 1½ weeks prior to the scheduled date of defense. 
+Four findings replicate across both benchmarks. Append-only memory measurably surfaces superseded facts, with staleness confidence intervals excluding zero. Bitemporal contradiction invalidation is statistically equivalent to the accuracy ceiling, bounded within roughly two to two and a half points on both benchmarks, while spending twelve percent fewer tokens per question and storing six and a half to fifteen percent fewer facts. Novelty-gated writing, a popular efficiency technique, increases staleness by eleven to thirteen points, because a correction is textually near-identical to the fact it corrects and is rejected as a duplicate, so it never enters memory. Structure-aware but time-blind consolidation performs significantly worse than bitemporal consolidation on real-world knowledge updates, attributing the advantage to bitemporal semantics specifically rather than to graph structure in general.
+
+Two methodological results accompany these findings: a configuration ablation quantifying how much of the reported efficiency depends on correctly declaring a domain's functional predicates, and a judge-reliability audit identifying a twelve-and-a-half-point accuracy artifact produced by a rotating judge pool on byte-identical answers.
+
+The framework is released as a dependency-free, offline-verifiable Python package with a five-line integration surface, so the central question, which forgetting policy suits a given workload, can be answered empirically rather than assumed.
 \vspace{12pt}
 
-
-
-%\begin{flushright}
-%Barbara Arnett
-%\end{flushright}
-
-%\\[6mm]
-% make the author name flush left
 \begin{flushleft}
 Author: \thesisname \\
 Advisor: \thesischairadvisor \\

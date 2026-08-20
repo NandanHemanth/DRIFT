@@ -59,6 +59,7 @@
 \usepackage{changepage}
   %table cmidrule
 \usepackage{booktabs}
+\usepackage{longtable} % lets a table break across a page instead of running off the bottom margin
 
 %include algorithm/flow charts
 \usepackage[noend]{algorithmic}
@@ -90,7 +91,10 @@
 % use natbib
 \usepackage{natbib}
 % hyperlink reference
-\RequirePackage[citecolor=blue,urlcolor=blue]{hyperref}
+% colorlinks=true + pdfborder={0 0 0} so cross-references print as plain
+% colored text rather than with a visible box drawn around every \ref/\cite,
+% which is hyperref's default and looks wrong in a printed or PDF-viewed thesis.
+\RequirePackage[citecolor=blue,urlcolor=blue,linkcolor=black,colorlinks=true,pdfborder={0 0 0}]{hyperref}
 % THEOREMS ----------------------------------------------------------------
 \usepackage{amsthm,amsmath,amsfonts,newlfont}
 \theoremstyle{plain}
@@ -195,8 +199,7 @@
 \addcontentsline{toc}{chapter}{Abstract}          		 				% added May2009
 \thesisabstract
 
-\addcontentsline{toc}{chapter}{Dedication}  							 % added May2009
-\thesisdedicationpage
+% Dedication page omitted by request.
 
 \addcontentsline{toc}{chapter}{Acknowledgments}   				% added May2009
 \thesisacknowledgments

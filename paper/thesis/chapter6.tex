@@ -101,24 +101,33 @@ The intended usage pattern is to export an agent's real interaction history into
 
 Table~\ref{tab:roadmap} lists the highest-value remaining work, ordered by estimated value per unit of effort.
 
-\begin{table}[H]
-\centering
-\caption{Immediate roadmap, ordered by priority.}
-\label{tab:roadmap}
 \small
-\begin{tabular}{cp{3.4cm}p{6cm}p{2cm}}
+\begin{center}
+\begin{longtable}{cp{3.4cm}p{6cm}p{2cm}}
+\caption{Immediate roadmap, ordered by priority.}\label{tab:roadmap}\\
 \toprule
 Priority & Work & Why & Cost \\
 \midrule
+\endfirsthead
+\multicolumn{4}{l}{\small\itshape Table~\ref{tab:roadmap} continued from previous page} \\
+\toprule
+Priority & Work & Why & Cost \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r}{\small\itshape continued on next page} \\
+\endfoot
+\bottomrule
+\endlastfoot
 1 & Multi-agent campaign on MQuAKE-T & RQ4 is currently answered offline only; the harness already covers seven policies across three topologies and is validated; this closes the last open research question on the benchmark where the effect is expected to be largest & 21 cells \\
 2 & Judge pinning and per-record judge identity & Removes the confound identified in Section~\ref{sec:judge-audit} from every future reported number & free \\
 3 & A conversational benchmark with recoverable supersession & Closes the extraction-noise gap, the largest remaining threat to validity; requires deterministic annotation recovery rather than an LLM annotator & new converter, 14 cells \\
 4 & Multi-hop MQuAKE-T & The existing converter already supports this via one flag; tests whether the ranking holds when the answer changes as an entailed consequence rather than by direct lookup & 14 cells \\
 5 & Haystack-size ablation & Locating the crossover between retrieval-bound and policy-bound regimes would characterize when policy choice stops being the dominant factor & 14 cells per size \\
 6 & \texttt{show\_supersession} ablation & Answers whether the measured benefit lives in the policy itself or in explicitly telling the model about supersession & 14 cells \\
-\bottomrule
-\end{tabular}
-\end{table}
+\end{longtable}
+\end{center}
+\normalsize
 
 \subsection{Longer-Term Research Directions the Framework Enables}
 \label{sec:longer-term}
