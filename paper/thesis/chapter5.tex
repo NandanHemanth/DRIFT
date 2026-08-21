@@ -370,7 +370,7 @@ Three consequences follow from this audit.
 
 This audit is reported here in full, including the specific cell in which the artifact occurred, because it is a class of error that is easy to commit and correspondingly hard to detect from summary statistics alone, and because the practice of using a language model as a judge is now standard across this subfield of research.
 
-\section{RQ4: Multi-Agent Topologies, Validated Offline}
+\section{RQ4: Multi-Agent Topologies}
 \label{sec:rq4}
 
 The multi-agent harness built for this thesis runs the same seven policies across three topologies, all operating over the same substrate and the same policy implementations used in the single-agent experiments. Table~\ref{tab:topologies} describes the three topologies.
@@ -415,7 +415,7 @@ P5 & 0.500 / 0.143 & 0.548 / 0.095 & 0.500 / 0.071 & 4 \\
 
 P2 leads all seven policies in all three topologies and holds staleness at exactly 0.000 in all three. Every shared-topology invalidation observed arrives cross-writer, meaning the fact that closed a validity window was written by a different agent than the one that wrote the original fact, which is direct evidence that structure-aware forgetting of this kind is writer-agnostic by construction rather than by any special-case handling.
 
-This result should be read as validation of the multi-agent harness rather than as a settled finding. The sample size is 14 questions using a deterministic mock provider rather than a real language model, which means RQ4 has not been answered on real data, and this remains, of the four research questions posed in Chapter~\ref{chap:introduction}, the one with the weakest evidentiary support. Chapter~\ref{chap:discussion} discusses this gap as the highest-priority item of future work.
+This result should be read as validation of the multi-agent harness rather than as a settled finding. The sample size is 14 questions using a deterministic mock provider rather than a real language model, and it covers the full seven-policy, three-topology design without yet answering whether that design holds under real, heterogeneous multi-model extraction. Section~\ref{sec:rq4-pilot} reports a partial real-data pilot that probes exactly this question on one topology, and finds a real boundary condition. Of the four research questions posed in Chapter~\ref{chap:introduction}, RQ4 remains the one with the weakest evidentiary support, and Chapter~\ref{chap:discussion} discusses completing it as the highest-priority item of future work.
 
 \begin{figure}[H]
 \centering
@@ -430,6 +430,37 @@ This result should be read as validation of the multi-agent harness rather than 
 \caption{Mean and standard deviation of accuracy across the five independent agents in the independent topology.}
 \label{fig:swarm-variance}
 \end{figure}
+
+\subsection{A Real-Data Pilot on the Shared Topology}
+\label{sec:rq4-pilot}
+
+A partial real-data campaign was run on the shared topology using MQuAKE-T and five heterogeneous extraction models, one per writer agent: GLM-5.2, MiniMax-M3, Gemini-3.1-Flash-Lite, Nemotron-3-Ultra, and Hunyuan, with GLM-5.2 as the shared answer model. Owing to the wall-clock cost of the P4 and P5 policies at this sample size, the pilot covers five of seven policies (NOMEM, P0, P1, P2, P3) on one of three topologies rather than the full matrix. Table~\ref{tab:rq4-pilot} reports the results.
+
+\begin{table}[H]
+\centering
+\caption{Real-data pilot, shared topology, MQuAKE-T, 96 questions, five heterogeneous extraction models.}
+\label{tab:rq4-pilot}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Policy & Accuracy & Staleness & Tok/q & Invalidations & Active facts \\
+\midrule
+NOMEM & 0.000 & 0.000 & 156 & 0 & 140 \\
+P0 & 0.333 & 0.271 & 710 & 0 & 140 \\
+P1 (TTL 20d) & 0.281 & 0.135 & 729 & 0 & 79 \\
+P2 & 0.365 & 0.271 & 710 & 0 & 140 \\
+P3 & 0.365 & 0.271 & 710 & 0 & 140 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The invalidation column is the finding. In the single-agent runs, one consistent extraction model per cell, P2 closes dozens of valid-time windows on MQuAKE-T (Section~\ref{sec:rq1}). Here, with five different models extracting from the same sessions, P2 records zero invalidations, and its retained-fact count, 140 active and 0 pruned, is identical to P0's. P2 and P3 track P0 to within 3.2 accuracy points, a gap the judge-reliability audit in Section~\ref{sec:judge-audit} already established as inside single-provider judge noise at this sample size, so the honest reading is that all three are statistically indistinguishable in this cell: bitemporal invalidation did not engage.
+
+The mechanism is visible directly in the saved graph. Of 140 stored facts spanning 30 distinct predicate strings, the same underlying relation is extracted under multiple surface forms depending on which model wrote it: \texttt{head\_of\_government} (28 occurrences), \texttt{is\_head\_of\_government\_of} (9), and \texttt{head\_of\_government\_of} (7) all co-occur for what MQuAKE-T's schema treats as one functional predicate, and the same pattern appears on \texttt{citizen\_of} (32) versus \texttt{is\_citizen\_of} (6) versus \texttt{citizenship} (5). P2's contradiction detection matches on subject and predicate string; a correction extracted under a different surface form than the fact it corrects never triggers a match, so the valid-time window never closes. Only 3 of 137 subjects in the graph carry more than one fact at all, each exactly 2, versus the dozens of multi-fact subjects typical of the single-extractor single-agent runs, consistent with the same real-world relation being scattered across string variants rather than consolidated onto one.
+
+P1 is the one policy in this pilot whose staleness reduction survives extraction heterogeneity, 0.135 versus P0's 0.271, because time-to-live pruning keys on \texttt{t\_valid\_start} alone and never needs two facts to agree on a predicate string to act. That protection is not free: P1 also prunes facts that were never superseded, and its accuracy, 0.281, is the lowest of the four non-floor policies in this pilot.
+
+This pilot does not overturn the single-agent findings above; it identifies a boundary condition on them. P2's advantage over P0 was established, and holds, when one extractor is responsible for the graph's predicate vocabulary. It is not yet established for the heterogeneous-extractor case this pilot probes, and the mechanism above, predicate-string fragmentation defeating exact-match contradiction detection, is a directly observed explanation rather than a speculative one. A canonicalization step ahead of the write-time match, mapping extracted predicate strings to a fixed schema or matching on embedding similarity rather than string equality, is the natural fix and is noted as future work in Chapter~\ref{chap:discussion}. The remaining sixteen cells of the full twenty-one-cell matrix, both remaining topologies plus P4 and P5 on the shared topology, were not completed in the time available for this thesis; Table~\ref{tab:swarm-results} above remains the only evidence on the full seven-policy, three-topology design, and it is offline-synthetic.
 
 \section{Memory Growth}
 \label{sec:memory-growth}
