@@ -1,0 +1,1364 @@
+{
+ "directed": true,
+ "multigraph": true,
+ "graph": {
+  "name": "drift_memory",
+  "n_communities": 12,
+  "god_nodes": [
+   "sarah",
+   "user",
+   "starlight_ventures",
+   "starlight ventures",
+   "assistant"
+  ]
+ },
+ "nodes": [
+  {
+   "id": "sarah",
+   "label": "sarah",
+   "degree": 38,
+   "community": 2
+  },
+  {
+   "id": "user",
+   "label": "user",
+   "degree": 13,
+   "community": 3
+  },
+  {
+   "id": "starlight_ventures",
+   "label": "starlight_ventures",
+   "degree": 5,
+   "community": 0
+  },
+  {
+   "id": "starlight ventures",
+   "label": "starlight ventures",
+   "degree": 4,
+   "community": 0
+  },
+  {
+   "id": "assistant",
+   "label": "assistant",
+   "degree": 4,
+   "community": 5
+  },
+  {
+   "id": "apex digital",
+   "label": "apex digital",
+   "degree": 3,
+   "community": 3
+  },
+  {
+   "id": "tam",
+   "label": "tam",
+   "degree": 3,
+   "community": 2
+  },
+  {
+   "id": "innovate corp sow phase 1",
+   "label": "innovate corp sow phase 1",
+   "degree": 3,
+   "community": 6
+  },
+  {
+   "id": "dataflow",
+   "label": "dataflow",
+   "degree": 2,
+   "community": 2
+  },
+  {
+   "id": "10 pm",
+   "label": "10 pm",
+   "degree": 2,
+   "community": 1
+  },
+  {
+   "id": "1 hour",
+   "label": "1 hour",
+   "degree": 2,
+   "community": 0
+  },
+  {
+   "id": "today",
+   "label": "today",
+   "degree": 2,
+   "community": 3
+  },
+  {
+   "id": "true",
+   "label": "true",
+   "degree": 2,
+   "community": 0
+  },
+  {
+   "id": "innovate corp",
+   "label": "innovate corp",
+   "degree": 2,
+   "community": 2
+  },
+  {
+   "id": "new features",
+   "label": "new features",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "technical training session",
+   "label": "technical training session",
+   "degree": 1,
+   "community": 11
+  },
+  {
+   "id": "monday",
+   "label": "monday",
+   "degree": 1,
+   "community": 11
+  },
+  {
+   "id": "false",
+   "label": "false",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "apex_digital_training_session",
+   "label": "apex_digital_training_session",
+   "degree": 1,
+   "community": 4
+  },
+  {
+   "id": "wednesday_of_same_week",
+   "label": "wednesday_of_same_week",
+   "degree": 1,
+   "community": 4
+  },
+  {
+   "id": "project_manager",
+   "label": "project_manager",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "internal_sprint_planning",
+   "label": "internal_sprint_planning",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "wednesday_reschedule",
+   "label": "wednesday_reschedule",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "9 am project sync for aerocorp deployment",
+   "label": "9 am project sync for aerocorp deployment",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "11 am final onboarding call with starlight ventures",
+   "label": "11 am final onboarding call with starlight ventures",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "3 pm internal tam debrief in conference room b",
+   "label": "3 pm internal tam debrief in conference room b",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "onboarded",
+   "label": "onboarded",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "mark chen",
+   "label": "mark chen",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "lead engineer at starlight ventures",
+   "label": "lead engineer at starlight ventures",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "climbing at summit climbing center tonight",
+   "label": "climbing at summit climbing center tonight",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "summit climbing center",
+   "label": "summit climbing center",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "december 12th",
+   "label": "december 12th",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "december 5th qbr prep",
+   "label": "december 5th qbr prep",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "disappointed about support job",
+   "label": "disappointed about support job",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "review draft statement of work for aerocorp expansion",
+   "label": "review draft statement of work for aerocorp expansion",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "september 12th",
+   "label": "september 12th",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "the aerocorp expansion",
+   "label": "the aerocorp expansion",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "tech support",
+   "label": "tech support",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "compsci",
+   "label": "compsci",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "titan industries",
+   "label": "titan industries",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "premium",
+   "label": "premium",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "30 minutes",
+   "label": "30 minutes",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "immediately",
+   "label": "immediately",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "noon to 1 pm - lunch",
+   "label": "noon to 1 pm - lunch",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "research new climbing harnesses",
+   "label": "research new climbing harnesses",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "7 pm",
+   "label": "7 pm",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "database design course in college",
+   "label": "database design course in college",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "project management",
+   "label": "project management",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "phase 1 implementation",
+   "label": "phase 1 implementation",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "deployment of base cloud infrastructure",
+   "label": "deployment of base cloud infrastructure",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "configuration of two development environments",
+   "label": "configuration of two development environments",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "user access and permissions setup for their core team",
+   "label": "user access and permissions setup for their core team",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "innovate corp weekly check-in tuesdays at 10 am",
+   "label": "innovate corp weekly check-in tuesdays at 10 am",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "climbing gym",
+   "label": "climbing gym",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "did not switch to business",
+   "label": "did not switch to business",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "fintech code",
+   "label": "fintech code",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "pure coding to strategic planning",
+   "label": "pure coding to strategic planning",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "translating technical risks into business plans",
+   "label": "translating technical risks into business plans",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "innovate corp phase 1",
+   "label": "innovate corp phase 1",
+   "degree": 1,
+   "community": 8
+  },
+  {
+   "id": "signed off",
+   "label": "signed off",
+   "degree": 1,
+   "community": 8
+  },
+  {
+   "id": "innovate corp phase 2",
+   "label": "innovate corp phase 2",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "data migration",
+   "label": "data migration",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "from a major consulting firm on a similar migration project",
+   "label": "from a major consulting firm on a similar migration project",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "on pitfalls sounds perfect",
+   "label": "on pitfalls sounds perfect",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "has been moved",
+   "label": "has been moved",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "monthly all-hands on first tuesday of every month 10 am to noon",
+   "label": "monthly all-hands on first tuesday of every month 10 am to noon",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "quarterly business review with omnicorp vp on the 4th at 10:30 am",
+   "label": "quarterly business review with omnicorp vp on the 4th at 10:30 am",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "technical integration kickoff with nexus health on the 2nd at 11 am",
+   "label": "technical integration kickoff with nexus health on the 2nd at 11 am",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "regular 11 am check-in with nexus health contact on wednesdays",
+   "label": "regular 11 am check-in with nexus health contact on wednesdays",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "nexus team lead requesting move of kickoff to wednesday at 9 am",
+   "label": "nexus team lead requesting move of kickoff to wednesday at 9 am",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "recurring monthly on the 15th to check for all-hands conflicts",
+   "label": "recurring monthly on the 15th to check for all-hands conflicts",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "tomorrow at 9 am to update crm with nexus kickoff status",
+   "label": "tomorrow at 9 am to update crm with nexus kickoff status",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "crm",
+   "label": "crm",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "customers",
+   "label": "customers",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "tentative for next month's all-hands",
+   "label": "tentative for next month's all-hands",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "you",
+   "label": "you",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "client meetings",
+   "label": "client meetings",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "dentist appointment with dr. evans on tuesday",
+   "label": "dentist appointment with dr. evans on tuesday",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "dental_appointment_friday",
+   "label": "dental_appointment_friday",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "climbing at vertical limit",
+   "label": "climbing at vertical limit",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "vertical limit",
+   "label": "vertical limit",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "late day",
+   "label": "late day",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "clearing mind",
+   "label": "clearing mind",
+   "degree": 1,
+   "community": 3
+  }
+ ],
+ "links": [
+  {
+   "source": "apex digital",
+   "target": "new features",
+   "label": "wants_team_trained_on",
+   "text": "Apex Digital. They were really keen on getting their team up to speed with our new features.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 345600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "apex digital",
+   "label": "scheduled_training_session_with",
+   "text": "I've just confirmed with the client. I'm adding a note to the Apex Digital CRM record that their technical training session is officially scheduled for this coming Monday.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 345600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "technical training session",
+   "target": "monday",
+   "label": "scheduled_for",
+   "text": "their technical training session is officially scheduled for this coming Monday",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 345600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "apex digital",
+   "label": "updated_crm_record_for",
+   "text": "I'm adding a note to the Apex Digital CRM record",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 345600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "false",
+   "label": "needs_help_preparing_materials",
+   "text": "I think I've got it covered, but I'll let you know if I need any assistance.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 345600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "apex_digital_training_session",
+   "target": "wednesday_of_same_week",
+   "label": "rescheduled_to",
+   "text": "they asked if we could push the training to Wednesday of the same week, which I've confirmed is fine.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 432000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "project_manager",
+   "target": "internal_sprint_planning",
+   "label": "moved",
+   "text": "Their internal sprint planning was moved unexpectedly",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 432000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "wednesday_reschedule",
+   "label": "confirmed",
+   "text": "which I've confirmed is fine.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 432000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "tam",
+   "label": "job",
+   "text": "It's so much smoother when the TAM sets clear expectations from the start.",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "dataflow",
+   "label": "works_at",
+   "text": "I remember when I was a support specialist at DataFlow",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "9 am project sync for aerocorp deployment",
+   "label": "has_meeting",
+   "text": "Today you have three scheduled meetings: a 9 AM project sync for the AeroCorp deployment",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": 691200.0
+  },
+  {
+   "source": "sarah",
+   "target": "11 am final onboarding call with starlight ventures",
+   "label": "has_meeting",
+   "text": "the final onboarding call with Starlight Ventures at 11 AM",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": 691200.0
+  },
+  {
+   "source": "sarah",
+   "target": "3 pm internal tam debrief in conference room b",
+   "label": "has_meeting",
+   "text": "a 3 PM internal TAM debrief",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight ventures",
+   "target": "onboarded",
+   "label": "onboarding_status",
+   "text": "They're officially onboarded.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "mark chen",
+   "target": "lead engineer at starlight ventures",
+   "label": "job",
+   "text": "Your note on Mark Chen says: 'Lead Engineer. Highly technical.'",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "climbing at summit climbing center tonight",
+   "label": "plans_activity",
+   "text": "I'm thinking of trying to hit the climbing gym tonight to de-stress.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "summit climbing center",
+   "target": "10 pm",
+   "label": "open_until",
+   "text": "The Summit Climbing Center is open until 10 PM tonight.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight ventures",
+   "target": "december 12th",
+   "label": "has_qbr_scheduled",
+   "text": "I've scheduled their first quarterly business review for three months from today's date.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "december 5th qbr prep",
+   "label": "has_calendar_event",
+   "text": "created a calendar event for you on December 5th to begin preparations.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight ventures",
+   "target": "1 hour",
+   "label": "p1_response_time",
+   "text": "The committed response time for these is 1 hour.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "disappointed about support job",
+   "label": "parents_reaction",
+   "text": "My parents were so disappointed when I took that support job",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "review draft statement of work for aerocorp expansion",
+   "label": "next_task",
+   "text": "Your next major task is to review the draft statement of work for the AeroCorp expansion.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "today",
+   "target": "september 12th",
+   "label": "date",
+   "text": "Assuming today's date is September 12th",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "assistant",
+   "target": "the aerocorp expansion",
+   "label": "works_at",
+   "text": "Assistant: Your next major task is to review the draft statement of work for the AeroCorp expansion. It's marked as high priority.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 691200.0,
+   "t_invalid_at": 1123200.0
+  },
+  {
+   "source": "sarah",
+   "target": "tam",
+   "label": "job",
+   "text": "That experience certainly provides a strong foundation for your current diligence as a TAM.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": 864000.0
+  },
+  {
+   "source": "sarah",
+   "target": "tech support",
+   "label": "previous_role",
+   "text": "It's the kind of thing I learned the hard way in my old tech support role.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "compsci",
+   "label": "studies",
+   "text": "A single database design course saved my CompSci degree.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "starlight ventures",
+   "label": "manages_account",
+   "text": "I'm working on the Starlight Ventures account.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": 777600.0
+  },
+  {
+   "source": "sarah",
+   "target": "titan industries",
+   "label": "manages_account",
+   "text": "I need to start prepping for the next renewal cycle with Titan Industries.",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight_ventures",
+   "target": "true",
+   "label": "renewed_contract",
+   "text": "The contract renewal finally went through.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight_ventures",
+   "target": "premium",
+   "label": "support_package",
+   "text": "They've moved to our premium support package.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight_ventures",
+   "target": "1 hour",
+   "label": "old_sla_p1_response_time",
+   "text": "The last entry regarding their SLA states a committed response time of 1 hour for P1 incidents.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight_ventures",
+   "target": "30 minutes",
+   "label": "new_sla_p1_response_time",
+   "text": "The new response time is 30 minutes.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starlight_ventures",
+   "target": "immediately",
+   "label": "sla_effective",
+   "text": "Emphasize that the change is effective immediately.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "noon to 1 pm - lunch",
+   "label": "calendar_block",
+   "text": "Can you set a focus block in my calendar from noon to 1 PM? Label it 'Do Not Disturb - Lunch'.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "research new climbing harnesses",
+   "label": "personal_task",
+   "text": "Can you add a personal task for me for this evening? 'Research new climbing harnesses'.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "7 pm",
+   "label": "task_reminder_time",
+   "text": "Remind me around 7 PM.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 777600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "innovate corp",
+   "label": "has_meeting_with",
+   "text": "It's the official kickoff with Innovate Corp.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "dataflow",
+   "label": "previously_worked_at",
+   "text": "I remember at my old role at DataFlow",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "database design course in college",
+   "label": "took_course",
+   "text": "It reminds me of my database design course in college",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "project management",
+   "label": "job",
+   "text": "climbing and project management are surprisingly similar",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "innovate corp",
+   "target": "phase 1 implementation",
+   "label": "project_phase",
+   "text": "We've officially kicked off Phase 1 of their implementation.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "innovate corp sow phase 1",
+   "target": "deployment of base cloud infrastructure",
+   "label": "deliverable",
+   "text": "1. Deployment of base cloud infrastructure.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": 864000.0
+  },
+  {
+   "source": "innovate corp sow phase 1",
+   "target": "configuration of two development environments",
+   "label": "deliverable",
+   "text": "2. Configuration of two development environments.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": 864000.0
+  },
+  {
+   "source": "innovate corp sow phase 1",
+   "target": "user access and permissions setup for their core team",
+   "label": "deliverable",
+   "text": "3. User access and permissions setup for their core team.",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "innovate corp weekly check-in tuesdays at 10 am",
+   "label": "has_recurring_meeting",
+   "text": "can you add a recurring calendar event for the weekly check-in with Innovate Corp? Tuesdays at 10 AM.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "climbing gym",
+   "label": "hobby",
+   "text": "I think I might actually leave a bit early today and hit the climbing gym.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "did not switch to business",
+   "label": "college_decision",
+   "text": "the one that convinced me not to switch to business",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 864000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "tam",
+   "label": "job",
+   "text": "That's a great skill to have as a TAM.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "fintech code",
+   "label": "first_dev_job_involved",
+   "text": "It's giving me flashbacks to my first dev job, trying to untangle old fintech code.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "pure coding to strategic planning",
+   "label": "career_transition",
+   "text": "moving from the pure coding to this kind of strategic planning was definitely the right call for me",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "translating technical risks into business plans",
+   "label": "skill",
+   "text": "My manager is always telling me I'm good at translating technical risks into business plans",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "innovate corp phase 1",
+   "target": "signed off",
+   "label": "status",
+   "text": "They officially signed off on all the deliverables.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "innovate corp phase 2",
+   "target": "data migration",
+   "label": "scope",
+   "text": "The team is now fully engaged on Phase 2, which covers their data migration.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "assistant",
+   "target": "from a major consulting firm on a similar migration project",
+   "label": "studies",
+   "text": "Assistant: Certainly. I've found three highly-rated resources: 1. A guide from AWS on 'Strategies for Database Migration.' 2. A whitepaper by the Cloud Native Computing Foundation on 'Ensuring Data Integrity During Cloud Migration.' 3. A case study from a major consulting firm on a similar migration project, highlighting potential pitfalls.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": 950400.0
+  },
+  {
+   "source": "user",
+   "target": "on pitfalls sounds perfect",
+   "label": "studies",
+   "text": "User: Oh, that case study on pitfalls sounds perfect. Can you give me the key takeaways from that one?",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "assistant",
+   "target": "has been moved",
+   "label": "studies",
+   "text": "Assistant: The new folder has been created, and the case study has been moved.",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 950400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "monthly all-hands on first tuesday of every month 10 am to noon",
+   "label": "has_meeting",
+   "text": "Starting immediately, it's now on the first Tuesday of every month.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": 1123200.0
+  },
+  {
+   "source": "sarah",
+   "target": "quarterly business review with omnicorp vp on the 4th at 10:30 am",
+   "label": "has_meeting",
+   "text": "You have a 10:30 AM 'Quarterly Business Review' scheduled with your main contact at OmniCorp.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": 1123200.0
+  },
+  {
+   "source": "sarah",
+   "target": "technical integration kickoff with nexus health on the 2nd at 11 am",
+   "label": "has_meeting",
+   "text": "At 11 AM, you have a 'Technical Integration Kickoff' with a new team at Nexus Health.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": 1123200.0
+  },
+  {
+   "source": "sarah",
+   "target": "regular 11 am check-in with nexus health contact on wednesdays",
+   "label": "has_meeting",
+   "text": "That Wednesday, you have your regular 11 AM check-in with your other Nexus Health contact",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "nexus team lead requesting move of kickoff to wednesday at 9 am",
+   "label": "drafted_email",
+   "text": "Can you help me draft an email to the Nexus team lead? Let's be proactive and suggest moving it to Wednesday at 9 AM.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "recurring monthly on the 15th to check for all-hands conflicts",
+   "label": "set_reminder",
+   "text": "Can you set a new recurring reminder for me? Maybe on the 15th of each month, just to 'Check for conflicts with the upcoming all-hands meeting'.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": 1123200.0
+  },
+  {
+   "source": "sarah",
+   "target": "tomorrow at 9 am to update crm with nexus kickoff status",
+   "label": "set_reminder",
+   "text": "Remind me tomorrow morning to update the CRM with the status of the Nexus kickoff meeting.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "crm",
+   "label": "uses_crm",
+   "text": "I'll need to log the outcome in the CRM once it's settled.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "customers",
+   "label": "priority",
+   "text": "My customers are my priority.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarah",
+   "target": "tentative for next month's all-hands",
+   "label": "marked_as",
+   "text": "Yes, mark me as tentative and I'll join after the OmniCorp QBR.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "assistant",
+   "target": "you",
+   "label": "works_at",
+   "text": "Assistant: Of course. Drafting now: 'Hi [Nexus Contact], Looking forward to our integration kickoff. Due to a last-minute change with a mandatory, company-wide meeting, I need to request a small schedule change. Would it be possible to move our call from Tuesday at 11 AM to Wednesday at 9 AM the same week? Please let me know if that works for you.' How does that sound?",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1123200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "client meetings",
+   "label": "has_meeting",
+   "text": "Yes, I have a few client meetings lined up.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1209600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "dentist appointment with dr. evans on tuesday",
+   "label": "has_appointment",
+   "text": "Also, I had originally scheduled a dentist appointment with Dr. Evans for Tuesday.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1209600.0,
+   "t_invalid_at": 1296000.0
+  },
+  {
+   "source": "user",
+   "target": "dental_appointment_friday",
+   "label": "has_appointment",
+   "text": "The dental office called to reschedule my appointment to Friday.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1296000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "true",
+   "label": "schedule_updated",
+   "text": "Got it. I'll update your schedule to reflect the change.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1296000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "today",
+   "label": "has_client_escalation",
+   "text": "I've been swamped with this client escalation today.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1555200.0,
+   "t_invalid_at": 1555200.0
+  },
+  {
+   "source": "user",
+   "target": "climbing at vertical limit",
+   "label": "plans_activity",
+   "text": "I'm hoping to squeeze in a quick climbing session at Vertical Limit later.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1555200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "vertical limit",
+   "target": "10 pm",
+   "label": "closes_at",
+   "text": "before they close at 10 PM",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1555200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "late day",
+   "label": "has_client_escalation",
+   "text": "another late day with this client escalation",
+   "active": false,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1555200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "user",
+   "target": "clearing mind",
+   "label": "uses_activity_for",
+   "text": "even a little bit of climbing helps clear my mind",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1555200.0,
+   "t_invalid_at": null
+  }
+ ]
+}

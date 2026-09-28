@@ -1,0 +1,487 @@
+# Memory view
+
+What each policy did to memory. Pruned and superseded fact text is
+recovered from graph snapshots (cells run with "save_graph": true).
+
+
+## P2_grace01d__glm-52
+policy `P2:grace_days=1.0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 380
+- active at end: 298 · pruned: 82 · write rejections: 0 · superseded still visible: 10
+- **pruned fact text** (82):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~Rogério Ceni plays the position of goalkeeper.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Ferdinand von Richthofen is a citizen of Germany.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~Ron Dennis is employed by McLaren Automotive.~~ (written by conversation)
+    - ~~Nicolae Ceaușescu is married to Elena Ceaușescu.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~The director of American Broadcasting Company is Bob Iger.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace01d__glm-52.graph.html` · data: `graphs/P2_grace01d__glm-52.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace01d__glm-52.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace01d__minimax-m3
+policy `P2:grace_days=1.0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 298 · pruned: 82 · write rejections: 0 · superseded still visible: 10
+- **pruned fact text** (82):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~Rogério Ceni plays the position of goalkeeper.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Ferdinand von Richthofen is a citizen of Germany.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~Ron Dennis is employed by McLaren Automotive.~~ (written by conversation)
+    - ~~Nicolae Ceaușescu is married to Elena Ceaușescu.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~The director of American Broadcasting Company is Bob Iger.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace01d__minimax-m3.graph.html` · data: `graphs/P2_grace01d__minimax-m3.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace01d__minimax-m3.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace03d__glm-52
+policy `P2:grace_days=3.0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 380
+- active at end: 303 · pruned: 77 · write rejections: 0 · superseded still visible: 15
+- **pruned fact text** (77):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Ferdinand von Richthofen is a citizen of Germany.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~Ron Dennis is employed by McLaren Automotive.~~ (written by conversation)
+    - ~~Nicolae Ceaușescu is married to Elena Ceaușescu.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~The director of American Broadcasting Company is Bob Iger.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace03d__glm-52.graph.html` · data: `graphs/P2_grace03d__glm-52.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace03d__glm-52.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace03d__minimax-m3
+policy `P2:grace_days=3.0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 303 · pruned: 77 · write rejections: 0 · superseded still visible: 15
+- **pruned fact text** (77):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Ferdinand von Richthofen is a citizen of Germany.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~Ron Dennis is employed by McLaren Automotive.~~ (written by conversation)
+    - ~~Nicolae Ceaușescu is married to Elena Ceaușescu.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~The director of American Broadcasting Company is Bob Iger.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace03d__minimax-m3.graph.html` · data: `graphs/P2_grace03d__minimax-m3.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace03d__minimax-m3.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace07d__glm-52
+policy `P2:grace_days=7.0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 380
+- active at end: 324 · pruned: 56 · write rejections: 0 · superseded still visible: 36
+- **pruned fact text** (56):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~The name of the current head of state in United Kingdom is Elizabeth II.~~ (written by conversation)
+    - ~~The chairperson of Harvard University is Lawrence S. Bacow.~~ (written by conversation)
+    - ~~The Prime Minister of Sweden is Stefan Löfven.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace07d__glm-52.graph.html` · data: `graphs/P2_grace07d__glm-52.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace07d__glm-52.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace07d__minimax-m3
+policy `P2:grace_days=7.0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 324 · pruned: 56 · write rejections: 0 · superseded still visible: 36
+- **pruned fact text** (56):
+    - ~~Thomas Kyd was born in the city of London.~~ (written by conversation)
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The author of A Wizard of Earthsea is Ursula K. Le Guin.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~The author of Starship Troopers is Robert A. Heinlein.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~The author of The Witcher is Andrzej Sapkowski.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~Vijay Mallya is a citizen of India.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~The name of the current head of state in United Kingdom is Elizabeth II.~~ (written by conversation)
+    - ~~The chairperson of Harvard University is Lawrence S. Bacow.~~ (written by conversation)
+    - ~~The Prime Minister of Sweden is Stefan Löfven.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace07d__minimax-m3.graph.html` · data: `graphs/P2_grace07d__minimax-m3.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace07d__minimax-m3.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace14d__glm-52
+policy `P2:grace_days=14.0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 380
+- active at end: 345 · pruned: 35 · write rejections: 0 · superseded still visible: 57
+- **pruned fact text** (35):
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~The name of the current head of state in United Kingdom is Elizabeth II.~~ (written by conversation)
+    - ~~The chairperson of Harvard University is Lawrence S. Bacow.~~ (written by conversation)
+    - ~~The Prime Minister of Sweden is Stefan Löfven.~~ (written by conversation)
+    - ~~Laura Bush is married to George W. Bush.~~ (written by conversation)
+    - ~~Nobuhiro Watsuki is famous for Rurouni Kenshin.~~ (written by conversation)
+    - ~~Israel is located in the continent of Asia.~~ (written by conversation)
+    - ~~rugby union was created in the country of England.~~ (written by conversation)
+    - ~~FC Vorskla Poltava is associated with the sport of association football.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace14d__glm-52.graph.html` · data: `graphs/P2_grace14d__glm-52.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace14d__glm-52.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace14d__minimax-m3
+policy `P2:grace_days=14.0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 345 · pruned: 35 · write rejections: 0 · superseded still visible: 57
+- **pruned fact text** (35):
+    - ~~The chairperson of Fatah is Mahmoud Abbas.~~ (written by conversation)
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~Dave Filoni is employed by Lucasfilm.~~ (written by conversation)
+    - ~~Henri Grégoire is a citizen of France.~~ (written by conversation)
+    - ~~wide receiver is associated with the sport of American football.~~ (written by conversation)
+    - ~~pesäpallo was created in the country of Finland.~~ (written by conversation)
+    - ~~point guard is associated with the sport of basketball.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~The name of the current head of state in United Kingdom is Elizabeth II.~~ (written by conversation)
+    - ~~The chairperson of Harvard University is Lawrence S. Bacow.~~ (written by conversation)
+    - ~~The Prime Minister of Sweden is Stefan Löfven.~~ (written by conversation)
+    - ~~Laura Bush is married to George W. Bush.~~ (written by conversation)
+    - ~~Nobuhiro Watsuki is famous for Rurouni Kenshin.~~ (written by conversation)
+    - ~~Israel is located in the continent of Asia.~~ (written by conversation)
+    - ~~rugby union was created in the country of England.~~ (written by conversation)
+    - ~~FC Vorskla Poltava is associated with the sport of association football.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace14d__minimax-m3.graph.html` · data: `graphs/P2_grace14d__minimax-m3.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace14d__minimax-m3.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace21d__glm-52
+policy `P2:grace_days=21.0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 380
+- active at end: 364 · pruned: 16 · write rejections: 0 · superseded still visible: 76
+- **pruned fact text** (16):
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~Laura Bush is married to George W. Bush.~~ (written by conversation)
+    - ~~Israel is located in the continent of Asia.~~ (written by conversation)
+    - ~~rugby union was created in the country of England.~~ (written by conversation)
+    - ~~FC Vorskla Poltava is associated with the sport of association football.~~ (written by conversation)
+    - ~~The author of Our Mutual Friend is Charles Dickens.~~ (written by conversation)
+    - ~~The name of the current head of state in United States of America is Donald Trump.~~ (written by conversation)
+    - ~~The official language of Australia is English.~~ (written by conversation)
+    - ~~Elvis Presley is married to Priscilla Presley.~~ (written by conversation)
+    - ~~Andy Warhol died in the city of New York City.~~ (written by conversation)
+    - ~~The capital of Soviet Union is Moscow.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace21d__glm-52.graph.html` · data: `graphs/P2_grace21d__glm-52.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace21d__glm-52.replay.html` · 38 sessions · 29 with a supersession
+
+## P2_grace21d__minimax-m3
+policy `P2:grace_days=21.0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 364 · pruned: 16 · write rejections: 0 · superseded still visible: 76
+- **pruned fact text** (16):
+    - ~~Hines Ward plays the position of wide receiver.~~ (written by conversation)
+    - ~~The capital of Tang Empire is Chang'an.~~ (written by conversation)
+    - ~~Madame du Barry is a citizen of France.~~ (written by conversation)
+    - ~~quarterback is associated with the sport of American football.~~ (written by conversation)
+    - ~~Frank Zappa died in the city of Los Angeles.~~ (written by conversation)
+    - ~~The author of The Birth of Tragedy is Friedrich Nietzsche.~~ (written by conversation)
+    - ~~Laura Bush is married to George W. Bush.~~ (written by conversation)
+    - ~~Israel is located in the continent of Asia.~~ (written by conversation)
+    - ~~rugby union was created in the country of England.~~ (written by conversation)
+    - ~~FC Vorskla Poltava is associated with the sport of association football.~~ (written by conversation)
+    - ~~The author of Our Mutual Friend is Charles Dickens.~~ (written by conversation)
+    - ~~The name of the current head of state in United States of America is Donald Trump.~~ (written by conversation)
+    - ~~The official language of Australia is English.~~ (written by conversation)
+    - ~~Elvis Presley is married to Priscilla Presley.~~ (written by conversation)
+    - ~~Andy Warhol died in the city of New York City.~~ (written by conversation)
+    - ~~The capital of Soviet Union is Moscow.~~ (written by conversation)
+- **superseded facts** (92):
+    - Thomas Kyd was born in the city of London.  ->  invalidated at t=1706227200.0
+    - The chairperson of Fatah is Mahmoud Abbas.  ->  invalidated at t=1705708800.0
+    - Hines Ward plays the position of wide receiver.  ->  invalidated at t=1704326400.0
+    - Rogério Ceni plays the position of goalkeeper.  ->  invalidated at t=1707091200.0
+    - The author of A Wizard of Earthsea is Ursula K. Le Guin.  ->  invalidated at t=1706140800.0
+    - The capital of Tang Empire is Chang'an.  ->  invalidated at t=1705363200.0
+    - Ferdinand von Richthofen is a citizen of Germany.  ->  invalidated at t=1706745600.0
+    - The author of Starship Troopers is Robert A. Heinlein.  ->  invalidated at t=1706486400.0
+    - Madame du Barry is a citizen of France.  ->  invalidated at t=1704931200.0
+    - quarterback is associated with the sport of American football.  ->  invalidated at t=1704326400.0
+    - The author of The Witcher is Andrzej Sapkowski.  ->  invalidated at t=1706140800.0
+    - Frank Zappa died in the city of Los Angeles.  ->  invalidated at t=1704412800.0
+    - Dave Filoni is employed by Lucasfilm.  ->  invalidated at t=1705622400.0
+    - Henri Grégoire is a citizen of France.  ->  invalidated at t=1705622400.0
+    - Germany is located in the continent of Europe.  ->  invalidated at t=1707177600.0
+    - Vijay Mallya is a citizen of India.  ->  invalidated at t=1706400000.0
+    - wide receiver is associated with the sport of American football.  ->  invalidated at t=1705795200.0
+    - Ron Dennis is employed by McLaren Automotive.  ->  invalidated at t=1706745600.0
+    - Colin Irwin is a citizen of United Kingdom.  ->  invalidated at t=1707177600.0
+    - Canada is located in the continent of North America.  ->  invalidated at t=1707177600.0
+- interactive graph: `graphs/P2_grace21d__minimax-m3.graph.html` · data: `graphs/P2_grace21d__minimax-m3.graph.json` · communities: 70 · god nodes: united states of america, association football, united kingdom
+- **replay** (scrub through time): `graphs/P2_grace21d__minimax-m3.replay.html` · 38 sessions · 29 with a supersession

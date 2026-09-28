@@ -1,0 +1,296 @@
+[
+ {
+  "cell": "P2_w060-030-010__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.9895833333333334,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 641.2291666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790238675.724948
+ },
+ {
+  "cell": "P2_w040-040-020__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.9021832981951268,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 697.9479166666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790239250.351956
+ },
+ {
+  "cell": "P2_w000-100-000__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.8475697389484154,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 635.3125,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790239948.286268
+ },
+ {
+  "cell": "P2_w100-000-000__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.9043165793979266,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 617.4583333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790240464.867862
+ },
+ {
+  "cell": "P2_w050-030-020__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9791666666666666,
+  "mean_f1": 0.9309764309764309,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 685.7916666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790240982.870431
+ },
+ {
+  "cell": "P2_w030-040-030__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9166666666666666,
+  "mean_f1": 0.8671443602693603,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 690.1770833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790241507.655848
+ },
+ {
+  "cell": "P2_rrf__glm-52",
+  "answer_model": "openrouter:z-ai/glm-5.2",
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.92299417859999,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 667.8125,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790242025.042581
+ },
+ {
+  "cell": "P2_w060-030-010__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.96875,
+  "mean_f1": 0.62251986532813,
+  "staleness_rate": 0.0625,
+  "mean_tokens_per_q": 790.7708333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790242041.9987671
+ },
+ {
+  "cell": "P2_w040-040-020__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9895833333333334,
+  "mean_f1": 0.7272155728458221,
+  "staleness_rate": 0.07291666666666667,
+  "mean_tokens_per_q": 802.7083333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790243217.6620312
+ },
+ {
+  "cell": "P2_w000-100-000__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.6978527107576187,
+  "staleness_rate": 0.052083333333333336,
+  "mean_tokens_per_q": 744.4583333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790244240.083377
+ },
+ {
+  "cell": "P2_w100-000-000__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9791666666666666,
+  "mean_f1": 0.7399982073075903,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 754.28125,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790245215.972239
+ },
+ {
+  "cell": "P2_w050-030-020__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.7121051659120906,
+  "staleness_rate": 0.0625,
+  "mean_tokens_per_q": 815.1041666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790245994.7678652
+ },
+ {
+  "cell": "P2_w030-040-030__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.8958333333333334,
+  "mean_f1": 0.6881950722880948,
+  "staleness_rate": 0.0625,
+  "mean_tokens_per_q": 801.4270833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790246672.4557781
+ },
+ {
+  "cell": "P2_rrf__minimax-m3",
+  "answer_model": "openrouter:minimax/minimax-m3",
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9895833333333334,
+  "mean_f1": 0.7231869894114841,
+  "staleness_rate": 0.041666666666666664,
+  "mean_tokens_per_q": 786.15625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790247402.852608
+ }
+]

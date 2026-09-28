@@ -1,0 +1,33 @@
+{
+  "dataset": "data/factconsolidation_sh_6k.json",
+  "results_dir": "artifacts/results/factconsolidation_regraded",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "functional_predicates": "*",
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "openrouter:z-ai/glm-5.2",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ],
+  "judge_model": [
+    "openrouter:anthropic/claude-opus-4.8"
+  ],
+  "models": [
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=20",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ]
+}

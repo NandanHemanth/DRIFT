@@ -43,7 +43,21 @@ make mq-data && make mq          # MQuAKE-T
 make mq-ablation                 # the functional_predicates probe
 make real-all                    # the whole campaign
 make compact                     # strip embeddings from saved cells
+
+make sensitivity-smoke           # hyperparameter sweeps, offline and free
+make sensitivity                 # sweeps on MQuAKE-T (Ollama, no paid calls)
+make sensitivity-fc              # sweeps on FactConsolidation
+make sensitivity-validate        # check the retrieval proxy against graded cells
+make frontier                    # confirmatory cells with a frontier answer model
+make judge-upgrade               # regrade the matrix with a frontier judge
 ```
+
+`src/analysis/sensitivity.py` answers "would a different constant have changed
+the conclusion?" for the retrieval weighting, retrieval depth, and every policy
+hyperparameter. It measures retrieval directly (does the gold answer reach the
+context, does the superseded one) rather than end-task accuracy, so it costs no
+answer or judge calls and carries no judge noise. `paper/SENSITIVITY_PROTOCOL.md`
+states what each sweep licenses you to claim.
 
 Real-API runs need keys in `.env` (copy `.env.example`; loaded by `src/drift/providers.py:load_dotenv`, repo-root-relative so it works from any cwd). Every `provider.complete()` is disk-cached in `.drift_cache/` by SHA-256 of (provider, model, prompt, temperature, max_tokens), so reruns after interruption are free and results are bit-for-bit reproducible. `MockProvider` is offline and deterministic, used **only** for tests and the smoke benchmark, never for reported results.
 

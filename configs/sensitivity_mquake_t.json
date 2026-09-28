@@ -1,0 +1,52 @@
+{
+  "name": "mquake_t",
+  "dataset": "data/mquake_t_sh.json",
+  "results_dir": "artifacts/results/mquake_t",
+  "out_dir": "artifacts/sensitivity",
+  "embedder": "ollama:nomic-embed-text",
+  "extract_model": "nvidia:z-ai/glm-5.2",
+  "cache_dir": ".drift_cache",
+  "functional_predicates": "*",
+  "retrieval_k": 25,
+  "weights": [
+    0.6,
+    0.3,
+    0.1
+  ],
+  "weight_step": 0.1,
+  "policies": [
+    "P0",
+    "P1:ttl_days=20",
+    "P2",
+    "P3",
+    "P5"
+  ],
+  "k_grid": [
+    5,
+    10,
+    25,
+    50
+  ],
+  "grace_grid": [
+    0.0,
+    1.0,
+    3.0,
+    7.0,
+    14.0,
+    30.0
+  ],
+  "ttl_grid": [
+    5.0,
+    10.0,
+    20.0,
+    30.0,
+    60.0
+  ],
+  "tau_grid": [
+    0.8,
+    0.85,
+    0.9,
+    0.95,
+    0.99
+  ]
+}

@@ -25,6 +25,22 @@ FUNCTIONAL_PREDICATES = {
     "lives_in", "works_at", "job", "relationship_status", "owns_pet", "studies", "located_in", "age",
 }
 
+# Hybrid retrieval weights: (semantic cosine, lexical overlap, recency prior).
+# These are a fixed design constant, not a tuned parameter: the same weighting is
+# used by every policy in every cell, so it cannot explain a difference *between*
+# policies, which is what every research question in this thesis asks about.
+# src/analysis/sensitivity.py sweeps them to show the conclusions do not depend on
+# the specific values; changing this default invalidates the published results.
+DEFAULT_RETRIEVAL_WEIGHTS = (0.6, 0.3, 0.1)
+
+# Fusion method for combining the three retrieval signals. "weighted" is the
+# published convex combination. "rrf" is reciprocal rank fusion, which needs no
+# weights at all and is what Zep uses (Rasmussen et al. 2025, after Cormack et
+# al., SIGIR 2009); it exists here so the weighted formula can be compared
+# against a parameter-free alternative rather than only against itself.
+DEFAULT_FUSION = "weighted"
+RRF_K = 60  # the constant from the original RRF paper, used unchanged
+
 # Speech-act predicates: these record that an utterance happened, not a state that
 # can be superseded, so they never trigger contradiction -- not even under "*".
 # Without this guard a degenerate extraction (every fact coming back as
@@ -74,7 +90,9 @@ class Fact:
 
 
 class BitemporalGraph:
-    def __init__(self, embedder, functional_predicates: set[str] | str | None = None):
+    def __init__(self, embedder, functional_predicates: set[str] | str | None = None,
+                 weights: tuple[float, float, float] | None = None,
+                 fusion: str | None = None):
         """functional_predicates selects which predicates admit only one true
         object at a time, and therefore trigger contradiction handling.
 
@@ -84,6 +102,10 @@ class BitemporalGraph:
         is functional would record zero invalidations, so P2 would look inert
         for reasons that have nothing to do with the policy. Pass an explicit
         set, or "*" to treat every predicate as functional.
+
+        weights is the (semantic, lexical, recency) hybrid retrieval weighting.
+        It defaults to DEFAULT_RETRIEVAL_WEIGHTS and exists so the sensitivity
+        analysis can vary it; no experimental config sets it.
         """
         self.embedder = embedder
         self.facts: dict[str, Fact] = {}
@@ -92,6 +114,8 @@ class BitemporalGraph:
         self.functional_predicates: set[str] | str = (
             FUNCTIONAL_PREDICATES if functional_predicates is None else functional_predicates
         )
+        self.weights: tuple[float, float, float] = weights or DEFAULT_RETRIEVAL_WEIGHTS
+        self.fusion: str = fusion or DEFAULT_FUSION
 
     def _is_functional(self, predicate: str) -> bool:
         if predicate.strip().lower() in NEVER_FUNCTIONAL:
@@ -130,28 +154,74 @@ class BitemporalGraph:
             self.pruned_count += 1
 
     # --------------------------------------------------------------- retrieve
-    def search(self, query: str, k: int = 8, now: float | None = None,
-               include_invalidated: bool = True) -> list[Fact]:
-        """Hybrid retrieval: embedding cosine + lexical overlap + recency prior."""
+    def _signals(self, query: str, candidates: list[Fact], now: float | None):
+        """Per-fact (semantic, lexical, recency) signal values, all in [0, 1].
+
+        Shared by both fusion methods so that the only thing separating them is
+        how the three signals are combined, not how they are computed.
+        """
         q_emb = self.embedder.embed(query)
         q_tokens = {t for t in re.findall(r"[a-z0-9]+", query.lower()) if len(t) > 2}
+        t_max = now if now is not None else max(f.t_valid_start for f in candidates)
+        t_min = min(f.t_valid_start for f in candidates)
+        span = max(1.0, t_max - t_min)
+        out = {}
+        for f in candidates:
+            f_tokens = {t for t in re.findall(r"[a-z0-9]+", f.text.lower()) if len(t) > 2}
+            out[f.id] = (
+                cosine(q_emb, f.embedding),
+                len(q_tokens & f_tokens) / max(1, len(q_tokens)),
+                (f.t_valid_start - t_min) / span,
+            )
+        return out
+
+    def _rrf(self, candidates: list[Fact], signals: dict, k_rrf: int = RRF_K) -> dict:
+        """Reciprocal rank fusion: score(f) = sum over signals of 1 / (k + rank).
+
+        Rank-based rather than score-based, so it needs no weights and is immune
+        to the three signals living on different scales. This is the fusion Zep
+        uses (Rasmussen et al. 2025, citing Cormack et al., SIGIR 2009), and it
+        is included here as the weight-free comparison point for the weighted
+        formula rather than as a replacement for it.
+        """
+        scores = {f.id: 0.0 for f in candidates}
+        for i in range(3):
+            ordered = sorted(candidates, key=lambda f: -signals[f.id][i])
+            for rank, f in enumerate(ordered, start=1):
+                scores[f.id] += 1.0 / (k_rrf + rank)
+        return scores
+
+    def search(self, query: str, k: int = 8, now: float | None = None,
+               include_invalidated: bool = True,
+               weights: tuple[float, float, float] | None = None,
+               fusion: str | None = None) -> list[Fact]:
+        """Hybrid retrieval over three signals: semantic, lexical, recency.
+
+        fusion selects how they are combined. "weighted" is the published
+        behaviour, a convex combination using `weights`. "rrf" is reciprocal
+        rank fusion, which takes no weights at all. Both see identical signals.
+
+        weights overrides self.weights for this call only, which is what lets
+        the sensitivity sweep vary the weighting without re-ingesting the graph.
+        """
+        mode = fusion or self.fusion
+        w_sem, w_lex, w_rec = weights or self.weights
         candidates = [f for f in self.facts.values() if f.active]
         if not include_invalidated:
             candidates = [f for f in candidates if not f.invalidated]
         if not candidates:
             return []
-        t_max = now if now is not None else max(f.t_valid_start for f in candidates)
-        t_min = min(f.t_valid_start for f in candidates)
-        span = max(1.0, t_max - t_min)
+        signals = self._signals(query, candidates, now)
 
-        def score(f: Fact) -> float:
-            sem = cosine(q_emb, f.embedding)
-            f_tokens = {t for t in re.findall(r"[a-z0-9]+", f.text.lower()) if len(t) > 2}
-            lex = len(q_tokens & f_tokens) / max(1, len(q_tokens))
-            rec = (f.t_valid_start - t_min) / span
-            return 0.6 * sem + 0.3 * lex + 0.1 * rec
+        if mode == "rrf":
+            scores = self._rrf(candidates, signals)
+        elif mode == "weighted":
+            scores = {f.id: w_sem * signals[f.id][0] + w_lex * signals[f.id][1]
+                             + w_rec * signals[f.id][2] for f in candidates}
+        else:
+            raise ValueError(f"unknown fusion {mode!r}, expected 'weighted' or 'rrf'")
 
-        return sorted(candidates, key=score, reverse=True)[:k]
+        return sorted(candidates, key=lambda f: scores[f.id], reverse=True)[:k]
 
     def neighborhood_max_sim(self, text: str) -> float:
         """Max cosine similarity of `text` against all active facts (novelty check)."""
@@ -184,7 +254,7 @@ class BitemporalGraph:
 
     def snapshot(self) -> "BitemporalGraph":
         """Deep-ish copy so policies can be compared from an identical base graph."""
-        g = BitemporalGraph(self.embedder, self.functional_predicates)
+        g = BitemporalGraph(self.embedder, self.functional_predicates, self.weights, self.fusion)
         for f in self.facts.values():
             g.facts[f.id] = Fact.from_dict(f.to_dict())
         return g

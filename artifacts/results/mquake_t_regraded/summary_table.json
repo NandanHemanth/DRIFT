@@ -1,0 +1,249 @@
+[
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 156.10416666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790264383.593212
+ },
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 310.6041666666667,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790264401.6142888
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9895833333333334,
+  "mean_f1": 0.9726731601731601,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 734.0,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790264798.237605
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.6224532492589276,
+  "staleness_rate": 0.09375,
+  "mean_tokens_per_q": 897.40625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 382,
+   "invalidated_active": 59,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790265103.911863
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8854166666666666,
+  "mean_f1": 0.8702182539682539,
+  "staleness_rate": 0.020833333333333332,
+  "mean_tokens_per_q": 728.65625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 251,
+   "invalidated_active": 39,
+   "pruned": 131,
+   "write_rejections": 0
+  },
+  "timestamp": 1790265209.416394
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.8854166666666666,
+  "mean_f1": 0.5689020362826842,
+  "staleness_rate": 0.03125,
+  "mean_tokens_per_q": 885.4270833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 251,
+   "invalidated_active": 39,
+   "pruned": 131,
+   "write_rejections": 0
+  },
+  "timestamp": 1790265406.4520729
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.9895833333333334,
+  "mean_f1": 0.9895833333333334,
+  "staleness_rate": 0.010416666666666666,
+  "mean_tokens_per_q": 641.2291666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790265463.5467288
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.9583333333333334,
+  "mean_f1": 0.62251986532813,
+  "staleness_rate": 0.0625,
+  "mean_tokens_per_q": 790.7708333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 357,
+   "invalidated_active": 34,
+   "pruned": 25,
+   "write_rejections": 0
+  },
+  "timestamp": 1790265672.576284
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.8229166666666666,
+  "mean_f1": 0.831712962962963,
+  "staleness_rate": 0.14583333333333334,
+  "mean_tokens_per_q": 726.9895833333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 351,
+   "active_facts": 351,
+   "invalidated_active": 44,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "timestamp": 1790265772.0907981
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.7916666666666666,
+  "mean_f1": 0.44159062149478756,
+  "staleness_rate": 0.17708333333333334,
+  "mean_tokens_per_q": 883.1979166666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 351,
+   "active_facts": 351,
+   "invalidated_active": 44,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "timestamp": 1790266046.324435
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.5729166666666666,
+  "mean_f1": 0.43999584209915626,
+  "staleness_rate": 0.2916666666666667,
+  "mean_tokens_per_q": 858.4166666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 208,
+   "invalidated_active": 7,
+   "pruned": 172,
+   "write_rejections": 0
+  },
+  "timestamp": 1790267873.480039
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 96,
+  "accuracy": 0.84375,
+  "mean_f1": 0.7635685464632833,
+  "staleness_rate": 0.16666666666666666,
+  "mean_tokens_per_q": 741.8541666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 365,
+   "invalidated_active": 56,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1790268216.981379
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 96,
+  "accuracy": 0.7708333333333334,
+  "mean_f1": 0.5032891599552617,
+  "staleness_rate": 0.23958333333333334,
+  "mean_tokens_per_q": 885.2708333333334,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 365,
+   "invalidated_active": 58,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1790268540.996329
+ }
+]

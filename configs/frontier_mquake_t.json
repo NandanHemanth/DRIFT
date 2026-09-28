@@ -1,0 +1,23 @@
+{
+  "dataset": "data/mquake_t_sh.json",
+  "results_dir": "artifacts/results/mquake_t_frontier",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "functional_predicates": "*",
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2"
+  ],
+  "judge_model": [
+    "ollama:gpt-oss:20b"
+  ],
+  "models": [
+    "openrouter:openai/gpt-5.1"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P2",
+    "P5"
+  ]
+}

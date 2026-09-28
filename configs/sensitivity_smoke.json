@@ -1,0 +1,17 @@
+{
+  "name": "smoke",
+  "dataset": "data/synthetic_smoke.json",
+  "results_dir": "artifacts/results/smoke",
+  "out_dir": "artifacts/sensitivity",
+  "embedder": "hashing",
+  "extract_model": "mock",
+  "cache_dir": ".drift_cache",
+  "retrieval_k": 8,
+  "weights": [0.6, 0.3, 0.1],
+  "weight_step": 0.25,
+  "policies": ["P0", "P2", "P5"],
+  "k_grid": [4, 8, 16],
+  "grace_grid": [0.0, 7.0, 30.0],
+  "ttl_grid": [5.0, 20.0, 60.0],
+  "tau_grid": [0.8, 0.9, 0.99]
+}

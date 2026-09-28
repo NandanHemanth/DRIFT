@@ -6,7 +6,7 @@
   "accuracy": 0.0,
   "mean_f1": 0.0,
   "staleness_rate": 0.0,
-  "mean_tokens_per_q": 135.78571428571428,
+  "mean_tokens_per_q": 84.0,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -16,7 +16,7 @@
    "pruned": 0,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.828893
+  "timestamp": 1788453622.2153478
  },
  {
   "policy": "P0",
@@ -25,7 +25,7 @@
   "accuracy": 0.7142857142857143,
   "mean_f1": 0.18990421343362524,
   "staleness_rate": 0.2857142857142857,
-  "mean_tokens_per_q": 282.07142857142856,
+  "mean_tokens_per_q": 221.21428571428572,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -35,7 +35,7 @@
    "pruned": 0,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.8438015
+  "timestamp": 1788453622.2299943
  },
  {
   "policy": "P1:ttl_days=35",
@@ -44,7 +44,7 @@
   "accuracy": 0.5,
   "mean_f1": 0.11394201037058181,
   "staleness_rate": 0.07142857142857142,
-  "mean_tokens_per_q": 260.7142857142857,
+  "mean_tokens_per_q": 206.0,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -54,7 +54,7 @@
    "pruned": 6,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.8555257
+  "timestamp": 1788453622.2411685
  },
  {
   "policy": "P2",
@@ -63,7 +63,7 @@
   "accuracy": 0.9285714285714286,
   "mean_f1": 0.23284639030437354,
   "staleness_rate": 0.0,
-  "mean_tokens_per_q": 272.35714285714283,
+  "mean_tokens_per_q": 220.57142857142858,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -73,7 +73,7 @@
    "pruned": 3,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.868426
+  "timestamp": 1788453622.2534277
  },
  {
   "policy": "P3",
@@ -82,7 +82,7 @@
   "accuracy": 0.7142857142857143,
   "mean_f1": 0.18990421343362524,
   "staleness_rate": 0.2857142857142857,
-  "mean_tokens_per_q": 283.42857142857144,
+  "mean_tokens_per_q": 221.28571428571428,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -92,7 +92,7 @@
    "pruned": 0,
    "write_rejections": 1
   },
-  "timestamp": 1785859460.8869116
+  "timestamp": 1788453622.2706845
  },
  {
   "policy": "P4",
@@ -101,7 +101,7 @@
   "accuracy": 0.7142857142857143,
   "mean_f1": 0.18990421343362524,
   "staleness_rate": 0.2857142857142857,
-  "mean_tokens_per_q": 282.64285714285717,
+  "mean_tokens_per_q": 221.0,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -111,16 +111,16 @@
    "pruned": 1,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.9019232
+  "timestamp": 1788453622.2852268
  },
  {
   "policy": "P5",
   "model": "mock",
   "n_questions": 14,
   "accuracy": 0.5714285714285714,
-  "mean_f1": 0.16601322347120667,
-  "staleness_rate": 0.0,
-  "mean_tokens_per_q": 230.92857142857142,
+  "mean_f1": 0.14239339092280268,
+  "staleness_rate": 0.14285714285714285,
+  "mean_tokens_per_q": 182.35714285714286,
   "final_memory": {
    "conversation": "convo_carol_dan",
    "session": 4,
@@ -130,6 +130,6 @@
    "pruned": 7,
    "write_rejections": 0
   },
-  "timestamp": 1785859460.9122698
+  "timestamp": 1788453622.2955568
  }
 ]

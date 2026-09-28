@@ -1,0 +1,33 @@
+{
+ "reference_order": [
+  "P2",
+  "P0",
+  "P5"
+ ],
+ "settings": 16,
+ "identical_order": 16,
+ "identical_order_pct": 100.0,
+ "pairwise": {
+  "P2 > P0": {
+   "settings": 16,
+   "held": 16,
+   "ties": 0,
+   "reversed": 0,
+   "pct": 100.0
+  },
+  "P2 > P5": {
+   "settings": 16,
+   "held": 16,
+   "ties": 0,
+   "reversed": 0,
+   "pct": 100.0
+  },
+  "P0 > P5": {
+   "settings": 16,
+   "held": 16,
+   "ties": 0,
+   "reversed": 0,
+   "pct": 100.0
+  }
+ }
+}

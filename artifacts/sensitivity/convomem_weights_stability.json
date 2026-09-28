@@ -1,0 +1,84 @@
+{
+ "reference_order": [
+  "P0",
+  "P1:ttl_days=20",
+  "P2",
+  "P3",
+  "P5"
+ ],
+ "settings": 66,
+ "identical_order": 62,
+ "identical_order_pct": 93.93939393939394,
+ "pairwise": {
+  "P0 > P1:ttl_days=20": {
+   "settings": 66,
+   "held": 0,
+   "ties": 66,
+   "reversed": 0,
+   "pct": 0.0
+  },
+  "P0 > P2": {
+   "settings": 66,
+   "held": 0,
+   "ties": 66,
+   "reversed": 0,
+   "pct": 0.0
+  },
+  "P0 > P3": {
+   "settings": 66,
+   "held": 0,
+   "ties": 65,
+   "reversed": 1,
+   "pct": 0.0
+  },
+  "P0 > P5": {
+   "settings": 66,
+   "held": 0,
+   "ties": 62,
+   "reversed": 4,
+   "pct": 0.0
+  },
+  "P1:ttl_days=20 > P2": {
+   "settings": 66,
+   "held": 0,
+   "ties": 66,
+   "reversed": 0,
+   "pct": 0.0
+  },
+  "P1:ttl_days=20 > P3": {
+   "settings": 66,
+   "held": 0,
+   "ties": 65,
+   "reversed": 1,
+   "pct": 0.0
+  },
+  "P1:ttl_days=20 > P5": {
+   "settings": 66,
+   "held": 0,
+   "ties": 62,
+   "reversed": 4,
+   "pct": 0.0
+  },
+  "P2 > P3": {
+   "settings": 66,
+   "held": 0,
+   "ties": 65,
+   "reversed": 1,
+   "pct": 0.0
+  },
+  "P2 > P5": {
+   "settings": 66,
+   "held": 0,
+   "ties": 62,
+   "reversed": 4,
+   "pct": 0.0
+  },
+  "P3 > P5": {
+   "settings": 66,
+   "held": 0,
+   "ties": 63,
+   "reversed": 3,
+   "pct": 0.0
+  }
+ }
+}

@@ -1,0 +1,4 @@
+policy,model,topology,n_questions,accuracy,f1,staleness,tokens_per_q,active_facts,pruned,write_rejections,cross_writer_invalidations
+NOMEM,openrouter:minimax/minimax-m3,,100,0.0,0.0,0.01,306,380,0,0,
+NOMEM,openrouter:z-ai/glm-5.2,,100,0.0,0.0,0.0,178,380,0,0,
+P0,openrouter:z-ai/glm-5.2,,100,0.7,0.402,0.18,748,380,0,0,

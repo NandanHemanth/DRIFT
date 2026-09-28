@@ -88,13 +88,13 @@ policy `P5` · model `mock` · topology `-`
 - total facts ever written: 12
 - active at end: 5 · pruned: 7 · write rejections: 0 · superseded still visible: 0
 - **pruned fact text** (7):
-    - ~~Carol: I love hiking on weekends.~~ (written by conversation)
     - ~~Dan: I play guitar in a local band, my favorite instrument.~~ (written by conversation)
     - ~~Carol: I work at Initech, the company audits spreadsheets.~~ (written by conversation)
     - ~~Dan: I live in Austin, the city has amazing tacos.~~ (written by conversation)
     - ~~Dan: I play guitar in a local band, my favorite instrument.~~ (written by conversation)
     - ~~Carol: Work at Initech has been stressful lately.~~ (written by conversation)
-    - ~~Dan: Denver winters are colder than expected.~~ (written by conversation)
+    - ~~Dan: My band released our first album called Midnight Drive.~~ (written by conversation)
+    - ~~Carol: My mentor at work is very supportive.~~ (written by conversation)
 - **superseded facts** (2):
     - Carol: I work at Initech, the company audits spreadsheets.  ->  invalidated at t=1707868800.0
     - Dan: I live in Austin, the city has amazing tacos.  ->  invalidated at t=1707868800.0

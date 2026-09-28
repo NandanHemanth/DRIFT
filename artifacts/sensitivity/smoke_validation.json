@@ -1,0 +1,68 @@
+[
+ {
+  "cell": "P0__mock",
+  "policy": "P0",
+  "model": "mock",
+  "reported_accuracy": 0.7142857142857143,
+  "acc_given_support": 0.7142857142857143,
+  "acc_given_no_support": null,
+  "n_supported": 14,
+  "n_unsupported": 0,
+  "phi": null
+ },
+ {
+  "cell": "P1__mock",
+  "policy": "P1:ttl_days=35",
+  "model": "mock",
+  "reported_accuracy": 0.5,
+  "acc_given_support": 0.875,
+  "acc_given_no_support": 0.0,
+  "n_supported": 8,
+  "n_unsupported": 6,
+  "phi": 0.8660254037844387
+ },
+ {
+  "cell": "P2__mock",
+  "policy": "P2",
+  "model": "mock",
+  "reported_accuracy": 0.9285714285714286,
+  "acc_given_support": 0.9285714285714286,
+  "acc_given_no_support": null,
+  "n_supported": 14,
+  "n_unsupported": 0,
+  "phi": null
+ },
+ {
+  "cell": "P3__mock",
+  "policy": "P3",
+  "model": "mock",
+  "reported_accuracy": 0.7142857142857143,
+  "acc_given_support": 0.7142857142857143,
+  "acc_given_no_support": null,
+  "n_supported": 14,
+  "n_unsupported": 0,
+  "phi": null
+ },
+ {
+  "cell": "P4__mock",
+  "policy": "P4",
+  "model": "mock",
+  "reported_accuracy": 0.7142857142857143,
+  "acc_given_support": 0.7142857142857143,
+  "acc_given_no_support": null,
+  "n_supported": 14,
+  "n_unsupported": 0,
+  "phi": null
+ },
+ {
+  "cell": "P5__mock",
+  "policy": "P5",
+  "model": "mock",
+  "reported_accuracy": 0.5714285714285714,
+  "acc_given_support": 0.75,
+  "acc_given_no_support": 0.3333333333333333,
+  "n_supported": 8,
+  "n_unsupported": 6,
+  "phi": 0.4166666666666667
+ }
+]

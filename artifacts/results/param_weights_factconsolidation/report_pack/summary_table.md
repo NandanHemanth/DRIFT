@@ -1,0 +1,18 @@
+# Summary table
+
+| policy | model | topology | n_questions | accuracy | f1 | staleness | tokens_per_q | active_facts | pruned | write_rejections | cross_writer_invalidations |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.73 | 0.362 | 0.12 | 773 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.75 | 0.439 | 0.1 | 765 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.75 | 0.393 | 0.13 | 803 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.78 | 0.406 | 0.12 | 790 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.74 | 0.422 | 0.13 | 786 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.77 | 0.444 | 0.14 | 783 | 324 | 56 | 0 |  |
+| P2 | openrouter:minimax/minimax-m3 |  | 100 | 0.78 | 0.465 | 0.15 | 750 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.77 | 0.567 | 0.08 | 658 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.4 | 0.48 | 0.06 | 687 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.78 | 0.55 | 0.06 | 671 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.81 | 0.513 | 0.05 | 683 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.82 | 0.55 | 0.04 | 664 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.8 | 0.529 | 0.06 | 648 | 324 | 56 | 0 |  |
+| P2 | openrouter:z-ai/glm-5.2 |  | 100 | 0.81 | 0.543 | 0.03 | 634 | 324 | 56 | 0 |  |

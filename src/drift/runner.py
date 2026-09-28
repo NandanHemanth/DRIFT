@@ -57,6 +57,43 @@ def _functional_predicates(cfg: dict):
     return set(fp)
 
 
+def _retrieval_weights(cfg: dict):
+    """Optional (semantic, lexical, recency) override for hybrid retrieval.
+
+    Omitted in every published config, so those runs keep the substrate default
+    of 0.6/0.3/0.1. Present only so the parameter search in
+    scripts/param_search.py can evaluate a candidate weighting end to end.
+    """
+    w = cfg.get("retrieval_weights")
+    return tuple(w) if w else None
+
+
+def _fusion(cfg: dict):
+    """Optional fusion method: "weighted" (published) or "rrf" (weight-free).
+
+    Omitted in every published config, so those runs keep the weighted default.
+    """
+    return cfg.get("retrieval_fusion")
+
+
+def prompt_fingerprint() -> str:
+    """Short hash of the answer and judge prompts this process is actually using.
+
+    Stored in every cell summary so that cells produced under different prompts
+    can be told apart after the fact. This exists because it happened: the
+    published FactConsolidation matrix was launched before the answer prompt was
+    fixed in commit 187575e, and a running Python process keeps the module it
+    imported at startup, so every cell in that run used the old prompt even
+    though most of them finished after the commit. Nothing in the saved cells
+    recorded that. Comparing fingerprints across a results directory now does.
+    """
+    import hashlib
+    from drift import pipeline
+    blob = "\x00".join([pipeline.ANSWER_SYSTEM, pipeline.ANSWER_PROMPT,
+                        pipeline.JUDGE_SYSTEM, pipeline.JUDGE_PROMPT])
+    return hashlib.sha256(blob.encode()).hexdigest()[:12]
+
+
 def load_dataset(path: str) -> dict:
     """Dataset schema:
     {"conversations": [{"id": str, "sessions": [{"time": float, "lines": [str]}],
@@ -107,7 +144,9 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
         extract_provider = _rotated_fallback(extract_providers, convo_i)
         judge_provider = _rotated_fallback(judge_providers, convo_i)
         policy = make_policy(policy_spec)  # fresh policy state per conversation
-        graph = BitemporalGraph(embedder, functional_predicates=fp)
+        graph = BitemporalGraph(embedder, functional_predicates=fp,
+                                weights=_retrieval_weights(cfg),
+                                fusion=_fusion(cfg))
         t_last = 0.0
         for s_idx, session in enumerate(convo["sessions"]):
             ingest_session(session, graph, policy, extract_provider)
@@ -149,6 +188,7 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
         "mean_tokens_per_q": sum(r["tokens"] for r in records) / n if n else 0.0,
         "final_memory": memory_curves[-1] if memory_curves else {},
         "timestamp": time.time(),
+        "prompt_fingerprint": prompt_fingerprint(),
     }
     payload = {"summary": summary, "records": records, "memory_curves": memory_curves}
     if cfg.get("save_graph"):

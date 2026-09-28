@@ -28,7 +28,7 @@ import argparse
 import json
 from pathlib import Path
 
-SKIP = {"summary_table.json", "live.json"}
+SKIP = {"summary_table.json", "live.json", "search_summary.json"}
 
 
 def compact_file(path: Path, dry_run: bool = False) -> tuple[int, int]:
@@ -37,6 +37,10 @@ def compact_file(path: Path, dry_run: bool = False) -> tuple[int, int]:
     try:
         data = json.loads(path.read_text())
     except json.JSONDecodeError:
+        return (0, 0)
+    # Only result cells are dicts. Summaries written by scripts/param_search.py
+    # and other aggregators are lists, and carry no snapshot to strip.
+    if not isinstance(data, dict):
         return (0, 0)
     snap = data.get("graph_snapshot")
     if not isinstance(snap, list) or not any("embedding" in f for f in snap):

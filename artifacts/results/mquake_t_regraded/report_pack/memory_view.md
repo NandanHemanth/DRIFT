@@ -1,0 +1,498 @@
+# Memory view
+
+What each policy did to memory. Pruned and superseded fact text is
+recovered from graph snapshots (cells run with "save_graph": true).
+
+
+## NOMEM__openrouter_minimax_minimax-m3
+policy `NOMEM` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 382
+- active at end: 382 · pruned: 0 · write rejections: 0 · superseded still visible: 59
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/NOMEM__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/NOMEM__openrouter_minimax_minimax-m3.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/NOMEM__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 21 with a supersession
+
+## NOMEM__openrouter_z-ai_glm-5.2
+policy `NOMEM` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 382
+- active at end: 382 · pruned: 0 · write rejections: 0 · superseded still visible: 59
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/NOMEM__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/NOMEM__openrouter_z-ai_glm-5.2.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/NOMEM__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 21 with a supersession
+
+## P0__openrouter_minimax_minimax-m3
+policy `P0` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 382
+- active at end: 382 · pruned: 0 · write rejections: 0 · superseded still visible: 59
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P0__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P0__openrouter_minimax_minimax-m3.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P0__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 21 with a supersession
+
+## P0__openrouter_z-ai_glm-5.2
+policy `P0` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 382
+- active at end: 382 · pruned: 0 · write rejections: 0 · superseded still visible: 59
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P0__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/P0__openrouter_z-ai_glm-5.2.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P0__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 21 with a supersession
+
+## P1__openrouter_minimax_minimax-m3
+policy `P1:ttl_days=20` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 382
+- active at end: 251 · pruned: 131 · write rejections: 0 · superseded still visible: 39
+- **pruned fact text** (131):
+    - ~~The head of government of Wichita is Jeff Longwell.~~ (written by conversation)
+    - ~~The headquarters of Mozilla Corporation is located in the city of Mountain View.~~ (written by conversation)
+    - ~~The capital of Czech Socialist Republic is Prague.~~ (written by conversation)
+    - ~~rugby was created in the country of England.~~ (written by conversation)
+    - ~~Pink Floyd was created in the country of United Kingdom.~~ (written by conversation)
+    - ~~Dom Mintoff is a citizen of Malta.~~ (written by conversation)
+    - ~~Choi Kyung-ju is a citizen of South Korea.~~ (written by conversation)
+    - ~~The head of state of South Korea is Moon Jae-in.~~ (written by conversation)
+    - ~~The head of government of Italy is Giuseppe Conte.~~ (written by conversation)
+    - ~~The company that produced Aston Martin DB7 is Aston Martin Lagonda.~~ (written by conversation)
+    - ~~European Baseball Championship is associated with the sport of baseball.~~ (written by conversation)
+    - ~~Levi Woodbury is a citizen of United States of America.~~ (written by conversation)
+    - ~~The Highlanders is a citizen of Scotland.~~ (written by conversation)
+    - ~~Antonis Remos is a citizen of Greece.~~ (written by conversation)
+    - ~~The head of government of Marseille is Jean-Claude Gaudin.~~ (written by conversation)
+    - ~~Noam Dar is a citizen of Israel.~~ (written by conversation)
+    - ~~Petra Cetkovská is a citizen of Czech Republic.~~ (written by conversation)
+    - ~~Jim Davis is a citizen of United States of America.~~ (written by conversation)
+    - ~~Bachir Gemayel is a citizen of Lebanon.~~ (written by conversation)
+    - ~~Leandro Locsin is a citizen of Philippines.~~ (written by conversation)
+- **superseded facts** (50):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Germany is Angela Merkel.  ->  invalidated at t=1705622400.0
+    - The head of government of Nashville is David Briley.  ->  invalidated at t=1705968000.0
+    - The head of state of United States of America is Donald Trump.  ->  invalidated at t=1706227200.0
+    - The head of government of Chile is Sebastian Piñera.  ->  invalidated at t=1706832000.0
+    - The head of state of Croatia is Kolinda Grabar-Kitarović.  ->  invalidated at t=1705795200.0
+    - The head of government of Norway is Erna Solberg.  ->  invalidated at t=1707091200.0
+    - The head of state of Slovenia is Borut Pahor.  ->  invalidated at t=1706832000.0
+    - The head of government of Panama is Juan Carlos Varela.  ->  invalidated at t=1707177600.0
+    - The head of government of Honduras is Juan Orlando Hernández.  ->  invalidated at t=1706832000.0
+- interactive graph: `graphs/P1__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P1__openrouter_minimax_minimax-m3.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P1__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 20 with a supersession
+
+## P1__openrouter_z-ai_glm-5.2
+policy `P1:ttl_days=20` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 382
+- active at end: 251 · pruned: 131 · write rejections: 0 · superseded still visible: 39
+- **pruned fact text** (131):
+    - ~~The head of government of Wichita is Jeff Longwell.~~ (written by conversation)
+    - ~~The headquarters of Mozilla Corporation is located in the city of Mountain View.~~ (written by conversation)
+    - ~~The capital of Czech Socialist Republic is Prague.~~ (written by conversation)
+    - ~~rugby was created in the country of England.~~ (written by conversation)
+    - ~~Pink Floyd was created in the country of United Kingdom.~~ (written by conversation)
+    - ~~Dom Mintoff is a citizen of Malta.~~ (written by conversation)
+    - ~~Choi Kyung-ju is a citizen of South Korea.~~ (written by conversation)
+    - ~~The head of state of South Korea is Moon Jae-in.~~ (written by conversation)
+    - ~~The head of government of Italy is Giuseppe Conte.~~ (written by conversation)
+    - ~~The company that produced Aston Martin DB7 is Aston Martin Lagonda.~~ (written by conversation)
+    - ~~European Baseball Championship is associated with the sport of baseball.~~ (written by conversation)
+    - ~~Levi Woodbury is a citizen of United States of America.~~ (written by conversation)
+    - ~~The Highlanders is a citizen of Scotland.~~ (written by conversation)
+    - ~~Antonis Remos is a citizen of Greece.~~ (written by conversation)
+    - ~~The head of government of Marseille is Jean-Claude Gaudin.~~ (written by conversation)
+    - ~~Noam Dar is a citizen of Israel.~~ (written by conversation)
+    - ~~Petra Cetkovská is a citizen of Czech Republic.~~ (written by conversation)
+    - ~~Jim Davis is a citizen of United States of America.~~ (written by conversation)
+    - ~~Bachir Gemayel is a citizen of Lebanon.~~ (written by conversation)
+    - ~~Leandro Locsin is a citizen of Philippines.~~ (written by conversation)
+- **superseded facts** (50):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Germany is Angela Merkel.  ->  invalidated at t=1705622400.0
+    - The head of government of Nashville is David Briley.  ->  invalidated at t=1705968000.0
+    - The head of state of United States of America is Donald Trump.  ->  invalidated at t=1706227200.0
+    - The head of government of Chile is Sebastian Piñera.  ->  invalidated at t=1706832000.0
+    - The head of state of Croatia is Kolinda Grabar-Kitarović.  ->  invalidated at t=1705795200.0
+    - The head of government of Norway is Erna Solberg.  ->  invalidated at t=1707091200.0
+    - The head of state of Slovenia is Borut Pahor.  ->  invalidated at t=1706832000.0
+    - The head of government of Panama is Juan Carlos Varela.  ->  invalidated at t=1707177600.0
+    - The head of government of Honduras is Juan Orlando Hernández.  ->  invalidated at t=1706832000.0
+- interactive graph: `graphs/P1__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/P1__openrouter_z-ai_glm-5.2.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P1__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 20 with a supersession
+
+## P2__openrouter_minimax_minimax-m3
+policy `P2` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 382
+- active at end: 357 · pruned: 25 · write rejections: 0 · superseded still visible: 34
+- **pruned fact text** (25):
+    - ~~The headquarters of Mozilla Corporation is located in the city of Mountain View.~~ (written by conversation)
+    - ~~The head of government of Italy is Giuseppe Conte.~~ (written by conversation)
+    - ~~The head of government of Boston is Marty Walsh.~~ (written by conversation)
+    - ~~The head of government of Prague is Zdeněk Hřib.~~ (written by conversation)
+    - ~~The head of state of Sri Lanka is Maithripala Sirisena.~~ (written by conversation)
+    - ~~The head of state of Dominican Republic is Danilo Medina.~~ (written by conversation)
+    - ~~The head of government of New York City is Bill de Blasio.~~ (written by conversation)
+    - ~~The head of state of Lebanon is Michel Aoun.~~ (written by conversation)
+    - ~~The head of state of Ecuador is Lenín Moreno.~~ (written by conversation)
+    - ~~The head of state of Panama is Juan Carlos Varela.~~ (written by conversation)
+    - ~~The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.~~ (written by conversation)
+    - ~~The head of government of San Juan is Carmen Yulín Cruz.~~ (written by conversation)
+    - ~~The head of state of Mauritania is Mohamed Ould Abdel Aziz.~~ (written by conversation)
+    - ~~The head of government of Germany is Angela Merkel.~~ (written by conversation)
+    - ~~The head of government of Nashville is David Briley.~~ (written by conversation)
+    - ~~The head of state of United States of America is Donald Trump.~~ (written by conversation)
+    - ~~The head of state of Croatia is Kolinda Grabar-Kitarović.~~ (written by conversation)
+    - ~~The head of government of Austria is Sebastian Kurz.~~ (written by conversation)
+    - ~~The head of government of Malta is Joseph Muscat.~~ (written by conversation)
+    - ~~The head of state of Kenya is Uhuru Kenyatta.~~ (written by conversation)
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P2__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P2__openrouter_minimax_minimax-m3.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P2__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 21 with a supersession
+
+## P2__openrouter_z-ai_glm-5.2
+policy `P2` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 382
+- active at end: 357 · pruned: 25 · write rejections: 0 · superseded still visible: 34
+- **pruned fact text** (25):
+    - ~~The headquarters of Mozilla Corporation is located in the city of Mountain View.~~ (written by conversation)
+    - ~~The head of government of Italy is Giuseppe Conte.~~ (written by conversation)
+    - ~~The head of government of Boston is Marty Walsh.~~ (written by conversation)
+    - ~~The head of government of Prague is Zdeněk Hřib.~~ (written by conversation)
+    - ~~The head of state of Sri Lanka is Maithripala Sirisena.~~ (written by conversation)
+    - ~~The head of state of Dominican Republic is Danilo Medina.~~ (written by conversation)
+    - ~~The head of government of New York City is Bill de Blasio.~~ (written by conversation)
+    - ~~The head of state of Lebanon is Michel Aoun.~~ (written by conversation)
+    - ~~The head of state of Ecuador is Lenín Moreno.~~ (written by conversation)
+    - ~~The head of state of Panama is Juan Carlos Varela.~~ (written by conversation)
+    - ~~The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.~~ (written by conversation)
+    - ~~The head of government of San Juan is Carmen Yulín Cruz.~~ (written by conversation)
+    - ~~The head of state of Mauritania is Mohamed Ould Abdel Aziz.~~ (written by conversation)
+    - ~~The head of government of Germany is Angela Merkel.~~ (written by conversation)
+    - ~~The head of government of Nashville is David Briley.~~ (written by conversation)
+    - ~~The head of state of United States of America is Donald Trump.~~ (written by conversation)
+    - ~~The head of state of Croatia is Kolinda Grabar-Kitarović.~~ (written by conversation)
+    - ~~The head of government of Austria is Sebastian Kurz.~~ (written by conversation)
+    - ~~The head of government of Malta is Joseph Muscat.~~ (written by conversation)
+    - ~~The head of state of Kenya is Uhuru Kenyatta.~~ (written by conversation)
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P2__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/P2__openrouter_z-ai_glm-5.2.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P2__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 21 with a supersession
+
+## P3__openrouter_minimax_minimax-m3
+policy `P3` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 351
+- active at end: 351 · pruned: 0 · write rejections: 31 · superseded still visible: 44
+- **superseded facts** (44):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+    - The head of government of Germany is Angela Merkel.  ->  invalidated at t=1705622400.0
+    - The head of government of Nashville is David Briley.  ->  invalidated at t=1705968000.0
+    - The head of government of Chile is Sebastian Piñera.  ->  invalidated at t=1706832000.0
+    - The head of state of Croatia is Kolinda Grabar-Kitarović.  ->  invalidated at t=1705795200.0
+    - The head of government of Norway is Erna Solberg.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P3__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P3__openrouter_minimax_minimax-m3.graph.json` · communities: 110 · god nodes: south korea, czech republic, greece
+- **replay** (scrub through time): `graphs/P3__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 19 with a supersession
+
+## P3__openrouter_z-ai_glm-5.2
+policy `P3` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 351
+- active at end: 351 · pruned: 0 · write rejections: 31 · superseded still visible: 44
+- **superseded facts** (44):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+    - The head of government of Germany is Angela Merkel.  ->  invalidated at t=1705622400.0
+    - The head of government of Nashville is David Briley.  ->  invalidated at t=1705968000.0
+    - The head of government of Chile is Sebastian Piñera.  ->  invalidated at t=1706832000.0
+    - The head of state of Croatia is Kolinda Grabar-Kitarović.  ->  invalidated at t=1705795200.0
+    - The head of government of Norway is Erna Solberg.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P3__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/P3__openrouter_z-ai_glm-5.2.graph.json` · communities: 110 · god nodes: south korea, czech republic, greece
+- **replay** (scrub through time): `graphs/P3__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 19 with a supersession
+
+## P4__openrouter_minimax_minimax-m3
+policy `P4` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 380
+- active at end: 208 · pruned: 172 · write rejections: 0 · superseded still visible: 7
+- **pruned fact text** (172):
+    - ~~Quadrophenia was performed by The Who.~~ (written by conversation)
+    - ~~The head of government of Berlin is Michael Müller.~~ (written by conversation)
+    - ~~The head of government of Tucson is Jonathan Rothschild.~~ (written by conversation)
+    - ~~The head of government of New York City is Bill de Blasio.~~ (written by conversation)
+    - ~~Benjamin Mazar is a citizen of Israel.~~ (written by conversation)
+    - ~~Oasis was created in the country of United Kingdom.~~ (written by conversation)
+    - ~~Robert Baer is employed by Central Intelligence Agency.~~ (written by conversation)
+    - ~~Nogi Maresuke is a citizen of Japan.~~ (written by conversation)
+    - ~~Antonis Samaras is a citizen of Greece.~~ (written by conversation)
+    - ~~Blanka Vlašić is a citizen of Croatia.~~ (written by conversation)
+    - ~~The head of state of Lebanon is Michel Aoun.~~ (written by conversation)
+    - ~~Norihiko Hibino is a citizen of Japan.~~ (written by conversation)
+    - ~~Santo Cilauro is a citizen of Australia.~~ (written by conversation)
+    - ~~Vang Pao is a citizen of Laos.~~ (written by conversation)
+    - ~~Nobuhiro Watsuki is famous for Rurouni Kenshin.~~ (written by conversation)
+    - ~~Alternative Press was created in the country of United States of America.~~ (written by conversation)
+    - ~~The univeristy where Greg Nickels was educated is University of Washington.~~ (written by conversation)
+    - ~~The headquarters of Mozilla Corporation is located in the city of San Francisco.~~ (written by conversation)
+    - ~~The company that produced AMC AMX is American Motors Corporation.~~ (written by conversation)
+    - ~~The head of state of Ecuador is Lenín Moreno.~~ (written by conversation)
+- **superseded facts** (8):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of United Kingdom is Elizabeth II.  ->  invalidated at t=1707264000.0
+- interactive graph: `graphs/P4__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P4__openrouter_minimax_minimax-m3.graph.json` · communities: 114 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P4__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 5 with a supersession
+
+## P5__openrouter_minimax_minimax-m3
+policy `P5` · model `openrouter:minimax/minimax-m3` · topology `-`
+- total facts ever written: 382
+- active at end: 365 · pruned: 17 · write rejections: 0 · superseded still visible: 58
+- **pruned fact text** (17):
+    - ~~The head of state of Lebanon is Michel Aoun.~~ (written by conversation)
+    - ~~The head of state of Panama is Laurentino Cortizo.~~ (written by conversation)
+    - ~~The head of state of Ecuador is Guillermo Lasso.~~ (written by conversation)
+    - ~~The head of state of United States of America is Joe Biden.~~ (written by conversation)
+    - ~~The head of state of Kenya is William Ruto.~~ (written by conversation)
+    - ~~The head of state of Czech Republic is Petr Pavel.~~ (written by conversation)
+    - ~~The head of government of Ecuador is Guillermo Lasso.~~ (written by conversation)
+    - ~~The head of government of South Korea is Yoon Suk-yeol.~~ (written by conversation)
+    - ~~The head of government of Honduras is Xiomara Castro de Zelaya.~~ (written by conversation)
+    - ~~The head of state of Malawi is Lazarus Chakwera.~~ (written by conversation)
+    - ~~The head of government of Czech Republic is Petr Fiala.~~ (written by conversation)
+    - ~~The head of government of Panama is Laurentino Cortizo.~~ (written by conversation)
+    - ~~The head of government of Malawi is Lazarus Chakwera.~~ (written by conversation)
+    - ~~The head of state of United Kingdom is Charles, Prince of Wales.~~ (written by conversation)
+    - ~~The head of government of Kenya is William Ruto.~~ (written by conversation)
+    - ~~The head of state of Honduras is Xiomara Castro de Zelaya.~~ (written by conversation)
+    - ~~The head of state of South Korea is Yoon Suk-yeol.~~ (written by conversation)
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P5__openrouter_minimax_minimax-m3.graph.html` · data: `graphs/P5__openrouter_minimax_minimax-m3.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P5__openrouter_minimax_minimax-m3.replay.html` · 38 sessions · 21 with a supersession
+
+## P5__openrouter_z-ai_glm-5.2
+policy `P5` · model `openrouter:z-ai/glm-5.2` · topology `-`
+- total facts ever written: 382
+- active at end: 365 · pruned: 17 · write rejections: 0 · superseded still visible: 56
+- **pruned fact text** (17):
+    - ~~The head of state of Lebanon is Michel Aoun.~~ (written by conversation)
+    - ~~The head of government of Czech Republic is Andrej Babiš.~~ (written by conversation)
+    - ~~The head of state of United States of America is Donald Trump.~~ (written by conversation)
+    - ~~The head of state of Panama is Laurentino Cortizo.~~ (written by conversation)
+    - ~~The head of state of Ecuador is Guillermo Lasso.~~ (written by conversation)
+    - ~~The head of state of Kenya is William Ruto.~~ (written by conversation)
+    - ~~The head of state of Czech Republic is Petr Pavel.~~ (written by conversation)
+    - ~~The head of government of Ecuador is Guillermo Lasso.~~ (written by conversation)
+    - ~~The head of government of South Korea is Yoon Suk-yeol.~~ (written by conversation)
+    - ~~The head of government of Honduras is Xiomara Castro de Zelaya.~~ (written by conversation)
+    - ~~The head of state of Malawi is Lazarus Chakwera.~~ (written by conversation)
+    - ~~The head of government of Panama is Laurentino Cortizo.~~ (written by conversation)
+    - ~~The head of government of Malawi is Lazarus Chakwera.~~ (written by conversation)
+    - ~~The head of state of United Kingdom is Charles, Prince of Wales.~~ (written by conversation)
+    - ~~The head of government of Kenya is William Ruto.~~ (written by conversation)
+    - ~~The head of state of Honduras is Xiomara Castro de Zelaya.~~ (written by conversation)
+    - ~~The head of state of South Korea is Yoon Suk-yeol.~~ (written by conversation)
+- **superseded facts** (59):
+    - The headquarters of Mozilla Corporation is located in the city of Mountain View.  ->  invalidated at t=1704844800.0
+    - The head of state of South Korea is Moon Jae-in.  ->  invalidated at t=1707264000.0
+    - The head of government of Italy is Giuseppe Conte.  ->  invalidated at t=1704672000.0
+    - The head of government of Boston is Marty Walsh.  ->  invalidated at t=1704672000.0
+    - The head of government of Prague is Zdeněk Hřib.  ->  invalidated at t=1706572800.0
+    - The head of state of Sri Lanka is Maithripala Sirisena.  ->  invalidated at t=1705795200.0
+    - The head of state of Kosovo is Hashim Thaçi.  ->  invalidated at t=1707264000.0
+    - The head of state of Dominican Republic is Danilo Medina.  ->  invalidated at t=1706572800.0
+    - The head of government of New York City is Bill de Blasio.  ->  invalidated at t=1704758400.0
+    - The head of state of Lebanon is Michel Aoun.  ->  invalidated at t=1705104000.0
+    - The head of government of Ecuador is Lenín Moreno.  ->  invalidated at t=1706659200.0
+    - The head of state of Ecuador is Lenín Moreno.  ->  invalidated at t=1706227200.0
+    - The head of government of Czech Republic is Andrej Babiš.  ->  invalidated at t=1706918400.0
+    - The head of state of Panama is Juan Carlos Varela.  ->  invalidated at t=1705708800.0
+    - The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.  ->  invalidated at t=1706486400.0
+    - The chief executive officer of McDonald's is Steve Easterbrook.  ->  invalidated at t=1707177600.0
+    - The head of government of San Juan is Carmen Yulín Cruz.  ->  invalidated at t=1706486400.0
+    - The head of government of Hong Kong is Carrie Lam.  ->  invalidated at t=1707091200.0
+    - The head of state of Mauritania is Mohamed Ould Abdel Aziz.  ->  invalidated at t=1705536000.0
+    - The head of government of Los Angeles is Eric Garcetti.  ->  invalidated at t=1707091200.0
+- interactive graph: `graphs/P5__openrouter_z-ai_glm-5.2.graph.html` · data: `graphs/P5__openrouter_z-ai_glm-5.2.graph.json` · communities: 109 · god nodes: south korea, czech republic, united states of america
+- **replay** (scrub through time): `graphs/P5__openrouter_z-ai_glm-5.2.replay.html` · 38 sessions · 21 with a supersession

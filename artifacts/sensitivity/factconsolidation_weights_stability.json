@@ -1,0 +1,84 @@
+{
+ "reference_order": [
+  "P2",
+  "P1:ttl_days=20",
+  "P5",
+  "P0",
+  "P3"
+ ],
+ "settings": 66,
+ "identical_order": 33,
+ "identical_order_pct": 50.0,
+ "pairwise": {
+  "P2 > P1:ttl_days=20": {
+   "settings": 66,
+   "held": 65,
+   "ties": 1,
+   "reversed": 0,
+   "pct": 98.48484848484848
+  },
+  "P2 > P5": {
+   "settings": 66,
+   "held": 63,
+   "ties": 2,
+   "reversed": 1,
+   "pct": 95.45454545454545
+  },
+  "P2 > P0": {
+   "settings": 66,
+   "held": 57,
+   "ties": 9,
+   "reversed": 0,
+   "pct": 86.36363636363636
+  },
+  "P2 > P3": {
+   "settings": 66,
+   "held": 66,
+   "ties": 0,
+   "reversed": 0,
+   "pct": 100.0
+  },
+  "P1:ttl_days=20 > P5": {
+   "settings": 66,
+   "held": 29,
+   "ties": 8,
+   "reversed": 29,
+   "pct": 43.93939393939394
+  },
+  "P1:ttl_days=20 > P0": {
+   "settings": 66,
+   "held": 48,
+   "ties": 3,
+   "reversed": 15,
+   "pct": 72.72727272727273
+  },
+  "P1:ttl_days=20 > P3": {
+   "settings": 66,
+   "held": 59,
+   "ties": 2,
+   "reversed": 5,
+   "pct": 89.39393939393939
+  },
+  "P5 > P0": {
+   "settings": 66,
+   "held": 54,
+   "ties": 3,
+   "reversed": 9,
+   "pct": 81.81818181818181
+  },
+  "P5 > P3": {
+   "settings": 66,
+   "held": 66,
+   "ties": 0,
+   "reversed": 0,
+   "pct": 100.0
+  },
+  "P0 > P3": {
+   "settings": 66,
+   "held": 63,
+   "ties": 2,
+   "reversed": 1,
+   "pct": 95.45454545454545
+  }
+ }
+}

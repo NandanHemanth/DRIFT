@@ -67,6 +67,9 @@ fc-data: ## Download MemoryAgentBench FactConsolidation (single-hop, 6k)
 mq-data: ## Download MQuAKE-T and convert (real Wikidata drift, 96/96 annotated)
 	$(PY) scripts/download_mquake.py --dataset MQuAKE-T --hop sh
 
+convomem-data: ## Download ConvoMem changing-facts and convert (natural dialogue)
+	$(PY) scripts/download_convomem.py --questions 100 --group-size 10
+
 # ---------------------------------------------------------------- experiments
 #
 # Real-API runs need keys in .env (copy .env.example). Every provider call is
@@ -93,6 +96,13 @@ mq: ## Run the MQuAKE-T matrix (7 policies x 2 models)
 
 mq-ablation: ## Overfit probe: MQuAKE-T without functional_predicates declared
 	$(PY) -m drift.runner --config configs/mquake_t_ablation.json
+
+convomem: ## Run the ConvoMem matrix (7 policies x 2 models, pinned judge)
+	$(PY) -m drift.runner --config configs/convomem.json
+
+regrade: ## Regrade both published matrices with one pinned judge (answers cached)
+	$(PY) -m drift.runner --config configs/regrade_mquake_t.json
+	$(PY) -m drift.runner --config configs/regrade_factconsolidation.json
 
 swarm-real: ## Run the multi-agent matrix on real data (7 policies x 3 topologies)
 	$(PY) -m drift.swarm --config configs/swarm_real.json
@@ -125,6 +135,85 @@ compare: ## Cross-dataset table: ranks, Spearman rho, paired McNemar
 	$(PY) src/analysis/compare_datasets.py \
 		artifacts/results/factconsolidation artifacts/results/mquake_t \
 		--out paper/generalization.md
+
+# ------------------------------------------------------- sensitivity analysis
+#
+# Answers "would a different constant have changed the conclusion?" for the
+# retrieval weighting, retrieval depth, and every policy hyperparameter. The
+# sweeps measure retrieval directly rather than end-task accuracy, so they cost
+# no answer-model or judge calls: extraction is served from .drift_cache and
+# embeddings come from local Ollama. Nothing here can change a published number.
+
+check-providers: ## Preflight: is every model in every config still reachable?
+	$(PY) scripts/check_providers.py --all
+
+check-convomem: ## Preflight the ConvoMem configs only
+	$(PY) scripts/check_providers.py --config configs/sensitivity_convomem.json
+	$(PY) scripts/check_providers.py --config configs/convomem.json
+
+sensitivity-smoke: ## Offline sensitivity check on synthetic data (no keys, free)
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_smoke.json
+
+sensitivity: ## Full sensitivity sweep on MQuAKE-T (needs Ollama, no paid calls)
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_mquake_t.json
+
+sensitivity-fc: ## Full sensitivity sweep on FactConsolidation
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_factconsolidation.json
+
+sensitivity-convomem: ## Full sensitivity sweep on ConvoMem
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_convomem.json
+
+surface-convomem: ## Response surface on ConvoMem
+	$(PY) -m analysis.retrieval_surface artifacts/sensitivity/convomem_sensitivity.json \
+		--policy P2 --figures
+
+sensitivity-validate: ## Check the retrieval proxy against graded answers from real cells
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_mquake_t.json --validate
+	$(PY) -m analysis.sensitivity --config configs/sensitivity_factconsolidation.json --validate
+
+surface: ## Response surface over the weight simplex: corners, Pareto front, ternary plots
+	$(PY) -m analysis.retrieval_surface artifacts/sensitivity/mquake_t_sensitivity.json \
+		--policy P2 --figures
+
+surface-fc: ## Same response surface on FactConsolidation
+	$(PY) -m analysis.retrieval_surface artifacts/sensitivity/factconsolidation_sensitivity.json \
+		--policy P2 --figures
+
+sensitivity-all: sensitivity sensitivity-fc sensitivity-validate surface ## Every sweep, both benchmarks
+
+# --------------------------------------------------- parameter search (best value)
+#
+# The sweeps above answer "does the conclusion depend on this constant?".
+# These answer "which value is best?", which needs the real pipeline because the
+# intrinsic metrics are flat across most of the range. Candidates are
+# pre-screened by the sweep, so only settings that can match current accuracy
+# are ever run.
+
+grace-search: ## Best P2 grace period, 1 to 21 days, end to end (5 cells, paid)
+	$(PY) scripts/param_search.py --config configs/mquake_t.json --search grace
+
+grace-search-fc: ## Same grace search on FactConsolidation
+	$(PY) scripts/param_search.py --config configs/factconsolidation.json --search grace
+
+weights-search: ## Best retrieval weighting, 6 pre-screened candidates (paid)
+	$(PY) scripts/param_search.py --config configs/mquake_t.json --search weights
+
+weights-search-fc: ## Same weighting search on FactConsolidation (the TUNING set)
+	$(PY) scripts/param_search.py --config configs/factconsolidation.json --search weights
+
+weights-search-convomem: ## Weighting search on ConvoMem
+	$(PY) scripts/param_search.py --config configs/convomem.json --search weights
+
+grace-search-convomem: ## Grace search on ConvoMem
+	$(PY) scripts/param_search.py --config configs/convomem.json --search grace
+
+# --------------------------------------------------- external-validity probes
+
+frontier: ## Confirmatory cells with a frontier answer model (paid, 4 cells)
+	$(PY) -m drift.runner --config configs/frontier_mquake_t.json
+
+judge-upgrade: ## Regrade the MQuAKE-T matrix with a frontier judge (answers cached)
+	$(PY) -m drift.runner --config configs/judge_upgrade_mquake_t.json
 
 # ---------------------------------------------------------------- visualisation
 #

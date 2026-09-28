@@ -1,0 +1,14 @@
+# Summary table
+
+| policy | model | topology | n_questions | accuracy | f1 | staleness | tokens_per_q | active_facts | pruned | write_rejections | cross_writer_invalidations |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| P2:grace_days=1.0 | openrouter:minimax/minimax-m3 |  | 96 | 0.99 | 0.69 | 0.052 | 809 | 340 | 42 | 0 |  |
+| P2:grace_days=3.0 | openrouter:minimax/minimax-m3 |  | 96 | 0.99 | 0.645 | 0.062 | 805 | 345 | 37 | 0 |  |
+| P2:grace_days=7.0 | openrouter:minimax/minimax-m3 |  | 96 | 0.969 | 0.623 | 0.062 | 791 | 357 | 25 | 0 |  |
+| P2:grace_days=14.0 | openrouter:minimax/minimax-m3 |  | 96 | 0.969 | 0.621 | 0.062 | 768 | 370 | 12 | 0 |  |
+| P2:grace_days=21.0 | openrouter:minimax/minimax-m3 |  | 96 | 0.958 | 0.618 | 0.062 | 765 | 377 | 5 | 0 |  |
+| P2:grace_days=1.0 | openrouter:z-ai/glm-5.2 |  | 96 | 0.969 | 0.942 | 0.01 | 666 | 340 | 42 | 0 |  |
+| P2:grace_days=3.0 | openrouter:z-ai/glm-5.2 |  | 96 | 0.969 | 0.955 | 0.01 | 664 | 345 | 37 | 0 |  |
+| P2:grace_days=7.0 | openrouter:z-ai/glm-5.2 |  | 96 | 0.969 | 0.99 | 0.01 | 641 | 357 | 25 | 0 |  |
+| P2:grace_days=14.0 | openrouter:z-ai/glm-5.2 |  | 96 | 0.969 | 0.965 | 0.01 | 630 | 370 | 12 | 0 |  |
+| P2:grace_days=21.0 | openrouter:z-ai/glm-5.2 |  | 96 | 0.969 | 0.955 | 0.01 | 629 | 377 | 5 | 0 |  |

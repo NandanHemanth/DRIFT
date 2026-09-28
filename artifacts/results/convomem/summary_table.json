@@ -1,0 +1,268 @@
+[
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.0,
+  "mean_f1": 0.01510842527612714,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 197.06,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790255999.834217
+ },
+ {
+  "policy": "NOMEM",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.0,
+  "mean_f1": 0.03912917672392053,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 299.81,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790256492.5348842
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.24,
+  "mean_f1": 0.28215098245920894,
+  "staleness_rate": 0.21,
+  "mean_tokens_per_q": 1023.57,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790257114.3360782
+ },
+ {
+  "policy": "P0",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.30587800759547507,
+  "staleness_rate": 0.24,
+  "mean_tokens_per_q": 1029.25,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790257840.874488
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.24,
+  "mean_f1": 0.28215098245920894,
+  "staleness_rate": 0.21,
+  "mean_tokens_per_q": 1023.57,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790257867.4642298
+ },
+ {
+  "policy": "P1:ttl_days=20",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.30587800759547507,
+  "staleness_rate": 0.24,
+  "mean_tokens_per_q": 1029.25,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790257893.99187
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.22,
+  "mean_f1": 0.2858306510020322,
+  "staleness_rate": 0.15,
+  "mean_tokens_per_q": 819.72,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 68,
+   "invalidated_active": 8,
+   "pruned": 9,
+   "write_rejections": 0
+  },
+  "timestamp": 1790258379.8211992
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.3121812688199332,
+  "staleness_rate": 0.18,
+  "mean_tokens_per_q": 877.48,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 68,
+   "invalidated_active": 8,
+   "pruned": 9,
+   "write_rejections": 0
+  },
+  "timestamp": 1790258929.406569
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.26,
+  "mean_f1": 0.25857901612421835,
+  "staleness_rate": 0.23,
+  "mean_tokens_per_q": 1020.93,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 76,
+   "active_facts": 76,
+   "invalidated_active": 16,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  "timestamp": 1790259433.522481
+ },
+ {
+  "policy": "P3",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.2988243856254356,
+  "staleness_rate": 0.25,
+  "mean_tokens_per_q": 1043.48,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 76,
+   "active_facts": 76,
+   "invalidated_active": 16,
+   "pruned": 0,
+   "write_rejections": 1
+  },
+  "timestamp": 1790260019.486149
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.2854096671757426,
+  "staleness_rate": 0.2,
+  "mean_tokens_per_q": 974.99,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790261345.208519
+ },
+ {
+  "policy": "P4",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.30529000023568115,
+  "staleness_rate": 0.2,
+  "mean_tokens_per_q": 1020.5,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 77,
+   "invalidated_active": 17,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "timestamp": 1790262714.213262
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:z-ai/glm-5.2",
+  "n_questions": 100,
+  "accuracy": 0.23,
+  "mean_f1": 0.2749705779637459,
+  "staleness_rate": 0.19,
+  "mean_tokens_per_q": 887.21,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 60,
+   "invalidated_active": 4,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1790263227.155231
+ },
+ {
+  "policy": "P5",
+  "model": "openrouter:minimax/minimax-m3",
+  "n_questions": 100,
+  "accuracy": 0.24,
+  "mean_f1": 0.29384294786099974,
+  "staleness_rate": 0.21,
+  "mean_tokens_per_q": 954.75,
+  "final_memory": {
+   "conversation": "convomem_009",
+   "session": 19,
+   "total_facts": 77,
+   "active_facts": 60,
+   "invalidated_active": 5,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "timestamp": 1790263709.137186
+ }
+]

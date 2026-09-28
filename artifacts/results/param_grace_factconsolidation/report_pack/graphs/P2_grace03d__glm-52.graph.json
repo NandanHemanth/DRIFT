@@ -1,0 +1,6467 @@
+{
+ "directed": true,
+ "multigraph": true,
+ "graph": {
+  "name": "drift_memory",
+  "n_communities": 70,
+  "god_nodes": [
+   "united states of america",
+   "association football",
+   "united kingdom",
+   "france",
+   "baseball"
+  ]
+ },
+ "nodes": [
+  {
+   "id": "united states of america",
+   "label": "united states of america",
+   "degree": 27,
+   "community": 9
+  },
+  {
+   "id": "association football",
+   "label": "association football",
+   "degree": 16,
+   "community": 21
+  },
+  {
+   "id": "united kingdom",
+   "label": "united kingdom",
+   "degree": 12,
+   "community": 9
+  },
+  {
+   "id": "france",
+   "label": "france",
+   "degree": 11,
+   "community": 29
+  },
+  {
+   "id": "baseball",
+   "label": "baseball",
+   "degree": 9,
+   "community": 7
+  },
+  {
+   "id": "india",
+   "label": "india",
+   "degree": 9,
+   "community": 5
+  },
+  {
+   "id": "basketball",
+   "label": "basketball",
+   "degree": 9,
+   "community": 9
+  },
+  {
+   "id": "australia",
+   "label": "australia",
+   "degree": 9,
+   "community": 17
+  },
+  {
+   "id": "london",
+   "label": "london",
+   "degree": 7,
+   "community": 29
+  },
+  {
+   "id": "germany",
+   "label": "germany",
+   "degree": 7,
+   "community": 5
+  },
+  {
+   "id": "japan",
+   "label": "japan",
+   "degree": 7,
+   "community": 7
+  },
+  {
+   "id": "asia",
+   "label": "asia",
+   "degree": 6,
+   "community": 20
+  },
+  {
+   "id": "cricket",
+   "label": "cricket",
+   "degree": 6,
+   "community": 21
+  },
+  {
+   "id": "england",
+   "label": "england",
+   "degree": 6,
+   "community": 21
+  },
+  {
+   "id": "moscow",
+   "label": "moscow",
+   "degree": 6,
+   "community": 9
+  },
+  {
+   "id": "soviet union",
+   "label": "soviet union",
+   "degree": 6,
+   "community": 9
+  },
+  {
+   "id": "italy",
+   "label": "italy",
+   "degree": 6,
+   "community": 17
+  },
+  {
+   "id": "rugby union",
+   "label": "rugby union",
+   "degree": 5,
+   "community": 21
+  },
+  {
+   "id": "europe",
+   "label": "europe",
+   "degree": 5,
+   "community": 29
+  },
+  {
+   "id": "wide receiver",
+   "label": "wide receiver",
+   "degree": 4,
+   "community": 10
+  },
+  {
+   "id": "american football",
+   "label": "american football",
+   "degree": 4,
+   "community": 10
+  },
+  {
+   "id": "canada",
+   "label": "canada",
+   "degree": 4,
+   "community": 20
+  },
+  {
+   "id": "american broadcasting company",
+   "label": "american broadcasting company",
+   "degree": 4,
+   "community": 0
+  },
+  {
+   "id": "catholic church",
+   "label": "catholic church",
+   "degree": 4,
+   "community": 3
+  },
+  {
+   "id": "israel",
+   "label": "israel",
+   "degree": 4,
+   "community": 20
+  },
+  {
+   "id": "university of bucharest",
+   "label": "university of bucharest",
+   "degree": 4,
+   "community": 14
+  },
+  {
+   "id": "charles dickens",
+   "label": "charles dickens",
+   "degree": 4,
+   "community": 36
+  },
+  {
+   "id": "paris",
+   "label": "paris",
+   "degree": 4,
+   "community": 29
+  },
+  {
+   "id": "narendra modi",
+   "label": "narendra modi",
+   "degree": 4,
+   "community": 5
+  },
+  {
+   "id": "thomas kyd",
+   "label": "thomas kyd",
+   "degree": 3,
+   "community": 29
+  },
+  {
+   "id": "bengaluru",
+   "label": "bengaluru",
+   "degree": 3,
+   "community": 20
+  },
+  {
+   "id": "british broadcasting corporation",
+   "label": "british broadcasting corporation",
+   "degree": 3,
+   "community": 33
+  },
+  {
+   "id": "imelda marcos",
+   "label": "imelda marcos",
+   "degree": 3,
+   "community": 22
+  },
+  {
+   "id": "university of california, berkeley",
+   "label": "university of california, berkeley",
+   "degree": 3,
+   "community": 27
+  },
+  {
+   "id": "center",
+   "label": "center",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "tang empire",
+   "label": "tang empire",
+   "degree": 3,
+   "community": 26
+  },
+  {
+   "id": "berlin",
+   "label": "berlin",
+   "degree": 3,
+   "community": 5
+  },
+  {
+   "id": "quarterback",
+   "label": "quarterback",
+   "degree": 3,
+   "community": 10
+  },
+  {
+   "id": "cornerback",
+   "label": "cornerback",
+   "degree": 3,
+   "community": 10
+  },
+  {
+   "id": "vijay mallya",
+   "label": "vijay mallya",
+   "degree": 3,
+   "community": 5
+  },
+  {
+   "id": "north america",
+   "label": "north america",
+   "degree": 3,
+   "community": 20
+  },
+  {
+   "id": "pes\u00e4pallo",
+   "label": "pes\u00e4pallo",
+   "degree": 3,
+   "community": 46
+  },
+  {
+   "id": "point guard",
+   "label": "point guard",
+   "degree": 3,
+   "community": 21
+  },
+  {
+   "id": "kingdom of ireland",
+   "label": "kingdom of ireland",
+   "degree": 3,
+   "community": 35
+  },
+  {
+   "id": "stephen crane",
+   "label": "stephen crane",
+   "degree": 3,
+   "community": 5
+  },
+  {
+   "id": "placekicker",
+   "label": "placekicker",
+   "degree": 3,
+   "community": 10
+  },
+  {
+   "id": "harvard university",
+   "label": "harvard university",
+   "degree": 3,
+   "community": 52
+  },
+  {
+   "id": "samuel beckett",
+   "label": "samuel beckett",
+   "degree": 3,
+   "community": 69
+  },
+  {
+   "id": "english",
+   "label": "english",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "new york city",
+   "label": "new york city",
+   "degree": 3,
+   "community": 6
+  },
+  {
+   "id": "pius xii",
+   "label": "pius xii",
+   "degree": 3,
+   "community": 1
+  },
+  {
+   "id": "oscar wilde",
+   "label": "oscar wilde",
+   "degree": 3,
+   "community": 51
+  },
+  {
+   "id": "joe hockey",
+   "label": "joe hockey",
+   "degree": 3,
+   "community": 17
+  },
+  {
+   "id": "tony blair",
+   "label": "tony blair",
+   "degree": 3,
+   "community": 39
+  },
+  {
+   "id": "charles darwin",
+   "label": "charles darwin",
+   "degree": 3,
+   "community": 8
+  },
+  {
+   "id": "charlie hebdo",
+   "label": "charlie hebdo",
+   "degree": 3,
+   "community": 5
+  },
+  {
+   "id": "post-punk",
+   "label": "post-punk",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "rome",
+   "label": "rome",
+   "degree": 3,
+   "community": 17
+  },
+  {
+   "id": "goaltender",
+   "label": "goaltender",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "john keats",
+   "label": "john keats",
+   "degree": 3,
+   "community": 17
+  },
+  {
+   "id": "romania",
+   "label": "romania",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "aristotle",
+   "label": "aristotle",
+   "degree": 3,
+   "community": 19
+  },
+  {
+   "id": "ernst heinkel",
+   "label": "ernst heinkel",
+   "degree": 3,
+   "community": 0
+  },
+  {
+   "id": "malaysia",
+   "label": "malaysia",
+   "degree": 3,
+   "community": 15
+  },
+  {
+   "id": "midfielder",
+   "label": "midfielder",
+   "degree": 3,
+   "community": 21
+  },
+  {
+   "id": "bernard arnault",
+   "label": "bernard arnault",
+   "degree": 3,
+   "community": 2
+  },
+  {
+   "id": "amala paul",
+   "label": "amala paul",
+   "degree": 3,
+   "community": 5
+  },
+  {
+   "id": "wilhelm ii",
+   "label": "wilhelm ii",
+   "degree": 3,
+   "community": 25
+  },
+  {
+   "id": "rap rock",
+   "label": "rap rock",
+   "degree": 3,
+   "community": 9
+  },
+  {
+   "id": "fatah",
+   "label": "fatah",
+   "degree": 2,
+   "community": 44
+  },
+  {
+   "id": "hines ward",
+   "label": "hines ward",
+   "degree": 2,
+   "community": 10
+  },
+  {
+   "id": "pedro pierluisi",
+   "label": "pedro pierluisi",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "washington, d.c.",
+   "label": "washington, d.c.",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "rog\u00e9rio ceni",
+   "label": "rog\u00e9rio ceni",
+   "degree": 2,
+   "community": 21
+  },
+  {
+   "id": "goalkeeper",
+   "label": "goalkeeper",
+   "degree": 2,
+   "community": 21
+  },
+  {
+   "id": "university of minnesota",
+   "label": "university of minnesota",
+   "degree": 2,
+   "community": 31
+  },
+  {
+   "id": "a wizard of earthsea",
+   "label": "a wizard of earthsea",
+   "degree": 2,
+   "community": 1
+  },
+  {
+   "id": "ursula k. le guin",
+   "label": "ursula k. le guin",
+   "degree": 2,
+   "community": 1
+  },
+  {
+   "id": "apple inc.",
+   "label": "apple inc.",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "tim cook",
+   "label": "tim cook",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "lisa leslie",
+   "label": "lisa leslie",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "galileo galilei",
+   "label": "galileo galilei",
+   "degree": 2,
+   "community": 49
+  },
+  {
+   "id": "slovakia national football team",
+   "label": "slovakia national football team",
+   "degree": 2,
+   "community": 21
+  },
+  {
+   "id": "alta if",
+   "label": "alta if",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "robert a. heinlein",
+   "label": "robert a. heinlein",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "ferdinand von richthofen",
+   "label": "ferdinand von richthofen",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "starship troopers",
+   "label": "starship troopers",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "satya nadella",
+   "label": "satya nadella",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "hyderabad",
+   "label": "hyderabad",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "madame du barry",
+   "label": "madame du barry",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "the witcher",
+   "label": "the witcher",
+   "degree": 2,
+   "community": 12
+  },
+  {
+   "id": "great britain",
+   "label": "great britain",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "steve sax",
+   "label": "steve sax",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "frank zappa",
+   "label": "frank zappa",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "dave filoni",
+   "label": "dave filoni",
+   "degree": 2,
+   "community": 33
+  },
+  {
+   "id": "lucasfilm",
+   "label": "lucasfilm",
+   "degree": 2,
+   "community": 33
+  },
+  {
+   "id": "henri gr\u00e9goire",
+   "label": "henri gr\u00e9goire",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "friedrich nietzsche",
+   "label": "friedrich nietzsche",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "thus spoke zarathustra",
+   "label": "thus spoke zarathustra",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "ron dennis",
+   "label": "ron dennis",
+   "degree": 2,
+   "community": 66
+  },
+  {
+   "id": "congolese party of labour",
+   "label": "congolese party of labour",
+   "degree": 2,
+   "community": 38
+  },
+  {
+   "id": "colin irwin",
+   "label": "colin irwin",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "nicolae ceau\u0219escu",
+   "label": "nicolae ceau\u0219escu",
+   "degree": 2,
+   "community": 14
+  },
+  {
+   "id": "elena ceau\u0219escu",
+   "label": "elena ceau\u0219escu",
+   "degree": 2,
+   "community": 14
+  },
+  {
+   "id": "walter chrysler",
+   "label": "walter chrysler",
+   "degree": 2,
+   "community": 37
+  },
+  {
+   "id": "yves montand",
+   "label": "yves montand",
+   "degree": 2,
+   "community": 65
+  },
+  {
+   "id": "bob iger",
+   "label": "bob iger",
+   "degree": 2,
+   "community": 0
+  },
+  {
+   "id": "natalie portman",
+   "label": "natalie portman",
+   "degree": 2,
+   "community": 57
+  },
+  {
+   "id": "gabe newell",
+   "label": "gabe newell",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "oceania",
+   "label": "oceania",
+   "degree": 2,
+   "community": 17
+  },
+  {
+   "id": "the birth of tragedy",
+   "label": "the birth of tragedy",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "elizabeth ii",
+   "label": "elizabeth ii",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "carlos g\u00f3mez",
+   "label": "carlos g\u00f3mez",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "sweden",
+   "label": "sweden",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "stefan l\u00f6fven",
+   "label": "stefan l\u00f6fven",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "country music",
+   "label": "country music",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "laura bush",
+   "label": "laura bush",
+   "degree": 2,
+   "community": 60
+  },
+  {
+   "id": "microsoft",
+   "label": "microsoft",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "john mcvie",
+   "label": "john mcvie",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "rock music",
+   "label": "rock music",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "nobuhiro watsuki",
+   "label": "nobuhiro watsuki",
+   "degree": 2,
+   "community": 67
+  },
+  {
+   "id": "ilyushin",
+   "label": "ilyushin",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "sumo",
+   "label": "sumo",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "fordham university",
+   "label": "fordham university",
+   "degree": 2,
+   "community": 6
+  },
+  {
+   "id": "club nouveau",
+   "label": "club nouveau",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "fc vorskla poltava",
+   "label": "fc vorskla poltava",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "our mutual friend",
+   "label": "our mutual friend",
+   "degree": 2,
+   "community": 8
+  },
+  {
+   "id": "twitter",
+   "label": "twitter",
+   "degree": 2,
+   "community": 2
+  },
+  {
+   "id": "jack dorsey",
+   "label": "jack dorsey",
+   "degree": 2,
+   "community": 2
+  },
+  {
+   "id": "donald trump",
+   "label": "donald trump",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "elvis presley",
+   "label": "elvis presley",
+   "degree": 2,
+   "community": 43
+  },
+  {
+   "id": "andy warhol",
+   "label": "andy warhol",
+   "degree": 2,
+   "community": 6
+  },
+  {
+   "id": "sidereus nuncius",
+   "label": "sidereus nuncius",
+   "degree": 2,
+   "community": 49
+  },
+  {
+   "id": "olga of kiev",
+   "label": "olga of kiev",
+   "degree": 2,
+   "community": 59
+  },
+  {
+   "id": "bowdoin college",
+   "label": "bowdoin college",
+   "degree": 2,
+   "community": 32
+  },
+  {
+   "id": "boeing",
+   "label": "boeing",
+   "degree": 2,
+   "community": 4
+  },
+  {
+   "id": "david beckham",
+   "label": "david beckham",
+   "degree": 2,
+   "community": 21
+  },
+  {
+   "id": "bill frisell",
+   "label": "bill frisell",
+   "degree": 2,
+   "community": 28
+  },
+  {
+   "id": "berklee college of music",
+   "label": "berklee college of music",
+   "degree": 2,
+   "community": 28
+  },
+  {
+   "id": "hugh hefner",
+   "label": "hugh hefner",
+   "degree": 2,
+   "community": 54
+  },
+  {
+   "id": "adalbert of prague",
+   "label": "adalbert of prague",
+   "degree": 2,
+   "community": 3
+  },
+  {
+   "id": "country joe mcdonald",
+   "label": "country joe mcdonald",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "alan jay lerner",
+   "label": "alan jay lerner",
+   "degree": 2,
+   "community": 6
+  },
+  {
+   "id": "bucharest",
+   "label": "bucharest",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "split-finger fastball",
+   "label": "split-finger fastball",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "steve jobs",
+   "label": "steve jobs",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "san francisco",
+   "label": "san francisco",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "daphne du maurier",
+   "label": "daphne du maurier",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "czech republic",
+   "label": "czech republic",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "bo ryan",
+   "label": "bo ryan",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "ap1000",
+   "label": "ap1000",
+   "degree": 2,
+   "community": 16
+  },
+  {
+   "id": "papal states",
+   "label": "papal states",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "charles messier",
+   "label": "charles messier",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "madonna",
+   "label": "madonna",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "c\u00e9dric klapisch",
+   "label": "c\u00e9dric klapisch",
+   "degree": 2,
+   "community": 15
+  },
+  {
+   "id": "jazz",
+   "label": "jazz",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "sandy alderson",
+   "label": "sandy alderson",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "tunisia national football team",
+   "label": "tunisia national football team",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "the beatles",
+   "label": "the beatles",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "brian epstein",
+   "label": "brian epstein",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "dana international",
+   "label": "dana international",
+   "degree": 2,
+   "community": 23
+  },
+  {
+   "id": "sable",
+   "label": "sable",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "rugby",
+   "label": "rugby",
+   "degree": 2,
+   "community": 10
+  },
+  {
+   "id": "ford motor company",
+   "label": "ford motor company",
+   "degree": 2,
+   "community": 47
+  },
+  {
+   "id": "iran",
+   "label": "iran",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "le petit parisien",
+   "label": "le petit parisien",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "flanker",
+   "label": "flanker",
+   "degree": 2,
+   "community": 21
+  },
+  {
+   "id": "karen armstrong",
+   "label": "karen armstrong",
+   "degree": 2,
+   "community": 3
+  },
+  {
+   "id": "the marriage of figaro",
+   "label": "the marriage of figaro",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "pierre beaumarchais",
+   "label": "pierre beaumarchais",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "africa",
+   "label": "africa",
+   "degree": 2,
+   "community": 5
+  },
+  {
+   "id": "john walsh",
+   "label": "john walsh",
+   "degree": 2,
+   "community": 3
+  },
+  {
+   "id": "lou reed",
+   "label": "lou reed",
+   "degree": 2,
+   "community": 6
+  },
+  {
+   "id": "michael mantler",
+   "label": "michael mantler",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "surrey senior cup",
+   "label": "surrey senior cup",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "gennady rozhdestvensky",
+   "label": "gennady rozhdestvensky",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "german",
+   "label": "german",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "new firm",
+   "label": "new firm",
+   "degree": 2,
+   "community": 7
+  },
+  {
+   "id": "sigmund freud",
+   "label": "sigmund freud",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "the university of the arts",
+   "label": "the university of the arts",
+   "degree": 2,
+   "community": 28
+  },
+  {
+   "id": "vladimir lenin",
+   "label": "vladimir lenin",
+   "degree": 2,
+   "community": 39
+  },
+  {
+   "id": "council of people's commissars",
+   "label": "council of people's commissars",
+   "degree": 2,
+   "community": 39
+  },
+  {
+   "id": "sketches by boz",
+   "label": "sketches by boz",
+   "degree": 2,
+   "community": 29
+  },
+  {
+   "id": "robert parish",
+   "label": "robert parish",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "andrew carnegie",
+   "label": "andrew carnegie",
+   "degree": 2,
+   "community": 9
+  },
+  {
+   "id": "atheism",
+   "label": "atheism",
+   "degree": 2,
+   "community": 3
+  },
+  {
+   "id": "thomas arne",
+   "label": "thomas arne",
+   "degree": 2,
+   "community": 20
+  },
+  {
+   "id": "abb group",
+   "label": "abb group",
+   "degree": 2,
+   "community": 2
+  },
+  {
+   "id": "sophia hawthorne",
+   "label": "sophia hawthorne",
+   "degree": 2,
+   "community": 32
+  },
+  {
+   "id": "nathaniel hawthorne",
+   "label": "nathaniel hawthorne",
+   "degree": 2,
+   "community": 32
+  },
+  {
+   "id": "roy rogers",
+   "label": "roy rogers",
+   "degree": 2,
+   "community": 63
+  },
+  {
+   "id": "mahmoud abbas",
+   "label": "mahmoud abbas",
+   "degree": 1,
+   "community": 44
+  },
+  {
+   "id": "amy winehouse",
+   "label": "amy winehouse",
+   "degree": 1,
+   "community": 11
+  },
+  {
+   "id": "camden town",
+   "label": "camden town",
+   "degree": 1,
+   "community": 11
+  },
+  {
+   "id": "tony hall, baron hall of birkenhead",
+   "label": "tony hall, baron hall of birkenhead",
+   "degree": 1,
+   "community": 33
+  },
+  {
+   "id": "victoria beckham",
+   "label": "victoria beckham",
+   "degree": 1,
+   "community": 64
+  },
+  {
+   "id": "married to david beckham",
+   "label": "married to david beckham",
+   "degree": 1,
+   "community": 64
+  },
+  {
+   "id": "minneapolis",
+   "label": "minneapolis",
+   "degree": 1,
+   "community": 31
+  },
+  {
+   "id": "ferdinand marcos",
+   "label": "ferdinand marcos",
+   "degree": 1,
+   "community": 22
+  },
+  {
+   "id": "berkeley",
+   "label": "berkeley",
+   "degree": 1,
+   "community": 27
+  },
+  {
+   "id": "university of pisa",
+   "label": "university of pisa",
+   "degree": 1,
+   "community": 49
+  },
+  {
+   "id": "chang'an",
+   "label": "chang'an",
+   "degree": 1,
+   "community": 26
+  },
+  {
+   "id": "galwegians rfc",
+   "label": "galwegians rfc",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "andrzej sapkowski",
+   "label": "andrzej sapkowski",
+   "degree": 1,
+   "community": 12
+  },
+  {
+   "id": "los angeles",
+   "label": "los angeles",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "mclaren automotive",
+   "label": "mclaren automotive",
+   "degree": 1,
+   "community": 66
+  },
+  {
+   "id": "muay thai",
+   "label": "muay thai",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "portland",
+   "label": "portland",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "denis sassou-nguesso",
+   "label": "denis sassou-nguesso",
+   "degree": 1,
+   "community": 38
+  },
+  {
+   "id": "finland",
+   "label": "finland",
+   "degree": 1,
+   "community": 46
+  },
+  {
+   "id": "leo stein",
+   "label": "leo stein",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "walter percy chrysler jr.",
+   "label": "walter percy chrysler jr.",
+   "degree": 1,
+   "community": 37
+  },
+  {
+   "id": "simone signoret",
+   "label": "simone signoret",
+   "degree": 1,
+   "community": 65
+  },
+  {
+   "id": "joan didion",
+   "label": "joan didion",
+   "degree": 1,
+   "community": 27
+  },
+  {
+   "id": "judaism",
+   "label": "judaism",
+   "degree": 1,
+   "community": 57
+  },
+  {
+   "id": "the red badge of courage",
+   "label": "the red badge of courage",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "hal needham",
+   "label": "hal needham",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "valve corporation",
+   "label": "valve corporation",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "lawrence s. bacow",
+   "label": "lawrence s. bacow",
+   "degree": 1,
+   "community": 52
+  },
+  {
+   "id": "dale evans",
+   "label": "dale evans",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "married to george w. bush",
+   "label": "married to george w. bush",
+   "degree": 1,
+   "community": 60
+  },
+  {
+   "id": "ferdowsi",
+   "label": "ferdowsi",
+   "degree": 1,
+   "community": 45
+  },
+  {
+   "id": "shahnameh",
+   "label": "shahnameh",
+   "degree": 1,
+   "community": 45
+  },
+  {
+   "id": "catherine dickens",
+   "label": "catherine dickens",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "russian",
+   "label": "russian",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "rurouni kenshin",
+   "label": "rurouni kenshin",
+   "degree": 1,
+   "community": 67
+  },
+  {
+   "id": "il-2 shturmovik",
+   "label": "il-2 shturmovik",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "gala rfc",
+   "label": "gala rfc",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "princess alice, duchess of gloucester",
+   "label": "princess alice, duchess of gloucester",
+   "degree": 1,
+   "community": 13
+  },
+  {
+   "id": "anglicanism",
+   "label": "anglicanism",
+   "degree": 1,
+   "community": 13
+  },
+  {
+   "id": "trinity college dublin",
+   "label": "trinity college dublin",
+   "degree": 1,
+   "community": 69
+  },
+  {
+   "id": "tokyo",
+   "label": "tokyo",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "leonte r\u0103utu",
+   "label": "leonte r\u0103utu",
+   "degree": 1,
+   "community": 14
+  },
+  {
+   "id": "mike d'antoni",
+   "label": "mike d'antoni",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "mario puzo",
+   "label": "mario puzo",
+   "degree": 1,
+   "community": 62
+  },
+  {
+   "id": "the godfather",
+   "label": "the godfather",
+   "degree": 1,
+   "community": 62
+  },
+  {
+   "id": "botevgrad",
+   "label": "botevgrad",
+   "degree": 1,
+   "community": 27
+  },
+  {
+   "id": "castel gandolfo",
+   "label": "castel gandolfo",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "sarit thanarat",
+   "label": "sarit thanarat",
+   "degree": 1,
+   "community": 34
+  },
+  {
+   "id": "buddhism",
+   "label": "buddhism",
+   "degree": 1,
+   "community": 34
+  },
+  {
+   "id": "married to priscilla presley",
+   "label": "married to priscilla presley",
+   "degree": 1,
+   "community": 43
+  },
+  {
+   "id": "kyiv",
+   "label": "kyiv",
+   "degree": 1,
+   "community": 59
+  },
+  {
+   "id": "connachta",
+   "label": "connachta",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "brunswick",
+   "label": "brunswick",
+   "degree": 1,
+   "community": 32
+  },
+  {
+   "id": "married to catherine dickens",
+   "label": "married to catherine dickens",
+   "degree": 1,
+   "community": 36
+  },
+  {
+   "id": "married to princess alice, duchess of gloucester",
+   "label": "married to princess alice, duchess of gloucester",
+   "degree": 1,
+   "community": 60
+  },
+  {
+   "id": "dennis muilenburg",
+   "label": "dennis muilenburg",
+   "degree": 1,
+   "community": 4
+  },
+  {
+   "id": "david bowie",
+   "label": "david bowie",
+   "degree": 1,
+   "community": 40
+  },
+  {
+   "id": "married to iman",
+   "label": "married to iman",
+   "degree": 1,
+   "community": 40
+  },
+  {
+   "id": "married to charles the bold",
+   "label": "married to charles the bold",
+   "degree": 1,
+   "community": 43
+  },
+  {
+   "id": "pittsburgh government",
+   "label": "pittsburgh government",
+   "degree": 1,
+   "community": 30
+  },
+  {
+   "id": "bill peduto",
+   "label": "bill peduto",
+   "degree": 1,
+   "community": 30
+  },
+  {
+   "id": "married to cherie blair",
+   "label": "married to cherie blair",
+   "degree": 1,
+   "community": 39
+  },
+  {
+   "id": "montm\u00e9lian",
+   "label": "montm\u00e9lian",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "playboy",
+   "label": "playboy",
+   "degree": 1,
+   "community": 54
+  },
+  {
+   "id": "lady windermere's fan",
+   "label": "lady windermere's fan",
+   "degree": 1,
+   "community": 51
+  },
+  {
+   "id": "bob dylan",
+   "label": "bob dylan",
+   "degree": 1,
+   "community": 31
+  },
+  {
+   "id": "fc irtysh omsk",
+   "label": "fc irtysh omsk",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "arabic",
+   "label": "arabic",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "new delhi",
+   "label": "new delhi",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "mikhail gorbachev",
+   "label": "mikhail gorbachev",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "emma darwin",
+   "label": "emma darwin",
+   "degree": 1,
+   "community": 8
+  },
+  {
+   "id": "stockholm",
+   "label": "stockholm",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "harare",
+   "label": "harare",
+   "degree": 1,
+   "community": 29
+  },
+  {
+   "id": "bagratuni dynasty",
+   "label": "bagratuni dynasty",
+   "degree": 1,
+   "community": 24
+  },
+  {
+   "id": "christianity",
+   "label": "christianity",
+   "degree": 1,
+   "community": 24
+  },
+  {
+   "id": "igor of kiev",
+   "label": "igor of kiev",
+   "degree": 1,
+   "community": 55
+  },
+  {
+   "id": "married to olga of kiev",
+   "label": "married to olga of kiev",
+   "degree": 1,
+   "community": 55
+  },
+  {
+   "id": "beaumont",
+   "label": "beaumont",
+   "degree": 1,
+   "community": 26
+  },
+  {
+   "id": "russellville",
+   "label": "russellville",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "endymion",
+   "label": "endymion",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "edmund burke",
+   "label": "edmund burke",
+   "degree": 1,
+   "community": 35
+  },
+  {
+   "id": "the vampyre",
+   "label": "the vampyre",
+   "degree": 1,
+   "community": 54
+  },
+  {
+   "id": "prague",
+   "label": "prague",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "nicomachus",
+   "label": "nicomachus",
+   "degree": 1,
+   "community": 19
+  },
+  {
+   "id": "westinghouse electric",
+   "label": "westinghouse electric",
+   "degree": 1,
+   "community": 16
+  },
+  {
+   "id": "categories",
+   "label": "categories",
+   "degree": 1,
+   "community": 19
+  },
+  {
+   "id": "shinz\u014d abe",
+   "label": "shinz\u014d abe",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "guy oseary",
+   "label": "guy oseary",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "university of southern california",
+   "label": "university of southern california",
+   "degree": 1,
+   "community": 69
+  },
+  {
+   "id": "duluth",
+   "label": "duluth",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "darryl strawberry",
+   "label": "darryl strawberry",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "south america",
+   "label": "south america",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "peter diamandis",
+   "label": "peter diamandis",
+   "degree": 1,
+   "community": 52
+  },
+  {
+   "id": "ice hockey",
+   "label": "ice hockey",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "irving fryar",
+   "label": "irving fryar",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "charles frederick, duke of holstein-gottorp",
+   "label": "charles frederick, duke of holstein-gottorp",
+   "degree": 1,
+   "community": 37
+  },
+  {
+   "id": "moshe kahlon",
+   "label": "moshe kahlon",
+   "degree": 1,
+   "community": 44
+  },
+  {
+   "id": "married to natalie portman",
+   "label": "married to natalie portman",
+   "degree": 1,
+   "community": 65
+  },
+  {
+   "id": "japanese",
+   "label": "japanese",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "american english",
+   "label": "american english",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "pop music",
+   "label": "pop music",
+   "degree": 1,
+   "community": 23
+  },
+  {
+   "id": "robert jordan",
+   "label": "robert jordan",
+   "degree": 1,
+   "community": 68
+  },
+  {
+   "id": "the wheel of time",
+   "label": "the wheel of time",
+   "degree": 1,
+   "community": 68
+  },
+  {
+   "id": "catholicism",
+   "label": "catholicism",
+   "degree": 1,
+   "community": 22
+  },
+  {
+   "id": "emmerson mnangagwa",
+   "label": "emmerson mnangagwa",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "ford transit connect",
+   "label": "ford transit connect",
+   "degree": 1,
+   "community": 47
+  },
+  {
+   "id": "henry ford",
+   "label": "henry ford",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "tehran",
+   "label": "tehran",
+   "degree": 1,
+   "community": 29
+  },
+  {
+   "id": "the fairly oddparents",
+   "label": "the fairly oddparents",
+   "degree": 1,
+   "community": 67
+  },
+  {
+   "id": "zoroastrianism",
+   "label": "zoroastrianism",
+   "degree": 1,
+   "community": 35
+  },
+  {
+   "id": "philippines",
+   "label": "philippines",
+   "degree": 1,
+   "community": 46
+  },
+  {
+   "id": "george w. bush",
+   "label": "george w. bush",
+   "degree": 1,
+   "community": 50
+  },
+  {
+   "id": "united methodist church",
+   "label": "united methodist church",
+   "degree": 1,
+   "community": 50
+  },
+  {
+   "id": "ellen pompeo",
+   "label": "ellen pompeo",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "daniele de rossi",
+   "label": "daniele de rossi",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "guangzhou",
+   "label": "guangzhou",
+   "degree": 1,
+   "community": 51
+  },
+  {
+   "id": "australian hip hop",
+   "label": "australian hip hop",
+   "degree": 1,
+   "community": 23
+  },
+  {
+   "id": "wolverhampton",
+   "label": "wolverhampton",
+   "degree": 1,
+   "community": 1
+  },
+  {
+   "id": "canberra",
+   "label": "canberra",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "syracuse university",
+   "label": "syracuse university",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "kathleen kennedy",
+   "label": "kathleen kennedy",
+   "degree": 1,
+   "community": 33
+  },
+  {
+   "id": "ayumi hamasaki",
+   "label": "ayumi hamasaki",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "nadezhda krupskaya",
+   "label": "nadezhda krupskaya",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "t. s. eliot",
+   "label": "t. s. eliot",
+   "degree": 1,
+   "community": 12
+  },
+  {
+   "id": "leeds",
+   "label": "leeds",
+   "degree": 1,
+   "community": 29
+  },
+  {
+   "id": "jesus christ",
+   "label": "jesus christ",
+   "degree": 1,
+   "community": 48
+  },
+  {
+   "id": "galilee",
+   "label": "galilee",
+   "degree": 1,
+   "community": 48
+  },
+  {
+   "id": "john harkes",
+   "label": "john harkes",
+   "degree": 1,
+   "community": 21
+  },
+  {
+   "id": "john knox",
+   "label": "john knox",
+   "degree": 1,
+   "community": 42
+  },
+  {
+   "id": "edinburgh",
+   "label": "edinburgh",
+   "degree": 1,
+   "community": 42
+  },
+  {
+   "id": "benjamin mazar",
+   "label": "benjamin mazar",
+   "degree": 1,
+   "community": 20
+  },
+  {
+   "id": "priscilla presley",
+   "label": "priscilla presley",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "belgium",
+   "label": "belgium",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "maharishi mahesh yogi",
+   "label": "maharishi mahesh yogi",
+   "degree": 1,
+   "community": 53
+  },
+  {
+   "id": "hinduism",
+   "label": "hinduism",
+   "degree": 1,
+   "community": 53
+  },
+  {
+   "id": "george alexander kohut",
+   "label": "george alexander kohut",
+   "degree": 1,
+   "community": 19
+  },
+  {
+   "id": "grosseto",
+   "label": "grosseto",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "ulrich spiesshofer",
+   "label": "ulrich spiesshofer",
+   "degree": 1,
+   "community": 2
+  },
+  {
+   "id": "university of bonn",
+   "label": "university of bonn",
+   "degree": 1,
+   "community": 25
+  },
+  {
+   "id": "coco chanel",
+   "label": "coco chanel",
+   "degree": 1,
+   "community": 29
+  },
+  {
+   "id": "bruce springsteen",
+   "label": "bruce springsteen",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "canadair",
+   "label": "canadair",
+   "degree": 1,
+   "community": 16
+  },
+  {
+   "id": "iman",
+   "label": "iman",
+   "degree": 1,
+   "community": 56
+  },
+  {
+   "id": "islam",
+   "label": "islam",
+   "degree": 1,
+   "community": 56
+  },
+  {
+   "id": "methodism",
+   "label": "methodism",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "field hockey",
+   "label": "field hockey",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "666 park avenue",
+   "label": "666 park avenue",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "charles the bold",
+   "label": "charles the bold",
+   "degree": 1,
+   "community": 29
+  },
+  {
+   "id": "leipzig",
+   "label": "leipzig",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "giuseppe conte",
+   "label": "giuseppe conte",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "lockheed martin",
+   "label": "lockheed martin",
+   "degree": 1,
+   "community": 61
+  },
+  {
+   "id": "marillyn hewson",
+   "label": "marillyn hewson",
+   "degree": 1,
+   "community": 61
+  },
+  {
+   "id": "boston",
+   "label": "boston",
+   "degree": 1,
+   "community": 28
+  },
+  {
+   "id": "elton john",
+   "label": "elton john",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "pakistan international airlines",
+   "label": "pakistan international airlines",
+   "degree": 1,
+   "community": 66
+  },
+  {
+   "id": "philadelphia",
+   "label": "philadelphia",
+   "degree": 1,
+   "community": 28
+  },
+  {
+   "id": "oderzo",
+   "label": "oderzo",
+   "degree": 1,
+   "community": 17
+  },
+  {
+   "id": "adel al-jubeir",
+   "label": "adel al-jubeir",
+   "degree": 1,
+   "community": 4
+  },
+  {
+   "id": "mansourah",
+   "label": "mansourah",
+   "degree": 1,
+   "community": 6
+  },
+  {
+   "id": "joseph goebbels",
+   "label": "joseph goebbels",
+   "degree": 1,
+   "community": 5
+  },
+  {
+   "id": "harrisville",
+   "label": "harrisville",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "ford f-series",
+   "label": "ford f-series",
+   "degree": 1,
+   "community": 47
+  },
+  {
+   "id": "russian empire",
+   "label": "russian empire",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "the brady bunch",
+   "label": "the brady bunch",
+   "degree": 1,
+   "community": 0
+  },
+  {
+   "id": "ankara",
+   "label": "ankara",
+   "degree": 1,
+   "community": 14
+  },
+  {
+   "id": "interdenominational organization",
+   "label": "interdenominational organization",
+   "degree": 1,
+   "community": 57
+  },
+  {
+   "id": "ardashir i",
+   "label": "ardashir i",
+   "degree": 1,
+   "community": 18
+  },
+  {
+   "id": "shapur i",
+   "label": "shapur i",
+   "degree": 1,
+   "community": 18
+  },
+  {
+   "id": "church of scotland",
+   "label": "church of scotland",
+   "degree": 1,
+   "community": 3
+  },
+  {
+   "id": "derek shepherd",
+   "label": "derek shepherd",
+   "degree": 1,
+   "community": 41
+  },
+  {
+   "id": "married to meredith grey",
+   "label": "married to meredith grey",
+   "degree": 1,
+   "community": 41
+  },
+  {
+   "id": "blair walsh",
+   "label": "blair walsh",
+   "degree": 1,
+   "community": 10
+  },
+  {
+   "id": "married to joan didion",
+   "label": "married to joan didion",
+   "degree": 1,
+   "community": 32
+  },
+  {
+   "id": "married to nadezhda krupskaya",
+   "label": "married to nadezhda krupskaya",
+   "degree": 1,
+   "community": 39
+  },
+  {
+   "id": "married to alan jay lerner",
+   "label": "married to alan jay lerner",
+   "degree": 1,
+   "community": 39
+  },
+  {
+   "id": "joseph story",
+   "label": "joseph story",
+   "degree": 1,
+   "community": 52
+  },
+  {
+   "id": "swedish",
+   "label": "swedish",
+   "degree": 1,
+   "community": 7
+  },
+  {
+   "id": "antarctica",
+   "label": "antarctica",
+   "degree": 1,
+   "community": 15
+  },
+  {
+   "id": "stephen mcneil",
+   "label": "stephen mcneil",
+   "degree": 1,
+   "community": 38
+  },
+  {
+   "id": "married to dale evans",
+   "label": "married to dale evans",
+   "degree": 1,
+   "community": 63
+  },
+  {
+   "id": "gads hill place",
+   "label": "gads hill place",
+   "degree": 1,
+   "community": 36
+  },
+  {
+   "id": "rajanpur",
+   "label": "rajanpur",
+   "degree": 1,
+   "community": 9
+  },
+  {
+   "id": "rodez",
+   "label": "rodez",
+   "degree": 1,
+   "community": 59
+  },
+  {
+   "id": "married to john mcvie",
+   "label": "married to john mcvie",
+   "degree": 1,
+   "community": 63
+  },
+  {
+   "id": "baldwin wallace university",
+   "label": "baldwin wallace university",
+   "degree": 1,
+   "community": 25
+  },
+  {
+   "id": "jonathan rothschild",
+   "label": "jonathan rothschild",
+   "degree": 1,
+   "community": 58
+  },
+  {
+   "id": "tucson",
+   "label": "tucson",
+   "degree": 1,
+   "community": 58
+  }
+ ],
+ "links": [
+  {
+   "source": "thomas kyd",
+   "target": "london",
+   "label": "born_in",
+   "text": "Thomas Kyd was born in the city of London.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": 1706227200.0
+  },
+  {
+   "source": "fatah",
+   "target": "mahmoud abbas",
+   "label": "chairperson",
+   "text": "The chairperson of Fatah is Mahmoud Abbas.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": 1705708800.0
+  },
+  {
+   "source": "amy winehouse",
+   "target": "camden town",
+   "label": "died_in",
+   "text": "Amy Winehouse died in the city of Camden Town.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "hines ward",
+   "target": "wide receiver",
+   "label": "plays_position",
+   "text": "Hines Ward plays the position of wide receiver.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": 1704326400.0
+  },
+  {
+   "source": "bengaluru",
+   "target": "asia",
+   "label": "located_in",
+   "text": "Bengaluru is located in the continent of Asia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "pedro pierluisi",
+   "target": "washington, d.c.",
+   "label": "worked_in",
+   "text": "Pedro Pierluisi worked in the city of Washington, D.C..",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "rog\u00e9rio ceni",
+   "target": "goalkeeper",
+   "label": "plays_position",
+   "text": "Rog\u00e9rio Ceni plays the position of goalkeeper.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": 1707091200.0
+  },
+  {
+   "source": "british broadcasting corporation",
+   "target": "tony hall, baron hall of birkenhead",
+   "label": "director",
+   "text": "The director of British Broadcasting Corporation is Tony Hall, Baron Hall of Birkenhead.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "victoria beckham",
+   "target": "married to david beckham",
+   "label": "relationship_status",
+   "text": "Victoria Beckham is married to David Beckham.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "university of minnesota",
+   "target": "minneapolis",
+   "label": "headquarters_located_in",
+   "text": "The headquarters of University of Minnesota is located in the city of Minneapolis.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704067200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "a wizard of earthsea",
+   "target": "ursula k. le guin",
+   "label": "author",
+   "text": "The author of A Wizard of Earthsea is Ursula K. Le Guin.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": 1706140800.0
+  },
+  {
+   "source": "ferdinand marcos",
+   "target": "imelda marcos",
+   "label": "spouse",
+   "text": "Ferdinand Marcos is married to Imelda Marcos.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "university of california, berkeley",
+   "target": "berkeley",
+   "label": "headquarters_location",
+   "text": "The headquarters of University of California, Berkeley is located in the city of Berkeley.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "apple inc.",
+   "target": "tim cook",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Apple Inc. is Tim Cook.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lisa leslie",
+   "target": "center",
+   "label": "position_played",
+   "text": "Lisa Leslie plays the position of center.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "galileo galilei",
+   "target": "university of pisa",
+   "label": "educated_at",
+   "text": "The univeristy where Galileo Galilei was educated is University of Pisa.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "slovakia national football team",
+   "target": "association football",
+   "label": "sport",
+   "text": "Slovakia national football team is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "alta if",
+   "target": "association football",
+   "label": "sport",
+   "text": "Alta IF is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tang empire",
+   "target": "chang'an",
+   "label": "capital",
+   "text": "The capital of Tang Empire is Chang'an.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": 1705363200.0
+  },
+  {
+   "source": "robert a. heinlein",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Robert A. Heinlein is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704153600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "galwegians rfc",
+   "target": "rugby union",
+   "label": "associated_sport",
+   "text": "Galwegians RFC is associated with the sport of rugby union.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ferdinand von richthofen",
+   "target": "germany",
+   "label": "citizen_of",
+   "text": "Ferdinand von Richthofen is a citizen of Germany.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": 1706745600.0
+  },
+  {
+   "source": "germany",
+   "target": "berlin",
+   "label": "capital",
+   "text": "The capital of Germany is Berlin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starship troopers",
+   "target": "robert a. heinlein",
+   "label": "author",
+   "text": "The author of Starship Troopers is Robert A. Heinlein.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": 1706486400.0
+  },
+  {
+   "source": "satya nadella",
+   "target": "hyderabad",
+   "label": "born_in",
+   "text": "Satya Nadella was born in the city of Hyderabad.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "madame du barry",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "Madame du Barry is a citizen of France.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": 1704931200.0
+  },
+  {
+   "source": "quarterback",
+   "target": "american football",
+   "label": "associated_sport",
+   "text": "quarterback is associated with the sport of American football.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": 1704326400.0
+  },
+  {
+   "source": "the witcher",
+   "target": "andrzej sapkowski",
+   "label": "author",
+   "text": "The author of The Witcher is Andrzej Sapkowski.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": 1706140800.0
+  },
+  {
+   "source": "great britain",
+   "target": "london",
+   "label": "capital",
+   "text": "The capital of Great Britain is London.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "steve sax",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "Steve Sax is associated with the sport of baseball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704240000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "hines ward",
+   "target": "cornerback",
+   "label": "plays_position",
+   "text": "Hines Ward plays the position of cornerback.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "frank zappa",
+   "target": "los angeles",
+   "label": "died_in",
+   "text": "Frank Zappa died in the city of Los Angeles.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1704412800.0
+  },
+  {
+   "source": "dave filoni",
+   "target": "lucasfilm",
+   "label": "works_at",
+   "text": "Dave Filoni is employed by Lucasfilm.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1705622400.0
+  },
+  {
+   "source": "henri gr\u00e9goire",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "Henri Gr\u00e9goire is a citizen of France.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1705622400.0
+  },
+  {
+   "source": "germany",
+   "target": "europe",
+   "label": "located_in",
+   "text": "Germany is located in the continent of Europe.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "vijay mallya",
+   "target": "india",
+   "label": "citizen_of",
+   "text": "Vijay Mallya is a citizen of India.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1706400000.0
+  },
+  {
+   "source": "friedrich nietzsche",
+   "target": "thus spoke zarathustra",
+   "label": "famous_for",
+   "text": "Friedrich Nietzsche is famous for Thus Spoke Zarathustra.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "wide receiver",
+   "target": "american football",
+   "label": "associated_sport",
+   "text": "wide receiver is associated with the sport of American football.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1705795200.0
+  },
+  {
+   "source": "ron dennis",
+   "target": "mclaren automotive",
+   "label": "works_at",
+   "text": "Ron Dennis is employed by McLaren Automotive.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": 1706745600.0
+  },
+  {
+   "source": "quarterback",
+   "target": "muay thai",
+   "label": "associated_sport",
+   "text": "quarterback is associated with the sport of Muay Thai.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704326400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "frank zappa",
+   "target": "berlin",
+   "label": "died_in",
+   "text": "Frank Zappa died in the city of Berlin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ursula k. le guin",
+   "target": "portland",
+   "label": "died_in",
+   "text": "Ursula K. Le Guin died in the city of Portland.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "denis sassou-nguesso",
+   "target": "congolese party of labour",
+   "label": "chairperson_of",
+   "text": "The chairperson of Congolese Party of Labour is Denis Sassou-Nguesso.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "colin irwin",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Colin Irwin is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "canada",
+   "target": "north america",
+   "label": "located_in",
+   "text": "Canada is located in the continent of North America.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "cricket",
+   "target": "england",
+   "label": "created_in",
+   "text": "cricket was created in the country of England.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nicolae ceau\u0219escu",
+   "target": "elena ceau\u0219escu",
+   "label": "married_to",
+   "text": "Nicolae Ceau\u0219escu is married to Elena Ceau\u0219escu.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "pes\u00e4pallo",
+   "target": "finland",
+   "label": "created_in",
+   "text": "pes\u00e4pallo was created in the country of Finland.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": 1705881600.0
+  },
+  {
+   "source": "leo stein",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Leo Stein is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "walter chrysler",
+   "target": "walter percy chrysler jr.",
+   "label": "child",
+   "text": "Walter Chrysler's child is Walter Percy Chrysler Jr..",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704412800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "yves montand",
+   "target": "simone signoret",
+   "label": "married_to",
+   "text": "Yves Montand is married to Simone Signoret.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "joan didion",
+   "target": "university of california, berkeley",
+   "label": "educated_at",
+   "text": "The univeristy where Joan Didion was educated is University of California, Berkeley.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "american broadcasting company",
+   "target": "bob iger",
+   "label": "director",
+   "text": "The director of American Broadcasting Company is Bob Iger.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "natalie portman",
+   "target": "judaism",
+   "label": "religion",
+   "text": "Natalie Portman is affiliated with the religion of Judaism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "point guard",
+   "target": "basketball",
+   "label": "associated_sport",
+   "text": "point guard is associated with the sport of basketball.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": 1705622400.0
+  },
+  {
+   "source": "kingdom of ireland",
+   "target": "catholic church",
+   "label": "religion",
+   "text": "Kingdom of Ireland is affiliated with the religion of Catholic Church.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "stephen crane",
+   "target": "the red badge of courage",
+   "label": "famous_for",
+   "text": "Stephen Crane is famous for The Red Badge of Courage.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": 1707091200.0
+  },
+  {
+   "source": "hal needham",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Hal Needham is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "valve corporation",
+   "target": "gabe newell",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Valve Corporation is Gabe Newell.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "australia",
+   "target": "oceania",
+   "label": "located_in",
+   "text": "Australia is located in the continent of Oceania.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704499200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the birth of tragedy",
+   "target": "friedrich nietzsche",
+   "label": "author",
+   "text": "The author of The Birth of Tragedy is Friedrich Nietzsche.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1704585600.0
+  },
+  {
+   "source": "the birth of tragedy",
+   "target": "stephen crane",
+   "label": "author",
+   "text": "The author of The Birth of Tragedy is Stephen Crane.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "placekicker",
+   "target": "american football",
+   "label": "associated_sport",
+   "text": "placekicker is associated with the sport of American football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united kingdom",
+   "target": "elizabeth ii",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in United Kingdom is Elizabeth II.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1705795200.0
+  },
+  {
+   "source": "harvard university",
+   "target": "lawrence s. bacow",
+   "label": "chairperson",
+   "text": "The chairperson of Harvard University is Lawrence S. Bacow.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1705622400.0
+  },
+  {
+   "source": "carlos g\u00f3mez",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "Carlos G\u00f3mez is associated with the sport of baseball.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1706918400.0
+  },
+  {
+   "source": "sweden",
+   "target": "stefan l\u00f6fven",
+   "label": "prime_minister",
+   "text": "The Prime Minister of Sweden is Stefan L\u00f6fven.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1705968000.0
+  },
+  {
+   "source": "dale evans",
+   "target": "country music",
+   "label": "music_type",
+   "text": "The type of music that Dale Evans plays is country music.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "laura bush",
+   "target": "married to george w. bush",
+   "label": "relationship_status",
+   "text": "Laura Bush is married to George W. Bush.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": 1705017600.0
+  },
+  {
+   "source": "microsoft",
+   "target": "satya nadella",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Microsoft is Satya Nadella.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704585600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ferdowsi",
+   "target": "shahnameh",
+   "label": "famous_for",
+   "text": "Ferdowsi is famous for Shahnameh.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "catherine dickens",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Catherine Dickens is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "moscow",
+   "target": "russian",
+   "label": "official_language",
+   "text": "The official language of Moscow is Russian.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": 1706745600.0
+  },
+  {
+   "source": "john mcvie",
+   "target": "rock music",
+   "label": "plays_music",
+   "text": "The type of music that John McVie plays is rock music.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nobuhiro watsuki",
+   "target": "rurouni kenshin",
+   "label": "famous_for",
+   "text": "Nobuhiro Watsuki is famous for Rurouni Kenshin.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": 1705881600.0
+  },
+  {
+   "source": "il-2 shturmovik",
+   "target": "ilyushin",
+   "label": "produced_by",
+   "text": "The company that produced Il-2 Shturmovik is Ilyushin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "gala rfc",
+   "target": "rugby union",
+   "label": "associated_sport",
+   "text": "Gala RFC is associated with the sport of rugby union.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "princess alice, duchess of gloucester",
+   "target": "anglicanism",
+   "label": "religion",
+   "text": "Princess Alice, Duchess of Gloucester is affiliated with the religion of Anglicanism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sumo",
+   "target": "japan",
+   "label": "created_in",
+   "text": "sumo was created in the country of Japan.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "samuel beckett",
+   "target": "trinity college dublin",
+   "label": "studies",
+   "text": "The univeristy where Samuel Beckett was educated is Trinity College Dublin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704672000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "israel",
+   "target": "asia",
+   "label": "located_in",
+   "text": "Israel is located in the continent of Asia.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": 1704931200.0
+  },
+  {
+   "source": "england",
+   "target": "english",
+   "label": "official_language",
+   "text": "The official language of England is English.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "rugby union",
+   "target": "england",
+   "label": "created_in",
+   "text": "rugby union was created in the country of England.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": 1705363200.0
+  },
+  {
+   "source": "fordham university",
+   "target": "new york city",
+   "label": "headquartered_in",
+   "text": "The headquarters of Fordham University is located in the city of New York City.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "club nouveau",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "Club Nouveau was created in the country of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": 1706572800.0
+  },
+  {
+   "source": "japan",
+   "target": "tokyo",
+   "label": "capital",
+   "text": "The capital of Japan is Tokyo.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "fc vorskla poltava",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "FC Vorskla Poltava is associated with the sport of association football.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": 1705017600.0
+  },
+  {
+   "source": "united kingdom",
+   "target": "europe",
+   "label": "located_in",
+   "text": "United Kingdom is located in the continent of Europe.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "leonte r\u0103utu",
+   "target": "university of bucharest",
+   "label": "works_at",
+   "text": "Leonte R\u0103utu is employed by University of Bucharest.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "our mutual friend",
+   "target": "charles dickens",
+   "label": "author",
+   "text": "The author of Our Mutual Friend is Charles Dickens.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704758400.0,
+   "t_invalid_at": 1705104000.0
+  },
+  {
+   "source": "twitter",
+   "target": "jack dorsey",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Twitter is Jack Dorsey.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": 1705968000.0
+  },
+  {
+   "source": "mike d'antoni",
+   "target": "point guard",
+   "label": "plays_position",
+   "text": "Mike D'Antoni plays the position of point guard.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "mario puzo",
+   "target": "the godfather",
+   "label": "famous_for",
+   "text": "Mario Puzo is famous for The Godfather.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "london",
+   "target": "europe",
+   "label": "located_in_continent",
+   "text": "London is located in the continent of Europe.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "university of california, berkeley",
+   "target": "botevgrad",
+   "label": "headquarters_located_in_city",
+   "text": "The headquarters of University of California, Berkeley is located in the city of Botevgrad.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united states of america",
+   "target": "donald trump",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in United States of America is Donald Trump.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": 1704931200.0
+  },
+  {
+   "source": "australia",
+   "target": "english",
+   "label": "official_language",
+   "text": "The official language of Australia is English.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": 1705104000.0
+  },
+  {
+   "source": "pius xii",
+   "target": "castel gandolfo",
+   "label": "died_in_city",
+   "text": "Pius XII died in the city of Castel Gandolfo.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": 1706054400.0
+  },
+  {
+   "source": "jack dorsey",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Jack Dorsey is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sarit thanarat",
+   "target": "buddhism",
+   "label": "affiliated_with_religion",
+   "text": "Sarit Thanarat is affiliated with the religion of Buddhism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704844800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "elvis presley",
+   "target": "married to priscilla presley",
+   "label": "relationship_status",
+   "text": "Elvis Presley is married to Priscilla Presley.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1705017600.0
+  },
+  {
+   "source": "andy warhol",
+   "target": "new york city",
+   "label": "died_in",
+   "text": "Andy Warhol died in the city of New York City.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1705017600.0
+  },
+  {
+   "source": "madame du barry",
+   "target": "great britain",
+   "label": "citizen_of",
+   "text": "Madame du Barry is a citizen of Great Britain.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sidereus nuncius",
+   "target": "galileo galilei",
+   "label": "author",
+   "text": "The author of Sidereus Nuncius is Galileo Galilei.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1706918400.0
+  },
+  {
+   "source": "olga of kiev",
+   "target": "kyiv",
+   "label": "died_in",
+   "text": "Olga of Kiev died in the city of Kyiv.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1707264000.0
+  },
+  {
+   "source": "united states of america",
+   "target": "connachta",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in United States of America is Connachta.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "israel",
+   "target": "north america",
+   "label": "located_in",
+   "text": "Israel is located in the continent of North America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "oscar wilde",
+   "target": "paris",
+   "label": "died_in",
+   "text": "Oscar Wilde died in the city of Paris.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1705968000.0
+  },
+  {
+   "source": "joe hockey",
+   "target": "australia",
+   "label": "citizen_of",
+   "text": "Joe Hockey is a citizen of Australia.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": 1707091200.0
+  },
+  {
+   "source": "bowdoin college",
+   "target": "brunswick",
+   "label": "headquarters_in",
+   "text": "The headquarters of Bowdoin College is located in the city of Brunswick.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1704931200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charles dickens",
+   "target": "married to catherine dickens",
+   "label": "relationship_status",
+   "text": "Charles Dickens is married to Catherine Dickens.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "fc vorskla poltava",
+   "target": "basketball",
+   "label": "associated_sport",
+   "text": "FC Vorskla Poltava is associated with the sport of basketball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "laura bush",
+   "target": "married to princess alice, duchess of gloucester",
+   "label": "relationship_status",
+   "text": "Laura Bush is married to Princess Alice, Duchess of Gloucester.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "boeing",
+   "target": "dennis muilenburg",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Boeing is Dennis Muilenburg.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "david beckham",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "David Beckham is associated with the sport of association football.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": 1706140800.0
+  },
+  {
+   "source": "david bowie",
+   "target": "married to iman",
+   "label": "relationship_status",
+   "text": "David Bowie is married to Iman.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "elvis presley",
+   "target": "married to charles the bold",
+   "label": "relationship_status",
+   "text": "Elvis Presley is married to Charles the Bold.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "pittsburgh government",
+   "target": "bill peduto",
+   "label": "current_head",
+   "text": "The name of the current head of the Pittsburgh government is Bill Peduto.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tony blair",
+   "target": "married to cherie blair",
+   "label": "relationship_status",
+   "text": "Tony Blair is married to Cherie Blair.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": 1707091200.0
+  },
+  {
+   "source": "andy warhol",
+   "target": "montm\u00e9lian",
+   "label": "died_in",
+   "text": "Andy Warhol died in the city of Montm\u00e9lian.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705017600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bill frisell",
+   "target": "berklee college of music",
+   "label": "educated_at",
+   "text": "The univeristy where Bill Frisell was educated is Berklee College of Music.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": 1706227200.0
+  },
+  {
+   "source": "hugh hefner",
+   "target": "playboy",
+   "label": "famous_for",
+   "text": "Hugh Hefner is famous for Playboy.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": 1705449600.0
+  },
+  {
+   "source": "our mutual friend",
+   "target": "charles darwin",
+   "label": "author",
+   "text": "The author of Our Mutual Friend is Charles Darwin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lady windermere's fan",
+   "target": "oscar wilde",
+   "label": "author",
+   "text": "The author of Lady Windermere's Fan is Oscar Wilde.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bob dylan",
+   "target": "university of minnesota",
+   "label": "educated_at",
+   "text": "The univeristy where Bob Dylan was educated is University of Minnesota.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "fc irtysh omsk",
+   "target": "association football",
+   "label": "sport",
+   "text": "FC Irtysh Omsk is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "cricket",
+   "target": "australia",
+   "label": "created_in_country",
+   "text": "cricket was created in the country of Australia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "australia",
+   "target": "arabic",
+   "label": "official_language",
+   "text": "The official language of Australia is Arabic.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "adalbert of prague",
+   "target": "catholic church",
+   "label": "religion",
+   "text": "Adalbert of Prague is affiliated with the religion of Catholic Church.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charlie hebdo",
+   "target": "france",
+   "label": "created_in_country",
+   "text": "Charlie Hebdo was created in the country of France.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705104000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "soviet union",
+   "target": "moscow",
+   "label": "capital",
+   "text": "The capital of Soviet Union is Moscow.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1705363200.0
+  },
+  {
+   "source": "india",
+   "target": "new delhi",
+   "label": "capital",
+   "text": "The capital of India is New Delhi.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1706486400.0
+  },
+  {
+   "source": "soviet union",
+   "target": "mikhail gorbachev",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in Soviet Union is Mikhail Gorbachev.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "baseball",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "baseball was created in the country of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "post-punk",
+   "target": "united kingdom",
+   "label": "created_in",
+   "text": "post-punk was created in the country of United Kingdom.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1705968000.0
+  },
+  {
+   "source": "country music",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "country music was created in the country of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "france",
+   "target": "paris",
+   "label": "capital",
+   "text": "The capital of France is Paris.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charles darwin",
+   "target": "emma darwin",
+   "label": "married_to",
+   "text": "Charles Darwin is married to Emma Darwin.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1706400000.0
+  },
+  {
+   "source": "country joe mcdonald",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Country Joe McDonald is a citizen of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": 1705795200.0
+  },
+  {
+   "source": "stefan l\u00f6fven",
+   "target": "stockholm",
+   "label": "worked_in",
+   "text": "Stefan L\u00f6fven worked in the city of Stockholm.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705190400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "italy",
+   "target": "rome",
+   "label": "has_capital",
+   "text": "The capital of Italy is Rome.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "center",
+   "target": "basketball",
+   "label": "associated_sport",
+   "text": "center is associated with the sport of basketball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lisa leslie",
+   "target": "goaltender",
+   "label": "plays_position",
+   "text": "Lisa Leslie plays the position of goaltender.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "alan jay lerner",
+   "target": "new york city",
+   "label": "died_in",
+   "text": "Alan Jay Lerner died in the city of New York City.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "france",
+   "target": "harare",
+   "label": "has_capital",
+   "text": "The capital of France is Harare.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bagratuni dynasty",
+   "target": "christianity",
+   "label": "affiliated_religion",
+   "text": "Bagratuni Dynasty is affiliated with the religion of Christianity.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "university of bucharest",
+   "target": "bucharest",
+   "label": "headquartered_in",
+   "text": "The headquarters of University of Bucharest is located in the city of Bucharest.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "split-finger fastball",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "split-finger fastball is associated with the sport of baseball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "igor of kiev",
+   "target": "married to olga of kiev",
+   "label": "relationship_status",
+   "text": "Igor of Kiev is married to Olga of Kiev.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "narendra modi",
+   "target": "india",
+   "label": "citizen_of",
+   "text": "Narendra Modi is a citizen of India.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705276800.0,
+   "t_invalid_at": 1705622400.0
+  },
+  {
+   "source": "tang empire",
+   "target": "beaumont",
+   "label": "capital",
+   "text": "The capital of Tang Empire is Beaumont.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "steve jobs",
+   "target": "san francisco",
+   "label": "born_in",
+   "text": "Steve Jobs was born in the city of San Francisco.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "soviet union",
+   "target": "russellville",
+   "label": "capital",
+   "text": "The capital of Soviet Union is Russellville.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "endymion",
+   "target": "john keats",
+   "label": "author",
+   "text": "The author of Endymion is John Keats.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "edmund burke",
+   "target": "kingdom of ireland",
+   "label": "citizen_of",
+   "text": "Edmund Burke is a citizen of Kingdom of Ireland.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "daphne du maurier",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Daphne du Maurier is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united kingdom",
+   "target": "english",
+   "label": "official_language",
+   "text": "The official language of United Kingdom is English.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "romania",
+   "target": "bucharest",
+   "label": "capital",
+   "text": "The capital of Romania is Bucharest.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": 1707264000.0
+  },
+  {
+   "source": "rugby union",
+   "target": "india",
+   "label": "created_in",
+   "text": "rugby union was created in the country of India.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "hyderabad",
+   "target": "asia",
+   "label": "located_in",
+   "text": "Hyderabad is located in the continent of Asia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705363200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "steve jobs",
+   "target": "microsoft",
+   "label": "ceo_of",
+   "text": "The chief executive officer of Microsoft is Steve Jobs.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "hugh hefner",
+   "target": "the vampyre",
+   "label": "famous_for",
+   "text": "Hugh Hefner is famous for The Vampyre.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "czech republic",
+   "target": "prague",
+   "label": "capital",
+   "text": "The capital of Czech Republic is Prague.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "aristotle",
+   "target": "nicomachus",
+   "label": "has_child",
+   "text": "Aristotle's child is Nicomachus.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": 1706400000.0
+  },
+  {
+   "source": "ernst heinkel",
+   "target": "germany",
+   "label": "citizen_of",
+   "text": "Ernst Heinkel is a citizen of Germany.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": 1705536000.0
+  },
+  {
+   "source": "bo ryan",
+   "target": "basketball",
+   "label": "associated_sport",
+   "text": "Bo Ryan is associated with the sport of basketball.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": 1706486400.0
+  },
+  {
+   "source": "westinghouse electric",
+   "target": "ap1000",
+   "label": "produced",
+   "text": "The company that produced AP1000 is Westinghouse Electric.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "papal states",
+   "target": "rome",
+   "label": "capital",
+   "text": "The capital of Papal States is Rome.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "aristotle",
+   "target": "categories",
+   "label": "author_of",
+   "text": "The author of Categories is Aristotle.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "vijay mallya",
+   "target": "apple inc.",
+   "label": "ceo_of",
+   "text": "The chief executive officer of Apple Inc. is Vijay Mallya.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705449600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "shinz\u014d abe",
+   "target": "japan",
+   "label": "head_of_government",
+   "text": "The name of the current head of the Japan government is Shinz\u014d Abe.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ernst heinkel",
+   "target": "tang empire",
+   "label": "citizen_of",
+   "text": "Ernst Heinkel is a citizen of Tang Empire.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charles messier",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "Charles Messier is a citizen of France.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": 1706486400.0
+  },
+  {
+   "source": "john keats",
+   "target": "rome",
+   "label": "died_in",
+   "text": "John Keats died in the city of Rome.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "madonna",
+   "target": "guy oseary",
+   "label": "director",
+   "text": "The director of Madonna is Guy Oseary.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": 1706572800.0
+  },
+  {
+   "source": "samuel beckett",
+   "target": "university of southern california",
+   "label": "educated_at",
+   "text": "The univeristy where Samuel Beckett was educated is University of Southern California.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "italy",
+   "target": "duluth",
+   "label": "capital",
+   "text": "The capital of Italy is Duluth.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "c\u00e9dric klapisch",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "C\u00e9dric Klapisch is a citizen of France.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": 1705708800.0
+  },
+  {
+   "source": "england",
+   "target": "europe",
+   "label": "located_in",
+   "text": "England is located in the continent of Europe.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "jazz",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "jazz was created in the country of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705536000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "darryl strawberry",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "Darryl Strawberry is associated with the sport of baseball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sandy alderson",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "Sandy Alderson is associated with the sport of baseball.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": 1706400000.0
+  },
+  {
+   "source": "basketball",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "basketball was created in the country of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": 1706486400.0
+  },
+  {
+   "source": "narendra modi",
+   "target": "australia",
+   "label": "citizen_of",
+   "text": "Narendra Modi is a citizen of Australia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "point guard",
+   "target": "cricket",
+   "label": "associated_sport",
+   "text": "point guard is associated with the sport of cricket.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "australia",
+   "target": "south america",
+   "label": "located_in_continent",
+   "text": "Australia is located in the continent of South America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "harvard university",
+   "target": "peter diamandis",
+   "label": "chairperson",
+   "text": "The chairperson of Harvard University is Peter Diamandis.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "goaltender",
+   "target": "ice hockey",
+   "label": "associated_sport",
+   "text": "goaltender is associated with the sport of ice hockey.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "henri gr\u00e9goire",
+   "target": "india",
+   "label": "citizen_of",
+   "text": "Henri Gr\u00e9goire is a citizen of India.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "dave filoni",
+   "target": "british broadcasting corporation",
+   "label": "works_at",
+   "text": "Dave Filoni is employed by British Broadcasting Corporation.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705622400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "irving fryar",
+   "target": "wide receiver",
+   "label": "plays_position",
+   "text": "Irving Fryar plays the position of wide receiver.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "india",
+   "target": "asia",
+   "label": "located_in_continent",
+   "text": "India is located in the continent of Asia.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": 1705968000.0
+  },
+  {
+   "source": "walter chrysler",
+   "target": "charles frederick, duke of holstein-gottorp",
+   "label": "has_child",
+   "text": "Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "fatah",
+   "target": "moshe kahlon",
+   "label": "chairperson",
+   "text": "The chairperson of Fatah is Moshe Kahlon.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "yves montand",
+   "target": "married to natalie portman",
+   "label": "relationship_status",
+   "text": "Yves Montand is married to Natalie Portman.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bengaluru",
+   "target": "oceania",
+   "label": "located_in_continent",
+   "text": "Bengaluru is located in the continent of Oceania.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tunisia national football team",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "Tunisia national football team is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the beatles",
+   "target": "brian epstein",
+   "label": "director",
+   "text": "The director of The Beatles is Brian Epstein.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "c\u00e9dric klapisch",
+   "target": "malaysia",
+   "label": "citizen_of",
+   "text": "C\u00e9dric Klapisch is a citizen of Malaysia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "japan",
+   "target": "japanese",
+   "label": "official_language",
+   "text": "The official language of Japan is Japanese.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705708800.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "united states of america",
+   "target": "american english",
+   "label": "official_language",
+   "text": "The official language of United States of America is American English.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": 1706140800.0
+  },
+  {
+   "source": "dana international",
+   "target": "pop music",
+   "label": "plays_music_type",
+   "text": "The type of music that Dana International plays is pop music.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sable",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Sable is a citizen of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": 1706140800.0
+  },
+  {
+   "source": "brian epstein",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Brian Epstein is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "robert jordan",
+   "target": "the wheel of time",
+   "label": "famous_for",
+   "text": "Robert Jordan is famous for The Wheel of Time.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united states of america",
+   "target": "washington, d.c.",
+   "label": "capital",
+   "text": "The capital of United States of America is Washington, D.C..",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "imelda marcos",
+   "target": "catholicism",
+   "label": "religion",
+   "text": "Imelda Marcos is affiliated with the religion of Catholicism.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "united kingdom",
+   "target": "emmerson mnangagwa",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in United Kingdom is Emmerson Mnangagwa.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "country joe mcdonald",
+   "target": "romania",
+   "label": "citizen_of",
+   "text": "Country Joe McDonald is a citizen of Romania.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "wide receiver",
+   "target": "rugby",
+   "label": "associated_sport",
+   "text": "wide receiver is associated with the sport of rugby.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705795200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ford transit connect",
+   "target": "ford motor company",
+   "label": "produced_by",
+   "text": "The company that produced Ford Transit Connect is Ford Motor Company.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "henry ford",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Henry Ford is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "iran",
+   "target": "tehran",
+   "label": "capital",
+   "text": "The capital of Iran is Tehran.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "le petit parisien",
+   "target": "france",
+   "label": "created_in",
+   "text": "Le Petit Parisien was created in the country of France.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "flanker",
+   "target": "rugby union",
+   "label": "associated_sport",
+   "text": "flanker is associated with the sport of rugby union.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nobuhiro watsuki",
+   "target": "the fairly oddparents",
+   "label": "famous_for",
+   "text": "Nobuhiro Watsuki is famous for The Fairly OddParents.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "kingdom of ireland",
+   "target": "zoroastrianism",
+   "label": "affiliated_religion",
+   "text": "Kingdom of Ireland is affiliated with the religion of Zoroastrianism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "pes\u00e4pallo",
+   "target": "philippines",
+   "label": "created_in",
+   "text": "pes\u00e4pallo was created in the country of Philippines.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "george w. bush",
+   "target": "united methodist church",
+   "label": "affiliated_religion",
+   "text": "George W. Bush is affiliated with the religion of United Methodist Church.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "karen armstrong",
+   "target": "catholic church",
+   "label": "affiliated_religion",
+   "text": "Karen Armstrong is affiliated with the religion of Catholic Church.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705881600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "post-punk",
+   "target": "canada",
+   "label": "created_in",
+   "text": "post-punk was created in the country of Canada.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ellen pompeo",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Ellen Pompeo is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "daniele de rossi",
+   "target": "midfielder",
+   "label": "plays_position",
+   "text": "Daniele De Rossi plays the position of midfielder.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "oscar wilde",
+   "target": "guangzhou",
+   "label": "died_in",
+   "text": "Oscar Wilde died in the city of Guangzhou.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the marriage of figaro",
+   "target": "pierre beaumarchais",
+   "label": "author",
+   "text": "The author of The Marriage of Figaro is Pierre Beaumarchais.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "association football",
+   "target": "england",
+   "label": "created_in",
+   "text": "association football was created in the country of England.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "twitter",
+   "target": "bernard arnault",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Twitter is Bernard Arnault.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sweden",
+   "target": "pedro pierluisi",
+   "label": "prime_minister",
+   "text": "The Prime Minister of Sweden is Pedro Pierluisi.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "slovakia national football team",
+   "target": "cricket",
+   "label": "associated_sport",
+   "text": "Slovakia national football team is associated with the sport of cricket.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "india",
+   "target": "africa",
+   "label": "located_in_continent",
+   "text": "India is located in the continent of Africa.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1705968000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "dana international",
+   "target": "australian hip hop",
+   "label": "plays_music",
+   "text": "The type of music that Dana International plays is Australian hip hop.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "john walsh",
+   "target": "catholic church",
+   "label": "affiliated_religion",
+   "text": "John Walsh is affiliated with the religion of Catholic Church.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "pius xii",
+   "target": "wolverhampton",
+   "label": "died_in_city",
+   "text": "Pius XII died in the city of Wolverhampton.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "australia",
+   "target": "canberra",
+   "label": "capital",
+   "text": "The capital of Australia is Canberra.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": 1706832000.0
+  },
+  {
+   "source": "lou reed",
+   "target": "syracuse university",
+   "label": "studies",
+   "text": "The univeristy where Lou Reed was educated is Syracuse University.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "michael mantler",
+   "target": "jazz",
+   "label": "plays_music",
+   "text": "The type of music that Michael Mantler plays is jazz.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lucasfilm",
+   "target": "kathleen kennedy",
+   "label": "director",
+   "text": "The director of Lucasfilm is Kathleen Kennedy.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "surrey senior cup",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "Surrey Senior Cup is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "gennady rozhdestvensky",
+   "target": "moscow",
+   "label": "died_in_city",
+   "text": "Gennady Rozhdestvensky died in the city of Moscow.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ayumi hamasaki",
+   "target": "japan",
+   "label": "citizen_of",
+   "text": "Ayumi Hamasaki is a citizen of Japan.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706054400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "amala paul",
+   "target": "india",
+   "label": "citizen_of",
+   "text": "Amala Paul is a citizen of India.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": 1706313600.0
+  },
+  {
+   "source": "united states of america",
+   "target": "german",
+   "label": "official_language",
+   "text": "The official language of United States of America is German.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "new firm",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "New Firm is associated with the sport of association football.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": 1706745600.0
+  },
+  {
+   "source": "michael mantler",
+   "target": "post-punk",
+   "label": "music_type",
+   "text": "The type of music that Michael Mantler plays is post-punk.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sable",
+   "target": "czech republic",
+   "label": "citizen_of",
+   "text": "Sable is a citizen of Czech Republic.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sigmund freud",
+   "target": "london",
+   "label": "died_in",
+   "text": "Sigmund Freud died in the city of London.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "a wizard of earthsea",
+   "target": "pius xii",
+   "label": "author",
+   "text": "The author of A Wizard of Earthsea is Pius XII.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nadezhda krupskaya",
+   "target": "moscow",
+   "label": "died_in",
+   "text": "Nadezhda Krupskaya died in the city of Moscow.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "david beckham",
+   "target": "cricket",
+   "label": "associated_sport",
+   "text": "David Beckham is associated with the sport of cricket.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the witcher",
+   "target": "t. s. eliot",
+   "label": "author",
+   "text": "The author of The Witcher is T. S. Eliot.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706140800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "thomas kyd",
+   "target": "leeds",
+   "label": "born_in",
+   "text": "Thomas Kyd was born in the city of Leeds.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "jesus christ",
+   "target": "galilee",
+   "label": "works_at",
+   "text": "Jesus Christ worked in the city of Galilee.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "john harkes",
+   "target": "association football",
+   "label": "associated_with_sport",
+   "text": "John Harkes is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bill frisell",
+   "target": "the university of the arts",
+   "label": "educated_at",
+   "text": "The univeristy where Bill Frisell was educated is The University of the Arts.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "goaltender",
+   "target": "pes\u00e4pallo",
+   "label": "associated_with_sport",
+   "text": "goaltender is associated with the sport of pes\u00e4pallo.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bob iger",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Bob Iger is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "john knox",
+   "target": "edinburgh",
+   "label": "works_at",
+   "text": "John Knox worked in the city of Edinburgh.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "benjamin mazar",
+   "target": "israel",
+   "label": "citizen_of",
+   "text": "Benjamin Mazar is a citizen of Israel.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ilyushin",
+   "target": "moscow",
+   "label": "headquartered_in",
+   "text": "The headquarters of Ilyushin is located in the city of Moscow.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "surrey senior cup",
+   "target": "basketball",
+   "label": "associated_with_sport",
+   "text": "Surrey Senior Cup is associated with the sport of basketball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706227200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "pierre beaumarchais",
+   "target": "paris",
+   "label": "born_in",
+   "text": "Pierre Beaumarchais was born in the city of Paris.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "priscilla presley",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Priscilla Presley is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bernard arnault",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "Bernard Arnault is a citizen of France.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "placekicker",
+   "target": "rugby",
+   "label": "associated_with_sport",
+   "text": "placekicker is associated with the sport of rugby.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "amala paul",
+   "target": "belgium",
+   "label": "citizen_of",
+   "text": "Amala Paul is a citizen of Belgium.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "cornerback",
+   "target": "american football",
+   "label": "associated_with_sport",
+   "text": "cornerback is associated with the sport of American football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "vladimir lenin",
+   "target": "council of people's commissars",
+   "label": "head_of_government",
+   "text": "The name of the current head of the Council of People's Commissars government is Vladimir Lenin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "midfielder",
+   "target": "association football",
+   "label": "associated_with_sport",
+   "text": "midfielder is associated with the sport of association football.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": 1707004800.0
+  },
+  {
+   "source": "charles dickens",
+   "target": "sketches by boz",
+   "label": "author_of",
+   "text": "The author of Sketches by Boz is Charles Dickens.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "split-finger fastball",
+   "target": "cricket",
+   "label": "associated_with_sport",
+   "text": "split-finger fastball is associated with the sport of cricket.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706313600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "vijay mallya",
+   "target": "papal states",
+   "label": "citizen_of",
+   "text": "Vijay Mallya is a citizen of Papal States.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "robert parish",
+   "target": "center",
+   "label": "plays_position",
+   "text": "Robert Parish plays the position of center.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": 1706400000.0
+  },
+  {
+   "source": "maharishi mahesh yogi",
+   "target": "hinduism",
+   "label": "affiliated_religion",
+   "text": "Maharishi Mahesh Yogi is affiliated with the religion of Hinduism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "aristotle",
+   "target": "george alexander kohut",
+   "label": "has_child",
+   "text": "Aristotle's child is George Alexander Kohut.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "elena ceau\u0219escu",
+   "target": "university of bucharest",
+   "label": "educated_at",
+   "text": "The univeristy where Elena Ceau\u0219escu was educated is University of Bucharest.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "robert parish",
+   "target": "quarterback",
+   "label": "plays_position",
+   "text": "Robert Parish plays the position of quarterback.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charles darwin",
+   "target": "amala paul",
+   "label": "married_to",
+   "text": "Charles Darwin is married to Amala Paul.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "andrew carnegie",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Andrew Carnegie is a citizen of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "adalbert of prague",
+   "target": "atheism",
+   "label": "affiliated_religion",
+   "text": "Adalbert of Prague is affiliated with the religion of atheism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sandy alderson",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "Sandy Alderson is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706400000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "india",
+   "target": "grosseto",
+   "label": "capital",
+   "text": "The capital of India is Grosseto.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "thomas arne",
+   "target": "london",
+   "label": "born_in",
+   "text": "Thomas Arne was born in the city of London.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": 1706659200.0
+  },
+  {
+   "source": "charles messier",
+   "target": "iran",
+   "label": "citizen_of",
+   "text": "Charles Messier is a citizen of Iran.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "starship troopers",
+   "target": "daphne du maurier",
+   "label": "author",
+   "text": "The author of Starship Troopers is Daphne du Maurier.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "thus spoke zarathustra",
+   "target": "germany",
+   "label": "created_in",
+   "text": "Thus Spoke Zarathustra was created in the country of Germany.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bo ryan",
+   "target": "association football",
+   "label": "associated_sport",
+   "text": "Bo Ryan is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "abb group",
+   "target": "ulrich spiesshofer",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of ABB Group is Ulrich Spiesshofer.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": 1706918400.0
+  },
+  {
+   "source": "basketball",
+   "target": "soviet union",
+   "label": "created_in",
+   "text": "basketball was created in the country of Soviet Union.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "wilhelm ii",
+   "target": "university of bonn",
+   "label": "educated_at",
+   "text": "The univeristy where Wilhelm II was educated is University of Bonn.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "council of people's commissars",
+   "target": "tony blair",
+   "label": "head_of_government",
+   "text": "The name of the current head of the Council of People's Commissars government is Tony Blair.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706486400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "coco chanel",
+   "target": "paris",
+   "label": "died_in",
+   "text": "Coco Chanel died in the city of Paris.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "club nouveau",
+   "target": "soviet union",
+   "label": "created_in",
+   "text": "Club Nouveau was created in the country of Soviet Union.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "madonna",
+   "target": "narendra modi",
+   "label": "director",
+   "text": "The director of Madonna is Narendra Modi.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "bruce springsteen",
+   "target": "rock music",
+   "label": "genre",
+   "text": "The type of music that Bruce Springsteen plays is rock music.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ap1000",
+   "target": "canadair",
+   "label": "produced_by",
+   "text": "The company that produced AP1000 is Canadair.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "iman",
+   "target": "islam",
+   "label": "religion",
+   "text": "Iman is affiliated with the religion of Islam.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charlie hebdo",
+   "target": "italy",
+   "label": "created_in",
+   "text": "Charlie Hebdo was created in the country of Italy.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "rap rock",
+   "target": "united states of america",
+   "label": "created_in",
+   "text": "rap rock was created in the country of United States of America.",
+   "active": false,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": 1706918400.0
+  },
+  {
+   "source": "john walsh",
+   "target": "methodism",
+   "label": "religion",
+   "text": "John Walsh is affiliated with the religion of Methodism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "cornerback",
+   "target": "field hockey",
+   "label": "sport",
+   "text": "cornerback is associated with the sport of field hockey.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706572800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "666 park avenue",
+   "target": "american broadcasting company",
+   "label": "original_broadcaster",
+   "text": "The origianl broadcaster of 666 Park Avenue is American Broadcasting Company.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "soviet union",
+   "target": "elizabeth ii",
+   "label": "head_of_state",
+   "text": "The name of the current head of state in Soviet Union is Elizabeth II.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "thomas arne",
+   "target": "bengaluru",
+   "label": "born_in",
+   "text": "Thomas Arne was born in the city of Bengaluru.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "andrew carnegie",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Andrew Carnegie is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nicolae ceau\u0219escu",
+   "target": "wilhelm ii",
+   "label": "married_to",
+   "text": "Nicolae Ceau\u0219escu is married to Wilhelm II.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "charles the bold",
+   "target": "france",
+   "label": "citizen_of",
+   "text": "Charles the Bold is a citizen of France.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "john keats",
+   "target": "leipzig",
+   "label": "died_in",
+   "text": "John Keats died in the city of Leipzig.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "malaysia",
+   "target": "asia",
+   "label": "located_in",
+   "text": "Malaysia is located in the continent of Asia.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": 1707177600.0
+  },
+  {
+   "source": "imelda marcos",
+   "target": "atheism",
+   "label": "religion",
+   "text": "Imelda Marcos is affiliated with the religion of atheism.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "italy",
+   "target": "giuseppe conte",
+   "label": "head_of_government",
+   "text": "The name of the current head of the Italy government is Giuseppe Conte.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706659200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "new firm",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "New Firm is associated with the sport of baseball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united kingdom",
+   "target": "london",
+   "label": "capital",
+   "text": "The capital of United Kingdom is London.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "england",
+   "target": "london",
+   "label": "capital",
+   "text": "The capital of England is London.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lockheed martin",
+   "target": "marillyn hewson",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Lockheed Martin is Marillyn Hewson.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "berklee college of music",
+   "target": "boston",
+   "label": "headquarters_city",
+   "text": "The headquarters of Berklee College of Music is located in the city of Boston.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "elton john",
+   "target": "united kingdom",
+   "label": "citizen_of",
+   "text": "Elton John is a citizen of United Kingdom.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "baseball",
+   "target": "japan",
+   "label": "created_in_country",
+   "text": "baseball was created in the country of Japan.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "moscow",
+   "target": "german",
+   "label": "official_language",
+   "text": "The official language of Moscow is German.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ron dennis",
+   "target": "pakistan international airlines",
+   "label": "works_at",
+   "text": "Ron Dennis is employed by Pakistan International Airlines.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ferdinand von richthofen",
+   "target": "canada",
+   "label": "citizen_of",
+   "text": "Ferdinand von Richthofen is a citizen of Canada.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706745600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the university of the arts",
+   "target": "philadelphia",
+   "label": "headquarters",
+   "text": "The headquarters of The University of the Arts is located in the city of Philadelphia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "australia",
+   "target": "oderzo",
+   "label": "capital",
+   "text": "The capital of Australia is Oderzo.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "association football",
+   "target": "italy",
+   "label": "created_in",
+   "text": "association football was created in the country of Italy.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "american broadcasting company",
+   "target": "ernst heinkel",
+   "label": "director",
+   "text": "The director of American Broadcasting Company is Ernst Heinkel.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "boeing",
+   "target": "adel al-jubeir",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of Boeing is Adel al-Jubeir.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "alan jay lerner",
+   "target": "mansourah",
+   "label": "died_in",
+   "text": "Alan Jay Lerner died in the city of Mansourah, Algeria.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "joseph goebbels",
+   "target": "berlin",
+   "label": "worked_in",
+   "text": "Joseph Goebbels worked in the city of Berlin.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "united states of america",
+   "target": "harrisville",
+   "label": "capital",
+   "text": "The capital of United States of America is Harrisville.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "san francisco",
+   "target": "north america",
+   "label": "located_in",
+   "text": "San Francisco is located in the continent of North America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the marriage of figaro",
+   "target": "thomas kyd",
+   "label": "author",
+   "text": "The author of The Marriage of Figaro is Thomas Kyd.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706832000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "lou reed",
+   "target": "fordham university",
+   "label": "educated_at",
+   "text": "The univeristy where Lou Reed was educated is Fordham University.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ford f-series",
+   "target": "ford motor company",
+   "label": "produced_by",
+   "text": "The company that produced Ford F-Series is Ford Motor Company.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sidereus nuncius",
+   "target": "samuel beckett",
+   "label": "author",
+   "text": "The author of Sidereus Nuncius is Samuel Beckett.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "rap rock",
+   "target": "russian empire",
+   "label": "created_in",
+   "text": "rap rock was created in the country of Russian Empire.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the brady bunch",
+   "target": "american broadcasting company",
+   "label": "original_broadcaster",
+   "text": "The origianl broadcaster of The Brady Bunch is American Broadcasting Company.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "carlos g\u00f3mez",
+   "target": "basketball",
+   "label": "associated_sport",
+   "text": "Carlos G\u00f3mez is associated with the sport of basketball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sophia hawthorne",
+   "target": "nathaniel hawthorne",
+   "label": "married_to",
+   "text": "Sophia Hawthorne is married to Nathaniel Hawthorne.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "abb group",
+   "target": "bernard arnault",
+   "label": "chief_executive_officer",
+   "text": "The chief executive officer of ABB Group is Bernard Arnault.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "university of bucharest",
+   "target": "ankara",
+   "label": "headquarters_city",
+   "text": "The headquarters of University of Bucharest is located in the city of Ankara.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "natalie portman",
+   "target": "interdenominational organization",
+   "label": "affiliated_religion",
+   "text": "Natalie Portman is affiliated with the religion of interdenominational organization.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1706918400.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "ardashir i",
+   "target": "shapur i",
+   "label": "has_child",
+   "text": "Ardashir I's child is Shapur I.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "karen armstrong",
+   "target": "church of scotland",
+   "label": "affiliated_with_religion",
+   "text": "Karen Armstrong is affiliated with the religion of Church of Scotland.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "derek shepherd",
+   "target": "married to meredith grey",
+   "label": "relationship_status",
+   "text": "Derek Shepherd is married to Meredith Grey.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "john mcvie",
+   "target": "rap rock",
+   "label": "plays_music_type",
+   "text": "The type of music that John McVie plays is rap rock.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "midfielder",
+   "target": "sumo",
+   "label": "associated_with_sport",
+   "text": "midfielder is associated with the sport of sumo.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "steve sax",
+   "target": "association football",
+   "label": "associated_with_sport",
+   "text": "Steve Sax is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tunisia national football team",
+   "target": "basketball",
+   "label": "associated_with_sport",
+   "text": "Tunisia national football team is associated with the sport of basketball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "blair walsh",
+   "target": "placekicker",
+   "label": "plays_position",
+   "text": "Blair Walsh plays the position of placekicker.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sophia hawthorne",
+   "target": "married to joan didion",
+   "label": "relationship_status",
+   "text": "Sophia Hawthorne is married to Joan Didion.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "vladimir lenin",
+   "target": "married to nadezhda krupskaya",
+   "label": "relationship_status",
+   "text": "Vladimir Lenin is married to Nadezhda Krupskaya.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707004800.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "stephen crane",
+   "target": "charlie hebdo",
+   "label": "famous_for",
+   "text": "Stephen Crane is famous for Charlie Hebdo.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tony blair",
+   "target": "married to alan jay lerner",
+   "label": "relationship_status",
+   "text": "Tony Blair is married to Alan Jay Lerner.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "joe hockey",
+   "target": "italy",
+   "label": "citizen_of",
+   "text": "Joe Hockey is a citizen of Italy.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "narendra modi",
+   "target": "british broadcasting corporation",
+   "label": "director_of",
+   "text": "The director of British Broadcasting Corporation is Narendra Modi.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "france",
+   "target": "europe",
+   "label": "located_in",
+   "text": "France is located in the continent of Europe.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "sigmund freud",
+   "target": "sketches by boz",
+   "label": "author_of",
+   "text": "The author of Sketches by Boz is Sigmund Freud.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "joseph story",
+   "target": "harvard university",
+   "label": "works_at",
+   "text": "Joseph Story is employed by Harvard University.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "donald trump",
+   "target": "united states of america",
+   "label": "head_of_government",
+   "text": "The name of the current head of the United States of America government is Donald Trump.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "gabe newell",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Gabe Newell is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "rog\u00e9rio ceni",
+   "target": "flanker",
+   "label": "plays_position",
+   "text": "Rog\u00e9rio Ceni plays the position of flanker.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707091200.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "germany",
+   "target": "africa",
+   "label": "located_in",
+   "text": "Germany is located in the continent of Africa.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "le petit parisien",
+   "target": "germany",
+   "label": "created_in",
+   "text": "Le Petit Parisien was created in the country of Germany.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "goalkeeper",
+   "target": "association football",
+   "label": "associated_with",
+   "text": "goalkeeper is associated with the sport of association football.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "nathaniel hawthorne",
+   "target": "bowdoin college",
+   "label": "educated_at",
+   "text": "The univeristy where Nathaniel Hawthorne was educated is Bowdoin College.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "japan",
+   "target": "swedish",
+   "label": "official_language",
+   "text": "The official language of Japan is Swedish.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "canada",
+   "target": "asia",
+   "label": "located_in",
+   "text": "Canada is located in the continent of Asia.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "colin irwin",
+   "target": "israel",
+   "label": "citizen_of",
+   "text": "Colin Irwin is a citizen of Israel.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "malaysia",
+   "target": "antarctica",
+   "label": "located_in",
+   "text": "Malaysia is located in the continent of Antarctica.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "the beatles",
+   "target": "joe hockey",
+   "label": "director",
+   "text": "The director of The Beatles is Joe Hockey.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "tim cook",
+   "target": "united states of america",
+   "label": "citizen_of",
+   "text": "Tim Cook is a citizen of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707177600.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "stephen mcneil",
+   "target": "congolese party of labour",
+   "label": "chairperson_of",
+   "text": "The chairperson of Congolese Party of Labour is Stephen McNeil.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "alta if",
+   "target": "baseball",
+   "label": "associated_sport",
+   "text": "Alta IF is associated with the sport of baseball.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "roy rogers",
+   "target": "married to dale evans",
+   "label": "relationship_status",
+   "text": "Roy Rogers is married to Dale Evans.",
+   "active": true,
+   "invalidated": true,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": 1707264000.0
+  },
+  {
+   "source": "charles dickens",
+   "target": "gads hill place",
+   "label": "died_in",
+   "text": "Charles Dickens died in the city of Gads Hill Place.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "romania",
+   "target": "rajanpur",
+   "label": "capital",
+   "text": "The capital of Romania is Rajanpur.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "olga of kiev",
+   "target": "rodez",
+   "label": "died_in",
+   "text": "Olga of Kiev died in the city of Rodez.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "gennady rozhdestvensky",
+   "target": "united states of america",
+   "label": "died_in",
+   "text": "Gennady Rozhdestvensky died in the city of United States of America.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "roy rogers",
+   "target": "married to john mcvie",
+   "label": "relationship_status",
+   "text": "Roy Rogers is married to John McVie.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "wilhelm ii",
+   "target": "baldwin wallace university",
+   "label": "studies",
+   "text": "The univeristy where Wilhelm II was educated is Baldwin Wallace University.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  },
+  {
+   "source": "jonathan rothschild",
+   "target": "tucson",
+   "label": "head_of_government",
+   "text": "The name of the current head of the Tucson government is Jonathan Rothschild.",
+   "active": true,
+   "invalidated": false,
+   "provenance": "conversation",
+   "t_valid_start": 1707264000.0,
+   "t_invalid_at": null
+  }
+ ]
+}
