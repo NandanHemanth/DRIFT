@@ -18,6 +18,7 @@ import os
 import re
 import threading
 import time
+import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -288,10 +289,25 @@ class OpenAICompatProvider(BaseProvider):
                     SpendLedger.add(self.model, float(usage["cost"]))
                 self.cache.put(ckey, {"text": text, "pt": pt, "ct": ct})
                 return Completion(text, pt, ct)
+            except urllib.error.HTTPError as e:
+                # Keep the provider's own explanation (OpenRouter puts the reason in
+                # the body), and do not retry a request that can never succeed: a
+                # 4xx other than rate limiting or timeout means the request itself
+                # is wrong (bad model, bad provider pin, refused content).
+                try:
+                    detail = e.read().decode("utf-8", "replace")[:300]
+                except Exception:  # noqa: BLE001
+                    detail = ""
+                last_err = RuntimeError(f"HTTP {e.code}: {detail or e.reason}")
+                if 400 <= e.code < 500 and e.code not in (408, 409, 425, 429):
+                    raise RuntimeError(f"Provider {self.name} ({self.model}) refused the request: "
+                                       f"{last_err}") from None
+                time.sleep(2**attempt * 2)
             except Exception as e:  # noqa: BLE001 - retry any transport/429 error with backoff
                 last_err = e
                 time.sleep(2**attempt * 2)
-        raise RuntimeError(f"Provider {self.name} failed after {self.max_retries} retries: {last_err}")
+        raise RuntimeError(f"Provider {self.name} ({self.model}) failed after {self.max_retries} "
+                           f"retries: {last_err}")
 
 
 class FallbackProvider(BaseProvider):

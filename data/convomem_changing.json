@@ -42,7 +42,7 @@
       "Assistant: Cross-referencing now. Yes, three of those leads are marked 'warm' in your 'Lead_Tracker_Q3.xlsx' file: 'Global Solutions Inc', 'DataWeavers', and 'Apex Digital'.",
       "User: Perfect, that's my starting point. The company CRM is fine, but it just doesn't capture the nuance. My spreadsheet is life.",
       "Assistant: I understand. Your color-coded system is quite detailed. It certainly provides a richer layer of data for prioritization.",
-      "User: It's the only way to stay sane in this job. It\u2019s what got me out of that boiler room at StapleSource. Efficiency is everything.",
+      "User: It's the only way to stay sane in this job. It’s what got me out of that boiler room at StapleSource. Efficiency is everything.",
       "Assistant: Indeed. Being organized is a significant advantage. Is there anything else I can do to help you prepare for your calls?",
       "User: Actually, yes. I'm trying to get my entire schedule for the week locked down. With the move, everything still feels a bit chaotic and I need to impose some order.",
       "Assistant: Of course. How is the new townhouse? I hope you and Cooper are settling in well.",
@@ -61,7 +61,7 @@
       "User: Pull up the file on 'DataWeavers'. I want to review my last conversation notes before I call them.",
       "Assistant: Here are your notes on 'DataWeavers'. Your last contact was 17 days ago with a person named Sarah. You discussed a potential pilot program for their analytics department.",
       "User: Right, Sarah. She seemed interested but needed to talk to her director. I'll lead with that. What's the weather like today? Wondering if I can sand a piece of the desk outside during my lunch break.",
-      "Assistant: It's expected to be sunny and clear with a high of 72\u00b0F (22\u00b0C) and light winds. It should be perfect weather for working outdoors.",
+      "Assistant: It's expected to be sunny and clear with a high of 72°F (22°C) and light winds. It should be perfect weather for working outdoors.",
       "User: Great. A little bit of tangible work will be a nice break from the phone. Okay, I think I'm ready to start dialing.",
       "Assistant: Excellent. Good luck with your calls today, Alex.",
       "User: Thanks. Let's hope for some good conversion rates.",
@@ -173,14 +173,14 @@
       "User: I'm setting up my personal spreadsheet for the quarter. Just to confirm my baseline, my daily call target is 60. I need to make sure my weekly and monthly goal formulas are correct.",
       "Assistant: Understood. With a target of 60 calls per day, your weekly goal (assuming a 5-day work week) would be 300 calls. You can use that as a baseline for your progress tracking.",
       "User: Okay, so I can set up another column with a formula that calculates `=300 - [My Weekly SUMIFS Total]` to see my deficit or surplus for the week.",
-      "Assistant: That's a great idea. You could also use conditional formatting to color-code that cell\u2014green if you're ahead of pace, red if you're behind.",
+      "Assistant: That's a great idea. You could also use conditional formatting to color-code that cell—green if you're ahead of pace, red if you're behind.",
       "User: Now you're speaking my language. Color-coding is key. Green for on-track, yellow for caution, red for 'need more coffee'.",
       "Assistant: A functional and visually intuitive system. Is there anything else I can help you set up in the spreadsheet?",
       "User: Maybe one more thing. I want to track my conversion rate per lead source. For example, what percentage of calls from 'Webinar Attendee' leads turn into demos?",
       "Assistant: For that, you'd need to calculate the number of demos from that source and divide it by the total number of calls made to that source. You can use `COUNTIFS` to get both numbers.",
       "User: Show me.",
       "Assistant: To get the count of demos for 'Webinar Attendee' (assuming Lead Source is column D and Demos is C), you'd use: `=COUNTIFS(D:D, \"Webinar Attendee\", C:C, \">0\")`. Then, for total calls to that source: `=COUNTIFS(D:D, \"Webinar Attendee\")`. You'd then divide the first result by the second.",
-      "User: That's brilliant. It's complex but that's exactly what I need. It\u2019ll help me prioritize which leads to call first.",
+      "User: That's brilliant. It's complex but that's exactly what I need. It’ll help me prioritize which leads to call first.",
       "Assistant: Precisely. Focusing on high-conversion lead sources can significantly boost your efficiency.",
       "User: This has been super helpful. I should be able to get this dashboard finished in another hour or so. Then it's time for the actual calls.",
       "Assistant: You're welcome. Glad I could help you get the quarter started on an organized foot. Good luck with your calls today.",
@@ -212,7 +212,7 @@
       "User: That's a good opener. It's not aggressive. It's focused on them. What about a follow-up if they give a vague answer?",
       "Assistant: You could use probing questions like, 'Could you tell me a bit more about that process?' or 'What does that workflow look like for your team right now?' The goal is to get them talking.",
       "User: Okay, I like that. I feel like I'll actually get to use my Communications degree for once, instead of just being a script robot.",
-      "Assistant: This new approach certainly plays to those strengths\u2014active listening, building rapport, and guiding a conversation, much like you would have in a radio interview.",
+      "Assistant: This new approach certainly plays to those strengths—active listening, building rapport, and guiding a conversation, much like you would have in a radio interview.",
       "User: Ha, maybe a little. A much more strategic version. First thing I need to do is update my personal spreadsheet. The formulas are all based on the old quota.",
       "Assistant: I can help with that. You'll need to change the baseline daily target from 60 to 40. Your weekly target would now be 200 instead of 300.",
       "User: Yep, already on it. It's a simple change but it affects all my quarterly projections. It's a good problem to have.",
@@ -344,7 +344,7 @@
       "Assistant: Accessing your 'LeadTracker_Personal.xlsx' file. I have the 'Warm Leads' tab sorted as requested. The first lead is 'Global Solutions Inc', last contacted 18 days ago.",
       "User: Right, I remember them. The contact was intrigued but wanted to see more case studies. Did I ever send those over?",
       "Assistant: Checking your sent emails and CRM logs... Yes, you sent an email with three relevant case studies the same afternoon.",
-      "User: Perfect. My system works. It\u2019s a bit obsessive, but this spreadsheet keeps me sane. Way better than the standard CRM.",
+      "User: Perfect. My system works. It’s a bit obsessive, but this spreadsheet keeps me sane. Way better than the standard CRM.",
       "Assistant: Your meticulous tracking is definitely a key part of your workflow. It allows for precise follow-ups like this one.",
       "User: It's the only way to survive in this game. You have to be more organized than the person on the other end of the line. Okay, let's think about the hook for today.",
       "Assistant: What are you considering for your opening pitch?",
@@ -356,7 +356,7 @@
       "Assistant: That's a key detail to confirm. Would you like me to scan the company's internal knowledge base or recent internal communications for any updates on the trial offer?",
       "User: Not right now. I'll just stick with the 14-day info for the morning block and ping my manager during the lunch break to confirm. No point in getting tangled in internal docs right now.",
       "Assistant: Understood. I'll set a reminder for you to check with your manager about the trial offer at noon. Is that okay?",
-      "User: Yeah, that's perfect. Thanks. It\u2019s just... some days feel like I'm on a treadmill. Same script, same objections.",
+      "User: Yeah, that's perfect. Thanks. It’s just... some days feel like I'm on a treadmill. Same script, same objections.",
       "Assistant: I understand. The repetitive nature of the work can be draining. It's a testament to your discipline that you maintain such high performance.",
       "User: Discipline or pragmatism. My old newspaper job was passionate work, but this pays the bills. A lesson I learned the hard way.",
       "Assistant: It sounds like a significant turning point in your career path, moving from media to sales.",
@@ -438,7 +438,7 @@
       "Assistant: Right, Cooper's check-up. Do you have an appointment scheduled already?",
       "User: I do. It's Thursday at 4 PM. So I'll have to log off a bit early that day.",
       "Assistant: Not a problem. I'll add 'Vet appointment for Cooper' to your calendar for Thursday at 4 PM and a reminder to log off work by 3:45 PM.",
-      "User: Perfect. Also, I\u2019m trying to make progress on that old writing desk I'm restoring.",
+      "User: Perfect. Also, I’m trying to make progress on that old writing desk I'm restoring.",
       "Assistant: The oak desk from the flea market? How is that coming along?",
       "User: Slowly. I've finally stripped all the old varnish off. The next step is sanding, which is going to take forever. I want to dedicate at least two evenings to it.",
       "Assistant: Sanding is a meticulous process. Which evenings look best for you? Monday and Wednesday?",
@@ -446,7 +446,7 @@
       "Assistant: Done. 'Furniture Restoration' time added for Monday and Wednesday evenings.",
       "User: Oh, and one more thing for work. Got the memo from HR about the mandatory annual security training module. Looks like I need to get that done by this Friday.",
       "Assistant: Okay, a mandatory security training module, due this Friday. That's an important one to fit in.",
-      "User: Tell me about it. It\u2019s always the same dry content. But it has to be done.",
+      "User: Tell me about it. It’s always the same dry content. But it has to be done.",
       "Assistant: How long do you anticipate it will take? Usually they are about an hour or two.",
       "User: Probably an hour, if I power through it. The real challenge is finding an hour where my brain isn't completely fried from calls.",
       "Assistant: Perhaps Friday morning would be a good time? You could get it out of the way before the weekend, and your call volume might be lighter.",
@@ -477,7 +477,7 @@
       "Assistant: I can certainly try to help with that. Are you looking for organization tips, storage solutions, or something else?",
       "User: Storage solutions, definitely. My furniture restoration hobby is taking up more space than I anticipated. The oak desk alone is a beast.",
       "Assistant: A proper workshop area can make a huge difference. Have you considered vertical storage, like wall-mounted shelves or a pegboard system for your tools?",
-      "User: I was thinking about pegboards. It seems like a good way to get all the small stuff\u2014sandpaper, brushes, chisels\u2014out of the way but still visible.",
+      "User: I was thinking about pegboards. It seems like a good way to get all the small stuff—sandpaper, brushes, chisels—out of the way but still visible.",
       "Assistant: It's a very efficient system. You can see all your tools at a glance, and it keeps your work surfaces clear.",
       "User: My main issue is the bigger stuff. Cans of stain, oil, mineral spirits. They're all just kind of clustered in a corner right now.",
       "Assistant: For those, a lockable metal cabinet might be a good investment. It keeps flammable materials safely contained and organized.",
@@ -550,17 +550,17 @@
       "Assistant: Of course. Pulling up your call sheet for today, Tuesday. I see 45 scheduled contacts.",
       "User: Yeah, and the interface is as clunky as ever. It's a miracle anyone can be efficient with it. That's why I have my own system.",
       "Assistant: Are you referring to your personal color-coded spreadsheet?",
-      "User: The one and only. It\u2019s the real source of truth. The CRM is just where the data goes to die. Can you help me with something on it?",
+      "User: The one and only. It’s the real source of truth. The CRM is just where the data goes to die. Can you help me with something on it?",
       "Assistant: I'd be happy to. What do you need?",
       "User: I've flagged five 'high-priority' leads in yellow. I need to add a notes column next to them and jot down some opening lines. Just create the column for now.",
       "Assistant: Done. A 'Notes' column has been added next to the five leads highlighted in yellow.",
       "User: Perfect. This first one, 'Quantum Solutions,' their CTO used to work at a company I closed a deal with back at StapleSource. I should mention that.",
       "Assistant: That's a great angle for building rapport. Shall I add a note about that connection for you?",
-      "User: Please. Just put 'Mention previous connection via StapleSource deal with their CTO.' It\u2019s a long shot but better than a completely cold open.",
+      "User: Please. Just put 'Mention previous connection via StapleSource deal with their CTO.' It’s a long shot but better than a completely cold open.",
       "Assistant: Note added. It's a solid strategy to leverage past successes.",
       "User: It was a brutal place to work, but it taught me to be ruthlessly efficient. Every little advantage counts in this game.",
       "Assistant: I can imagine. That kind of high-pressure environment can certainly forge strong skills.",
-      "User: Definitely. It\u2019s a world away from hosting my campus radio show, that\u2019s for sure. I thought that Communications degree was my ticket to something creative.",
+      "User: Definitely. It’s a world away from hosting my campus radio show, that’s for sure. I thought that Communications degree was my ticket to something creative.",
       "Assistant: Life often takes unexpected turns. Your background in communications is likely a significant asset in your current role, though.",
       "User: I suppose. You learn how to talk to anyone. Okay, enough reminiscing. Let's get back to the list. What's the next yellow flag?",
       "Assistant: The next one is 'Aperture Dynamics.' They recently secured Series B funding.",
@@ -572,7 +572,7 @@
       "Assistant: That's a nice convenience. No more searching for a spot every morning.",
       "User: Exactly. One less thing to think about. Oh, that reminds me. Just got my official parking assignment at the InnovateLeads garage. Can you log this for me? It's spot number 58.",
       "Assistant: Of course. I've logged it. Your assigned parking spot is 58.",
-      "User: Great, thanks. It\u2019s surprising how much mental energy these little administrative things take up.",
+      "User: Great, thanks. It’s surprising how much mental energy these little administrative things take up.",
       "Assistant: I agree. Automating or recording them can free up cognitive resources for more important tasks, like preparing for your calls.",
       "User: You're telling me. My brain is basically a script and a lead tracker from 9 to 5. There's not much room for anything else.",
       "Assistant: It sounds like a very demanding role that requires intense focus.",
@@ -593,7 +593,7 @@
       "Assistant: It sounds like you've had a frustrating day, Alex. What happened?",
       "User: It's nothing major, just annoying. One of those little changes that throws a wrench in your routine. Got an email from building management today about a garage reshuffle. My new assigned spot is 72. Wanted to make sure I had a record of it.",
       "Assistant: I've updated your information. Your new assigned parking spot is 72, replacing the previous one. I understand how small changes can be disruptive.",
-      "User: Thanks. It\u2019s just... I finally memorized the route to 58, and now I have to find 72. It feels like I'm still dealing with the chaos of moving, even though it's been a few months.",
+      "User: Thanks. It’s just... I finally memorized the route to 58, and now I have to find 72. It feels like I'm still dealing with the chaos of moving, even though it's been a few months.",
       "Assistant: It can take a long time to feel truly settled after a move. Are there still many boxes to unpack in the new townhouse?",
       "User: More than I care to admit. But it's worth it for the quiet and the backyard. Cooper is loving the extra space.",
       "Assistant: I'm glad to hear Cooper is enjoying his new home. Having a happy dog around can make up for a lot of unpacking.",
@@ -676,8 +676,8 @@
       "User: Hey, I'm in the mood to try making something different for dinner tonight. Something spicy.",
       "Assistant: I can certainly help with that. Given your love for pho, are you looking for another Vietnamese dish or something from a different cuisine?",
       "User: You know, I hadn't even thought of that. The backpacking trip through Vietnam really cemented my love for that food. What's another spicy Vietnamese dish that isn't pho?",
-      "Assistant: A popular and delicious choice is B\u00fan b\u00f2 Hu\u1ebf. It's a spicy beef and pork noodle soup with a very distinct flavor from lemongrass and shrimp paste. It's heartier and spicier than most pho.",
-      "User: B\u00fan b\u00f2 Hu\u1ebf... I think I had that in Hue, fittingly enough. The memory is a bit hazy, but I remember loving the spice. Can you find me a reliable recipe for it?",
+      "Assistant: A popular and delicious choice is Bún bò Huế. It's a spicy beef and pork noodle soup with a very distinct flavor from lemongrass and shrimp paste. It's heartier and spicier than most pho.",
+      "User: Bún bò Huế... I think I had that in Hue, fittingly enough. The memory is a bit hazy, but I remember loving the spice. Can you find me a reliable recipe for it?",
       "Assistant: Of course. I've found a highly-rated, authentic recipe from a well-known food blogger who specializes in Vietnamese cuisine. It has step-by-step instructions and photos. Would you like me to display it or send the link?",
       "User: Send me the link. That way I can pull it up on my tablet in the kitchen. I need to make sure I have all the ingredients before I commit.",
       "Assistant: The link has been sent. The recipe includes a detailed ingredient list, often with suggestions for substitutes if you can't find something at a local store.",
@@ -695,7 +695,7 @@
       "Assistant: Enjoy your recipe planning. Let me know if you need any help with cooking techniques or ingredient substitutions.",
       "User: Looks like I have most of this stuff, surprisingly. I'll have to swing by the Asian market for the specific chili paste and some fresh herbs tomorrow.",
       "Assistant: That sounds like a plan. Fresh herbs will definitely enhance the authenticity of the dish.",
-      "User: For sure. Well, I guess it's just a simple stir-fry for me tonight then. The B\u00fan b\u00f2 Hu\u1ebf will be a weekend project.",
+      "User: For sure. Well, I guess it's just a simple stir-fry for me tonight then. The Bún bò Huế will be a weekend project.",
       "Assistant: A weekend cooking project can be a very enjoyable and relaxing activity.",
       "User: Yeah, it's either that or more work on that oak desk. Depends on the weather. If it's nice, I'd rather be outside with Cooper anyway.",
       "Assistant: Enjoying a nice day outside with your dog sounds like a wonderful way to spend a weekend.",
@@ -721,61 +721,71 @@
      "question": "What time is my call with the StapleSource referral?",
      "answer": "The call is scheduled for 10 AM.",
      "stale_answer": "3 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "10 AM"
     },
     {
      "question": "When is my weekly team huddle with InnovateLeads?",
      "answer": "The weekly team huddle is scheduled for Friday at 4 PM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4 PM"
     },
     {
      "question": "What is the phone number for the contact at Nexus Solutions?",
      "answer": "The phone number for the contact at Nexus Solutions is 408-555-5678.",
      "stale_answer": "1234",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "5678"
     },
     {
      "question": "What is my daily call quota?",
      "answer": "Your daily call quota is 40 calls.",
      "stale_answer": "60",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "40"
     },
     {
      "question": "What is the priority level assigned to the Synergy Corp lead?",
      "answer": "The Synergy Corp lead is assigned a Tier 4 priority level.",
      "stale_answer": "2",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4"
     },
     {
      "question": "For my call script, what is the length of the free trial we offer to new prospects?",
      "answer": "The free trial for new prospects is 30 days long.",
      "stale_answer": "14",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "30"
     },
     {
      "question": "What is the deadline for completing the security training module?",
      "answer": "The deadline for the security training module has been extended to next Tuesday.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Tuesday"
     },
     {
      "question": "I'm prepping for a call with a big prospect. Which case study is the one I should be featuring in my pitch?",
      "answer": "You should feature the case study about Client Y and their 40% reduction in customer support tickets. The marketing team has retired the Client X materials.",
      "stale_answer": "30%",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "40%"
     },
     {
      "question": "What is my assigned parking spot number?",
      "answer": "Your assigned parking spot is 72.",
      "stale_answer": "58",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "72"
     },
     {
      "question": "I'm filling out my expense report for a client visit I did last week. What is the company's mileage reimbursement rate?",
      "answer": "The company's mileage reimbursement rate is $0.65 per mile.",
      "stale_answer": "$0.58",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$0.65"
     }
    ]
   },
@@ -827,7 +837,7 @@
       "Assistant: I can imagine. It sounds like your current role at InnovateLeads is a significant improvement.",
       "User: It is, for sure. More stable, better pay. But the CRM is still a piece of junk. I'd be lost without my personal spreadsheet.",
       "Assistant: Your color-coded spreadsheet is a very effective system you've developed. It's a testament to your meticulousness.",
-      "User: It\u2019s the only way to stay sane. Speaking of administrative stuff, I have to update my emergency contact info for HR. It's always something.",
+      "User: It’s the only way to stay sane. Speaking of administrative stuff, I have to update my emergency contact info for HR. It's always something.",
       "Assistant: Administrative tasks can be tedious. Do you need help finding the correct form on the company portal?",
       "User: I think I have the link bookmarked. Just need to make sure all my details are correct on it. It asks for everything but your blood type.",
       "Assistant: It's always good to have those details up to date. Let me know if you need me to look anything up for you.",
@@ -855,7 +865,7 @@
       "Assistant: You had a short stint as a copy editor at a local newspaper, but the name isn't in my records. Could you tell me?",
       "User: Right, I never mentioned it. It was the 'Daily Chronicle'. Barely paid enough for rent, but it was a job.",
       "Assistant: I've added it to my notes. The 'Daily Chronicle'. Thank you for sharing.",
-      "User: No problem. It\u2019s a good reminder of why I switched to sales.",
+      "User: No problem. It’s a good reminder of why I switched to sales.",
       "Assistant: A pragmatic decision based on your experiences.",
       "User: That's a polite way of putting it. Anyway, for real this time, back to work.",
       "Assistant: Alright. Have a productive day."
@@ -880,7 +890,7 @@
       "Assistant: Having a dedicated space for your hobby must be a relief. It allows you to fully immerse yourself in the process.",
       "User: It's a game changer. The quiet evenings out here are perfect for it. No sirens, no loud neighbors. Just... quiet.",
       "Assistant: The peace and quiet of a suburban neighborhood can be very conducive to focus and relaxation.",
-      "User: Definitely. It\u2019s a different kind of quiet than, say, the countryside in Vietnam. That was a living quiet. This is more of a sleepy quiet.",
+      "User: Definitely. It’s a different kind of quiet than, say, the countryside in Vietnam. That was a living quiet. This is more of a sleepy quiet.",
       "Assistant: That's a very poetic distinction. Both sound appealing in their own ways.",
       "User: They are. Anyway, I need to order some food. I'm too tired to even think about cooking. Any good pho places that deliver out here in Maple Creek?",
       "Assistant: Let me check... Yes, there are two highly-rated Vietnamese restaurants that deliver to your new address. 'Saigon Spice' and 'The Pho House'. 'Saigon Spice' has excellent reviews for its spicy beef pho.",
@@ -1101,7 +1111,7 @@
       "User: That's the goal. I figure Cooper and I are still moving around from our walk at 6, so we won't even notice the difference for a while.",
       "Assistant: That makes sense. By the time you're settling down for the evening, the house will be comfortable. Are there any other areas you've identified for potential savings?",
       "User: I'm thinking about the water heater temperature. I read that most are set higher than necessary.",
-      "Assistant: That's true. The Department of Energy recommends a setting of 120\u00b0F (49\u00b0C) for most households to balance safety and energy savings. Many are set to 140\u00b0F by default.",
+      "Assistant: That's true. The Department of Energy recommends a setting of 120°F (49°C) for most households to balance safety and energy savings. Many are set to 140°F by default.",
       "User: I'll have to check mine. It's in a closet in the garage. Speaking of the garage, I finally got it cleared out enough to work in there.",
       "Assistant: That's great news! Have you been able to get back to restoring that oak writing desk?",
       "User: I have. I spent most of last Saturday stripping the old varnish off. It's a messy job, but satisfying.",
@@ -1149,7 +1159,7 @@
       "Assistant: Consistency in some costs can definitely provide a sense of stability when you're budgeting.",
       "User: Exactly. For instance, I was reviewing my budget spreadsheet from last quarter and saw I had my usual bag of 'Morning Ritual' blend from the local roaster pegged at $40. It was nice how consistent the price was.",
       "Assistant: Having a predictable price for a daily essential like coffee makes planning much easier. Is that the coffee you use in your French press?",
-      "User: That's the one. Strong and black, the only way to start a day of cold calls. It\u2019s been my one constant through the last few jobs.",
+      "User: That's the one. Strong and black, the only way to start a day of cold calls. It’s been my one constant through the last few jobs.",
       "Assistant: It sounds like a grounding ritual before you have to step into your professional role for the day.",
       "User: It is. It's a quiet moment before the phone starts ringing. My day is all about talking, so I cherish the silence beforehand.",
       "Assistant: That makes a lot of sense. Your communications degree must be very useful in your line of work, but I can see how it could also be draining.",
@@ -1202,7 +1212,7 @@
       "Assistant: It's a heavy, old piece, right? The solid construction of older furniture is something to be treasured. It's wonderful that you're giving it a new life.",
       "User: Absolutely. They don't make them like this anymore. It's a tangible project, you know? At the end of the day, I can see and touch what I've accomplished. It's not like my job.",
       "Assistant: I understand. Your work involves conversations and digital entries in a CRM, which are more ephemeral. This is a creative act with a lasting, physical result.",
-      "User: Exactly. It balances things out. It's my equivalent of that backpacking trip through Vietnam\u2014a total escape from the daily grind.",
+      "User: Exactly. It balances things out. It's my equivalent of that backpacking trip through Vietnam—a total escape from the daily grind.",
       "Assistant: That's a powerful comparison. Both offer a different perspective and a break from the structured role you play during the work week.",
       "User: Yeah. Now, if you'll excuse me, I have some wood to sand. And a beagle who thinks the sander is a toy, so I need to get Cooper settled first.",
       "Assistant: Have fun with the project, and good luck keeping Cooper entertained! Perhaps a durable chew toy would be a good distraction.",
@@ -1294,7 +1304,7 @@
       "Assistant: A 10x15 foot plot gives you a lot of space to work with. You could use a square-foot gardening method to maximize your layout and yield.",
       "User: Square-foot gardening? Tell me more.",
       "Assistant: It's a system where you divide your garden into one-foot squares and plant a specific number of plants in each square based on their size. For example, one tomato plant per square, but 16 carrots. It's very organized.",
-      "User: Organized is my middle name. I'll definitely research that. It appeals to the same part of my brain that likes restoring old furniture\u2014bringing order from chaos.",
+      "User: Organized is my middle name. I'll definitely research that. It appeals to the same part of my brain that likes restoring old furniture—bringing order from chaos.",
       "Assistant: Then I think you'll find it very satisfying. It turns garden planning into a fun puzzle. How is the oak desk project coming along, by the way?",
       "User: Wow, you remembered that. It's going well. I just finished the final coat of varnish. Now I'm just letting it cure. Soon I'll be able to use it.",
       "Assistant: That's fantastic. It must feel great to see a project like that through to completion. A perfect place to sketch out your garden plans, perhaps?",
@@ -1393,13 +1403,13 @@
      "lines": [
       "User: Hey, can you help me organize my schedule for next month?",
       "Assistant: Of course, Alex! What do you need to add or adjust?",
-      "User: I\u2019ve got a few things coming up. Let\u2019s start with the lawn care service.",
+      "User: I’ve got a few things coming up. Let’s start with the lawn care service.",
       "Assistant: Sure thing. What do you need to note about it?",
       "User: Can you add a recurring reminder for me? The lawn care service is scheduled for the first Saturday of every month. I need to make sure Cooper is inside on those mornings.",
-      "Assistant: Got it. I\u2019ll set a reminder for the first Saturday of each month to ensure Cooper is inside.",
-      "User: Thanks! That\u2019ll help a lot. Anything else I should remember for next month?",
-      "Assistant: Do you have any other appointments or events you\u2019d like to add?",
-      "User: Not at the moment, but I\u2019ll let you know if anything comes up.",
+      "Assistant: Got it. I’ll set a reminder for the first Saturday of each month to ensure Cooper is inside.",
+      "User: Thanks! That’ll help a lot. Anything else I should remember for next month?",
+      "Assistant: Do you have any other appointments or events you’d like to add?",
+      "User: Not at the moment, but I’ll let you know if anything comes up.",
       "Assistant: Sounds good. Just reach out whenever you need to update your schedule.",
       "User: Will do. Thanks for the help!",
       "Assistant: Anytime, Alex. Have a great day!"
@@ -1411,13 +1421,13 @@
       "User: Hey, I need to make a quick update to my calendar.",
       "Assistant: Sure, what do you need to change?",
       "User: I just got off the phone with the landscaping company. I've switched my regular service day, so from now on, they'll be coming on the first Friday of the month instead.",
-      "Assistant: Alright, I\u2019ll update your calendar to reflect the new schedule for the lawn care service.",
+      "Assistant: Alright, I’ll update your calendar to reflect the new schedule for the lawn care service.",
       "User: Thanks! I appreciate it.",
-      "Assistant: No problem. Anything else you\u2019d like to adjust?",
-      "User: Not right now, but I\u2019ll keep you posted if anything changes.",
+      "Assistant: No problem. Anything else you’d like to adjust?",
+      "User: Not right now, but I’ll keep you posted if anything changes.",
       "Assistant: Sounds good. Just let me know whenever you need to make updates.",
       "User: Will do. Thanks again!",
-      "Assistant: You\u2019re welcome, Alex. Have a great day!"
+      "Assistant: You’re welcome, Alex. Have a great day!"
      ]
     }
    ],
@@ -1426,61 +1436,71 @@
      "question": "What is the scheduled day and time for Cooper's vet appointment?",
      "answer": "The appointment is scheduled for Thursday at 11 AM.",
      "stale_answer": "4 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 AM"
     },
     {
      "question": "What is my home address?",
      "answer": "Your home address is 123 Oak Street in the Maple Creek suburb.",
      "stale_answer": "456",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "123"
     },
     {
      "question": "What time is my weekday alarm set for?",
      "answer": "Your weekday alarm is set for 6:45 AM.",
      "stale_answer": "6:30 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "6:45 AM"
     },
     {
      "question": "I'm planning to go to the public library after work this week, what time does it close?",
      "answer": "The library closes at 6 PM on weekdays.",
      "stale_answer": "8 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "6 PM"
     },
     {
      "question": "At what time is the heating scheduled to turn on?",
      "answer": "The heating is scheduled to turn on at 7 PM.",
      "stale_answer": "6 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "7 PM"
     },
     {
      "question": "How much does a bag of the 'Morning Ritual' blend coffee cost?",
      "answer": "A bag of the 'Morning Ritual' blend coffee costs $48.",
      "stale_answer": "$40",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$48"
     },
     {
      "question": "What is my plot number at the community garden?",
      "answer": "8",
      "stale_answer": "15",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "8"
     },
     {
      "question": "What time is my furniture delivery scheduled for?",
      "answer": "Your furniture delivery is scheduled for the afternoon window, between 1 PM and 5 PM.",
      "stale_answer": "8 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1 PM"
     },
     {
      "question": "What is my monthly savings goal?",
      "answer": "Your monthly savings goal is $200.",
      "stale_answer": "$300",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$200"
     },
     {
      "question": "I need to let my neighbor know when the landscapers will be here. On which day does the lawn service come each month?",
      "answer": "The lawn service is scheduled for the first Friday of every month.",
      "stale_answer": "Saturday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Friday"
     }
    ]
   },
@@ -2258,7 +2278,7 @@
       "Assistant: I'm glad this is helpful. Would you like me to add these potential root causes to the case notes for your reference during the call?",
       "User: Yes. Create a new internal note titled 'Pre-call Investigation' and list 'Check load balancer configuration' and 'Verify server memory allocation' as primary investigation paths.",
       "Assistant: The note has been added to the Acuity Inc. case file. You are now much better prepared for the earlier session time.",
-      "User: Definitely. It\u2019s funny, I used to hate this kind of detective work when I was a dev. Now it's the most interesting part of my job.",
+      "User: Definitely. It’s funny, I used to hate this kind of detective work when I was a dev. Now it's the most interesting part of my job.",
       "Assistant: It seems you've found a new appreciation for the problem-solving process in your current role.",
       "User: I guess so. When you're a dev, a bug is just a blocker. In support, a bug is a puzzle to solve. Different perspective.",
       "Assistant: That's a very insightful way to look at it. The context of the task changes its nature.",
@@ -2320,61 +2340,71 @@
      "question": "What is the name of the call script I am supposed to use?",
      "answer": "The script you are supposed to use is the 'Dynamic Engagement Model v3.0'.",
      "stale_answer": "2.1",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "0"
     },
     {
      "question": "Just checking my schedule, on what day is the bulk trash pickup scheduled?",
      "answer": "The bulk trash pickup is scheduled for next Tuesday.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Tuesday"
     },
     {
      "question": "Who is the owner of ticket #90345?",
      "answer": "The ticket is now owned by Maria Garcia from Tier 2.",
      "stale_answer": "90345",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2"
     },
     {
      "question": "What's the SLA resolution deadline for case #783-9B1?",
      "answer": "The resolution deadline for case #783-9B1 is Monday at 5 PM.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Monday"
     },
     {
      "question": "For Case #78B34, what software version is the customer running on their system?",
      "answer": "The customer's system is running on software version 4.3.",
      "stale_answer": "4.2",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4.3"
     },
     {
      "question": "When is the Tier 1 sync-up meeting?",
      "answer": "The Tier 1 sync-up meeting is on Wednesdays at 11 AM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 AM"
     },
     {
      "question": "What is my target CSAT score?",
      "answer": "Your target Customer Satisfaction (CSAT) score is 92%.",
      "stale_answer": "90%",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "92%"
     },
     {
      "question": "What callback number should I use for Case 75312?",
      "answer": "The customer requested to be contacted on their mobile number: (917) 555-0188.",
      "stale_answer": "75312",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "917"
     },
     {
      "question": "What time is my troubleshooting call with the Acuity Inc. client scheduled for on Monday?",
      "answer": "The troubleshooting call with the Acuity Inc. client is scheduled for 1 PM PST on Monday.",
      "stale_answer": "3 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1 PM"
     },
     {
      "question": "To proceed with the diagnostic ping, what is the IP address for the customer's application server?",
      "answer": "The IP address for the customer's application server is 10.0.0.50.",
      "stale_answer": "192.168",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "10.0"
     }
    ]
   },
@@ -3177,61 +3207,71 @@
      "question": "What time is my shift tomorrow?",
      "answer": "Your shift tomorrow starts at 11 AM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 AM"
     },
     {
      "question": "What is the savings goal for the emergency fund?",
      "answer": "$3,000",
      "stale_answer": "$5,000",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$3,000"
     },
     {
      "question": "On what day is my Uplift standing desk being delivered?",
      "answer": "Your Uplift standing desk is being delivered on Tuesday.",
      "stale_answer": "Saturday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Tuesday"
     },
     {
      "question": "When and where am I supposed to meet Alex?",
      "answer": "You are meeting Alex for lunch on Saturday at La Trattoria.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Saturday"
     },
     {
      "question": "When is my dentist appointment?",
      "answer": "Your dentist appointment is scheduled for May 17th at 11 AM.",
      "stale_answer": "3 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 AM"
     },
     {
      "question": "My friend is asking which GPU I bought. What is the model of the graphics card I ordered?",
      "answer": "You ordered the AMD RX 6700 XT.",
      "stale_answer": "3060",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "6700"
     },
     {
      "question": "Which phone am I planning to purchase?",
      "answer": "Google Pixel 8",
      "stale_answer": "7",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Google Pixel 8"
     },
     {
      "question": "What is my Chase Freedom credit card number?",
      "answer": "Your Chase Freedom credit card number is 4147 2011 3852 9880.",
      "stale_answer": "2088",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4147"
     },
     {
      "question": "When I'm creating my budget, what amount should I list for my monthly cloud server bill?",
      "answer": "You should list your monthly cloud server bill as $15.",
      "stale_answer": "10",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "15"
     },
     {
      "question": "What is my home address?",
      "answer": "789 Maple Drive",
      "stale_answer": "456",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "789 Maple Drive"
     }
    ]
   },
@@ -3409,7 +3449,7 @@
       "User: Yeah, I'm actually looking forward to it. I need a break from work. Staring at CRM cases and talking people through password resets all day can really grind you down.",
       "Assistant: A day out in nature is a perfect antidote to screen fatigue. The change of scenery and physical activity can do wonders for your mental state.",
       "User: Totally. So, best time of year to go to Pinnacles? Is it too hot in the summer?",
-      "Assistant: Summer can be brutally hot, often exceeding 100\u00b0F. Spring and Fall are ideal, with milder temperatures and beautiful scenery. Winter is also great, though you might encounter rain.",
+      "Assistant: Summer can be brutally hot, often exceeding 100°F. Spring and Fall are ideal, with milder temperatures and beautiful scenery. Winter is also great, though you might encounter rain.",
       "User: Okay, so maybe I should plan this for a weekend in the next month or two before it gets too hot. I'll check the forecast.",
       "Assistant: That's a wise approach. Also, try to get to the park early, especially on a weekend, to secure a parking spot at the trailhead you want to use. The park has two entrances, East and West, that do not connect by road.",
       "User: Which entrance is better for the High Peaks Loop?",
@@ -3597,7 +3637,7 @@
       "User: Okay, so using the $10 rule, that's a remediation cost of over $124,000. That's a powerful number for the committee. Let's make sure that's prominent.",
       "Assistant: Understood. Highlighting the remediation cost of over $124,000 based on the '$10 to cleanse' rule. This will be a key point in the 'Business Impact Analysis' section.",
       "User: Perfect. I think I have enough to get started on the draft. Thanks for the help. Shift gears for me, what's the weather looking like for this weekend out towards the coast, say around Point Reyes?",
-      "Assistant: Checking the forecast for Point Reyes National Seashore this weekend... It looks cool and damp. Saturday has a high of 58\u00b0F with morning fog and a 60% chance of light drizzle. Sunday will be similar, with a high of 56\u00b0F and persistent overcast conditions.",
+      "Assistant: Checking the forecast for Point Reyes National Seashore this weekend... It looks cool and damp. Saturday has a high of 58°F with morning fog and a 60% chance of light drizzle. Sunday will be similar, with a high of 56°F and persistent overcast conditions.",
       "User: Damp and cool is perfect. Great for mycology. Maybe I'll finally find some hedgehog mushrooms this season.",
       "Assistant: That sounds like a wonderful plan. Remember to bring a good field guide, as some look-alikes can be toxic. The weather conditions are indeed favorable for many fungal species in that area.",
       "User: Always. Safety first. I have my trusty guide. Speaking of hobbies, I was thinking about my next keyboard project.",
@@ -3605,7 +3645,7 @@
       "User: I'm thinking of finding an old Wyse PCE keyboard. I like the layout and the vintage Cherry MX Black switches.",
       "Assistant: The Wyse PCE is a classic. Known for its durable build. Finding one in good condition can be a challenge. They often require a thorough cleaning and potentially a 'retr0bright' process to de-yellow the plastic case.",
       "User: That's half the fun. The process of restoring it is what I enjoy. The more chaotic and dirty it is, the more satisfying the result.",
-      "Assistant: That resonates with your professional work\u2014bringing order from chaos. I can set up a search alert for you on common auction sites for 'Wyse PCE keyboard' if you'd like.",
+      "Assistant: That resonates with your professional work—bringing order from chaos. I can set up a search alert for you on common auction sites for 'Wyse PCE keyboard' if you'd like.",
       "User: Yes, please do that. Set the maximum price to $50 for now. I'm looking for a project, not a museum piece.",
       "Assistant: Alert created. I will notify you if any Wyse PCE keyboards are listed for $50 or less. Is there anything else I can help with today?",
       "User: No, that's a great start to the week. Thanks.",
@@ -3748,7 +3788,7 @@
       "User: Ha, I wish. Not sure I'll find a patch of chanterelles like that again, but just being in the forest will be enough. The meticulous search is a good antidote to digital chaos.",
       "Assistant: A perfect parallel. I hope you have a restorative trip. Is there anything else I can help you with today?",
       "User: Can you check the weather forecast for the Point Reyes area for Saturday and Sunday? And maybe tide tables? Some of the best spots are only accessible at low tide.",
-      "Assistant: Of course. For Point Reyes this weekend:\n- **Saturday:** Partly cloudy with a high of 62\u00b0F (16\u00b0C). Winds from the NW at 10-15 mph. \n- **Sunday:** Mostly sunny, high of 64\u00b0F (18\u00b0C). Lighter winds.\n- **Low Tides:** Saturday at 1:45 PM and Sunday at 2:30 PM.\nIt looks like good weather for a coastal hike.",
+      "Assistant: Of course. For Point Reyes this weekend:\n- **Saturday:** Partly cloudy with a high of 62°F (16°C). Winds from the NW at 10-15 mph. \n- **Sunday:** Mostly sunny, high of 64°F (18°C). Lighter winds.\n- **Low Tides:** Saturday at 1:45 PM and Sunday at 2:30 PM.\nIt looks like good weather for a coastal hike.",
       "User: Afternoon low tides are perfect. That settles it then. Thanks for all your help.",
       "Assistant: You are very welcome, Alex. Enjoy the hunt!",
       "User: I will. It's nice to look for patterns that don't involve duplicate emails for a change.",
@@ -3860,7 +3900,7 @@
       "Assistant: Are there any validation rules you could implement on the import tool to standardize those entries at the point of creation?",
       "User: I've proposed that multiple times. The marketing ops team is always worried it will slow down their lead processing. They value speed over accuracy, and I'm the one who pays the price later.",
       "Assistant: It sounds like a systemic issue. A clear data governance policy might help align the teams on priorities.",
-      "User: Exactly. You're preaching to the choir. It feels like I'm constantly trying to restore order to a system designed for entropy. It\u2019s like that fintech startup I used to work at, but with more meetings.",
+      "User: Exactly. You're preaching to the choir. It feels like I'm constantly trying to restore order to a system designed for entropy. It’s like that fintech startup I used to work at, but with more meetings.",
       "Assistant: The one that valued velocity above all else? I can see the parallel. At least here there seems to be some movement towards establishing formal policies.",
       "User: There is. It's slow, but it's happening. We're finally getting some official rules around data handling. It's the only way to build a foundation that isn't sand.",
       "Assistant: What's the first area being addressed?",
@@ -4035,61 +4075,71 @@
      "question": "I'm about to leave for work, can you handle the thermostat for me? Before you do, what is the standard temperature it should be set to?",
      "answer": "The standard temperature for the thermostat is 75 degrees Fahrenheit.",
      "stale_answer": "72",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "75"
     },
     {
      "question": "What kind of car do I drive?",
      "answer": "You drive a 2022 Subaru Crosstrek.",
      "stale_answer": "2015",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2022"
     },
     {
      "question": "What is Alex's phone number?",
      "answer": "Alex's new phone number is 650-555-0123. His old number is disconnected.",
      "stale_answer": "415",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "650"
     },
     {
      "question": "What is the combination for my bike lock?",
      "answer": "21-03-01",
      "stale_answer": "18",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "21-03-01"
     },
     {
      "question": "What time is my weekday alarm set for?",
      "answer": "9:30 AM",
      "stale_answer": "7:30 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "9:30 AM"
     },
     {
      "question": "Hey Alex, what is the scheduled day and time for the Data Governance Committee meeting?",
      "answer": "The meeting is scheduled for Wednesday at 2 PM.",
      "stale_answer": "10 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2 PM"
     },
     {
      "question": "What is the team's Q3 target for duplicate contact record reduction?",
      "answer": "The team's Q3 target for duplicate contact record reduction is 4%.",
      "stale_answer": "5%",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4%"
     },
     {
      "question": "On which server is the data staging environment hosted?",
      "answer": "The data staging environment is hosted on the US-West-2 server.",
      "stale_answer": "1",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2"
     },
     {
      "question": "According to the data retention policy, for how long must customer data be kept?",
      "answer": "Customer data must be kept for 5 years to align with GDPR standards.",
      "stale_answer": "7",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "5"
     },
     {
      "question": "For the environment prep, what version of the data analysis tool is your team using?",
      "answer": "The team is using version 3.5.",
      "stale_answer": "4.0",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "3.5"
     }
    ]
   },
@@ -4113,7 +4163,7 @@
       "Assistant: Budgeting can definitely be demanding. Are you in the process of submitting your requests now?",
       "User: Yep. The deadlines are looming. I feel like I'm trying to justify the existence of a library to people who don't read.",
       "Assistant: That's a powerful analogy. It highlights the foundational, yet often overlooked, importance of your work.",
-      "User: Thanks. It's just frustrating when the current toolset is barely adequate. It\u2019s like asking a librarian to catalog books with a broken card catalog system.",
+      "User: Thanks. It's just frustrating when the current toolset is barely adequate. It’s like asking a librarian to catalog books with a broken card catalog system.",
       "Assistant: That paints a very clear picture of the inefficiency. A new toolset would be the equivalent of a modern digital database, saving time and preventing future errors.",
       "User: Exactly. I'm trying to make that case. I'm putting together the initial budget request for next fiscal year. I'll be submitting the standard $50,000 for our data quality tools, but I'm also preparing a separate business case to argue for a significant increase.",
       "Assistant: That's a proactive approach. A detailed business case showing the ROI of a better tool, perhaps using the pilot project idea, could be very compelling.",
@@ -4205,17 +4255,17 @@
       "Assistant: So, you're building a system to catch them as they happen?",
       "User: Yep. Taking the first step, at least. Just a heads-up, I've configured the new CRM alert for data quality. It's set to trigger if more than 100 duplicate contact records are created within a 60-minute window.",
       "Assistant: That sounds like a solid starting point. It provides a clear, automated signal instead of relying on someone spotting the issue later.",
-      "User: That's the goal. It's about creating order out of the chaos. It\u2019s funny, it gives me the same satisfaction as restoring one of my old keyboards.",
+      "User: That's the goal. It's about creating order out of the chaos. It’s funny, it gives me the same satisfaction as restoring one of my old keyboards.",
       "Assistant: How is that hobby coming along? Are you working on a new one?",
       "User: I just finished desoldering a 1987 IBM Model M. The previous owner must have spilled a soda on it decades ago. It was a sticky mess.",
       "Assistant: That sounds like a very patient and meticulous process. Does the satisfaction come from the physical restoration or from making something functional again?",
-      "User: Both. It's about bringing it back to its original state, to how it was designed to function. Wiping away the grime and fixing the broken connections. It\u2019s a very tangible form of data cleansing, in a way.",
+      "User: Both. It's about bringing it back to its original state, to how it was designed to function. Wiping away the grime and fixing the broken connections. It’s a very tangible form of data cleansing, in a way.",
       "Assistant: A perfect metaphor for your presentation. 'Data quality stewardship is like restoring a classic keyboard: you methodically clean the contacts and fix the connections to restore its intended function.'",
-      "User: Ooh, that's good. I'm stealing that. It\u2019s better than my 'unscrambling an egg' metaphor.",
+      "User: Ooh, that's good. I'm stealing that. It’s better than my 'unscrambling an egg' metaphor.",
       "Assistant: You're welcome! How is Glitch handling your keyboard restoration projects? Does he try to 'help'?",
-      "User: He's more of a supervisor. He mostly just curls up under the desk. But he found a new way out of the yard yesterday, so he\u2019s living up to his name.",
+      "User: He's more of a supervisor. He mostly just curls up under the desk. But he found a new way out of the yard yesterday, so he’s living up to his name.",
       "Assistant: Another glitch in the system to patch. Have you considered setting up a perimeter check as part of your morning routine?",
-      "User: That\u2019s what I did this morning. Walked the whole fence line. Found a loose board behind the azalea bush. He's a clever little guy.",
+      "User: That’s what I did this morning. Walked the whole fence line. Found a loose board behind the azalea bush. He's a clever little guy.",
       "Assistant: He keeps your problem-solving skills sharp even when you're off the clock.",
       "User: He certainly does. Anyway, back to the presentation. What's another good angle? Maybe something about the financial cost of bad data?",
       "Assistant: Definitely. You could pull some industry statistics on that. Reports from Gartner or Forrester often quantify the annual cost of poor data quality for an average enterprise.",
@@ -4270,7 +4320,7 @@
       "Assistant: Would you like me to set a reminder for you to check the 10-day forecast for that area starting in mid-September?",
       "User: Yes, actually. That would be very helpful. Remind me every Friday starting September 15th.",
       "Assistant: I've set it up. I hope you find another amazing patch this year.",
-      "User: Me too. It\u2019s the perfect antidote to days like today. In the forest, the signals are clear. A certain smell, the look of the soil, the type of tree... it all means something. It's not just noise.",
+      "User: Me too. It’s the perfect antidote to days like today. In the forest, the signals are clear. A certain smell, the look of the soil, the type of tree... it all means something. It's not just noise.",
       "Assistant: It's a system with an understandable, organic logic, unlike some of the digital systems you have to manage.",
       "User: You get it. The forest is complex, but it's not nonsensical. Bad data is. It's complexity without reason.",
       "Assistant: A very philosophical distinction. It seems like you've found the perfect hobby to balance out the challenges of your profession.",
@@ -4385,13 +4435,13 @@
      "lines": [
       "User: Hey, can you pull up the source code for the 'contact_field_validator_v2.py' script? I'm seeing a weird unicode encoding error in the logs again.",
       "Assistant: Of course, Alex. Bringing it up now. This is the one in the legacy utilities repo, correct? The one that processes address fields from new leads.",
-      "User: That's the one. It\u2019s a relic. I feel like I spend half my week just keeping this thing from collapsing.",
+      "User: That's the one. It’s a relic. I feel like I spend half my week just keeping this thing from collapsing.",
       "Assistant: I can see that it's written in Python 2.7. These encoding issues are quite common with older Python 2 scripts when handling non-ASCII characters.",
-      "User: Tell me about it. It\u2019s the digital equivalent of trying to restore a keyboard where all the keycaps have been replaced with the wrong ones. A systemic problem you have to fix one piece at a time.",
+      "User: Tell me about it. It’s the digital equivalent of trying to restore a keyboard where all the keycaps have been replaced with the wrong ones. A systemic problem you have to fix one piece at a time.",
       "Assistant: That's a fitting analogy. Based on the logs, the error seems to be happening when the script tries to write a corrected address containing a special character to the remediation table.",
       "User: Exactly. I think it's a simple fix, just need to explicitly encode to UTF-8 before the database write. Can you show me the function that handles the DB connection?",
       "Assistant: Certainly. The function is `update_record_in_db`. It's using a library that doesn't automatically handle string encoding, which is likely the culprit.",
-      "User: Yep, that\u2019s what I figured. This whole codebase is a monument to tech debt. It reminds me of my time at that fintech startup. Build fast, fix never.",
+      "User: Yep, that’s what I figured. This whole codebase is a monument to tech debt. It reminds me of my time at that fintech startup. Build fast, fix never.",
       "Assistant: It sounds like a challenging environment. It must be satisfying to bring order to this kind of chaos now.",
       "User: It is, in a way. It's like finding a messy, chaotic system and slowly untangling it. The same reason I enjoy mycology, I suppose. Finding patterns in the wild.",
       "Assistant: That's an interesting parallel. Both require a keen eye for detail and understanding the underlying system.",
@@ -4407,7 +4457,7 @@
       "Assistant: I've created the document and shared it with you. I've pre-populated it with 'contact_field_validator_v2.py' as the first candidate for migration.",
       "User: Perfect. Thanks. It's nice to see some forward momentum. For too long it felt like we were just plugging holes in a sinking ship.",
       "Assistant: A change in strategy can be very refreshing. I imagine it provides a sense of progress, similar to finishing the restoration of a complex keyboard.",
-      "User: It really does. I just finished desoldering an old IBM Model M board last night. It\u2019s tedious work, but the end result is so satisfyingly functional.",
+      "User: It really does. I just finished desoldering an old IBM Model M board last night. It’s tedious work, but the end result is so satisfyingly functional.",
       "Assistant: The Model M is a classic. The buckling spring mechanism is legendary. Was it in rough shape?",
       "User: You know it. Decades of dust and a few non-responsive keys. But it's cleaning up nicely. The case is soaking right now.",
       "Assistant: It sounds like a rewarding project. Do you have a large collection?",
@@ -4436,13 +4486,13 @@
       "Assistant: A proactive approach. What sections of the plan should we review?",
       "User: Let's start with the technical specifications. A few junior engineers on other teams have been asking questions about the implementation details.",
       "Assistant: Understood. The current technical specification section outlines the use of modern libraries for database interaction and API calls, but it doesn't specify a concrete Python version, only 'Python 3 series' as per the initial mandate.",
-      "User: Right, that's been the big question mark. The architect is definitely going to ask about it. It\u2019s the kind of foundational detail that can derail a project if not nailed down.",
+      "User: Right, that's been the big question mark. The architect is definitely going to ask about it. It’s the kind of foundational detail that can derail a project if not nailed down.",
       "Assistant: It's a critical dependency. Having a single, standardized version ensures consistency and avoids potential conflicts between libraries across the new scripts.",
       "User: My thoughts exactly. I hate ambiguity in system design. It's like trying to build something on shaky ground. The whole structure becomes unreliable.",
       "Assistant: A core principle of data quality, applied to software development. Shall I add a placeholder in the document to highlight that this needs to be finalized?",
       "User: No need for a placeholder, I actually have the final decision on that. I was waiting for the official word before updating the docs.",
       "Assistant: Excellent. That will be a key update for your meeting.",
-      "User: For those who were asking about the specific version for the Python 3 mandate\u2014after dependency and security reviews, engineering leadership has certified Python 3.9 as the official version for all teams. I've added the configuration guide to our Confluence space.",
+      "User: For those who were asking about the specific version for the Python 3 mandate—after dependency and security reviews, engineering leadership has certified Python 3.9 as the official version for all teams. I've added the configuration guide to our Confluence space.",
       "Assistant: Thank you for the update. I'll update the 'Technical Specifications' section of the migration plan to state that all new scripts will be developed using Python 3.9. I will also add a link to the Confluence guide.",
       "User: Perfect. Please do that. That solidifies the plan significantly.",
       "Assistant: The document has been updated. Is there anything else we should refine before your meeting?",
@@ -4481,7 +4531,7 @@
       "Assistant: Of course, Alex. Let's break it down. What are the key phases you envision for this project?",
       "User: I'm thinking: 1. Initial analysis and scoping. 2. Rule definition and testing. 3. Script development. 4. Staging execution and validation. 5. Production deployment.",
       "Assistant: That's a solid, structured approach. For the initial analysis, what's your primary goal? Just identifying the scope of the problem?",
-      "User: Exactly. I need to quantify the extent of the duplication \u2013 percentage of affected records, common patterns of duplication, potential business impact. It's the same old story, bad data leading to bad reporting.",
+      "User: Exactly. I need to quantify the extent of the duplication – percentage of affected records, common patterns of duplication, potential business impact. It's the same old story, bad data leading to bad reporting.",
       "Assistant: Understood. For rule definition, will you be using exact matching, fuzzy logic, or a combination?",
       "User: It has to be a combination. Exact matching on email is a start, but we see a lot of 'Jon Smith' vs 'Jonathan Smith' with the same company and phone number. The philosophy degree in me appreciates the nuance of identity, but in a CRM it's a nightmare.",
       "Assistant: That makes sense. Defining robust rules will be critical to avoid false positives. Have you considered which fields to weigh most heavily in your fuzzy matching algorithm?",
@@ -4517,7 +4567,7 @@
       "Assistant: We could set up an automated email notification system that triggers upon a successful merge operation. It could summarize which records were merged and which one was kept as the master.",
       "User: I like that. Let's add 'Develop automated merge notifications' as a sub-task under 'Production Deployment'.",
       "Assistant: I've added it to the project outline. This makes the plan more robust and considerate of the end-users.",
-      "User: Great. That's the kind of detail that prevents headaches later. It's like desoldering old switches on a keyboard\u2014do it right the first time.",
+      "User: Great. That's the kind of detail that prevents headaches later. It's like desoldering old switches on a keyboard—do it right the first time.",
       "Assistant: A fitting analogy. The upfront effort in cleaning and preparation ensures smooth functionality long-term.",
       "User: Exactly. Okay, I think this is a really good start. Thanks again.",
       "Assistant: You're very welcome, Alex. Happy to help you bring order to the chaos.",
@@ -4583,7 +4633,7 @@
       "Assistant: Of course, Alex. I'm accessing the Q3 Duplicate Record report now. It looks like there was a 12% spike in new duplicates created since Friday. The primary source seems to be a marketing list import.",
       "User: 12%... that's not surprising, but it's still demoralizing. It's like shoveling water. We clean it up, and a new, poorly formatted list gets uploaded and ruins everything.",
       "Assistant: I can understand your frustration. The lack of a standardized data entry protocol seems to be a recurring issue. Would you like me to highlight the records originating from the 'LeadGen_Campaign_Fall23' import?",
-      "User: Yes, please. Isolate those. I need to build a case for pre-import data cleansing. It's funny, in philosophy class, we'd debate epistemology \u2013 how we know what we know. Here, I'm just trying to make sure we know a customer's correct mailing address.",
+      "User: Yes, please. Isolate those. I need to build a case for pre-import data cleansing. It's funny, in philosophy class, we'd debate epistemology – how we know what we know. Here, I'm just trying to make sure we know a customer's correct mailing address.",
       "Assistant: That's an interesting parallel. Applying philosophical principles of logic and consistency to database management. I've isolated the 4,782 records from that import. They are now flagged in a new view called 'Dubious_Duplicates_Fall23'.",
       "User: Perfect, thank you. 'Dubious Duplicates' has a nice ring to it. I'll spend my morning untangling this mess. It's so different from my weekend project.",
       "Assistant: Oh? Were you working on one of your mechanical keyboards?",
@@ -4861,7 +4911,7 @@
       "User: See, I would never have thought of that. A lube station. Sounds very specific.",
       "Assistant: The mechanical keyboard hobby is full of such specific tools and processes. It's a deep rabbit hole.",
       "User: No kidding. It seems like the perfect hobby for someone like Alex. Meticulous, detailed, and results in something functional and satisfying.",
-      "Assistant: It does seem to align perfectly with the mindset of a Data Quality Steward\u2014restoring order and function to a complex system.",
+      "Assistant: It does seem to align perfectly with the mindset of a Data Quality Steward—restoring order and function to a complex system.",
       "User: Exactly. It's the physical version of what they do with data. I think their new dog is the opposite of that.",
       "Assistant: Oh? You mentioned they adopted a dog named Glitch.",
       "User: Yes! A scruffy terrier mix. They named him \"Glitch\" which I find hilarious for a data quality person who just moved to Oakland.",
@@ -4907,7 +4957,7 @@
       "Assistant: Checking for vintage 'buckling spring' switches... A few specialized suppliers like Unicomp, who manufacture new keyboards based on the classic Model M design, sell parts. There are also communities on platforms like Deskthority and Reddit's r/MechanicalKeyboards where you might find individuals selling original parts.",
       "User: Unicomp is a good lead. I'll check them out. The forums are a bit hit-or-miss. It's like searching for a unique record in an unindexed database.",
       "Assistant: Another fitting analogy! I hope your search is successful.",
-      "User: Me too. It\u2019s the last piece of the puzzle for this particular board. Getting it working will be a nice win after the week I've had.",
+      "User: Me too. It’s the last piece of the puzzle for this particular board. Getting it working will be a nice win after the week I've had.",
       "Assistant: I can imagine. A successful hike and a completed keyboard project sounds like a perfect weekend.",
       "User: Exactly. A bit of nature, a bit of tech. It's a good balance.",
       "Assistant: It sounds like it. Enjoy the planning, Alex.",
@@ -4940,12 +4990,12 @@
       "Assistant: Oh, that is an inconvenient change. Having a commitment on a weeknight can definitely disrupt the flow of the week.",
       "User: Exactly. My weeknights are for decompressing from work. Dealing with data quality issues all day fries my brain. I need that quiet time to tinker and reset.",
       "Assistant: I can certainly understand that. Your keyboard restoration hobby seems like a very meditative process, a welcome contrast to your job.",
-      "User: It is. There's a clear start and a clear finish. You identify the problem\u2014a faulty switch, a dirty case\u2014and you fix it. Work is... less straightforward. It's a constant battle against entropy.",
+      "User: It is. There's a clear start and a clear finish. You identify the problem—a faulty switch, a dirty case—and you fix it. Work is... less straightforward. It's a constant battle against entropy.",
       "Assistant: A battle against data entropy. It's a good way to put it. Was there a particularly draining issue today?",
       "User: The usual. A senior leader was questioning a dashboard figure that looked impossible. I had to trace the entire data lineage back through three systems to find one incorrectly mapped field from a legacy system we're supposed to be decommissioning.",
       "Assistant: That sounds like finding a needle in a haystack. Were you able to prove the source of the error?",
       "User: Yeah, I found it. Sent a detailed memo explaining the issue and the remediation plan. It's just exhausting being the company's data librarian and detective all at once.",
-      "Assistant: It sounds like a critical role. The 'quiet force' that ensures the company's narrative\u2014its data\u2014is accurate.",
+      "Assistant: It sounds like a critical role. The 'quiet force' that ensures the company's narrative—its data—is accurate.",
       "User: That's a nice way of saying I'm the designated person for cleaning up everyone else's mess. But I suppose it's true. A CRM is a history. Without integrity, that history is just fiction.",
       "Assistant: A powerful and accurate statement. Well, hopefully, the quick dinner will give you back a little bit of your evening.",
       "User: I hope so. At least now my Saturday mornings are free again. I guess that's the upside.",
@@ -4997,14 +5047,14 @@
       "Assistant: Could you remind me of your color-coding system? I can incorporate it into how I summarize information for you.",
       "User: Sure. It's pretty simple. Blue is for action items that the partner needs to complete. Green is for internal tasks or prep I need to do. And orange is for key customer-facing milestones we're tracking together.",
       "Assistant: That's a very clear system. Blue for partner actions, green for your internal tasks, and orange for customer milestones. I will remember that. For example, prepping for the Synergy sync would be a 'green' task.",
-      "User: Exactly. You got it. It helps me see at a glance where the momentum is, or isn't. It\u2019s a habit I picked up to cope with the chaos at my old company after the re-org.",
+      "User: Exactly. You got it. It helps me see at a glance where the momentum is, or isn't. It’s a habit I picked up to cope with the chaos at my old company after the re-org.",
       "Assistant: It sounds like a very effective strategy for maintaining clarity and control in a complex role. Is there anything else I can help you organize today?",
       "User: No, this is a fantastic start. I've got a solid plan for my partner outreach. Now I just have to execute. It's a different world from my old support job, that's for sure.",
       "Assistant: The role of a Partner Success Manager is definitely more strategic than closing support tickets. It seems to align well with your interest in organizational dynamics from your sociology studies.",
       "User: You know, it really does. I never thought that minor would be more useful than my actual major, but here we are. Understanding why people and teams do what they do is everything in this job.",
       "Assistant: It's often the things we're passionate about that prove most valuable. Speaking of which, have you had any success with your urban garden experiment recently?",
-      "User: Ha! Funny you should ask. The tomatoes are struggling with this Austin heat, but my jalape\u00f1o plant is thriving. It seems to love the abuse.",
-      "Assistant: That's great to hear about the jalape\u00f1o plant! Perhaps it's a metaphor for resilience. Maybe the tomatoes just need a different approach.",
+      "User: Ha! Funny you should ask. The tomatoes are struggling with this Austin heat, but my jalapeño plant is thriving. It seems to love the abuse.",
+      "Assistant: That's great to hear about the jalapeño plant! Perhaps it's a metaphor for resilience. Maybe the tomatoes just need a different approach.",
       "User: A metaphor for surviving the move to a new city, maybe. I'm still trying to figure out the right approach for that too. This city is a different kind of beast than Philly.",
       "Assistant: Adjusting to a new city takes time. Much like your partner relationships, building a new social network is about consistent, positive interactions.",
       "User: That's a good way to put it. One farmers' market at a time. Anyway, thanks for the help with the schedule. I feel a lot more prepared for the quarter.",
@@ -5062,61 +5112,71 @@
      "question": "What is the annual budget allocated for data quality software tools?",
      "answer": "The annual budget allocated for data quality software tools is $75,000.",
      "stale_answer": "$50,000",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$75,000"
     },
     {
      "question": "What is the hourly threshold for the duplicate record creation alert?",
      "answer": "The threshold for the duplicate record creation alert is 250 records per hour.",
      "stale_answer": "100",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "250"
     },
     {
      "question": "When is the data team's weekly sync meeting?",
      "answer": "The data team's weekly sync meeting is on Mondays at 1 PM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1 PM"
     },
     {
      "question": "What is the required Python version for all new utility scripts?",
      "answer": "The required version for new utility scripts is Python 3.9.",
      "stale_answer": "2.7",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "3.9"
     },
     {
      "question": "What time is your dental appointment?",
      "answer": "Your dental appointment is scheduled for Friday at 11 AM.",
      "stale_answer": "3 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 AM"
     },
     {
      "question": "When ordering the new supply of contacts online, what prescription value should be entered?",
      "answer": "The prescription was updated to -2.75, so that is the value that should be used for the new order.",
      "stale_answer": "2.50",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2.75"
     },
     {
      "question": "What time is Alex's alarm set for on weekdays?",
      "answer": "Alex sets their weekday alarm for 6:30 AM to have enough time to walk their dog, Glitch, before work.",
      "stale_answer": "7:00 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "6:30 AM"
     },
     {
      "question": "I need to send Alex Chen the coordinates for our mycology trip this weekend, what is their phone number?",
      "answer": "Alex Chen's phone number is 510-555-2468.",
      "stale_answer": "415",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "510"
     },
     {
      "question": "When is Glitch's puppy training class?",
      "answer": "The class is on Tuesday evenings.",
      "stale_answer": "Saturday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Tuesday"
     },
     {
      "question": "What time is my sync with Synergy Solutions?",
      "answer": "Your bi-weekly sync with Synergy Solutions is scheduled for Thursday at 11:00 AM CST.",
      "stale_answer": "3:00 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11:00 AM"
     }
    ]
   },
@@ -5146,7 +5206,7 @@
       "Assistant: It's interesting how different types of logic appeal to different minds. Your strength seems to be in system and relationship dynamics, which is probably more valuable in your current role.",
       "User: My sociology minor has definitely paid more dividends than p-values, that's for sure. Okay, back to Innovate Solutions.",
       "Assistant: Ready when you are.",
-      "User: I'm updating the joint success plan for our new partner, Innovate Solutions. I've added a note for their team\u2014a blue action item\u2014to study for the certification exam. I told them to prep for a 50-question multiple-choice test, so it should be pretty straightforward for their senior engineers.",
+      "User: I'm updating the joint success plan for our new partner, Innovate Solutions. I've added a note for their team—a blue action item—to study for the certification exam. I told them to prep for a 50-question multiple-choice test, so it should be pretty straightforward for their senior engineers.",
       "Assistant: Okay, I've noted that the guidance for Innovate Solutions is to prepare for a 50-question multiple-choice exam. Is there a specific study guide I can link for them?",
       "User: Yes, pull up the 'Partner Certification Prep Kit v2.1' from our internal drive and add the link to that blue action item.",
       "Assistant: Done. The link to 'Partner Certification Prep Kit v2.1' has been added.",
@@ -5163,8 +5223,8 @@
       "User: Perfect. My brain is fried. It's been a long week of onboarding. I think I'm gonna take Bowie for a walk to clear my head.",
       "Assistant: A walk sounds like a great idea. Enjoy the break with Bowie.",
       "User: We will. Maybe I'll check on my sad little tomato plants. The heat is just brutal for them.",
-      "Assistant: I remember you mentioned your urban gardening experiment. How is the jalape\u00f1o plant holding up?",
-      "User: Oh, the jalape\u00f1o is thriving. It's the only thing that seems to love this Texas sun. It's indestructible.",
+      "Assistant: I remember you mentioned your urban gardening experiment. How is the jalapeño plant holding up?",
+      "User: Oh, the jalapeño is thriving. It's the only thing that seems to love this Texas sun. It's indestructible.",
       "Assistant: That's great to hear. Perhaps you'll have a good harvest soon.",
       "User: Fingers crossed. Alright, that's enough procrastination for now. Thanks for your help with the plan.",
       "Assistant: You're welcome, Alex. Let me know if you need anything else.",
@@ -5336,8 +5396,8 @@
       "Assistant: A wise approach. Get alignment on the 'what' before diving into the 'who'. Is there anything else for this plan today?",
       "User: I think this is a solid framework. I'll flesh it out with more detail on action items and owners. It's a lot of work but oddly satisfying, like getting all the seedlings lined up on my balcony.",
       "Assistant: How is your urban garden coming along? Are the cherry tomatoes surviving the Austin heat?",
-      "User: It's a constant battle, but my jalape\u00f1o plant is thriving. It seems to love the abuse. The tomatoes are touch-and-go. A bit like managing a new partnership, actually.",
-      "Assistant: That's a great analogy. Some elements need constant attention while others are surprisingly resilient. I'm glad to hear the jalape\u00f1os are a success, at least.",
+      "User: It's a constant battle, but my jalapeño plant is thriving. It seems to love the abuse. The tomatoes are touch-and-go. A bit like managing a new partnership, actually.",
+      "Assistant: That's a great analogy. Some elements need constant attention while others are surprisingly resilient. I'm glad to hear the jalapeños are a success, at least.",
       "User: Me too. Okay, I think I'm good for now. I'm going to take Bowie for a walk to clear my head before I dive back into this. Thanks for your help.",
       "Assistant: You're welcome, Alex. Enjoy the walk. Let me know when you're ready to review the plan again.",
       "User: Will do. Maybe tomorrow I'll ask you to pull a list of joint accounts that have been with us for over a year. That could be a good starting point for reference candidates.",
@@ -5442,7 +5502,7 @@
       "Assistant: **Objective 2: Identify three new expansion opportunities by year-end.**\n-   (Green/Internal) Review Global Tech's original contract and business goals.\n-   (Blue/Partner) Map Innovate Solutions' service offerings to Global Tech's potential pain points.\n-   (Orange/Customer) Schedule a discovery workshop with Maria's team to explore unaddressed challenges.",
       "User: And the last one.",
       "Assistant: **Objective 3: Streamline the QBR process to reduce prep time by 15%.**\n-   (Green/Internal) Document the current QBR preparation process.\n-   (Blue/Partner) Document their QBR preparation process.\n-   (Orange/Customer) Present a new, unified QBR prep template and workflow to Global Tech for feedback.",
-      "User: This is perfect. It\u2019s organized, actionable, and aligns with how I manage these partnerships. It\u2019s a huge help in getting a running start. This is so much better than the chaos of my first few weeks here in Austin.",
+      "User: This is perfect. It’s organized, actionable, and aligns with how I manage these partnerships. It’s a huge help in getting a running start. This is so much better than the chaos of my first few weeks here in Austin.",
       "Assistant: You're welcome, Alex. It seems like you've established a very effective system. Is there anything else I can help with for this plan?",
       "User: Not for now. I'm going to flesh this out with some specific timelines and then share the draft with my contact at Innovate Solutions. Thanks again.",
       "Assistant: Happy to help. Good luck with the new partnership!"
@@ -5463,7 +5523,7 @@
       "Assistant: That's a significant change from the 90-day cycle you mentioned before. Would you like me to update the calendar reminder we discussed in our previous session to reflect this new 60-day frequency?",
       "User: You know what, yes please. Can you set a recurring reminder for me, starting 60 days from today, to 'Change CRM Password'?",
       "Assistant: I have created a recurring calendar event for you, set for every 60 days, with the title 'Change CRM Password'. The first reminder is set for 60 days from today. Is that correct?",
-      "User: Perfect, thanks for handling that. One less thing for me to forget. It\u2019s amazing how much administrative overhead comes with these roles.",
+      "User: Perfect, thanks for handling that. One less thing for me to forget. It’s amazing how much administrative overhead comes with these roles.",
       "Assistant: I'm happy to help manage those details. Now, regarding the email to Maria for the workshop, are you ready to proceed?",
       "User: Yes, let's do it. Please draft a brief and friendly email. Propose a 45-minute 'Strategic Growth Workshop' and suggest a few time slots for next Tuesday and Thursday.",
       "Assistant: Here is a draft:\n\n**Subject: Exploring New Opportunities with Global Tech Inc.**\n\nHi Maria,\n\nI hope you're having a great week. Building on our successful partnership, the team at Innovate Solutions and I have been identifying ways to provide even more value to Global Tech. \n\nWe'd love to schedule a brief, 45-minute 'Strategic Growth Workshop' to share some ideas and explore any unaddressed challenges you might be facing. Would you or your team be available next week? Here are a few options:\n\n- Tuesday, [Date], at 10:00 AM CST\n- Tuesday, [Date], at 2:00 PM CST\n- Thursday, [Date], at 11:00 AM CST\n\nLet me know what works best for you.\n\nBest,\nAlex Chen",
@@ -5475,13 +5535,13 @@
       "Assistant: It sounds like he's made himself right at home. I hope your prized collection survives the new roommate!",
       "User: Haha, me too. The collection is my pride and joy. It was a huge pain to move, but worth it. Anyway, I should get going.",
       "Assistant: Enjoy your walk, Alex. Let me know when you need to follow up on this.",
-      "User: Will do. Also, I wanted to ask about something unrelated. My jalape\u00f1o plant on the balcony is actually producing peppers. Any ideas for what to do with them?",
-      "Assistant: That's fantastic! Homegrown jalape\u00f1os have a great flavor. You could make pickled jalape\u00f1os, create a jalape\u00f1o-infused simple syrup for cocktails, or make a fresh pico de gallo.",
+      "User: Will do. Also, I wanted to ask about something unrelated. My jalapeño plant on the balcony is actually producing peppers. Any ideas for what to do with them?",
+      "Assistant: That's fantastic! Homegrown jalapeños have a great flavor. You could make pickled jalapeños, create a jalapeño-infused simple syrup for cocktails, or make a fresh pico de gallo.",
       "User: Pico de gallo is a great idea. Simple and I have the tomatoes and basil from my garden experiment too. Seems like a very Austin thing to do.",
       "Assistant: It does sound like a perfect way to enjoy your urban garden's harvest. You could even bring it to a work potluck or share it with neighbors to help navigate the social landscape here.",
       "User: That's a good thought. A little bit of that post-college backpacking resourcefulness applied to making friends. I like it.",
       "Assistant: Exactly. Food is a great connector. Is there anything else I can assist you with?",
-      "User: No, that's all for today. Thanks for the help on the work stuff and the jalape\u00f1o ideas. Chat later.",
+      "User: No, that's all for today. Thanks for the help on the work stuff and the jalapeño ideas. Chat later.",
       "Assistant: You're very welcome, Alex. Have a great rest of your day."
      ]
     },
@@ -5504,8 +5564,8 @@
       "Assistant: It has been ten months since you mentioned you moved from Philadelphia. It's a significant milestone.",
       "User: Tell me about it. Sometimes I still miss the easy hangouts with my old team. But building something new has its own rewards. Both at work and at home.",
       "Assistant: How is your urban garden on the balcony doing? Did the basil survive the last heat wave?",
-      "User: The basil is a lost cause, sadly. But my jalape\u00f1o plant is thriving! It's the little wins. Bowie seems to enjoy sniffing around it every morning.",
-      "Assistant: A thriving jalape\u00f1o plant in the Texas heat is definitely a win. I'm glad Bowie is enjoying the new smells.",
+      "User: The basil is a lost cause, sadly. But my jalapeño plant is thriving! It's the little wins. Bowie seems to enjoy sniffing around it every morning.",
+      "Assistant: A thriving jalapeño plant in the Texas heat is definitely a win. I'm glad Bowie is enjoying the new smells.",
       "User: He enjoys everything. Okay, work review is prepped. Now for the less fun part: personal end-of-year financial review.",
       "Assistant: I can assist with organizing data or performing calculations if you need.",
       "User: Thanks. I'm just looking at my budget spreadsheet. Trying to figure out where everything went this year. The move was expensive, but worth it.",
@@ -5552,7 +5612,7 @@
       "User: Great, save those for me. I'll check them out this weekend. A new yoga spot feels like a good way to get out and meet people, which is still a work-in-progress in a new city.",
       "Assistant: It can be a great way to build community around a shared interest, similar to finding fellow music lovers at record stores.",
       "User: Exactly. Speaking of new things, I'm thinking about what to plant on my balcony this spring. The tomatoes were okay last year, but I want to try something else.",
-      "Assistant: Given the success of your jalape\u00f1o plant, perhaps another type of pepper or a heat-tolerant herb like rosemary would do well in the Austin climate.",
+      "Assistant: Given the success of your jalapeño plant, perhaps another type of pepper or a heat-tolerant herb like rosemary would do well in the Austin climate.",
       "User: Rosemary is a good idea. Bowie won't try to eat it, either. He has a weird vendetta against the basil.",
       "Assistant: A wise choice then. It's always best to keep plants pet-safe. Bowie seems to have strong opinions.",
       "User: You have no idea. Okay, back to work. I need to draft a communication plan for my partners about the 'Synergy' launch. Let's start with an outline.",
@@ -5561,7 +5621,7 @@
       "Assistant: Outline created with those three sections. For the marketing assets, are you thinking of one-pagers, social media kits, or something else?",
       "User: All of the above. I'll need to flag this as a cross-functional effort. This is where my color-coding will come in handy. Orange for customer-facing milestones.",
       "Assistant: A perfect use for your system. I've added a note to use orange for customer-facing milestones within this plan.",
-      "User: Thanks. My old sociology minor kicks in here\u2014understanding how to get different groups with different goals to work together is the whole game.",
+      "User: Thanks. My old sociology minor kicks in here—understanding how to get different groups with different goals to work together is the whole game.",
       "Assistant: It seems the frameworks you learned in your sociology minor are more applicable to your role than the statistics courses you struggled with at Penn State.",
       "User: Haha, don't remind me of stats. That C-minus still haunts me. But yes, understanding group dynamics is infinitely more useful than p-values in partner management.",
       "Assistant: It's interesting how different parts of our education become more or less relevant over time. Your knack for de-escalation from your first support job is likely also very valuable.",
@@ -5612,8 +5672,8 @@
       "Assistant: Your focus on relationship building over pure metrics seems to be a core part of your success.",
       "User: It's why I took this job. My last company lost sight of that after a big re-org. Became all about the numbers, not the people.",
       "Assistant: A change in environment can make all the difference. Speaking of which, how is your urban garden on the balcony faring in the Austin heat?",
-      "User: It's a daily battle. The tomatoes are struggling, but the jalape\u00f1o plant is thriving. It seems to love the Texas sun.",
-      "Assistant: That's a win. Perhaps you can use the jalape\u00f1os for a celebratory dish once you hit that 15% adoption goal.",
+      "User: It's a daily battle. The tomatoes are struggling, but the jalapeño plant is thriving. It seems to love the Texas sun.",
+      "Assistant: That's a win. Perhaps you can use the jalapeños for a celebratory dish once you hit that 15% adoption goal.",
       "User: I love that idea. A little homegrown success to celebrate the professional kind. Alright, I'm going to wrap this up for the night.",
       "Assistant: Sounds good, Alex. I have this entire plan saved for you. Let me know when you want to pick it back up.",
       "User: Will do. Thanks for the help.",
@@ -5669,7 +5729,7 @@
       "User: Let's start with the milestones. I want to color-code this as we go. All customer-facing milestones should be orange. First one: 'Complete technical integration discovery session by EOM'.",
       "Assistant: Okay, 'Complete technical integration discovery session by EOM' has been added under Customer-Facing Milestones and tagged with orange.",
       "User: Great. Second milestone, also orange: 'Co-present QBR to first joint customer in six weeks'.",
-      "Assistant: Added. It\u2019s so much more organized than the chaos at my last job. The re-org there made everything about hitting short-term quotas, not building real value.",
+      "Assistant: Added. It’s so much more organized than the chaos at my last job. The re-org there made everything about hitting short-term quotas, not building real value.",
       "User: It sounds like you've found a role that better aligns with your strategic approach. Now, how about we move to Internal Tasks? I assume these will be green?",
       "Assistant: You know it. Green for our team. First item: 'Schedule internal pre-kickoff sync with our account executive and solutions engineer'.",
       "User: Done. That internal sync is scheduled. What's next for the green team?",
@@ -5682,7 +5742,7 @@
       "Assistant: Okay, that's the first blue item. What's the second?",
       "User: 'Provide a list of their top 5 target accounts for our first joint outreach campaign'.",
       "Assistant: Added. The plan is shaping up nicely with a clear division of responsibilities.",
-      "User: Exactly. Clarity prevents confusion later. It\u2019s a lesson I learned the hard way in my first customer support job. So much of that was just putting out fires.",
+      "User: Exactly. Clarity prevents confusion later. It’s a lesson I learned the hard way in my first customer support job. So much of that was just putting out fires.",
       "Assistant: This proactive approach seems much more effective. Your experience really shows.",
       "User: Thanks. I try. The move to Austin has been a big adjustment, so having work be structured and predictable is a huge help.",
       "Assistant: It's understandable that you'd want stability in your professional life while navigating a new city.",
@@ -5700,7 +5760,7 @@
       "Assistant: I agree. Is there anything else I can help you with for this plan today?",
       "User: No, that's it for now. Just have that draft ready for me to review in about an hour. Thanks for your help.",
       "Assistant: You're welcome, Alex. The draft will be in your inbox shortly.",
-      "User: Great. I'm going to take a quick break and check on my jalape\u00f1o plant. It's the one thing on my balcony that seems to love this Texas heat.",
+      "User: Great. I'm going to take a quick break and check on my jalapeño plant. It's the one thing on my balcony that seems to love this Texas heat.",
       "Assistant: Enjoy your break. I hope the plant is thriving!"
      ]
     },
@@ -5719,8 +5779,8 @@
       "Assistant: I'm glad you have him. Pets can make a huge difference, especially during a big life transition.",
       "User: Definitely. What about meetups? Anything for people who are into, I don't know, urban gardening or something? My little balcony experiment is the other thing keeping me sane.",
       "Assistant: There are several! There's an 'Austin Urban Gardeners' meetup group that has over 5,000 members and they host regular seed swaps and workshops.",
-      "User: Wow, that's a lot of people. Maybe a bit intimidating, but I guess that's the point. I could probably teach a class on growing jalape\u00f1os in impossible conditions.",
-      "Assistant: Your resilient jalape\u00f1o plant could be a great conversation starter. 'So, let me tell you about my battle against the Texas sun...'",
+      "User: Wow, that's a lot of people. Maybe a bit intimidating, but I guess that's the point. I could probably teach a class on growing jalapeños in impossible conditions.",
+      "Assistant: Your resilient jalapeño plant could be a great conversation starter. 'So, let me tell you about my battle against the Texas sun...'",
       "User: Haha, exactly. Okay, this is helpful. It gives me a few concrete things to try instead of just moping around. Thanks for the suggestions.",
       "Assistant: You're very welcome. Sometimes a little direction is all that's needed.",
       "User: True. It's just about taking the first step. Hold on one second, my phone is ringing. It's an unknown Austin number, probably the vet's office confirming Bowie's appointment for Monday.",
@@ -5762,7 +5822,7 @@
       "Assistant: Given your interest in 90s alternative, you might also enjoy cataloging your collection with an app like Discogs. It lets you create a digital inventory, track which versions you have, and even discover new music based on your collection.",
       "User: I've heard of Discogs but never tried it. Might be the perfect project now that I'm trying to get settled in Austin.",
       "Assistant: It can be a very satisfying process. It's a great way to reconnect with your music and see the scope of your collection digitally.",
-      "User: For sure. It\u2019s my prized possession. I painstakingly moved the whole thing from Philadelphia.",
+      "User: For sure. It’s my prized possession. I painstakingly moved the whole thing from Philadelphia.",
       "Assistant: Moving a vinyl collection of that size cross-country is no small feat! I'm sure you were very careful with them.",
       "User: You have no idea. So many heavy boxes. My back still hurts thinking about it.",
       "Assistant: I can only imagine. Well, the hard part is over, and now you get to enjoy the fruits of your labor by organizing them in your new space.",
@@ -5778,10 +5838,10 @@
       "Assistant: Austin has a great audio scene. For high-quality new and vintage gear, many people recommend 'Whetstone Audio'. For repairs or more specific parts, 'Austin Stereo Service' is highly regarded.",
       "User: Whetstone Audio, got it. I might need a new stylus soon. Thanks for the recommendation.",
       "Assistant: You're welcome. A new stylus can make a world of difference in sound quality. It's a great investment for a collection like yours.",
-      "User: Definitely. It\u2019s all about protecting the vinyl. I\u2019m also trying to get my little balcony garden going. Any tips for growing basil in the Texas heat?",
+      "User: Definitely. It’s all about protecting the vinyl. I’m also trying to get my little balcony garden going. Any tips for growing basil in the Texas heat?",
       "Assistant: Basil can be tricky in intense heat. The key is consistent moisture and some afternoon shade. A self-watering pot can be a huge help, and make sure it's not in direct, harsh sunlight after about 2 PM.",
-      "User: Afternoon shade, okay. That might be my problem. My jalape\u00f1o plant is loving the sun, but the basil is struggling.",
-      "Assistant: Jalape\u00f1os thrive in heat, but more delicate herbs like basil need a bit more protection. It's a common challenge for urban gardeners in sunny climates.",
+      "User: Afternoon shade, okay. That might be my problem. My jalapeño plant is loving the sun, but the basil is struggling.",
+      "Assistant: Jalapeños thrive in heat, but more delicate herbs like basil need a bit more protection. It's a common challenge for urban gardeners in sunny climates.",
       "User: Good to know it's not just me. This has been super helpful. I've got a plan for the records and the basil now.",
       "Assistant: I'm glad I could help. Enjoy setting up your space and your music!",
       "User: Thanks. I'm going to start with the 'by genre' plan. Wish me luck.",
@@ -5799,7 +5859,7 @@
      "lines": [
       "User: Oh my god, I am having the WORST day. Total nightmare.",
       "Assistant: Oh no, I'm sorry to hear that. What's going on?",
-      "User: What a disaster. A pipe burst in the unit above me and caused a ton of water damage. The landlord is moving me to an identical, dry unit down the hall \u2013 I'll be in 312 from now on. So much for being settled.",
+      "User: What a disaster. A pipe burst in the unit above me and caused a ton of water damage. The landlord is moving me to an identical, dry unit down the hall – I'll be in 312 from now on. So much for being settled.",
       "Assistant: That sounds incredibly stressful. I'm so sorry you're dealing with this. The most important thing is that you're safe. Are you and Bowie okay?",
       "User: Yeah, we're fine, just shocked. Bowie is freaked out by the noise and the water. My place is a mess. Water is dripping from the ceiling.",
       "Assistant: That's completely understandable. It's good that your landlord is providing a new unit immediately. Do you need help figuring out the first things you should do?",
@@ -5808,7 +5868,7 @@
       "User: Renters' insurance. Right. I have a policy. Okay, photos and videos. What else?",
       "Assistant: Second, try to move any valuable or sentimental items away from the water if it's safe to do so. Your vinyl collection, for example. Can you get it to a dry spot?",
       "User: My records! God, I didn't even think of that. They're on the other side of the room, which seems mostly dry for now. I should move them into the new unit as soon as I get the key.",
-      "Assistant: That's a good first step. Third, get all the details about the move in writing from your landlord\u2014the new unit number (312), the date you can move in, and confirmation that the rent and lease terms remain the same.",
+      "Assistant: That's a good first step. Third, get all the details about the move in writing from your landlord—the new unit number (312), the date you can move in, and confirmation that the rent and lease terms remain the same.",
       "User: Okay, that's smart. I need to be meticulous about this, just like my work plans. This just throws all my systems out of whack.",
       "Assistant: I know it's disruptive. Think of it as a crisis management plan. Once your belongings are safe and the new housing is secured, you can contact your insurance provider to start a claim.",
       "User: I can't believe I have to pack and move again. I just did this. It took me weeks to get everything unpacked and organized.",
@@ -5858,7 +5918,7 @@
       "Assistant: I understand. Moving cities involves updating a lot of details. Is there anything else on your personal to-do list for the week?",
       "User: Let's see. I need to check on my tomato plants. The heat has been brutal, I think they're struggling.",
       "Assistant: The forecast for Austin shows high temperatures all week. It might be beneficial to water them in the early morning or late evening to reduce evaporation.",
-      "User: Good tip. My jalape\u00f1o plant is the only thing that seems to love this weather. It's thriving.",
+      "User: Good tip. My jalapeño plant is the only thing that seems to love this weather. It's thriving.",
       "Assistant: That's great! Maybe you'll have a good harvest soon.",
       "User: Hopefully. Okay, let's switch to work. Can you pull up my notes for the joint success plan with 'Innovate Inc.'?",
       "Assistant: Accessing your notes for the Innovate Inc. joint success plan. I see your color-coded system is in use. Blue for partner actions, green for internal, and orange for customer milestones.",
@@ -5928,13 +5988,13 @@
       "User: For sure. Anyway, enough reminiscing. Can you send a link to that new success plan draft to me? I want to review it before I share it with the partner.",
       "Assistant: I have sent a secure link to the QuantumLeap joint success plan draft to your email.",
       "User: Got it. Looks good. What's the weather like this weekend? I'm thinking of taking Bowie to the park.",
-      "Assistant: The forecast for Austin this weekend is sunny and hot, with highs around 98\u00b0F.",
+      "Assistant: The forecast for Austin this weekend is sunny and hot, with highs around 98°F.",
       "User: Oof. Okay, maybe an early morning park trip then. Before the sun gets too intense.",
       "Assistant: That would be wise, especially for Bowie.",
       "User: Yeah, the little guy deserves it. He's been such a good companion since I adopted him.",
       "Assistant: Having a pet can certainly make settling into a new place easier.",
-      "User: It really has. Better than talking to my jalape\u00f1o plant, anyway.",
-      "Assistant: While your jalape\u00f1o plant may be a great listener, it's likely not as cuddly.",
+      "User: It really has. Better than talking to my jalapeño plant, anyway.",
+      "Assistant: While your jalapeño plant may be a great listener, it's likely not as cuddly.",
       "User: Ha! You got that right. Okay, I think I'm set for now. Thanks for the help this morning.",
       "Assistant: You're very welcome, Alex. Have a productive day.",
       "User: You too. Oh, one last thing just to be sure.",
@@ -5970,7 +6030,7 @@
       "Assistant: Embracing the novelty can be part of the adventure. You've navigated significant changes before, like your post-college trip through Southeast Asia.",
       "User: Ha, that's true. Waiting tables to save up for that trip taught me a lot about grinding it out. But that was different, there was no structure. Now I'm trying to build it.",
       "Assistant: It sounds like you're applying that same resourcefulness to building your new life in Austin. What's the next step after the alarm is set?",
-      "User: Coffee. Immediately. Then checking on my little balcony garden. The jalape\u00f1o plant is doing surprisingly well, but the tomatoes are struggling with the heat.",
+      "User: Coffee. Immediately. Then checking on my little balcony garden. The jalapeño plant is doing surprisingly well, but the tomatoes are struggling with the heat.",
       "Assistant: Urban gardening can be a challenge. Have you considered a shade cloth for the tomato plants during the peak sun hours?",
       "User: That's a good tip. I'll look into that. See? This is what I mean. So many little things to figure out. It feels like a full-time job on top of my actual job.",
       "Assistant: It's a common feeling after a major relocation. Be patient with yourself. You're building a new foundation, both personally and professionally.",
@@ -6047,61 +6107,71 @@
      "question": "How many total questions are on the partner certification exam?",
      "answer": "The partner certification exam has 35 questions in total.",
      "stale_answer": "50",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "35"
     },
     {
      "question": "I need to book a rental car for my trip to the partner summit next month. What is the expiration date for my corporate Amex?",
      "answer": "The expiration date for your corporate Amex is 06/27.",
      "stale_answer": "1005",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "06"
     },
     {
      "question": "What is the end-of-year customer reference goal we set with this partner?",
      "answer": "The goal is to produce 5 high-quality, video-based customer references by the end of the year.",
      "stale_answer": "10",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "5"
     },
     {
      "question": "How often am I required to change my CRM password?",
      "answer": "You are required to change your CRM password every 60 days.",
      "stale_answer": "90",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "60"
     },
     {
      "question": "What is the company's monthly wellness stipend?",
      "answer": "The company's monthly wellness stipend is $150.",
      "stale_answer": "$100",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$150"
     },
     {
      "question": "What is the budget code I should use for expensing a partner dinner?",
      "answer": "You should use the budget code 752-Partner-Relations for expensing a partner dinner.",
      "stale_answer": "601",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "752"
     },
     {
      "question": "When is Bowie's vet appointment?",
      "answer": "His appointment is scheduled for Friday at 11:00 AM.",
      "stale_answer": "4:00 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11:00 AM"
     },
     {
      "question": "I'm ordering some food and my mind has gone completely blank, what's my apartment number?",
      "answer": "Your apartment number is 312.",
      "stale_answer": "305",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "312"
     },
     {
      "question": "What's my phone number?",
      "answer": "Your phone number is 512-555-5678.",
      "stale_answer": "215",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "512"
     },
     {
      "question": "What time is my weekday alarm set for?",
      "answer": "Your weekday alarm is set for 6:30 AM.",
      "stale_answer": "7:00 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "6:30 AM"
     }
    ]
   },
@@ -6131,7 +6201,7 @@
       "Assistant: Added. It sounds like you're exploring the local food scene.",
       "User: Trying to. And trying to grow my own! My balcony garden is a constant battle.",
       "Assistant: How is that going? Last time we spoke you were trying to grow tomatoes.",
-      "User: The tomatoes are struggling against the heat, but my jalape\u00f1o plant is thriving. It's a small victory.",
+      "User: The tomatoes are struggling against the heat, but my jalapeño plant is thriving. It's a small victory.",
       "Assistant: Every victory counts in gardening! So, our list of expenses is: rent, electricity, internet, Netflix, Spotify, cloud storage, PAWS donation, gas, car insurance, and groceries. Anything else?",
       "User: Let's add a miscellaneous category for things like going out, buying records, or gardening supplies.",
       "Assistant: A 'discretionary spending' category is a smart idea. It gives you flexibility. I'll set up a simple spreadsheet with these categories for you.",
@@ -6147,7 +6217,7 @@
       "Assistant: Glad to hear it. Don't hesitate to reach out if you want to refine the budget further down the line.",
       "User: Will do. It's funny how a simple list can make you feel more in control.",
       "Assistant: Clarity is often the first step towards control. It helps you make more informed decisions.",
-      "User: Definitely. It\u2019s like when I create those joint success plans with partners. Breaking down the big goals into color-coded tasks makes everything manageable.",
+      "User: Definitely. It’s like when I create those joint success plans with partners. Breaking down the big goals into color-coded tasks makes everything manageable.",
       "Assistant: Applying your professional strategies to your personal life. That's a great skill.",
       "User: I guess so. The sociology minor in me is always analyzing systems, even my own spending habits.",
       "Assistant: It seems like that minor has been quite useful, perhaps even more so than those statistics courses you mentioned.",
@@ -6213,16 +6283,16 @@
       "Assistant: It sounds like you've brought a valuable lesson with you. What would an ideal after-work routine look like for you?",
       "User: Well, Bowie needs a walk as soon as I log off. That's non-negotiable. After that, I'm trying to either cook a real meal or hit the gym.",
       "Assistant: Both are great for unwinding. Have you had a chance to check out the apartment's gym facilities yet?",
-      "User: I actually went for the first time this morning before work. It was\u2026 adequate. A bit on the small side, but it has the basics.",
+      "User: I actually went for the first time this morning before work. It was… adequate. A bit on the small side, but it has the basics.",
       "Assistant: Adequate is a good start! Sometimes convenience is the most important factor for consistency.",
       "User: Exactly. No excuses about traffic or travel time. I just need to remember how to get in. You know how I am with random numbers.",
       "Assistant: I can definitely help with that. Would you like me to store the code for you?",
       "User: Just got back from my first workout at the apartment gym here in Austin. It's decent, though a bit small. Can you just make a note for me so I don't forget? The gym access code is 1357.",
       "Assistant: Of course. I've saved it. Gym access code: 1357. Is there anything else I can help you organize today?",
-      "User: Maybe some meal ideas? I'm trying to use up some veggies before they go bad. My balcony garden is producing way more jalape\u00f1os than I expected.",
-      "Assistant: A successful jalape\u00f1o plant is a great problem to have! How about making some jalape\u00f1o poppers, a spicy cornbread, or even a batch of 'cowboy candy'\u2014candied jalape\u00f1os?",
+      "User: Maybe some meal ideas? I'm trying to use up some veggies before they go bad. My balcony garden is producing way more jalapeños than I expected.",
+      "Assistant: A successful jalapeño plant is a great problem to have! How about making some jalapeño poppers, a spicy cornbread, or even a batch of 'cowboy candy'—candied jalapeños?",
       "User: Cowboy candy? Never heard of it, but it sounds intriguing. What's involved?",
-      "Assistant: It involves slicing the jalape\u00f1os and simmering them in a sweet and savory syrup, typically made with vinegar, sugar, and spices. They're great on sandwiches or with cheese and crackers.",
+      "Assistant: It involves slicing the jalapeños and simmering them in a sweet and savory syrup, typically made with vinegar, sugar, and spices. They're great on sandwiches or with cheese and crackers.",
       "User: That sounds amazing. And a good way to preserve them. Can you pull up a highly-rated recipe for me?",
       "Assistant: Absolutely. I've found a popular recipe with great reviews. I'll send the link to you. It seems like a fun weekend project.",
       "User: Perfect. This feels like a good step towards building that Austin life. First the gym, now cowboy candy.",
@@ -6233,10 +6303,10 @@
       "Assistant: I can imagine. Have you considered looking for groups related to your interests, like vinyl collecting or urban gardening?",
       "User: Yeah, I've seen a few meetups. Still working up the courage. I'm more of a one-on-one person, which is why I like the partner manager role so much.",
       "Assistant: That makes sense. Your professional skills are built around forming strong, individual relationships.",
-      "User: Exactly. It\u2019s all about understanding the group dynamics, the sociology of it all. Way more interesting than the stats courses I had to take.",
+      "User: Exactly. It’s all about understanding the group dynamics, the sociology of it all. Way more interesting than the stats courses I had to take.",
       "Assistant: It seems your sociology minor has served you well in your career.",
       "User: Infinitely more than p-values, that's for sure. Alright, I should probably get to work. Thanks for the chat and for saving that code.",
-      "Assistant: You're very welcome, Alex. Have a productive day, and good luck with the jalape\u00f1os!",
+      "Assistant: You're very welcome, Alex. Have a productive day, and good luck with the jalapeños!",
       "User: Thanks! I'll let you know how they turn out.",
       "Assistant: Please do. Enjoy your day.",
       "User: You too.",
@@ -6718,7 +6788,7 @@
       "User: I guess so. I just hate the feeling of them being frustrated. Anyway, I need to find a better way to decompress after work. Walking Max helps, but my mind is still racing, thinking about CRM cases.",
       "Assistant: Physical activity is a great start. Have you considered something that also incorporates mindfulness? It could help quiet your thoughts after a mentally taxing day.",
       "User: Like meditation? I've tried a few apps, but I find it hard to just sit still and do nothing. My brain just rebels.",
-      "Assistant: That's a common challenge. What about something that blends movement with mindfulness, like yoga or tai chi? It gives your mind something to focus on\u2014your body and breath\u2014which can be easier than trying to silence it completely.",
+      "Assistant: That's a common challenge. What about something that blends movement with mindfulness, like yoga or tai chi? It gives your mind something to focus on—your body and breath—which can be easier than trying to silence it completely.",
       "User: That's actually a really good idea. It's structured, but in a calming way. There are a few studios that have opened up in my neighborhood since I moved here.",
       "Assistant: It could be a great way to mark the end of the workday and create a clear separation between your professional and personal time. Plus, it's a nice way to meet people in your new city.",
       "User: True. I'm going to look some up right now while we're talking. Let's see what's nearby.",
@@ -6922,61 +6992,71 @@
      "question": "Which animal charity do I have a recurring monthly donation with?",
      "answer": "You have a recurring monthly donation of $35 set up with Austin Pets Alive!.",
      "stale_answer": "$25",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "$35"
     },
     {
      "question": "What is the code for the gym?",
      "answer": "The code for the gym is 2468.",
      "stale_answer": "1357",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "2468"
     },
     {
      "question": "What day and time is Max's vet appointment?",
      "answer": "The appointment is on Tuesday at 3 PM.",
      "stale_answer": "10 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "3 PM"
     },
     {
      "question": "What is the final submission deadline for my Q3 onboarding report?",
      "answer": "The deadline is now Monday afternoon.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Monday"
     },
     {
      "question": "What time is the Zenith Tech onboarding call scheduled for?",
      "answer": "The Zenith Tech onboarding call is scheduled for Friday at 1 PM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1 PM"
     },
     {
      "question": "As I'm preparing my mid-year self-evaluation, what is my primary performance goal?",
      "answer": "Your primary performance goal is to reduce the average onboarding time by 10%.",
      "stale_answer": "95%",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "10%"
     },
     {
      "question": "What day am I having lunch with Sarah?",
      "answer": "Your lunch with Sarah is scheduled for Thursday.",
      "stale_answer": "Tuesday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Thursday"
     },
     {
      "question": "What time is my Vinyasa yoga class on Tuesday?",
      "answer": "Your Vinyasa yoga class is at 7 PM on Tuesday.",
      "stale_answer": "6 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "7 PM"
     },
     {
      "question": "What time is the all-hands meeting?",
      "answer": "The all-hands meeting is scheduled for 10 AM.",
      "stale_answer": "3 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "10 AM"
     },
     {
      "question": "What is the delivery window for my sofa?",
      "answer": "The delivery window for your sofa is between 9 AM and 11 AM on Saturday.",
      "stale_answer": "10 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "9 AM"
     }
    ]
   },
@@ -7024,7 +7104,7 @@
       "Assistant: That experience sounds very relevant. Your notes indicate you successfully guided him through a manual firmware update. Was that the resolution?",
       "User: Partially. The firmware update solved the initial discovery issue, but now the scheduling feature isn't syncing correctly. The commands from the hub just aren't being executed by the thermostat.",
       "Assistant: I see. Based on the logs, it looks like a potential authentication token issue between the hub and our device. The token might not be refreshing correctly after the firmware update.",
-      "User: That's what I was thinking! It's that classic Human-Computer Interaction problem \u2013 the tech works, but the user experience is failing. I need to explain how to force a re-authentication in the simplest possible terms.",
+      "User: That's what I was thinking! It's that classic Human-Computer Interaction problem – the tech works, but the user experience is failing. I need to explain how to force a re-authentication in the simplest possible terms.",
       "Assistant: How about we structure the email with a clear, step-by-step guide? We can use simple headers like 'Step 1: Open the App' and bold the key actions.",
       "User: Yes, that's a great idea. Let's start with a friendly opening that acknowledges his patience. Something like, 'Thank you again for your time today. I believe we've pinpointed the final issue...'",
       "Assistant: Perfect. And for the steps? I can draft them. Step 1: In your smart hub app, go to 'Connected Devices'. Step 2: Select our thermostat. Step 3: Tap 'Settings' and then 'Disconnect Device' or 'Remove Device'. This will not reset your thermostat's settings.",
@@ -7128,12 +7208,12 @@
      "time": 432000.0,
      "lines": [
       "User: Hey, just got some exciting news from the sales team!",
-      "Assistant: Oh, what\u2019s the update?",
+      "Assistant: Oh, what’s the update?",
       "User: Momentum Co has decided to upgrade their SLA.",
       "Assistant: That's fantastic! What does the new agreement entail?",
       "User: Just got confirmation from sales. The new contract for Momentum Co has been signed, and they've officially upgraded. Their account is now on the Premium SLA, which means we need to adhere to a 4-hour response time. I'll make the change in the CRM now.",
-      "Assistant: Great, that\u2019s a significant improvement for them. Do you need any help updating the CRM?",
-      "User: No, I\u2019ve got it covered. Thanks for checking in!",
+      "Assistant: Great, that’s a significant improvement for them. Do you need any help updating the CRM?",
+      "User: No, I’ve got it covered. Thanks for checking in!",
       "Assistant: Anytime! Let me know if there's anything else you need.",
       "User: Will do. Thanks for your support!",
       "Assistant: You're welcome. Have a great day!"
@@ -7280,10 +7360,10 @@
       "User: It really is. Being closer to my family has been the best part. I might even convince my brother to join me and Max on the hike.",
       "Assistant: That sounds like a lovely plan. What's the weather forecast for this weekend? I can check for you.",
       "User: Oh, good idea. Please check for Saturday.",
-      "Assistant: The forecast for Saturday is mostly sunny with a high of 72\u00b0F (22\u00b0C). It looks like perfect weather for a hike.",
+      "Assistant: The forecast for Saturday is mostly sunny with a high of 72°F (22°C). It looks like perfect weather for a hike.",
       "User: Amazing! Okay, I think that's the plan then. It feels so good to get these little life things organized. Speaking of which, that reminds me of a loose end from work.",
       "Assistant: What's on your mind? I'm here to help with work tasks as well.",
-      "User: Quick update \u2013 I've finally settled in after the move and have a new local number. Please replace the contact number I gave you for the CRM with this one: (555) 987-6543.",
+      "User: Quick update – I've finally settled in after the move and have a new local number. Please replace the contact number I gave you for the CRM with this one: (555) 987-6543.",
       "Assistant: Thank you for the update. I have replaced the number (555) 123-4567 with your new number, (555) 987-6543, in your CRM profile.",
       "User: Great, thank you for taking care of that. It's one of those things that's easy to forget. By the way, those onboarding email templates we worked on a few weeks ago have been a huge success.",
       "Assistant: I'm so glad to hear that! It's rewarding when a well-designed tool improves workflow and customer experience.",
@@ -7535,61 +7615,71 @@
      "question": "Which camera lens is being shipped to me?",
      "answer": "The 50mm f/1.4 lens is being shipped to you.",
      "stale_answer": "1.8",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1.4"
     },
     {
      "question": "I'm updating my internal contact list, what is the support team's phone extension?",
      "answer": "The support team's phone extension is 5120.",
      "stale_answer": "7891",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "5120"
     },
     {
      "question": "What is the SLA for Momentum Co?",
      "answer": "Momentum Co's Service Level Agreement is Premium, which requires a 4-hour response time.",
      "stale_answer": "24",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "4"
     },
     {
      "question": "Which plot number is assigned to me at the community garden?",
      "answer": "Plot #25",
      "stale_answer": "12",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Plot #25"
     },
     {
      "question": "A new colleague just asked for my contact info, what is my phone number?",
      "answer": "Your phone number is (555) 987-6543.",
      "stale_answer": "123",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "555"
     },
     {
      "question": "What is the scheduled time for my weekly mindfulness session?",
      "answer": "Your weekly mindfulness session is scheduled for Mondays at 7 AM.",
      "stale_answer": "8 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "7 AM"
     },
     {
      "question": "On which day is my oil change appointment at the dealership?",
      "answer": "Your oil change appointment is on Thursday.",
      "stale_answer": "Friday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Thursday"
     },
     {
      "question": "When is my performance review scheduled with Bill?",
      "answer": "Your performance review with Bill is scheduled for this coming Wednesday.",
      "stale_answer": "Monday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Wednesday"
     },
     {
      "question": "What time is my volunteer shift at the animal shelter this Saturday?",
      "answer": "Your volunteer shift at the animal shelter this Saturday is from 1 PM to 4 PM.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "1 PM"
     },
     {
      "question": "What time does the photography club meet?",
      "answer": "The photography club meets at 8 PM.",
      "stale_answer": "7 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "8 PM"
     }
    ]
   },
@@ -7672,7 +7762,7 @@
       "Assistant: Let me check. It seems most botanical gardens have policies against non-service dogs to protect the plant life. However, there is a large arboretum 20 miles north of the city that has dog-friendly trails.",
       "User: An arboretum! Even better. Lots of trees and open space. Max would be in heaven, and I'd get great shots. That's a solid plan for Saturday.",
       "Assistant: Excellent. I'm glad I could help you structure your week.",
-      "User: You did. I feel much more organized now. It's like untangling a tricky support case\u2014satisfying once it's all laid out clearly.",
+      "User: You did. I feel much more organized now. It's like untangling a tricky support case—satisfying once it's all laid out clearly.",
       "Assistant: That's a great analogy. Is there anything else I can help you plan?",
       "User: Not right now, I think this is a great start. I have my evenings sorted and a plan for the weekend. Feeling much better.",
       "Assistant: I'm happy to hear that, Emma. Enjoy your newly organized week.",
@@ -8060,7 +8150,7 @@
       "Assistant: Added. Action item 2 is 'Draft a comprehensive Rollback Procedure document for internal review'.",
       "User: Third: 'Define three data subsets for incremental migration testing'. And fourth: 'Coordinate with network team to perform a bandwidth impact analysis'.",
       "Assistant: I've added both. Your initial task list for Phase 2 is now: \n1. Schedule Data Profiling workshop. \n2. Draft Rollback Procedure document. \n3. Define data subsets for testing. \n4. Perform bandwidth impact analysis.",
-      "User: Perfect. This feels like a solid, proactive start to a complex phase. I feel much better having a plan. This is what I love about my job\u2014moving from the pure coding to this kind of strategic planning was definitely the right call for me.",
+      "User: Perfect. This feels like a solid, proactive start to a complex phase. I feel much better having a plan. This is what I love about my job—moving from the pure coding to this kind of strategic planning was definitely the right call for me.",
       "Assistant: It certainly seems to play to your strengths. Is there anything else I can help you with for the Phase 2 kickoff?",
       "User: Yes, can you create a new folder in my Innovate Corp directory named 'Phase 2 - Data Migration' and move that case study you found into it?",
       "Assistant: The new folder has been created, and the case study has been moved.",
@@ -8312,61 +8402,71 @@
      "question": "What evening is my mindfulness course scheduled for?",
      "answer": "Your mindfulness course is scheduled for Wednesday evenings.",
      "stale_answer": "Tuesday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Wednesday"
     },
     {
      "question": "When is the weekly team stand-up meeting?",
      "answer": "The weekly team stand-up is on Mondays at 3 PM PST.",
      "stale_answer": "9 AM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "3 PM"
     },
     {
      "question": "On which day is the training session for the Apex Digital team?",
      "answer": "The training session for the Apex Digital team is scheduled for Wednesday.",
      "stale_answer": "Monday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Wednesday"
     },
     {
      "question": "What topic is scheduled for Slot 3 of the Innovate Corp QBR?",
      "answer": "A Product Roadmap Deep Dive is scheduled for Slot 3.",
      "stale_answer": "1",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "3"
     },
     {
      "question": "What is the response time commitment for critical issues for Starlight Ventures?",
      "answer": "The response time commitment for critical issues for Starlight Ventures is 30 minutes.",
      "stale_answer": "1",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "30"
     },
     {
      "question": "For my time entry, what is the project phase I should be logging my hours against for the Innovate Corp account?",
      "answer": "Phase 2",
      "stale_answer": "1",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Phase 2"
     },
     {
      "question": "I'm trying to plan out my customer calls for next month and need to block off internal commitments. When is the monthly all-hands meeting?",
      "answer": "The monthly all-hands meeting is on the first Tuesday of the month.",
      "stale_answer": "Thursday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Tuesday"
     },
     {
      "question": "When is my dentist appointment with Dr. Evans?",
      "answer": "Your dentist appointment with Dr. Evans is on Friday.",
      "stale_answer": "Tuesday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Friday"
     },
     {
      "question": "When I'm planning my meals for next week, which day should I set aside for grocery shopping?",
      "answer": "You do your grocery shopping on Sunday afternoons.",
      "stale_answer": "Saturday",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "Sunday"
     },
     {
      "question": "I'm planning to go climbing after work, what time does Vertical Limit close?",
      "answer": "Vertical Limit closes at 11 PM.",
      "stale_answer": "10 PM",
-     "category": "changing_fact"
+     "category": "changing_fact",
+     "current_answer": "11 PM"
     }
    ]
   }

@@ -76,7 +76,8 @@ def build(convo: dict, convo_i: int, grace, bench_cfg: dict, cfg: dict, embedder
     cache_dir = cfg.get("cache_dir", ".drift_cache")
     specs = bench_cfg["extract_model"]
     specs = specs if isinstance(specs, list) else [specs]
-    extractor = _rotated_fallback(_build_providers(specs, cache_dir), convo_i)
+    extractor = _rotated_fallback([configure_provider(p, sp, cfg) for p, sp in
+                                   zip(_build_providers(specs, cache_dir), specs)], convo_i)
     graph = make_graph(embedder, cfg, cache_dir)
     policy = make_policy(f"P2:grace_days={_grace_days(grace)}")
     t_last = 0.0

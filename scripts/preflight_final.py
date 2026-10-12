@@ -33,13 +33,19 @@ def _blocked(*_a, **_k):
     raise OSError("network blocked by preflight")
 
 
-urllib.request.urlopen = _blocked          # nothing below may reach the network
-time.sleep = lambda *_: None                # retries back off instantly
+# Default: extract online (each session once, then cached) so the final run
+# starts from a complete cache. --offline checks the cache without any call.
+OFFLINE = "--offline" in sys.argv or __name__ != "__main__"
+if OFFLINE:
+    urllib.request.urlopen = _blocked      # nothing below may reach the network
+    time.sleep = lambda *_: None            # retries back off instantly
 
 from drift.embeddings import HashingEmbedder  # noqa: E402
 from drift.memory.extraction import extract_facts  # noqa: E402
 from drift.memory.graph import BitemporalGraph  # noqa: E402
-from drift.runner import _build_providers, _functional_predicates, _rotated_fallback  # noqa: E402
+from drift.memory import extraction as _extraction  # noqa: E402
+from drift.runner import (_build_providers, _functional_predicates, _rotated_fallback,  # noqa: E402
+                          configure_provider)
 
 CONFIGS = ["configs/final_mquake_t.json", "configs/final_factconsolidation.json",
            "configs/final_convomem.json"]
@@ -47,10 +53,15 @@ CONFIGS = ["configs/final_mquake_t.json", "configs/final_factconsolidation.json"
 
 def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
     emb = HashingEmbedder()
-    providers = _build_providers(specs, str(ROOT / cfg.get("cache_dir", ".drift_cache")))
-    for p in providers:
-        if hasattr(p, "max_retries"):
-            p.max_retries = 1
+    providers = [configure_provider(p, sp, cfg) for p, sp in
+                 zip(_build_providers(specs, str(ROOT / cfg.get("cache_dir", ".drift_cache"))), specs)]
+    _extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    if OFFLINE:
+        for p in providers:
+            if hasattr(p, "max_retries"):
+                p.max_retries = 1
+    if not OFFLINE:
+        prefetch(dataset, providers)
     misses = sessions = facts = closed = 0
     graphs = []
     for i, convo in enumerate(dataset["conversations"]):
@@ -61,8 +72,12 @@ def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
             sessions += 1
             try:
                 fs = extract_facts(ext, s["lines"])
-            except Exception:  # noqa: BLE001 - a miss: every provider in the chain missed
+            except Exception as exc:  # noqa: BLE001 - a miss: the provider could not answer
                 misses += 1
+                if not OFFLINE:
+                    # Online, a failure is a configuration problem, not a cache gap:
+                    # stop at once and say why instead of retrying every session.
+                    raise SystemExit(f"\nExtraction failed on session {sessions}: {exc}")
                 continue
             for f in fs:
                 g.add_fact(f["subject"], f["predicate"], f["object"], f["text"], t_event=s["time"])
@@ -70,6 +85,22 @@ def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
         closed += sum(1 for f in g.facts.values() if f.invalidated)
         graphs.append(g)
     return {"sessions": sessions, "misses": misses, "facts": facts, "closed": closed}, graphs
+
+
+def prefetch(dataset: dict, providers: list, workers: int = 8) -> None:
+    """Extract every session in parallel so the sequential build below only reads
+    the cache. Extraction of one session does not depend on any other, and each
+    result is cached under exactly the key the runner will ask for."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    jobs = [(i, s["lines"]) for i, c in enumerate(dataset["conversations"]) for s in c["sessions"]]
+    done = 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = [ex.submit(extract_facts, _rotated_fallback(providers, i), lines) for i, lines in jobs]
+        for f in as_completed(futs):
+            f.result()          # a provider error stops the preflight with its message
+            done += 1
+            if done % 10 == 0 or done == len(jobs):
+                print(f"  {done}/{len(jobs)} sessions extracted", flush=True)
 
 
 def reversed_pairs(graphs) -> int:
@@ -118,6 +149,8 @@ def coverage(dataset: dict, graphs) -> dict:
 
 def main() -> None:
     out = []
+    print("offline: checking the cache only" if OFFLINE else
+          "online: extracting any session not yet cached (paid, once)")
     for path in CONFIGS:
         cfg = json.loads((ROOT / path).read_text())
         dataset = json.loads((ROOT / cfg["dataset"]).read_text())
@@ -130,12 +163,15 @@ def main() -> None:
             for k, v in coverage(dataset, graphs).items():
                 row[f"{k}_{mode}" if k != "questions" else k] = v
         row["reversed_role_pairs"] = reversed_pairs(graphs)
+        row["extraction_failed_after_retry"] = _extraction.FAILED_PARSES["after_retry"]
+        _extraction.FAILED_PARSES.update(first=0, after_retry=0)
         out.append(row)
         print(json.dumps(row))
     (ROOT / "artifacts/preflight_final.json").write_text(json.dumps(out, indent=1))
     bad = [r for r in out if r["extraction_misses"]]
     print("\nOK: every extraction is cached" if not bad else
-          f"\nWARNING: {sum(r['extraction_misses'] for r in bad)} sessions would be re-extracted")
+          f"\nWARNING: {sum(r['extraction_misses'] for r in bad)} sessions have no extraction"
+          + (" (run without --offline to extract them)" if OFFLINE else " (provider errors above)"))
 
 
 if __name__ == "__main__":

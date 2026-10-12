@@ -175,6 +175,11 @@ def enrich(cell: dict, questions: dict) -> None:
         q = questions.get((r.get("conversation"), r["question"])) or questions.get((None, r["question"]))
         stale = (q or {}).get("stale_answer")
         r["_stale_answer"] = stale
+        # Recompute from the answer text, so every cell (including any written
+        # before the current-value rule) uses one definition of staleness.
+        from drift.runner import mentions_old, staleness_hit
+        r["stale"] = staleness_hit(r["answer"], stale, (q or {}).get("current_answer"))
+        r["mentions_old"] = mentions_old(r["answer"], stale)
         r["_category"] = (q or {}).get("category", r.get("category"))
         texts = [m[i] for i in r.get("retrieved_ids", []) if i in m]
         r["_ctx_known"] = bool(texts) and len(texts) == len(r.get("retrieved_ids", []))

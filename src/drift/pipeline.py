@@ -125,8 +125,26 @@ def answer_question(question: str, graph: BitemporalGraph, policy: Policy,
     }
 
 
+_ABSTAIN = re.compile(r"^\W*(i\s+(do\s*n[o']?t|don't)\s+know|unknown|no\s+(relevant\s+)?(memory|information))",
+                      re.I)
+
+
+def is_abstention(answer: str, gold: str) -> bool:
+    """An answer that declines ("I don't know ...") and does not contain the gold.
+
+    Graded INCORRECT by rule, without asking the judge. The judge check found the
+    LLM judge marking such refusals CORRECT when the gold is counterfactual (it
+    "agreed" that it is unknown who wrote A Wizard of Earthsea if not Pius XII),
+    which would credit NOMEM and every refusal with accuracy they did not earn.
+    """
+    a = answer.strip()
+    return bool(_ABSTAIN.match(a)) and gold.strip().lower() not in a.lower()
+
+
 def judge_answer(question: str, gold: str, answer: str, judge_provider: BaseProvider,
                  max_tokens: int = 1024) -> dict:
+    if not answer.strip() or is_abstention(answer, gold):
+        return {"correct": False, "f1": token_f1(gold, answer), "judge_tokens": 0, "judged_by": "rule"}
     completion = judge_provider.complete(
         JUDGE_PROMPT.format(question=question, gold=gold, answer=answer), system=JUDGE_SYSTEM,
         max_tokens=max_tokens,

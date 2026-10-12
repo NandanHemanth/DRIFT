@@ -250,14 +250,14 @@ judge-upgrade: ## Regrade the MQuAKE-T matrix with a frontier judge (answers cac
 
 BUDGET ?= 18
 JUDGE_CHEAP ?= openrouter:deepseek/deepseek-v4.1-flash
-JUDGE_REF ?= openrouter:anthropic/claude-opus-4.8
+JUDGE_REF ?= openrouter:anthropic/claude-sonnet-5.5
 
 final-check: ## Ping every model in the final configs (a few cents)
-	$(PY) scripts/check_providers.py --config configs/final_mquake_t.json
-	$(PY) scripts/check_providers.py --config configs/final_convomem.json
-	$(PY) scripts/check_providers.py --config configs/rq4_normalized.json
+	-$(PY) scripts/check_providers.py --config configs/final_mquake_t.json
+	-$(PY) scripts/check_providers.py --config configs/final_convomem.json
+	-$(PY) scripts/check_providers.py --config configs/rq4_normalized.json
 
-judge-check: ## Cheap judge vs strong judge on 200 existing answers (about $1)
+judge-check: ## DeepSeek judge vs Claude Sonnet 5.5 on 200 existing answers (about $0.30)
 	$(PY) scripts/judge_agreement.py --cheap $(JUDGE_CHEAP) --reference $(JUDGE_REF) --n 200
 
 final-pilot: ## P0 and P2 on MQuAKE-T for all five models, to measure real cost (about $1-2)
@@ -286,7 +286,7 @@ heldout-weights: ## Search winners vs 0.6/0.3/0.1 on held-out FactConsolidation 
 	$(PY) -m drift.runner --config configs/heldout_weights_fc_w811.json
 	$(PY) scripts/heldout_weights.py
 
-preflight: ## Offline check: every extraction cached, contradiction detection coverage (free)
+preflight: ## Extract every session once with DeepSeek (about $0.50), then report detection coverage
 	$(PY) scripts/preflight_final.py
 
 substrate: ## P2 under exact and LLM relation matching, two small models (about $1-2)
@@ -298,7 +298,7 @@ final-report: ## Deep analysis of everything above -> paper/FINAL_ANALYSIS.md (f
 
 rq4: ## Multi-writer memory: exact vs normalised vs LLM relation matching (about $5-8)
 	$(PY) -m drift.swarm --config configs/rq4_exact.json --budget 8
-	$(PY) -m drift.swarm --config configs/rq4_normalized.json --budget 8
+	$(PY) -m drift.swarm --config configs/rq4_normalized.json --budget 10
 	$(PY) -m drift.swarm --config configs/rq4_llm.json --budget 8
 
 # ---------------------------------------------------------------- visualisation

@@ -1,0 +1,106 @@
+{
+ "cheap": "openrouter:deepseek/deepseek-v4.1-flash",
+ "reference": "openrouter:anthropic/claude-sonnet-5.5",
+ "n": 198,
+ "agreement": 0.9596,
+ "kappa": 0.9191,
+ "cheap_yes_ref_no": 4,
+ "cheap_no_ref_yes": 4,
+ "by_benchmark": {
+  "convomem": {
+   "n": 66,
+   "agreement": 0.9697
+  },
+  "factconsolidation": {
+   "n": 66,
+   "agreement": 0.9545
+  },
+  "mquake_t": {
+   "n": 66,
+   "agreement": 0.9545
+  }
+ },
+ "disagreements": [
+  {
+   "bench": "convomem",
+   "cell": "P5__openrouter_z-ai_glm-5.2",
+   "question": "What is my home address?",
+   "gold": "Your home address is 123 Oak Street in the Maple Creek suburb.",
+   "answer": "The user asks: \"What is my home address?\" We need to use memory facts. There are multiple address entries.\n\nMemory:\n[1970-01-03] My address is 456 Central Ave, Apt 7B, in the downtown area.\n[1970-01-04] Could you add a note about the new place? It's at 123 Oak Street in the Maple Creek suburb.\n[1970-01-13] I recently moved to a townhouse and the yard is basically a blank slate, just a patch of grass.\n\nNeed to determine current home address as of latest date. There is a move to suburbs on 1970-01-04 to 123 Oak Street. Then on 1970-01-13 they moved to a townhouse, but no address given. Wait, the townhouse move might be the same as the 123 Oak Street? Let's parse.\n\nTimeline:\nJan 3: address 456 Central Ave, Apt 7B, downtown.\nJan 4: add note about new place at 123 Oak Street in Maple Creek suburb.\nJan 8: move to suburbs helped with quiet.\nJan 13: recently moved to a townhouse, yard blank slate. Also on Jan 13 they put name down for community garden plot number 15.\nMaybe the townhouse is the same as 123 Oak Street? Or a separate move? The Jan 13 entry says \"I recently moved to a townhouse\" without address. Since Jan 4 already noted new place at 123 Oak Street, maybe that is the townhouse. But Jan 13 says \"recently moved to a townhouse\" maybe referring to same move. However, if they moved to a townhouse, 123 Oak Street could be a townhouse. But the Jan 4 note says \"new place... at 123 Oak Street in the Maple Creek suburb.\" Could be a house, not necessarily townhouse. But likely same.\n\nBut there is also Jan 13 \"I recently moved to a townhouse and the yard is basically a blank slate, just a patch of grass.\" If they moved to a townhouse, the address is not given. But the only new address provided is 123 Oak Street. The question: \"What is my home address?\" Should we answer the most recent known address? The memory contains conflicting/updated info. We need to infer current address based on latest info. Since they moved to suburbs at 123 Oak Street on Jan 4, and later mention townhouse on Jan 13 without address, but likely same. However, if the townhouse is a new move, we don't know its address. But the question likely expects 123 Oak Street, Maple Creek suburb, as the current home address. Let's examine all memory lines.\n\nList:\n[1970-01-03] My address is 456 Central Ave, Apt 7B, in the downtown area.\n[1970-01-13] I put my name down as soon as I moved. I'm excited to finally get a plot at the community garden. I was on the waiting list for plot number 15.\n[1970-01-13] I recently moved to a townhouse and the yard is basically a blank slate, just a patch of grass.\n[1970-01-04] Could you add a note about the new place? It's at 123 Oak Street in the Maple Creek suburb.\n[1970-01-16] I can catch up on some calls and maybe even work on my desk restoration project.\n[1970-01-16] my furniture delivery has been moved to the afternoon, between 1 PM and 5 PM.\n[1970-01-16] my furniture delivery has been moved to the afternoon, between 1 PM and 5 PM.\n[1970-01-16] You've got this, Alex.\n[1970-01-12] User: ... pet food for Cooper... ... a beagle who thinks the sander is a toy, so I need to get Cooper settled first.\n[1970-01-10] I'm pretty meticulous about tracking things. It's a habit from my job.\n[1970-01-08] The move to the suburbs helped with that too. It's so much quieter here.\n[1970-01-07] I thought my Communications degree would lead somewhere more... creative.\n[1970-01-08] Just got back from a long walk with Cooper. He's completely passed out on the rug now.\n[1970-01-03] It sounds like your current role at InnovateLeads is a significant improvement.\n[1970-01-03] A Communications degree doesn't exactly prepare you for B2B sales.\n[1970-01-03] A Communications degree doesn't exactly prepare you for B2B sales.",
+   "published": true,
+   "cheap": true,
+   "reference": false
+  },
+  {
+   "bench": "mquake_t",
+   "cell": "P4__openrouter_minimax_minimax-m3",
+   "question": "Which city is the headquarter of FC Bayern Munich located in?",
+   "gold": "S\u00e4bener Stra\u00dfe",
+   "answer": "Based on the memory facts, the headquarters of FC Bayern Munich is located in the city of **Munich** (as of 2024-02-06). There is also an earlier fact (2024-02-07) stating it's in S\u00e4bener Stra\u00dfe, which is actually the street address of their training ground in Munich. The most current city-level answer is Munich.",
+   "published": false,
+   "cheap": true,
+   "reference": false
+  },
+  {
+   "bench": "convomem",
+   "cell": "P3__openrouter_minimax_minimax-m3",
+   "question": "What time is my weekday alarm set for?",
+   "gold": "Your weekday alarm is set for 6:30 AM.",
+   "answer": "Your weekday alarm is set for 6:30 AM (adjusted from 7:00 AM on 1970-01-20).",
+   "published": true,
+   "cheap": false,
+   "reference": true
+  },
+  {
+   "bench": "mquake_t",
+   "cell": "P0__openrouter_minimax_minimax-m3",
+   "question": "Which city is the headquarter of FC Bayern Munich located in?",
+   "gold": "S\u00e4bener Stra\u00dfe",
+   "answer": "Munich\n\n(Note: The memory contains conflicting facts \u2014 one from 2024-02-06 says Munich, and a more recent one from 2024-02-07 says S\u00e4bener Stra\u00dfe. S\u00e4bener Stra\u00dfe is actually a street in Munich, not a city, so the answer is Munich.)",
+   "published": false,
+   "cheap": true,
+   "reference": false
+  },
+  {
+   "bench": "mquake_t",
+   "cell": "P3__openrouter_z-ai_glm-5.2",
+   "question": "Which city is the headquarter of Yamaha Corporation located in?",
+   "gold": "Naka-ku",
+   "answer": "Hamamatsu.",
+   "published": false,
+   "cheap": false,
+   "reference": true
+  },
+  {
+   "bench": "factconsolidation",
+   "cell": "P5__openrouter_minimax_minimax-m3",
+   "question": "What is the capital of Romania?",
+   "gold": "Rajanpur",
+   "answer": "I don't know. The memory contains conflicting information about the capital of Romania, with the most recent entry claiming it is Rajanpur, which does not match any recognized geography.",
+   "published": false,
+   "cheap": true,
+   "reference": false
+  },
+  {
+   "bench": "factconsolidation",
+   "cell": "P1__openrouter_z-ai_glm-5.2",
+   "question": "Which sport is Bo Ryan associated with?",
+   "gold": "association football",
+   "answer": "Bo Ryan is associated with association football.",
+   "published": true,
+   "cheap": false,
+   "reference": true
+  },
+  {
+   "bench": "factconsolidation",
+   "cell": "P2__openrouter_minimax_minimax-m3",
+   "question": "Who is the author of The Marriage of Figaro?",
+   "gold": "Thomas Kyd",
+   "answer": "According to my memory, the author of The Marriage of Figaro is Thomas Kyd.",
+   "published": true,
+   "cheap": false,
+   "reference": true
+  }
+ ],
+ "skipped": []
+}

@@ -140,11 +140,26 @@ def load_dataset(path: str) -> dict:
     return json.loads(Path(path).read_text())
 
 
-def staleness_hit(answer: str, stale_answer: str | None) -> bool:
-    """An answer is stale if it contains the superseded (old) fact string."""
+def staleness_hit(answer: str, stale_answer: str | None, current_answer: str | None = None) -> bool:
+    """An answer is stale if it asserts the superseded value.
+
+    Without a current value (older datasets), that is "contains the old string".
+    With one, an answer that also contains the current value is not stale: it is
+    explaining the change ("Meloni, who replaced Conte"), not repeating the old
+    fact. That distinction matters for models that show their reasoning; in the
+    pilot it separated 1 genuinely stale Claude answer from 74 explanatory ones.
+    `mentions_old` keeps the plain containment for reporting.
+    """
     if not stale_answer:
         return False
-    return stale_answer.lower() in answer.lower()
+    a = answer.lower()
+    if stale_answer.lower() not in a:
+        return False
+    return not (current_answer and current_answer.lower() in a)
+
+
+def mentions_old(answer: str, stale_answer: str | None) -> bool:
+    return bool(stale_answer) and stale_answer.lower() in answer.lower()
 
 
 def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_path: Path) -> dict:
@@ -164,7 +179,10 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     # tiers instead of hammering one rate limit.
     extract_spec = cfg.get("extract_model", model_spec)
     extract_specs = extract_spec if isinstance(extract_spec, list) else [extract_spec]
-    extract_providers = _build_providers(extract_specs, cache_dir)
+    # Extraction calls carry the same per-model settings (provider pin, reasoning)
+    # as every other role, so a pinned model is never routed elsewhere.
+    extract_providers = [configure_provider(p, sp, cfg)
+                         for p, sp in zip(_build_providers(extract_specs, cache_dir), extract_specs)]
     # judge_model may also be a list, round-robined per conversation, exactly
     # like extract_model. This splits judge-call volume (the single largest
     # quota cost, since every question needs one) across multiple providers'
@@ -230,7 +248,8 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
             return {
                 "conversation": convo_id, "category": q.get("category", "single_hop"),
                 **result, "gold": q["answer"], **verdict,
-                "stale": staleness_hit(result["answer"], q.get("stale_answer")),
+                "stale": staleness_hit(result["answer"], q.get("stale_answer"), q.get("current_answer")),
+                "mentions_old": mentions_old(result["answer"], q.get("stale_answer")),
             }
 
         # Questions only read the finished graph, so they can be answered in

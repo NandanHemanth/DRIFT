@@ -35,3 +35,82 @@ ConvoMem's low coverage is the honest limit of rule-based detection on natural
 dialogue: the two mentions of a value are extracted under different subjects or
 relation names (`nexus_solutions | contact_number` against `contact | phone_number`).
 The substrate ablation measures how much the LLM matching mode recovers.
+
+## Provider check (`make final-check`, 12 October)
+
+* Qwen3 8B is no longer served on OpenRouter (zero endpoints). It is replaced by
+  Qwen3 14B, same family and thinking mode, pinned to DeepInfra. The deep
+  sensitivity analysis keeps its Qwen3 8B results; the final matrix uses 14B.
+* The MQuAKE-T and FactConsolidation extraction providers (NVIDIA, Cerebras, Groq,
+  Hugging Face, Mistral) are all gone, which does not matter: every one of their
+  extractions is cached and none of those sessions needs a retry.
+* The ConvoMem extraction chain and all five RQ4 writers are still served.
+* The judge check stopped on one item that OpenRouter refused with HTTP 403
+  (moderation). Refused items are now skipped and listed instead of stopping the run.
+
+## Model rule: six models, one provider each, no fallback
+
+The final campaign may use only these models, each pinned to one upstream
+provider with `allow_fallbacks: false`, and no model ever falls back to another.
+All configs are generated from `scripts/build_final_configs.py`, so the rule lives
+in one file.
+
+| role | model | provider |
+|---|---|---|
+| answer, frontier | GPT-6.1 Sol (low reasoning effort) | OpenAI |
+| answer, frontier | Claude Sonnet 5.5 | Anthropic |
+| answer, mid | Gemini 3.8 Flash (low reasoning effort; reasoning cannot be switched off) | Google AI Studio |
+| answer, small | Llama 3.1 8B | DeepInfra |
+| answer, small reasoning | Qwen3 14B (thinking on), replacing Qwen3 8B | DeepInfra |
+| extraction, judge, P4 review, LLM contradiction check | DeepSeek V4.1 Flash (reasoning off) | DeepInfra (DeepSeek's own API is excluded by the account's no-training privacy setting) |
+
+Consequences:
+
+* Every session of all three benchmarks is extracted again, once, by DeepSeek V4.1
+  Flash (`make preflight`). The old extractions came from models outside the list.
+  Graphs therefore differ from earlier campaigns; the detection-coverage numbers
+  above will be recomputed by the preflight and reported in the final analysis.
+* RQ4's five writers are the five answer models, so the shared memory is still
+  written by five different model families.
+* The judge check compares DeepSeek V4.1 Flash with Claude Sonnet 5.5.
+
+## Judge check (12 October)
+
+DeepSeek V4.1 Flash against Claude Sonnet 5.5 on 198 existing answers: agreement
+0.939, Cohen's kappa 0.878 (MQuAKE-T 0.955, ConvoMem 0.939, FactConsolidation
+0.924). Of the 12 disagreements, 5 were DeepSeek grading "I don't know" as
+correct when the gold answer is counterfactual. Refusals that do not contain the
+gold answer are now graded incorrect by rule before the judge is asked
+(`is_abstention` in `pipeline.py`), which removes that bias for every policy
+and in particular for NOMEM. Two of Claude's "incorrect" verdicts were on answers
+that state the gold verbatim (Thomas Kyd, association football): the reference
+judge also leans on world knowledge for counterfactual golds, so neither judge is
+treated as ground truth; the agreement figure is the reported reliability.
+
+After the refusal rule, rerun on the same 198 answers (all cached, $0): agreement
+**0.960**, kappa **0.919** (ConvoMem 0.970, FactConsolidation 0.955, MQuAKE-T
+0.955), with the remaining 8 disagreements split evenly (4 lenient, 4 strict), so
+the judge shows no remaining direction of bias.
+
+## Pilot (P0 and P2 on MQuAKE-T, five models, $0.78)
+
+The pilot exposed a flaw in the staleness metric. Claude Sonnet 5.5 explains its
+answers ("Joe Biden is the current head of state; the memory also lists Donald
+Trump, dated earlier"), so "the answer contains the old value" flagged 75 of its
+96 P0 answers as stale while it answered 97.9% correctly. Only 1 of the 75
+actually asserted the old value. Staleness now means the answer contains the old
+value and not the current one; every question carries a short `current_answer`
+(added by `scripts/add_current_answer.py`, deterministic, 261 of 261 recovered),
+and plain containment is kept as `mentions_old`. The analysis recomputes
+staleness from the saved answers, so the pilot cells are scored with the corrected
+definition too.
+
+| model | P0 accuracy | P0 staleness | P2 accuracy | P2 staleness |
+|---|---|---|---|---|
+| GPT-6.1 Sol | 0.990 | 0.010 | 0.990 | 0.010 |
+| Claude Sonnet 5.5 | 0.979 | 0.010 | 0.990 | 0.000 |
+| Gemini 3.8 Flash | 0.990 | 0.010 | 0.990 | 0.010 |
+| Llama 3.1 8B | 0.771 | 0.208 | 0.979 | 0.010 |
+| Qwen3 14B | 0.948 | 0.021 | 0.979 | 0.000 |
+
+The remaining 0.010 for the frontier models is the New York City data artefact.

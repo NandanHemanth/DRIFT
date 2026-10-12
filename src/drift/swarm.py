@@ -35,7 +35,7 @@ from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
 from drift.progress import CampaignTracker, ProgressBar
 from drift.providers import FallbackProvider, SpendLedger, make_provider
-from drift.runner import configure_provider, load_dataset, make_graph, staleness_hit
+from drift.runner import configure_provider, load_dataset, make_graph, mentions_old, staleness_hit
 
 ROUTER_SYSTEM = (
     "You route a question to the best specialist. Reply with exactly one worker id."
@@ -78,7 +78,8 @@ def _single_extractor(cfg: dict, cache: str):
     from drift.runner import _build_providers, _rotated_fallback
     spec = cfg.get("single_extract_model") or cfg["extract_models"][0]
     specs = spec if isinstance(spec, list) else [spec]
-    return _rotated_fallback(_build_providers(specs, cache), 0)
+    providers = [configure_provider(p, sp, cfg) for p, sp in zip(_build_providers(specs, cache), specs)]
+    return _rotated_fallback(providers, 0)
 
 
 def _answerer(spec: str, cfg: dict, cache: str):
@@ -161,7 +162,8 @@ def _answer_and_judge(q: dict, graph: BitemporalGraph, policy, provider,
     return {
         "conversation": q["conversation"], "category": q.get("category", "single_hop"),
         **result, "gold": q["answer"], **verdict,
-        "stale": staleness_hit(result["answer"], q.get("stale_answer")),
+        "stale": staleness_hit(result["answer"], q.get("stale_answer"), q.get("current_answer")),
+        "mentions_old": mentions_old(result["answer"], q.get("stale_answer")),
     }
 
 
@@ -172,7 +174,8 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     n_agents = cfg.get("n_agents", 3)
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
-    extractors = [make_provider(m, cache) for m in _cycle(cfg["extract_models"], n_agents)]
+    extractors = [configure_provider(make_provider(m, cache), m, cfg)
+                  for m in _cycle(cfg["extract_models"], n_agents)]
     answerer = _answerer(cfg["answer_model"], cfg, cache)
     maint = _maintenance(cfg, cache)
     judge = _make_judge(cfg, cache)

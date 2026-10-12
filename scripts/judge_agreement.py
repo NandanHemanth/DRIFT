@@ -13,7 +13,7 @@ kappa and the disagreement table. Disagreements are written out for reading.
 
 Usage:
     python scripts/judge_agreement.py --cheap openrouter:deepseek/deepseek-v4.1-flash \
-        --reference openrouter:anthropic/claude-opus-4.8 --n 200
+        --reference openrouter:anthropic/claude-sonnet-5.5 --n 200
     python scripts/judge_agreement.py --cheap mock --reference mock --n 20   # offline check
 """
 from __future__ import annotations
@@ -84,9 +84,14 @@ def kappa(a: list[bool], b: list[bool]) -> float:
 
 
 def judge(spec: str, cache_dir: str):
+    """Grade with the same provider pin the final run uses, and no reasoning."""
     p = make_provider(spec, cache_dir)
     if spec.startswith("openrouter:"):
-        p = configure_provider(p, spec, {"request_extras": {spec: NO_REASONING}})
+        final = Path(__file__).resolve().parents[1] / "configs/final_mquake_t.json"
+        # Exactly the settings the final run uses for this model. Forcing
+        # reasoning off is not possible on every model (some refuse the request).
+        extras = dict(json.loads(final.read_text()).get("request_extras", {}).get(spec, {}))
+        p = configure_provider(p, spec, {"request_extras": {spec: extras}})
     return p
 
 
@@ -106,14 +111,27 @@ def main() -> None:
     cache = str(root / ".drift_cache")
     cheap, ref = judge(args.cheap, cache), judge(args.reference, cache)
 
-    rows = []
+    rows, skipped = [], []
     for i, r in enumerate(sample, 1):
-        c = judge_answer(r["question"], r["gold"], r["answer"], cheap)["correct"]
-        g = judge_answer(r["question"], r["gold"], r["answer"], ref)["correct"]
+        try:
+            c = judge_answer(r["question"], r["gold"], r["answer"], cheap)["correct"]
+            g = judge_answer(r["question"], r["gold"], r["answer"], ref)["correct"]
+        except RuntimeError as exc:
+            # A provider can refuse one item (OpenRouter returns 403 when its
+            # moderation flags the text). Skip it and report it, rather than
+            # losing the whole check.
+            skipped.append({"question": r["question"], "error": str(exc)[:300]})
+            if len(skipped) == 1:
+                print(f"  item refused: {str(exc)[:300]}", flush=True)
+            if len(skipped) >= 5 and not rows:
+                raise SystemExit("The first 5 items all failed; stopping. Error above.")
+            continue
         rows.append({**r, "cheap": c, "reference": g})
         if i % 25 == 0:
-            print(f"  {i}/{len(sample)}  {SpendLedger.report()}")
+            print(f"  {i}/{len(sample)}  {SpendLedger.report()}", flush=True)
 
+    if not rows:
+        raise SystemExit(f"No item could be graded by both judges; first error: {skipped[0]['error'] if skipped else 'none'}")
     a = [r["cheap"] for r in rows]
     b = [r["reference"] for r in rows]
     agree = sum(x == y for x, y in zip(a, b)) / len(rows)
@@ -128,6 +146,7 @@ def main() -> None:
             "n": len(sub),
             "agreement": round(sum(r["cheap"] == r["reference"] for r in sub) / len(sub), 4)}
     report["disagreements"] = [r for r in rows if r["cheap"] != r["reference"]]
+    report["skipped"] = skipped
     out = root / args.out
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=1))
@@ -138,6 +157,8 @@ def main() -> None:
     print(f"cheap says incorrect, reference says correct: {report['cheap_no_ref_yes']}")
     for bench, v in report["by_benchmark"].items():
         print(f"  {bench:18s} n={v['n']:3d} agreement {v['agreement']:.3f}")
+    if skipped:
+        print(f"skipped {len(skipped)} item(s) the provider refused (listed in the json)")
     print(f"{SpendLedger.report()}\nwrote {out}")
 
 
