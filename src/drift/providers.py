@@ -52,7 +52,18 @@ PROVIDER_PRESETS = {
     # rpm is set high since the real pacing constraint is local inference
     # throughput (which Ollama's own request queue already manages), not a
     # remote quota.
-    "ollama": {"base_url": "http://localhost:11434/v1", "key_env": "OLLAMA_API_KEY", "rpm": 300, "requires_key": False},
+    # timeout: local reasoning models (qwen3, gpt-oss) can think for several
+    # minutes on one request, especially right after a model swap. The 120 s
+    # default made those requests fail and retry four times, wasting up to eight
+    # minutes each. A local server has no quota to protect, so wait longer.
+    "ollama": {"base_url": "http://localhost:11434/v1", "key_env": "OLLAMA_API_KEY", "rpm": 300, "requires_key": False,
+               "timeout": 900},
+    # A second Ollama machine on the local network, e.g. a GPU box. Set
+    # OLLAMA_GPU_URL=http://<ip>:11434/v1 in .env. Kept as its own preset name
+    # on purpose: the cache key includes the preset, so answers from the two
+    # machines can never be silently mixed for the same model.
+    "ollama_gpu": {"base_url": "http://localhost:11434/v1", "base_url_env": "OLLAMA_GPU_URL",
+                   "key_env": "OLLAMA_API_KEY", "rpm": 300, "requires_key": False, "timeout": 900},
     "groq": {"base_url": "https://api.groq.com/openai/v1", "key_env": "GROQ_API_KEY", "rpm": 25},
     "cerebras": {"base_url": "https://api.cerebras.ai/v1", "key_env": "CEREBRAS_API_KEY", "rpm": 25},
     "nvidia": {"base_url": "https://integrate.api.nvidia.com/v1", "key_env": "NVIDIA_API_KEY", "rpm": 35},
@@ -87,6 +98,36 @@ class Completion:
     @property
     def total_tokens(self) -> int:
         return self.prompt_tokens + self.completion_tokens
+
+
+class SpendLedger:
+    """Running USD total of uncached calls in this process, per model.
+
+    OpenRouter reports the billed cost of each request in `usage.cost`. Cached
+    replays cost nothing and are not counted. The runner prints the ledger after
+    every cell and stops a campaign once `budget_usd` is reached, so a wrong
+    estimate costs one cell, not the wallet.
+    """
+
+    _lock = threading.Lock()
+    by_model: dict[str, float] = {}
+    calls: dict[str, int] = {}
+
+    @classmethod
+    def add(cls, model: str, usd: float) -> None:
+        with cls._lock:
+            cls.by_model[model] = cls.by_model.get(model, 0.0) + usd
+            cls.calls[model] = cls.calls.get(model, 0) + 1
+
+    @classmethod
+    def total(cls) -> float:
+        return sum(cls.by_model.values())
+
+    @classmethod
+    def report(cls) -> str:
+        parts = [f"{m.split('/')[-1]} ${v:.3f} ({cls.calls[m]} calls)"
+                 for m, v in sorted(cls.by_model.items(), key=lambda kv: -kv[1])]
+        return f"spend this run ${cls.total():.3f}: " + "; ".join(parts) if parts else "spend this run $0"
 
 
 class DiskCache:
@@ -167,7 +208,7 @@ class OpenAICompatProvider(BaseProvider):
         cfg = PROVIDER_PRESETS[preset]
         self.name = preset
         self.model = model
-        self.base_url = cfg["base_url"]
+        self.base_url = os.environ.get(cfg.get("base_url_env", ""), "") or cfg["base_url"]
         self.api_key = os.environ.get(cfg["key_env"], "")
         if not self.api_key:
             if cfg.get("requires_key", True):
@@ -178,9 +219,24 @@ class OpenAICompatProvider(BaseProvider):
         self.cache = cache or DiskCache()
         self.limiter = RateLimiter(cfg["rpm"])
         self.max_retries = max_retries
+        self.timeout = cfg.get("timeout", 120)
+        # Extra fields merged into every request body, e.g. OpenRouter's
+        # {"provider": {"order": ["DeepInfra"], "allow_fallbacks": false}} to pin
+        # one upstream host. They change what answers the request, so they are
+        # folded into the cache key; with none set, keys are unchanged.
+        self.extra_body: dict | None = None
+        # When a reasoning model runs out of budget mid-thought, content comes
+        # back empty and the text used to fall back to the reasoning trace. That
+        # is fine for extraction but wrong for a graded answer, where the trace
+        # would be scored as if it were the reply. Callers grading answers can
+        # turn the fallback off and get an honest empty answer instead.
+        self.reasoning_fallback = True
 
     def complete(self, prompt: str, system: str = "", temperature: float = 0.0, max_tokens: int = 1024) -> Completion:
-        ckey = DiskCache.key(self.name, self.model, system + "\n" + prompt, temperature,
+        key_model = self.model
+        if self.extra_body:
+            key_model += "|" + json.dumps(self.extra_body, sort_keys=True)
+        ckey = DiskCache.key(self.name, key_model, system + "\n" + prompt, temperature,
                              max_tokens=max_tokens)
         hit = self.cache.get(ckey)
         if hit is not None:
@@ -190,9 +246,16 @@ class OpenAICompatProvider(BaseProvider):
         if system:
             messages.append({"role": "system", "content": system})
         messages.append({"role": "user", "content": prompt})
-        body = json.dumps(
-            {"model": self.model, "messages": messages, "temperature": temperature, "max_tokens": max_tokens}
-        ).encode()
+        payload = {"model": self.model, "messages": messages, "temperature": temperature,
+                   "max_tokens": max_tokens}
+        if self.extra_body:
+            payload.update(self.extra_body)
+        if self.name == "openrouter":
+            # Ask OpenRouter to report the billed cost of each call, which the
+            # SpendLedger and the --budget stop rely on. Accounting only: it does
+            # not change the answer, so it is not part of the cache key.
+            payload["usage"] = {"include": True}
+        body = json.dumps(payload).encode()
 
         last_err: Exception | None = None
         for attempt in range(self.max_retries):
@@ -210,15 +273,19 @@ class OpenAICompatProvider(BaseProvider):
                 },
             )
             try:
-                with urllib.request.urlopen(req, timeout=120) as resp:
+                with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                     data = json.loads(resp.read())
                 msg = data["choices"][0]["message"]
                 # Reasoning models (gpt-oss, GLM, MiniMax) may return empty
                 # content when the token budget is consumed by reasoning.
-                text = msg.get("content") or msg.get("reasoning_content") or msg.get("reasoning") or ""
+                text = msg.get("content") or ""
+                if not text and self.reasoning_fallback:
+                    text = msg.get("reasoning_content") or msg.get("reasoning") or ""
                 usage = data.get("usage", {})
                 pt = usage.get("prompt_tokens", estimate_tokens(system + prompt))
                 ct = usage.get("completion_tokens", estimate_tokens(text))
+                if isinstance(usage.get("cost"), (int, float)):
+                    SpendLedger.add(self.model, float(usage["cost"]))
                 self.cache.put(ckey, {"text": text, "pt": pt, "ct": ct})
                 return Completion(text, pt, ct)
             except Exception as e:  # noqa: BLE001 - retry any transport/429 error with backoff

@@ -1,0 +1,29 @@
+{
+ "mquake_t": {
+  "questions": 96,
+  "grid_points": 1000,
+  "policy_weighting_question_slots": 192000,
+  "unique_prompts": 113847,
+  "dedup_factor": 1.7
+ },
+ "factconsolidation": {
+  "questions": 100,
+  "grid_points": 1000,
+  "policy_weighting_question_slots": 200000,
+  "unique_prompts": 111220,
+  "dedup_factor": 1.8
+ },
+ "convomem": {
+  "questions": 100,
+  "grid_points": 1000,
+  "policy_weighting_question_slots": 200000,
+  "unique_prompts": 110287,
+  "dedup_factor": 1.8
+ },
+ "_totals": {
+  "unique_prompts": 335354,
+  "answer_calls": 670708,
+  "judge_calls_upper_bound": 670708,
+  "est_hours_at_config_speeds": 419.2
+ }
+}

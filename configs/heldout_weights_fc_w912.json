@@ -1,0 +1,67 @@
+{
+  "_comment": "Held-out weighting test. FactConsolidation was not used in the deep sensitivity search. Candidates: published 0.6/0.3/0.1, the MQuAKE-T winner 0.9/0.1/0.2, the ConvoMem winner 0.8/0.1/0.1. This file: [0.9, 0.1, 0.2].",
+  "dataset": "data/factconsolidation_sh_6k.json",
+  "results_dir": "artifacts/results/heldout_weights_fc/w912",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "functional_predicates": "*",
+  "relation_matching": "normalized",
+  "judge_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "models": [
+    "openrouter:meta-llama/llama-3.1-8b-instruct",
+    "openrouter:qwen/qwen3-8b"
+  ],
+  "policies": [
+    "P2"
+  ],
+  "request_extras": {
+    "openrouter:meta-llama/llama-3.1-8b-instruct": {
+      "provider": {
+        "order": [
+          "DeepInfra"
+        ],
+        "allow_fallbacks": false
+      }
+    },
+    "openrouter:qwen/qwen3-8b": {
+      "provider": {
+        "order": [
+          "Alibaba"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": true
+      }
+    },
+    "openrouter:deepseek/deepseek-v4.1-flash": {
+      "reasoning": {
+        "enabled": false
+      }
+    }
+  },
+  "answer_max_tokens": {
+    "openrouter:qwen/qwen3-8b": 4096
+  },
+  "qa_workers": 4,
+  "rpm_overrides": {
+    "openrouter": 120
+  },
+  "budget_usd": 3.0,
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ],
+  "retrieval_weights": [
+    0.9,
+    0.1,
+    0.2
+  ],
+  "extract_retry_tokens": 4096
+}

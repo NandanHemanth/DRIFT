@@ -1,0 +1,22 @@
+{
+ "mquake_t": {
+  "questions": 96,
+  "grid_points": 1000,
+  "policy_weighting_question_slots": 192000,
+  "unique_prompts": 19214,
+  "dedup_factor": 10.0
+ },
+ "convomem": {
+  "questions": 100,
+  "grid_points": 1000,
+  "policy_weighting_question_slots": 200000,
+  "unique_prompts": 15082,
+  "dedup_factor": 13.3
+ },
+ "_totals": {
+  "unique_prompts": 34296,
+  "answer_calls": 68592,
+  "judge_calls_upper_bound": 68592,
+  "est_hours_at_config_speeds": 42.9
+ }
+}

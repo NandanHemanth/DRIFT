@@ -15,12 +15,15 @@ PY ?= python
         locomo-data locomo longmemeval-data longmemeval \
         ku-data ku-data-s ku ku-s fc-data fc mq-data mq mq-ablation \
         tables figures dashboard record replay replay-fc live \
-        compare generalization real-all compact clean clean-all
+        compare generalization real-all compact clean clean-all \
+        final-check judge-check final-pilot final-mq final-fc final-cm \
+        grace-history grace-history-answers heldout-weights rq4 \
+        preflight substrate final-report
 
 # ---------------------------------------------------------------- help
 
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
 # ---------------------------------------------------------------- setup
@@ -144,6 +147,29 @@ compare: ## Cross-dataset table: ranks, Spearman rho, paired McNemar
 # no answer-model or judge calls: extraction is served from .drift_cache and
 # embeddings come from local Ollama. Nothing here can change a published number.
 
+deep-smoke: ## Deep 10x10x10 weight sensitivity, offline check on synthetic data (free)
+	$(PY) -m analysis.deep_sensitivity plan    --config configs/deep_sensitivity_smoke.json
+	$(PY) -m analysis.deep_sensitivity run     --config configs/deep_sensitivity_smoke.json
+	$(PY) -m analysis.deep_sensitivity analyze --config configs/deep_sensitivity_smoke.json
+
+deep-plan: ## Deep sensitivity stage 1: contexts for all 1,000 weightings, prints exact call count (no LLM calls)
+	$(PY) -m analysis.deep_sensitivity plan --config configs/deep_sensitivity.json
+
+deep-run: ## Deep sensitivity stage 2: answer and grade every unique prompt on Ollama (resumable)
+	$(PY) -m analysis.deep_sensitivity run --config configs/deep_sensitivity.json
+
+deep-analyze: ## Deep sensitivity stage 3: every analysis and figure, works on partial results
+	$(PY) -m analysis.deep_sensitivity analyze --config configs/deep_sensitivity.json
+
+deep-date-plan: ## Full 10x10x10, facts listed by date: stage 1 (no LLM calls)
+	$(PY) -m analysis.deep_sensitivity plan --config configs/deep_sensitivity_bydate.json
+
+deep-date-run: ## Full 10x10x10, facts listed by date: answer + grade, MQuAKE-T then ConvoMem (resumable)
+	$(PY) -m analysis.deep_sensitivity run --config configs/deep_sensitivity_bydate.json
+
+deep-date-analyze: ## Full 10x10x10, facts listed by date: report + figures (works on partial results)
+	$(PY) -m analysis.deep_sensitivity analyze --config configs/deep_sensitivity_bydate.json
+
 check-providers: ## Preflight: is every model in every config still reachable?
 	$(PY) scripts/check_providers.py --all
 
@@ -214,6 +240,66 @@ frontier: ## Confirmatory cells with a frontier answer model (paid, 4 cells)
 
 judge-upgrade: ## Regrade the MQuAKE-T matrix with a frontier judge (answers cached)
 	$(PY) -m drift.runner --config configs/judge_upgrade_mquake_t.json
+
+# ---------------------------------------------------------------- final matrix
+#
+# Five answer models (two frontier, one mid, two small) x seven policies x the
+# three thesis benchmarks, graded by one fixed judge. Every target stops starting
+# new cells once BUDGET dollars have been spent in that invocation; completed
+# cells are skipped on rerun, so stopping and resuming costs nothing.
+
+BUDGET ?= 18
+JUDGE_CHEAP ?= openrouter:deepseek/deepseek-v4.1-flash
+JUDGE_REF ?= openrouter:anthropic/claude-opus-4.8
+
+final-check: ## Ping every model in the final configs (a few cents)
+	$(PY) scripts/check_providers.py --config configs/final_mquake_t.json
+	$(PY) scripts/check_providers.py --config configs/final_convomem.json
+	$(PY) scripts/check_providers.py --config configs/rq4_normalized.json
+
+judge-check: ## Cheap judge vs strong judge on 200 existing answers (about $1)
+	$(PY) scripts/judge_agreement.py --cheap $(JUDGE_CHEAP) --reference $(JUDGE_REF) --n 200
+
+final-pilot: ## P0 and P2 on MQuAKE-T for all five models, to measure real cost (about $1-2)
+	$(PY) -m drift.runner --config configs/final_mquake_t.json --policies P0,P2 --budget 3
+
+final-mq: ## Final matrix on MQuAKE-T
+	$(PY) -m drift.runner --config configs/final_mquake_t.json --budget $(BUDGET)
+
+final-fc: ## Final matrix on FactConsolidation
+	$(PY) -m drift.runner --config configs/final_factconsolidation.json --budget $(BUDGET)
+
+final-cm: ## Final matrix on ConvoMem
+	$(PY) -m drift.runner --config configs/final_convomem.json --budget $(BUDGET)
+
+grace-history: ## P2 grace sweep with history questions, retrieval only (free, needs Ollama)
+	$(PY) -m analysis.grace_history run --config configs/grace_history.json
+	$(PY) -m analysis.grace_history analyze --config configs/grace_history.json
+
+grace-history-answers: ## Same sweep answered by the two small models and judged (about $2-4)
+	$(PY) -m analysis.grace_history run --config configs/grace_history.json --answers
+	$(PY) -m analysis.grace_history analyze --config configs/grace_history.json
+
+heldout-weights: ## Search winners vs 0.6/0.3/0.1 on held-out FactConsolidation (about $0.50)
+	$(PY) -m drift.runner --config configs/heldout_weights_fc_w631.json
+	$(PY) -m drift.runner --config configs/heldout_weights_fc_w912.json
+	$(PY) -m drift.runner --config configs/heldout_weights_fc_w811.json
+	$(PY) scripts/heldout_weights.py
+
+preflight: ## Offline check: every extraction cached, contradiction detection coverage (free)
+	$(PY) scripts/preflight_final.py
+
+substrate: ## P2 under exact and LLM relation matching, two small models (about $1-2)
+	for b in mquake_t factconsolidation convomem; do for m in exact llm; do \
+		$(PY) -m drift.runner --config configs/substrate_$${b}_$${m}.json; done; done
+
+final-report: ## Deep analysis of everything above -> paper/FINAL_ANALYSIS.md (free)
+	$(PY) -m analysis.final_report
+
+rq4: ## Multi-writer memory: exact vs normalised vs LLM relation matching (about $5-8)
+	$(PY) -m drift.swarm --config configs/rq4_exact.json --budget 8
+	$(PY) -m drift.swarm --config configs/rq4_normalized.json --budget 8
+	$(PY) -m drift.swarm --config configs/rq4_llm.json --budget 8
 
 # ---------------------------------------------------------------- visualisation
 #

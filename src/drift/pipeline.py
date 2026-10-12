@@ -42,7 +42,8 @@ ANSWER:
 
 
 def ingest_session(session: dict, graph: BitemporalGraph, policy: Policy,
-                   extractor_provider: BaseProvider) -> dict:
+                   extractor_provider: BaseProvider,
+                   maintenance_provider: BaseProvider | None = None) -> dict:
     """Ingest one session: extract facts, apply write gate, add to graph, run maintenance.
 
     session = {"time": epoch_seconds, "lines": ["Alice: ...", ...],
@@ -57,7 +58,11 @@ def ingest_session(session: dict, graph: BitemporalGraph, policy: Policy,
                            t_event=session["time"],
                            provenance=session.get("provenance", "conversation"))
             written += 1
-    policy.after_session(graph, extractor_provider, now=session["time"])
+    # Policies that call a model during maintenance (P4 merges facts with an LLM)
+    # use maintenance_provider when given. Pinning it keeps the policy identical
+    # across answer models; when its provider once changed, P4 went from pruning
+    # 8 facts to 172 on the same data.
+    policy.after_session(graph, maintenance_provider or extractor_provider, now=session["time"])
     return {"extracted": len(facts), "written": written}
 
 
@@ -94,28 +99,37 @@ def render_fact(f: Fact, show_supersession: bool = False) -> str:
     return f"{head} {f.text}".strip()
 
 
+_THINK = re.compile(r"<think>.*?</think>", re.S)
+
+
 def answer_question(question: str, graph: BitemporalGraph, policy: Policy,
                     provider: BaseProvider, k: int = 8, now: float | None = None,
-                    show_supersession: bool = False) -> dict:
+                    show_supersession: bool = False, max_tokens: int = 1024) -> dict:
     retrieved = graph.search(question, k=k, now=now)
     retrieved = policy.on_retrieve(retrieved, now=now or 0.0)
     memory_block = "\n".join(render_fact(f, show_supersession) for f in retrieved) \
         or "(no relevant memory)"
     completion: Completion = provider.complete(
-        ANSWER_PROMPT.format(memory=memory_block, question=question), system=ANSWER_SYSTEM
+        ANSWER_PROMPT.format(memory=memory_block, question=question), system=ANSWER_SYSTEM,
+        max_tokens=max_tokens,
     )
     return {
         "question": question,
-        "answer": completion.text.strip(),
+        # a reasoning model's visible <think> block is not part of the answer
+        "answer": _THINK.sub("", completion.text).strip(),
         "retrieved_ids": [f.id for f in retrieved],
         "retrieved_invalidated": sum(1 for f in retrieved if f.invalidated),
         "tokens": completion.total_tokens,
+        "prompt_tokens": completion.prompt_tokens,
+        "completion_tokens": completion.completion_tokens,
     }
 
 
-def judge_answer(question: str, gold: str, answer: str, judge_provider: BaseProvider) -> dict:
+def judge_answer(question: str, gold: str, answer: str, judge_provider: BaseProvider,
+                 max_tokens: int = 1024) -> dict:
     completion = judge_provider.complete(
-        JUDGE_PROMPT.format(question=question, gold=gold, answer=answer), system=JUDGE_SYSTEM
+        JUDGE_PROMPT.format(question=question, gold=gold, answer=answer), system=JUDGE_SYSTEM,
+        max_tokens=max_tokens,
     )
     verdict = "CORRECT" in completion.text.upper() and "INCORRECT" not in completion.text.upper()
     return {"correct": verdict, "f1": token_f1(gold, answer), "judge_tokens": completion.total_tokens}

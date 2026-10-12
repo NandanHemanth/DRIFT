@@ -1,0 +1,15 @@
+{
+ "smoke": {
+  "questions": 14,
+  "grid_points": 64,
+  "policy_weighting_question_slots": 1792,
+  "unique_prompts": 513,
+  "dedup_factor": 3.5
+ },
+ "_totals": {
+  "unique_prompts": 513,
+  "answer_calls": 513,
+  "judge_calls_upper_bound": 513,
+  "est_hours_at_config_speeds": 0.6
+ }
+}

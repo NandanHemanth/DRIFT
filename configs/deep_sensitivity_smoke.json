@@ -1,0 +1,35 @@
+{
+  "name": "deep_smoke",
+  "out_dir": "artifacts/deep_sensitivity_smoke",
+  "report": "artifacts/deep_sensitivity_smoke/DEEP_SENSITIVITY.md",
+  "cache_dir": ".drift_cache",
+  "embedder": "hashing",
+  "retrieval_k": 8,
+  "grid_values": [
+    0.1,
+    0.4,
+    0.7,
+    1.0
+  ],
+  "policies": [
+    "P0",
+    "P2"
+  ],
+  "focus_policy": "P2",
+  "answer_models": [
+    "mock"
+  ],
+  "judge_model": "mock",
+  "workers": 1,
+  "est_seconds_per_answer": 1.5,
+  "est_seconds_per_judge": 3.0,
+  "seed": 7,
+  "benchmarks": [
+    {
+      "name": "smoke",
+      "dataset": "data/synthetic_smoke.json",
+      "extract_model": "mock",
+      "functional_predicates": null
+    }
+  ]
+}

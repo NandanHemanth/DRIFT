@@ -19,6 +19,7 @@ from dataclasses import asdict, dataclass, field, fields
 from pathlib import Path
 
 from drift.embeddings import cosine
+from drift.memory.normalize import entity_key, is_multi_valued, relation_key
 
 # Predicates that are functional (one true object at a time) -> contradiction closes old fact.
 FUNCTIONAL_PREDICATES = {
@@ -92,7 +93,10 @@ class Fact:
 class BitemporalGraph:
     def __init__(self, embedder, functional_predicates: set[str] | str | None = None,
                  weights: tuple[float, float, float] | None = None,
-                 fusion: str | None = None):
+                 fusion: str | None = None,
+                 relation_matching: str | None = None,
+                 relation_sim: float | None = None,
+                 contradiction_judge=None):
         """functional_predicates selects which predicates admit only one true
         object at a time, and therefore trigger contradiction handling.
 
@@ -116,13 +120,80 @@ class BitemporalGraph:
         )
         self.weights: tuple[float, float, float] = weights or DEFAULT_RETRIEVAL_WEIGHTS
         self.fusion: str = fusion or DEFAULT_FUSION
+        # How contradiction detection decides two facts are about the same thing.
+        # "exact" (published default): same subject (case-insensitive) and same
+        # predicate string. "normalized": compare normalised keys
+        # (drift.memory.normalize), and never treat list-like relations
+        # (meetings, deliverables, ...) as single-valued under "*". relation_sim,
+        # when set, also accepts two relation names whose embeddings are at least
+        # that similar.
+        self.relation_matching: str = relation_matching or "exact"
+        if self.relation_matching not in ("exact", "normalized", "llm"):
+            raise ValueError(f"unknown relation_matching {self.relation_matching!r}")
+        self.relation_sim = relation_sim
+        self._rel_emb: dict[str, list[float]] = {}
+        # "llm" mode: a callable judge(new_fact, candidates) -> facts to close.
+        self.contradiction_judge = contradiction_judge
+        if self.relation_matching == "llm" and contradiction_judge is None:
+            raise ValueError("relation_matching='llm' needs a contradiction_judge")
+        self.llm_judgements = 0
 
     def _is_functional(self, predicate: str) -> bool:
         if predicate.strip().lower() in NEVER_FUNCTIONAL:
             return False
         if self.functional_predicates == "*":
+            if self.relation_matching == "normalized" and is_multi_valued(predicate):
+                return False
             return True
+        if self.relation_matching == "normalized":
+            key = relation_key(predicate)
+            return predicate in self.functional_predicates or any(
+                relation_key(p) == key for p in self.functional_predicates)
         return predicate in self.functional_predicates
+
+    def _same_relation(self, a: str, b: str) -> bool:
+        if self.relation_matching == "exact":
+            return a == b
+        ka, kb = relation_key(a), relation_key(b)
+        if ka == kb:
+            return True
+        if self.relation_sim is None:
+            return False
+        for k in (ka, kb):
+            if k not in self._rel_emb:
+                self._rel_emb[k] = self.embedder.embed(k)
+        return cosine(self._rel_emb[ka], self._rel_emb[kb]) >= self.relation_sim
+
+    def _same_value(self, a: str, b: str) -> bool:
+        if self.relation_matching == "exact":
+            return a.lower() == b.lower()
+        return entity_key(a) == entity_key(b)
+
+    def _same_subject(self, a: str, b: str) -> bool:
+        if self.relation_matching == "exact":
+            return a.lower() == b.lower()
+        return entity_key(a) == entity_key(b)
+
+    def _crossed(self, old: Fact, new: Fact) -> bool:
+        """Same relation, one of the two facts written the other way round.
+
+        Extractors do not agree on direction: one stores
+        "Ardern | head_of_government_of | New Zealand", a later session
+        "New Zealand | head_of_government | Hipkins". The entity the relation is
+        about (New Zealand) is then the object of one fact and the subject of the
+        other, so a subject-only check never sees the change. This treats the two
+        as the same slot when the shared entity sits on opposite sides and the
+        remaining ends differ. Two facts that share only their object
+        ("Duterte | head_of_government_of | Philippines" and
+        "Marcos | head_of_government_of | Philippines") are deliberately NOT
+        matched, because the same shape also covers "A | citizen_of | Malta" and
+        "B | citizen_of | Malta", where both are true at once.
+        """
+        if self._same_value(old.object, new.subject) and not self._same_value(old.subject, new.object):
+            return not self._same_value(old.subject, new.subject)
+        if self._same_value(old.subject, new.object) and not self._same_value(old.object, new.subject):
+            return not self._same_value(old.object, new.object)
+        return False
 
     # ------------------------------------------------------------------ write
     def add_fact(self, subject: str, predicate: str, object_: str, text: str,
@@ -133,13 +204,28 @@ class BitemporalGraph:
             provenance=provenance, salience=salience,
             embedding=self.embedder.embed(text),
         )
-        if self._is_functional(predicate):
+        if self.relation_matching == "llm":
+            if predicate.strip().lower() not in NEVER_FUNCTIONAL:
+                keys = {entity_key(fact.subject), entity_key(fact.object)}
+                cands = [o for o in self.facts.values()
+                         if o.active and not o.invalidated and o.t_valid_start <= t_event
+                         and not self._same_value(o.object, fact.object)
+                         and keys & {entity_key(o.subject), entity_key(o.object)}]
+                if cands:
+                    cands.sort(key=lambda o: -cosine(fact.embedding, o.embedding))
+                    self.llm_judgements += 1
+                    for other in self.contradiction_judge(fact, cands):
+                        other.t_invalid_at = t_event
+        elif self._is_functional(predicate):
             for other in self.facts.values():
-                if (other.active and not other.invalidated
-                        and other.subject.lower() == fact.subject.lower()
-                        and other.predicate == fact.predicate
-                        and other.object.lower() != fact.object.lower()
-                        and other.t_valid_start <= t_event):
+                if not (other.active and not other.invalidated
+                        and other.t_valid_start <= t_event
+                        and self._same_relation(other.predicate, fact.predicate)):
+                    continue
+                if (self._same_subject(other.subject, fact.subject)
+                        and not self._same_value(other.object, fact.object)):
+                    other.t_invalid_at = t_event
+                elif self.relation_matching == "normalized" and self._crossed(other, fact):
                     other.t_invalid_at = t_event
         self.facts[fact.id] = fact
         return fact
@@ -254,7 +340,8 @@ class BitemporalGraph:
 
     def snapshot(self) -> "BitemporalGraph":
         """Deep-ish copy so policies can be compared from an identical base graph."""
-        g = BitemporalGraph(self.embedder, self.functional_predicates, self.weights, self.fusion)
+        g = BitemporalGraph(self.embedder, self.functional_predicates, self.weights, self.fusion,
+                            self.relation_matching, self.relation_sim, self.contradiction_judge)
         for f in self.facts.values():
             g.facts[f.id] = Fact.from_dict(f.to_dict())
         return g

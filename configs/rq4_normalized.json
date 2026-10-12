@@ -1,0 +1,91 @@
+{
+  "_comment": "RQ4 final. Five heterogeneous extraction models write one memory. relation_matching=normalized. Every answering role (Gemini 3.8 Flash, reasoning off to keep 6,000 answers affordable) (reader, router, workers) is one model so only the memory differs; judge and P4 maintenance fixed as in the final matrix. The extraction models are the pilot's, so extraction is cached.",
+  "dataset": "data/mquake_t_sh.json",
+  "results_dir": "artifacts/results/rq4_normalized",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "functional_predicates": "*",
+  "relation_matching": "normalized",
+  "n_agents": 5,
+  "coverage": 0.8,
+  "seed": 42,
+  "save_graph": true,
+  "extract_models": [
+    "openrouter:z-ai/glm-5.2",
+    "openrouter:minimax/minimax-m3",
+    "openrouter:google/gemini-3.1-flash-lite",
+    "openrouter:nvidia/nemotron-3-ultra-550b-a55b",
+    "openrouter:tencent/hy3"
+  ],
+  "answer_model": "openrouter:google/gemini-3.8-flash",
+  "router_model": "openrouter:google/gemini-3.8-flash",
+  "judge_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "workers": [
+    {
+      "id": "w0",
+      "specialty": "heads of state and heads of government, national and municipal leadership",
+      "model": "openrouter:google/gemini-3.8-flash"
+    },
+    {
+      "id": "w1",
+      "specialty": "organizational headquarters, which city a company or institution is based in",
+      "model": "openrouter:google/gemini-3.8-flash"
+    },
+    {
+      "id": "w2",
+      "specialty": "corporate and executive leadership, chief executives and directors",
+      "model": "openrouter:google/gemini-3.8-flash"
+    },
+    {
+      "id": "w3",
+      "specialty": "sports team leadership, head coaches",
+      "model": "openrouter:google/gemini-3.8-flash"
+    },
+    {
+      "id": "w4",
+      "specialty": "facts requiring combining multiple memories",
+      "model": "openrouter:google/gemini-3.8-flash"
+    }
+  ],
+  "topologies": [
+    "shared",
+    "independent",
+    "orchestrator"
+  ],
+  "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=20",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+  ],
+  "request_extras": {
+    "openrouter:google/gemini-3.8-flash": {
+      "reasoning": {
+        "enabled": false
+      }
+    },
+    "openrouter:deepseek/deepseek-v4.1-flash": {
+      "reasoning": {
+        "enabled": false
+      }
+    }
+  },
+  "answer_max_tokens": {},
+  "rpm_overrides": {
+    "openrouter": 120
+  },
+  "budget_usd": 8.0,
+  "extract_retry_tokens": 4096,
+  "single_extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ]
+}

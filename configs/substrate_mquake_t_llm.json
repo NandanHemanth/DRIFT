@@ -1,0 +1,64 @@
+{
+  "_comment": "Substrate ablation for P2: relation_matching=llm. The normalised run is the main matrix. P0 does not depend on the matching mode, so only P2 is rerun. Two small models, where stale answers actually occur.",
+  "dataset": "data/mquake_t_sh.json",
+  "results_dir": "artifacts/results/substrate/mquake_t_llm",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "save_graph": true,
+  "functional_predicates": "*",
+  "relation_matching": "llm",
+  "judge_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "models": [
+    "openrouter:meta-llama/llama-3.1-8b-instruct",
+    "openrouter:qwen/qwen3-8b"
+  ],
+  "policies": [
+    "P2"
+  ],
+  "request_extras": {
+    "openrouter:meta-llama/llama-3.1-8b-instruct": {
+      "provider": {
+        "order": [
+          "DeepInfra"
+        ],
+        "allow_fallbacks": false
+      }
+    },
+    "openrouter:qwen/qwen3-8b": {
+      "provider": {
+        "order": [
+          "Alibaba"
+        ],
+        "allow_fallbacks": false
+      },
+      "reasoning": {
+        "enabled": true
+      }
+    },
+    "openrouter:deepseek/deepseek-v4.1-flash": {
+      "reasoning": {
+        "enabled": false
+      }
+    }
+  },
+  "answer_max_tokens": {
+    "openrouter:qwen/qwen3-8b": 4096
+  },
+  "qa_workers": 4,
+  "rpm_overrides": {
+    "openrouter": 120
+  },
+  "budget_usd": 3.0,
+  "extract_model": [
+    "nvidia:z-ai/glm-5.2",
+    "nvidia:minimaxai/minimax-m3",
+    "cerebras:gpt-oss-120b",
+    "groq:llama-3.3-70b-versatile",
+    "hf:meta-llama/Llama-3.1-8B-Instruct",
+    "mistral:mistral-small-latest"
+  ],
+  "contradiction_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "contradiction_candidates": 8,
+  "extract_retry_tokens": 4096
+}

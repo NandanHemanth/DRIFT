@@ -1,0 +1,72 @@
+{
+  "name": "deep_sensitivity_bydate",
+  "out_dir": "artifacts/deep_sensitivity_bydate",
+  "report": "paper/DEEP_SENSITIVITY_BYDATE.md",
+  "cache_dir": ".drift_cache",
+  "embedder": "ollama:nomic-embed-text",
+  "retrieval_k": 25,
+  "grid_values": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "policies": [
+    "P0",
+    "P2"
+  ],
+  "focus_policy": "P2",
+  "answer_models": [
+    "ollama:llama3.1:8b",
+    "ollama:qwen3:8b"
+  ],
+  "judge_model": "ollama:gpt-oss:20b",
+  "workers": 2,
+  "est_seconds_per_answer": 1.5,
+  "est_seconds_per_judge": 3.0,
+  "seed": 7,
+  "benchmarks": [
+    {
+      "name": "mquake_t",
+      "dataset": "data/mquake_t_sh.json",
+      "extract_model": [
+        "nvidia:z-ai/glm-5.2",
+        "nvidia:minimaxai/minimax-m3",
+        "cerebras:gpt-oss-120b",
+        "groq:llama-3.3-70b-versatile",
+        "hf:meta-llama/Llama-3.1-8B-Instruct",
+        "mistral:mistral-small-latest"
+      ],
+      "functional_predicates": "*"
+    },
+    {
+      "name": "convomem",
+      "dataset": "data/convomem_changing.json",
+      "extract_model": [
+        "openrouter:z-ai/glm-5.2",
+        "openrouter:openai/gpt-oss-120b",
+        "openrouter:meta-llama/llama-3.3-70b-instruct"
+      ],
+      "functional_predicates": "*"
+    }
+  ],
+  "e2e_design": [
+    "full"
+  ],
+  "chunk_prompts": 400,
+  "e2e_policies": [
+    "P2"
+  ],
+  "rule_grading": true,
+  "context_order": "date",
+  "answer_max_tokens": {
+    "ollama:qwen3:8b": 4096
+  },
+  "benchmarks_in_order": true
+}

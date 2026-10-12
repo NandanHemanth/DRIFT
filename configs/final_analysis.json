@@ -1,0 +1,41 @@
+{
+  "_comment": "Inputs for python -m analysis.final_report. Prices are USD per million tokens (input, output) on OpenRouter, used only for cost per correct answer.",
+  "benchmarks": {
+    "MQuAKE-T": "artifacts/results/final_mquake_t",
+    "FactConsolidation": "artifacts/results/final_factconsolidation",
+    "ConvoMem": "artifacts/results/final_convomem"
+  },
+  "datasets": {
+    "MQuAKE-T": "data/mquake_t_sh.json",
+    "FactConsolidation": "data/factconsolidation_sh_6k.json",
+    "ConvoMem": "data/convomem_changing.json"
+  },
+  "models": {
+    "openrouter:openai/gpt-6.1-sol": {"label": "GPT-6.1 Sol", "tier": "frontier", "price": [2.0, 10.0]},
+    "openrouter:anthropic/claude-sonnet-5.5": {"label": "Claude Sonnet 5.5", "tier": "frontier", "price": [2.0, 10.0]},
+    "openrouter:google/gemini-3.8-flash": {"label": "Gemini 3.8 Flash", "tier": "mid", "price": [0.75, 3.75]},
+    "openrouter:meta-llama/llama-3.1-8b-instruct": {"label": "Llama 3.1 8B", "tier": "small", "price": [0.02, 0.04]},
+    "openrouter:qwen/qwen3-8b": {"label": "Qwen3 8B", "tier": "small", "price": [0.117, 0.455]},
+    "openrouter:z-ai/glm-5.2": {"label": "GLM-5.2", "tier": "frontier", "price": [0.6, 2.2]},
+    "openrouter:minimax/minimax-m3": {"label": "MiniMax-M3", "tier": "frontier", "price": [0.3, 1.2]}
+  },
+  "policy_order": ["NOMEM", "P0", "P1", "P2", "P3", "P4", "P5"],
+  "substrate": {
+    "MQuAKE-T": {"exact": "artifacts/results/substrate/mquake_t_exact", "llm": "artifacts/results/substrate/mquake_t_llm"},
+    "FactConsolidation": {"exact": "artifacts/results/substrate/factconsolidation_exact", "llm": "artifacts/results/substrate/factconsolidation_llm"},
+    "ConvoMem": {"exact": "artifacts/results/substrate/convomem_exact", "llm": "artifacts/results/substrate/convomem_llm"}
+  },
+  "rq4": {
+    "exact": "artifacts/results/rq4_exact",
+    "normalized": "artifacts/results/rq4_normalized",
+    "llm": "artifacts/results/rq4_llm"
+  },
+  "grace_history_md": "artifacts/results/grace_history/grace_history.md",
+  "grace_history_dir": "artifacts/results/grace_history",
+  "heldout_md": "artifacts/results/heldout_weights_fc/heldout_weights.md",
+  "judge_agreement": "artifacts/judge_agreement.json",
+  "preflight": "artifacts/preflight_final.json",
+  "out_md": "paper/FINAL_ANALYSIS.md",
+  "out_figures": "paper/figures_final",
+  "out_tables": "paper/tables_final"
+}

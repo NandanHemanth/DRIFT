@@ -34,8 +34,8 @@ from drift.memory.graph import BitemporalGraph
 from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
 from drift.progress import CampaignTracker, ProgressBar
-from drift.providers import FallbackProvider, make_provider
-from drift.runner import _functional_predicates, load_dataset, staleness_hit
+from drift.providers import FallbackProvider, SpendLedger, make_provider
+from drift.runner import configure_provider, load_dataset, make_graph, staleness_hit
 
 ROUTER_SYSTEM = (
     "You route a question to the best specialist. Reply with exactly one worker id."
@@ -63,11 +63,36 @@ def _make_judge(cfg: dict, cache: str):
     # shouldn't also burn a full retry-and-backoff cycle against a provider
     # that's already confirmed dead for the day.
     retries = 2 if len(specs) > 1 else 4
-    providers = [make_provider(s, cache, max_retries=retries) for s in specs]
+    providers = [configure_provider(make_provider(s, cache, max_retries=retries), s, cfg)
+                 for s in specs]
     return providers[0] if len(providers) == 1 else FallbackProvider(providers)
 
 
+def _single_extractor(cfg: dict, cache: str):
+    """Extractor for the topologies with one writer (independent, orchestrator).
+
+    "single_extract_model" may name the same cached extraction chain the
+    single-agent matrix uses, so those topologies start from the same facts as
+    the single-agent runs; otherwise the first shared-topology writer is used.
+    """
+    from drift.runner import _build_providers, _rotated_fallback
+    spec = cfg.get("single_extract_model") or cfg["extract_models"][0]
+    specs = spec if isinstance(spec, list) else [spec]
+    return _rotated_fallback(_build_providers(specs, cache), 0)
+
+
+def _answerer(spec: str, cfg: dict, cache: str):
+    return configure_provider(make_provider(spec, cache), spec, cfg, answer_role=True)
+
+
+def _maintenance(cfg: dict, cache: str):
+    spec = cfg.get("maintenance_model")
+    return configure_provider(make_provider(spec, cache), spec, cfg) if spec else None
+
+
 # --------------------------------------------------------------------- helpers
+_ANSWER_MAX_TOKENS: dict[str, int] = {}  # model id -> budget, filled from the config in main()
+
 
 def global_timeline(dataset: dict) -> tuple[list[dict], list[dict]]:
     """Interleave all conversations' sessions into one time-ordered stream.
@@ -89,20 +114,23 @@ def cross_writer_invalidations(graph: BitemporalGraph) -> dict:
     """Count invalidations where the superseding fact came from a different agent.
 
     The writer of every fact is recorded in `provenance` (agent_i). For each
-    invalidated fact we find its superseder: same subject+predicate, different
-    object, valid-start equal to the old fact's invalidation time.
+    invalidated fact we find its superseder: a fact that became valid exactly when
+    the old one was closed and shares an entity with it. Matching on entities
+    rather than on (subject, predicate) also counts supersessions found by
+    normalised, reversed-direction or LLM matching, where the two facts' subjects
+    or relation names differ.
     """
+    from drift.memory.normalize import entity_key
     total, cross = 0, 0
     facts = list(graph.facts.values())
     for old in facts:
         if not old.invalidated:
             continue
         total += 1
+        ents = {entity_key(old.subject), entity_key(old.object)}
         for new in facts:
-            if (new.subject.lower() == old.subject.lower()
-                    and new.predicate == old.predicate
-                    and new.object.lower() != old.object.lower()
-                    and new.t_valid_start == old.t_invalid_at):
+            if (new is not old and new.t_valid_start == old.t_invalid_at
+                    and ents & {entity_key(new.subject), entity_key(new.object)}):
                 if new.provenance != old.provenance:
                     cross += 1
                 break
@@ -127,7 +155,8 @@ def _answer_and_judge(q: dict, graph: BitemporalGraph, policy, provider,
                       judge_provider, k: int, now: float,
                       show_supersession: bool = False) -> dict:
     result = answer_question(q["question"], graph, policy, provider, k=k, now=now,
-                             show_supersession=show_supersession)
+                             show_supersession=show_supersession,
+                             max_tokens=_ANSWER_MAX_TOKENS.get(getattr(provider, "model", ""), 1024))
     verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider)
     return {
         "conversation": q["conversation"], "category": q.get("category", "single_hop"),
@@ -144,12 +173,13 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
     extractors = [make_provider(m, cache) for m in _cycle(cfg["extract_models"], n_agents)]
-    answerer = make_provider(cfg["answer_model"], cache)
+    answerer = _answerer(cfg["answer_model"], cfg, cache)
+    maint = _maintenance(cfg, cache)
     judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
     policy = make_policy(policy_spec)
-    graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
+    graph = make_graph(embedder, cfg, cache)
 
     # One bar spans ingestion + Q&A so it moves from the first session
     # onward instead of sitting silent through the whole extraction pass.
@@ -158,7 +188,7 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     for i, session in enumerate(sessions):
         agent_id = i % n_agents  # round-robin: agents take turns observing the world
         tagged = {**session, "provenance": f"agent_{agent_id}"}
-        ingest_session(tagged, graph, policy, extractors[agent_id])
+        ingest_session(tagged, graph, policy, extractors[agent_id], maint)
         t_last = max(t_last, session["time"])
         memory_curve.append({"step": i, "agent": agent_id, "time": session["time"],
                              **graph.stats()})
@@ -175,6 +205,7 @@ def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     bar.close()
     result = {"summary": {**summarize(records), "n_agents": n_agents,
                           **cross_writer_invalidations(graph),
+                          "contradiction_judgements": getattr(graph, "llm_judgements", 0),
                           "final_memory": graph.stats()},
               "records": records, "memory_curve": memory_curve}
     if cfg.get("save_graph"):
@@ -188,8 +219,9 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     coverage = cfg.get("coverage", 0.8)  # fraction of sessions each agent observes
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
-    extractor = make_provider(cfg["extract_models"][0], cache)
-    answerer = make_provider(cfg["answer_model"], cache)
+    extractor = _single_extractor(cfg, cache)
+    answerer = _answerer(cfg["answer_model"], cfg, cache)
+    maint = _maintenance(cfg, cache)
     judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
@@ -208,10 +240,10 @@ def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     for a in range(n_agents):
         observed = observed_per_agent[a]
         policy = make_policy(policy_spec)
-        graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
+        graph = make_graph(embedder, cfg, cache)
         t_last = 0.0
         for s_idx, session in enumerate(observed):  # already time-ordered
-            ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor)
+            ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor, maint)
             t_last = max(t_last, session["time"])
             bar.update(stats=f"ingesting agent {a}, session {s_idx + 1}/{len(observed)}")
         records = []
@@ -241,9 +273,11 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
     """Shared graph; router LLM assigns each question to a specialist worker."""
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
-    extractor = make_provider(cfg["extract_models"][0], cache)
+    extractor = _single_extractor(cfg, cache)
     judge = _make_judge(cfg, cache)
-    router = make_provider(cfg.get("router_model", cfg["answer_model"]), cache)
+    router = configure_provider(make_provider(cfg.get("router_model", cfg["answer_model"]), cache),
+                                cfg.get("router_model", cfg["answer_model"]), cfg)
+    maint = _maintenance(cfg, cache)
 
     workers = cfg.get("workers", [
         {"id": "w0", "specialty": "current state of people (where they live/work now)",
@@ -253,18 +287,18 @@ def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
         {"id": "w2", "specialty": "recent events and updates",
          "model": cfg["answer_model"]},
     ])
-    worker_providers = {w["id"]: make_provider(w["model"], cache) for w in workers}
+    worker_providers = {w["id"]: _answerer(w["model"], cfg, cache) for w in workers}
     worker_desc = "\n".join(f"{w['id']}: {w['specialty']}" for w in workers)
 
     sessions, questions = global_timeline(dataset)
     policy = make_policy(policy_spec)
-    graph = BitemporalGraph(embedder, functional_predicates=_functional_predicates(cfg))
+    graph = make_graph(embedder, cfg, cache)
     t_last = 0.0
     # One bar spans ingestion + Q&A so it moves from the first session
     # onward instead of sitting silent through the whole extraction pass.
     bar = ProgressBar(len(sessions) + len(questions), label="cell")
     for s_idx, session in enumerate(sessions):
-        ingest_session({**session, "provenance": "ingestor"}, graph, policy, extractor)
+        ingest_session({**session, "provenance": "ingestor"}, graph, policy, extractor, maint)
         t_last = max(t_last, session["time"])
         bar.update(stats=f"ingesting session {s_idx + 1}/{len(sessions)}")
 
@@ -314,9 +348,22 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="DRIFT swarm experiment runner")
     parser.add_argument("--config", required=True)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--topologies", help="comma list, e.g. shared")
+    parser.add_argument("--policies", help="comma list, e.g. P0,P2")
+    parser.add_argument("--budget", type=float, help="stop starting new cells past this USD spend")
     args = parser.parse_args()
 
     cfg = json.loads(Path(args.config).read_text())
+    if args.topologies:
+        cfg["topologies"] = args.topologies.split(",")
+    if args.policies:
+        keep = set(args.policies.split(","))
+        cfg["policies"] = [p for p in cfg["policies"] if p.split(":")[0] in keep]
+    budget = args.budget if args.budget is not None else cfg.get("budget_usd")
+    from drift.memory import extraction
+    extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    for spec, n in cfg.get("answer_max_tokens", {}).items():
+        _ANSWER_MAX_TOKENS[spec.split(":", 1)[1]] = n
     dataset = load_dataset(cfg["dataset"])
     results_dir = Path(cfg.get("results_dir", "results/swarm"))
     results_dir.mkdir(parents=True, exist_ok=True)
@@ -335,6 +382,9 @@ def main() -> None:
                 print(f"[skip] {cell}  {tracker.cell_done()}")
                 summaries.append(json.loads(out_path.read_text())["summary"])
                 continue
+            if budget is not None and SpendLedger.total() >= budget:
+                print(f"[stop] budget ${budget:.2f} reached ({SpendLedger.report()})")
+                continue
             print(f"[run ] {cell}")
             t0 = time.time()
             try:
@@ -343,12 +393,15 @@ def main() -> None:
                 print(f"[fail] {cell}: {str(e)[:160]}  (rerun to resume)  {tracker.cell_done()}")
                 continue
             result["summary"].update({"topology": topology, "policy": policy_spec,
-                                      "wall_seconds": round(time.time() - t0, 1)})
+                                      "wall_seconds": round(time.time() - t0, 1),
+                                      "relation_matching": cfg.get("relation_matching", "exact"),
+                                      "embedder": cfg.get("embedder", "hashing")})
             out_path.write_text(json.dumps(result, indent=1))
             s = result["summary"]
             print(f"       acc={s['accuracy']:.3f} stale={s['staleness_rate']:.3f} "
                   f"({s['wall_seconds']}s)")
             print(f"       {tracker.cell_done()}")
+            print(f"       {SpendLedger.report()}")
             summaries.append(s)
 
     (results_dir / "summary_table.json").write_text(json.dumps(summaries, indent=1))

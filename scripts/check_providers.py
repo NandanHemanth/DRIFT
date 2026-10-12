@@ -29,8 +29,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from drift.providers import make_provider  # noqa: E402
+from drift.runner import configure_provider  # noqa: E402
 
-ROLES = ("extract_model", "judge_model", "models")
+ROLES = ("extract_model", "extract_models", "single_extract_model", "judge_model", "models",
+         "answer_model", "router_model", "maintenance_model", "contradiction_model")
 PROBE = "Reply with the single word: ok"
 
 
@@ -48,12 +50,13 @@ def specs_in(cfg: dict) -> list[tuple[str, str]]:
     return out
 
 
-def probe(spec: str, cache_dir: str, timeout_retries: int = 1) -> tuple[bool, str]:
+def probe(spec: str, cache_dir: str, timeout_retries: int = 1, cfg: dict | None = None) -> tuple[bool, str]:
     if spec == "mock":
         return True, "offline mock"
     try:
         provider = make_provider(spec, cache_dir, max_retries=timeout_retries)
-        completion = provider.complete(PROBE)
+        provider = configure_provider(provider, spec, cfg or {})
+        completion = provider.complete(PROBE, max_tokens=512)
         text = (completion.text or "").strip().replace("\n", " ")
         return True, f"ok ({text[:40]})" if text else "ok (empty reply)"
     except Exception as exc:                       # any failure is a dead route
@@ -65,7 +68,7 @@ def check(path: Path) -> list[dict]:
     cache_dir = cfg.get("cache_dir", ".drift_cache")
     rows = []
     for role, spec in specs_in(cfg):
-        alive, detail = probe(spec, cache_dir)
+        alive, detail = probe(spec, cache_dir, cfg=cfg)
         rows.append({"config": path.name, "role": role, "spec": spec,
                      "alive": alive, "detail": detail})
     return rows
