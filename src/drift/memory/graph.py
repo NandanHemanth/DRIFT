@@ -90,13 +90,47 @@ class Fact:
         return Fact(**{k: v for k, v in d.items() if k in allowed})
 
 
+BM25_K1 = 1.2   # Lucene / Elasticsearch defaults, as used by Zep's full-text search
+BM25_B = 0.75
+
+
+def bm25_scores(q_tokens: set[str], docs: dict[str, list[str]]) -> dict[str, float]:
+    """Okapi BM25 of every fact against the question, rescaled to [0, 1].
+
+    idf(w) = ln(1 + (N - df + 0.5) / (df + 0.5))   (always positive)
+    score  = sum over question words w in the fact of
+             idf(w) * tf * (k1 + 1) / (tf + k1 * (1 - b + b * len / avg_len))
+    The corpus is the facts being searched. Each score is divided by the best
+    score for this question, so the top fact scores 1 and a fact sharing no
+    word scores 0; when nothing matches, every fact scores 0.
+    """
+    import math
+    n = len(docs)
+    if n == 0:
+        return {}
+    avg = sum(len(d) for d in docs.values()) / n or 1.0
+    df = {w: sum(1 for d in docs.values() if w in d) for w in q_tokens}
+    idf = {w: math.log(1 + (n - df[w] + 0.5) / (df[w] + 0.5)) for w in q_tokens}
+    raw = {}
+    for fid, d in docs.items():
+        s = 0.0
+        for w in q_tokens:
+            tf = d.count(w)
+            if tf:
+                s += idf[w] * tf * (BM25_K1 + 1) / (tf + BM25_K1 * (1 - BM25_B + BM25_B * len(d) / avg))
+        raw[fid] = s
+    top = max(raw.values())
+    return {fid: (v / top if top > 0 else 0.0) for fid, v in raw.items()}
+
+
 class BitemporalGraph:
     def __init__(self, embedder, functional_predicates: set[str] | str | None = None,
                  weights: tuple[float, float, float] | None = None,
                  fusion: str | None = None,
                  relation_matching: str | None = None,
                  relation_sim: float | None = None,
-                 contradiction_judge=None):
+                 contradiction_judge=None,
+                 lexical: str | None = None):
         """functional_predicates selects which predicates admit only one true
         object at a time, and therefore trigger contradiction handling.
 
@@ -120,6 +154,14 @@ class BitemporalGraph:
         )
         self.weights: tuple[float, float, float] = weights or DEFAULT_RETRIEVAL_WEIGHTS
         self.fusion: str = fusion or DEFAULT_FUSION
+        # Lexical signal. "overlap" (published): share of the question's words
+        # found in the fact. "bm25": Okapi BM25 (Robertson and Zaragoza, 2009),
+        # which weights each shared word by its rarity across stored facts and
+        # corrects for fact length, divided by the best score for the question
+        # so it stays in [0, 1] like the other two signals.
+        self.lexical: str = lexical or "overlap"
+        if self.lexical not in ("overlap", "bm25"):
+            raise ValueError(f"unknown lexical signal {self.lexical!r}")
         # How contradiction detection decides two facts are about the same thing.
         # "exact" (published default): same subject (case-insensitive) and same
         # predicate string. "normalized": compare normalised keys
@@ -251,12 +293,17 @@ class BitemporalGraph:
         t_max = now if now is not None else max(f.t_valid_start for f in candidates)
         t_min = min(f.t_valid_start for f in candidates)
         span = max(1.0, t_max - t_min)
+        docs = {f.id: [t for t in re.findall(r"[a-z0-9]+", f.text.lower()) if len(t) > 2]
+                for f in candidates}
+        if self.lexical == "bm25":
+            lex = bm25_scores(q_tokens, docs)
+        else:
+            lex = {fid: len(q_tokens & set(toks)) / max(1, len(q_tokens)) for fid, toks in docs.items()}
         out = {}
         for f in candidates:
-            f_tokens = {t for t in re.findall(r"[a-z0-9]+", f.text.lower()) if len(t) > 2}
             out[f.id] = (
                 cosine(q_emb, f.embedding),
-                len(q_tokens & f_tokens) / max(1, len(q_tokens)),
+                lex[f.id],
                 (f.t_valid_start - t_min) / span,
             )
         return out
@@ -341,7 +388,8 @@ class BitemporalGraph:
     def snapshot(self) -> "BitemporalGraph":
         """Deep-ish copy so policies can be compared from an identical base graph."""
         g = BitemporalGraph(self.embedder, self.functional_predicates, self.weights, self.fusion,
-                            self.relation_matching, self.relation_sim, self.contradiction_judge)
+                            self.relation_matching, self.relation_sim, self.contradiction_judge,
+                            self.lexical)
         for f in self.facts.values():
             g.facts[f.id] = Fact.from_dict(f.to_dict())
         return g

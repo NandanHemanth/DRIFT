@@ -130,6 +130,7 @@ def answer_current(graph, policy, q: dict, provider, k: int, now: float, max_tok
 def run(cfg: dict, with_answers: bool, limit: int | None) -> None:
     from drift.memory import extraction
     extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    extraction.CONTEXT_LINES = int(cfg.get("extract_context_lines", 0))
     out_dir = Path(cfg["results_dir"])
     out_dir.mkdir(parents=True, exist_ok=True)
     embedder = MemoEmbedder(make_embedder(cfg.get("embedder", "hashing")))

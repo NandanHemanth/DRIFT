@@ -232,11 +232,19 @@ class OpenAICompatProvider(BaseProvider):
         # would be scored as if it were the reply. Callers grading answers can
         # turn the fallback off and get an honest empty answer instead.
         self.reasoning_fallback = True
+        # Replicate runs. 0 (default) leaves every cache key unchanged, so run 1
+        # and all earlier results are untouched. Any other value is folded into
+        # the key, so the same request is sent to the model again instead of
+        # being replayed from the cache: that is what makes run 2 and run 3 real
+        # repeats rather than copies of run 1.
+        self.replicate = 0
 
     def complete(self, prompt: str, system: str = "", temperature: float = 0.0, max_tokens: int = 1024) -> Completion:
         key_model = self.model
         if self.extra_body:
             key_model += "|" + json.dumps(self.extra_body, sort_keys=True)
+        if self.replicate:
+            key_model += f"|replicate={int(self.replicate)}"
         ckey = DiskCache.key(self.name, key_model, system + "\n" + prompt, temperature,
                              max_tokens=max_tokens)
         hit = self.cache.get(ckey)

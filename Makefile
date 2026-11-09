@@ -353,3 +353,46 @@ clean: ## Remove caches and offline results
 
 clean-all: clean ## Also remove every real-data result (destructive)
 	rm -rf artifacts/results/* artifacts/replays/* artifacts/dashboard.html
+
+# ---------------------------------------------------------------- v3 final campaign (three runs)
+# Configs: scripts/build_v3_configs.py -> configs/v3/{run1,run2,run3,once}/
+# Results: artifacts/results/v3/... . RUN selects the run (1, 2 or 3).
+RUN ?= 1
+V3 = configs/v3/run$(RUN)
+
+v3-configs: ## Write every v3 config (BM25, Zep-style extraction context, 3 runs)
+	$(PY) scripts/build_v3_configs.py
+
+v3-estimate: ## Dry run: exact answer counts, estimated cost and hours (free, no calls)
+	$(PY) scripts/estimate_v3.py
+
+v3-check: ## Ping every model in the v3 configs (a few cents)
+	-$(PY) scripts/check_providers.py --config $(V3)/main_mquake_t.json
+	-$(PY) scripts/check_providers.py --config $(V3)/rq4_normalized_mquake_t.json
+
+v3-preflight: ## Extract every session for run RUN with DeepSeek + context, report detection coverage
+	$(PY) scripts/preflight_final.py --configs $(V3)/main_mquake_t.json,$(V3)/main_factconsolidation.json,$(V3)/main_convomem.json
+
+v3-pilot: ## P0 and P2 on MQuAKE-T, all five models, run 1: checks cost and output before the campaign
+	$(PY) -m drift.runner --config configs/v3/run1/main_mquake_t.json --policies P0,P2
+
+v3-main: ## Main matrix (7 policies x 5 models) on all three benchmarks for run RUN
+	$(PY) -m drift.runner --config $(V3)/main_mquake_t.json
+	$(PY) -m drift.runner --config $(V3)/main_factconsolidation.json
+	$(PY) -m drift.runner --config $(V3)/main_convomem.json
+
+v3-rq4: ## RQ4 topologies on all three benchmarks for run RUN (TOPOLOGIES=shared,orchestrator to skip independent)
+	$(PY) -m drift.swarm --config $(V3)/rq4_normalized_mquake_t.json $(if $(TOPOLOGIES),--topologies $(TOPOLOGIES))
+	$(PY) -m drift.swarm --config $(V3)/rq4_normalized_factconsolidation.json $(if $(TOPOLOGIES),--topologies $(TOPOLOGIES))
+	$(PY) -m drift.swarm --config $(V3)/rq4_normalized_convomem.json $(if $(TOPOLOGIES),--topologies $(TOPOLOGIES))
+	$(PY) -m drift.swarm --config $(V3)/rq4_exact_mquake_t.json
+	$(PY) -m drift.swarm --config $(V3)/rq4_exact_factconsolidation.json
+	$(PY) -m drift.swarm --config $(V3)/rq4_exact_convomem.json
+	$(PY) -m drift.swarm --config $(V3)/rq4_llm_mquake_t.json
+	$(PY) -m drift.swarm --config $(V3)/rq4_llm_factconsolidation.json
+	$(PY) -m drift.swarm --config $(V3)/rq4_llm_convomem.json
+
+v3-once: ## Follow-up studies, run once: matching, retrieval weights, grace with history questions
+	for f in configs/v3/once/matching_*.json configs/v3/once/weights_*.json; do $(PY) -m drift.runner --config $$f || exit 1; done
+	$(PY) -m analysis.grace_history run --config configs/v3/once/grace_history.json --answers
+	$(PY) -m analysis.grace_history analyze --config configs/v3/once/grace_history.json

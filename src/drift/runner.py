@@ -91,6 +91,8 @@ def configure_provider(provider, spec: str, cfg: dict, answer_role: bool = False
         provider.extra_body = extras
     if answer_role and hasattr(provider, "reasoning_fallback"):
         provider.reasoning_fallback = False
+    if cfg.get("replicate") and hasattr(provider, "replicate"):
+        provider.replicate = int(cfg["replicate"])
     rpm = cfg.get("rpm_overrides", {}).get(spec.split(":", 1)[0])
     if rpm and hasattr(provider, "limiter"):
         from drift.providers import RateLimiter
@@ -110,7 +112,8 @@ def make_graph(embedder, cfg: dict, cache_dir: str):
                            weights=_retrieval_weights(cfg), fusion=_fusion(cfg),
                            relation_matching=cfg.get("relation_matching"),
                            relation_sim=cfg.get("relation_sim"),
-                           contradiction_judge=judge)
+                           contradiction_judge=judge,
+                           lexical=cfg.get("lexical"))
 
 
 def prompt_fingerprint() -> str:
@@ -296,6 +299,41 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
     return summary
 
 
+def _git_commit() -> str:
+    import subprocess
+    try:
+        out = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, timeout=5,
+                             cwd=Path(__file__).resolve().parents[2])
+        dirty = subprocess.run(["git", "status", "--porcelain", "src"], capture_output=True, text=True,
+                               timeout=5, cwd=Path(__file__).resolve().parents[2]).stdout.strip()
+        return out.stdout.strip() + ("+uncommitted-src-changes" if dirty else "")
+    except Exception:  # noqa: BLE001 - the record is best effort, never a reason to stop
+        return "unknown"
+
+
+def write_run_record(results_dir: Path, cfg: dict, config_path: str) -> None:
+    """Save what produced this results folder: the exact config, the code commit,
+    the replicate number and the start time. Appended, so resumed runs keep history."""
+    import datetime
+    rec_path = results_dir / "run_record.json"
+    history = json.loads(rec_path.read_text()) if rec_path.exists() else []
+    history.append({"started": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    "config_path": config_path, "commit": _git_commit(),
+                    "replicate": cfg.get("replicate", 0), "config": cfg})
+    rec_path.write_text(json.dumps(history, indent=1))
+
+
+def add_cell_cost(out_path: Path, usd: float, cfg: dict) -> None:
+    """Record the billed cost of the cell (uncached calls only) and its replicate."""
+    try:
+        data = json.loads(out_path.read_text())
+        data["summary"]["usd_billed"] = round(usd, 6)
+        data["summary"]["replicate"] = cfg.get("replicate", 0)
+        out_path.write_text(json.dumps(data))
+    except Exception:  # noqa: BLE001 - accounting must never break a run
+        pass
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="DRIFT experiment runner")
     parser.add_argument("--config", required=True)
@@ -321,11 +359,13 @@ def main() -> None:
         cfg["models"] = [m for m in cfg["models"] if any(x in m for x in subs)]
     budget = args.budget if args.budget is not None else cfg.get("budget_usd")
     extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    extraction.CONTEXT_LINES = int(cfg.get("extract_context_lines", 0))
     dataset = load_dataset(cfg["dataset"])
     results_dir = Path(cfg.get("results_dir", "results"))
     results_dir.mkdir(parents=True, exist_ok=True)
     if cfg.get("live"):
         print(f"live view -> open {results_dir / 'live.html'} in a browser")
+    write_run_record(results_dir, cfg, args.config)
 
     total_cells = len(cfg["policies"]) * len(cfg["models"])
     tracker = CampaignTracker(total_cells)
@@ -345,8 +385,10 @@ def main() -> None:
                 failures.append(cell)
                 continue
             print(f"[run ] {cell}")
+            spent_before = SpendLedger.total()
             try:
                 summary = run_cell(policy_spec, model_spec, dataset, cfg, out_path)
+                add_cell_cost(out_path, SpendLedger.total() - spent_before, cfg)
             except (RuntimeError, OSError) as e:
                 # One dead provider must not kill the campaign: log, move on,
                 # rerun later (completed work is cached, the cell will resume).

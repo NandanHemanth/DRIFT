@@ -50,7 +50,17 @@ def ingest_session(session: dict, graph: BitemporalGraph, policy: Policy,
                "provenance": "conversation" (optional)}
     Returns token accounting for the session.
     """
-    facts = extract_facts(extractor_provider, session["lines"])
+    # Zep-style context: the last CONTEXT_LINES lines this graph has already
+    # ingested, in order. Kept on the graph so every caller (single agent, every
+    # swarm topology, the grace study) gets exactly the sequence that memory saw,
+    # and it resets with each new graph (each conversation).
+    from drift.memory import extraction as _ex
+    recent = getattr(graph, "recent_lines", None)
+    if recent is None:
+        recent = graph.recent_lines = []
+    context = recent[-_ex.CONTEXT_LINES:] if _ex.CONTEXT_LINES > 0 else None
+    facts = extract_facts(extractor_provider, session["lines"], context)
+    recent.extend(session["lines"])
     written = 0
     for f in facts:
         if policy.on_write(f, graph):

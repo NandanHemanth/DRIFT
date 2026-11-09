@@ -83,3 +83,19 @@ def test_save_graph_snapshot_and_export():
     assert g["graph"]["god_nodes"]
     assert all("community" in n for n in g["nodes"])
     assert any(l["invalidated"] for l in g["links"])  # contradictions visible in export
+
+
+def test_multiple_answer_models_share_one_memory():
+    cfg = {**CFG, "answer_models": ["mock", "mock"], "save_graph": True}
+    for fn in (run_shared, run_orchestrator):
+        res = fn("P2", DATASET, cfg)
+        n_q = sum(len(c["questions"]) for c in DATASET["conversations"])
+        assert len(res["records"]) == 2 * n_q
+        assert set(res["summary"]["by_model"]) == {"mock"}
+        assert "graph_snapshots" in res
+
+
+def test_one_graph_per_conversation():
+    cfg = {**CFG, "save_graph": True}
+    res = run_shared("P0", DATASET, cfg)
+    assert set(res["graph_snapshots"]) == {c["id"] for c in DATASET["conversations"]}

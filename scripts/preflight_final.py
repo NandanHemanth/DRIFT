@@ -49,6 +49,20 @@ from drift.runner import (_build_providers, _functional_predicates, _rotated_fal
 
 CONFIGS = ["configs/final_mquake_t.json", "configs/final_factconsolidation.json",
            "configs/final_convomem.json"]
+# --configs a.json,b.json checks other configs (the v3 campaign has one set per run).
+for _i, _a in enumerate(sys.argv):
+    if _a == "--configs" and _i + 1 < len(sys.argv):
+        CONFIGS = sys.argv[_i + 1].split(",")
+
+
+def with_context(sessions: list[dict], n: int) -> list[tuple[list[str], list[str] | None]]:
+    """(lines, context) per session, exactly as ingest_session builds it for one
+    conversation: the last n lines already ingested, or None when n is 0."""
+    out, recent = [], []
+    for s in sessions:
+        out.append((s["lines"], recent[-n:] if n > 0 else None))
+        recent = recent + s["lines"]
+    return out
 
 
 def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
@@ -56,6 +70,7 @@ def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
     providers = [configure_provider(p, sp, cfg) for p, sp in
                  zip(_build_providers(specs, str(ROOT / cfg.get("cache_dir", ".drift_cache"))), specs)]
     _extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    _extraction.CONTEXT_LINES = int(cfg.get("extract_context_lines", 0))
     if OFFLINE:
         for p in providers:
             if hasattr(p, "max_retries"):
@@ -68,10 +83,11 @@ def build(dataset: dict, specs: list[str], cfg: dict, mode: str):
         ext = _rotated_fallback(providers, i)
         g = BitemporalGraph(emb, functional_predicates=_functional_predicates(cfg),
                             relation_matching=mode)
-        for s in convo["sessions"]:
+        for s, (lines, ctx) in zip(convo["sessions"],
+                                   with_context(convo["sessions"], _extraction.CONTEXT_LINES)):
             sessions += 1
             try:
-                fs = extract_facts(ext, s["lines"])
+                fs = extract_facts(ext, lines, ctx)
             except Exception as exc:  # noqa: BLE001 - a miss: the provider could not answer
                 misses += 1
                 if not OFFLINE:
@@ -92,10 +108,12 @@ def prefetch(dataset: dict, providers: list, workers: int = 8) -> None:
     the cache. Extraction of one session does not depend on any other, and each
     result is cached under exactly the key the runner will ask for."""
     from concurrent.futures import ThreadPoolExecutor, as_completed
-    jobs = [(i, s["lines"]) for i, c in enumerate(dataset["conversations"]) for s in c["sessions"]]
+    jobs = [(i, lines, ctx) for i, c in enumerate(dataset["conversations"])
+            for lines, ctx in with_context(c["sessions"], _extraction.CONTEXT_LINES)]
     done = 0
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        futs = [ex.submit(extract_facts, _rotated_fallback(providers, i), lines) for i, lines in jobs]
+        futs = [ex.submit(extract_facts, _rotated_fallback(providers, i), lines, ctx)
+                for i, lines, ctx in jobs]
         for f in as_completed(futs):
             f.result()          # a provider error stops the preflight with its message
             done += 1
@@ -167,7 +185,8 @@ def main() -> None:
         _extraction.FAILED_PARSES.update(first=0, after_retry=0)
         out.append(row)
         print(json.dumps(row))
-    (ROOT / "artifacts/preflight_final.json").write_text(json.dumps(out, indent=1))
+    tag = "" if CONFIGS[0].startswith("configs/final_") else "_" + Path(CONFIGS[0]).parent.name
+    (ROOT / f"artifacts/preflight_final{tag}.json").write_text(json.dumps(out, indent=1))
     bad = [r for r in out if r["extraction_misses"]]
     print("\nOK: every extraction is cached" if not bad else
           f"\nWARNING: {sum(r['extraction_misses'] for r in bad)} sessions have no extraction"

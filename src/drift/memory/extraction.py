@@ -22,6 +22,25 @@ TEXT:
 {text}
 """
 
+# Zep-style context (Rasmussen et al., 2025, Sec. 2.2.1): the extractor also sees
+# the previous few messages so it can resolve references ("let's do Saturday
+# instead"), but facts are extracted only from the current text. Context comes
+# first so the TEXT section stays last, as the offline MockProvider expects.
+EXTRACTION_PROMPT_WITH_CONTEXT = """TASK:EXTRACT
+Extract atomic facts from the conversation snippet under TEXT.
+The PREVIOUS_MESSAGES are earlier lines from the same conversation. Use them only
+to understand references in TEXT. Do not extract facts that appear only in PREVIOUS_MESSAGES.
+PREVIOUS_MESSAGES:
+{context}
+TEXT:
+{text}
+"""
+
+# Number of earlier lines given as context. 0 keeps the published behaviour and
+# the exact prompts (and cache keys) of earlier runs. The runner sets this from
+# the config key "extract_context_lines"; Zep uses 4.
+CONTEXT_LINES: int = 0
+
 PREDICATE_HINTS = [
     (re.compile(r"\b(?:i|he|she|they)\s+(?:just\s+)?moved to\s+(?P<obj>[A-Z][\w\s]+?)(?:[.,!]|$)", re.I), "lives_in"),
     (re.compile(r"\blives? in\s+(?P<obj>[A-Z][\w\s]+?)(?:[.,!]|$)", re.I), "lives_in"),
@@ -77,10 +96,21 @@ def _parse_list(text: str):
     return raw if isinstance(raw, list) else None
 
 
-def extract_facts(provider, session_lines: list[str]) -> list[dict]:
-    """Extract facts from a list of 'Speaker: utterance' lines."""
+def build_prompt(session_lines: list[str], context_lines: list[str] | None = None) -> str:
+    """The extraction prompt; identical to the published one when there is no context."""
     text = "\n".join(session_lines)
-    prompt = EXTRACTION_PROMPT.format(text=text)
+    if context_lines:
+        return EXTRACTION_PROMPT_WITH_CONTEXT.format(context="\n".join(context_lines), text=text)
+    return EXTRACTION_PROMPT.format(text=text)
+
+
+def extract_facts(provider, session_lines: list[str], context_lines: list[str] | None = None) -> list[dict]:
+    """Extract facts from a list of 'Speaker: utterance' lines.
+
+    context_lines, if given, are earlier messages shown for reference only.
+    The regex upgrade pass below reads session_lines only, never the context.
+    """
+    prompt = build_prompt(session_lines, context_lines)
     completion = provider.complete(prompt, system=EXTRACTION_SYSTEM)
     raw = _parse_list(completion.text)
     if raw is None:

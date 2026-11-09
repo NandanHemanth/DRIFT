@@ -35,7 +35,8 @@ from drift.pipeline import answer_question, ingest_session, judge_answer
 from drift.policies import make_policy
 from drift.progress import CampaignTracker, ProgressBar
 from drift.providers import FallbackProvider, SpendLedger, make_provider
-from drift.runner import configure_provider, load_dataset, make_graph, mentions_old, staleness_hit
+from drift.runner import (add_cell_cost, configure_provider, load_dataset, make_graph, mentions_old,
+                          staleness_hit, write_run_record)
 
 ROUTER_SYSTEM = (
     "You route a question to the best specialist. Reply with exactly one worker id."
@@ -169,162 +170,218 @@ def _answer_and_judge(q: dict, graph: BitemporalGraph, policy, provider,
 
 
 # ------------------------------------------------------------------ topologies
+#
+# Every topology builds memory once and then answers with every model in
+# cfg["answer_models"] (or the single cfg["answer_model"]). Extraction and
+# maintenance never depend on the answer model, so all answer models read the
+# identical memory and only the reader differs, as in the single-agent matrix.
+#
+# Memory is built per conversation: ConvoMem has ten unrelated users, and one
+# graph across them would let one user's "my call" contradict another's. The
+# single-conversation benchmarks (MQuAKE-T, FactConsolidation) are unchanged.
+
+def _answer_models(cfg: dict) -> list[str]:
+    return cfg.get("answer_models") or [cfg["answer_model"]]
+
+
+def _by_conversation(sessions: list[dict], questions: list[dict]):
+    """(conversation id, its sessions in time order, its questions), in first-seen order."""
+    order, ss, qs = [], {}, {}
+    for s in sessions:
+        c = s["conversation"]
+        if c not in ss:
+            order.append(c)
+            ss[c], qs[c] = [], []
+        ss[c].append(s)
+    for q in questions:
+        qs.setdefault(q["conversation"], []).append(q)
+    return [(c, ss[c], qs.get(c, [])) for c in order]
+
+
+def _per_model_summary(records: list[dict]) -> dict:
+    by = {}
+    for r in records:
+        by.setdefault(r["answer_model"], []).append(r)
+    return {m: summarize(rs) for m, rs in by.items()}
+
 
 def run_shared(policy_spec: str, dataset: dict, cfg: dict) -> dict:
-    """N writers -> one graph -> one reader. Contention is the variable."""
+    """N writers -> one graph per conversation -> each answer model reads it."""
     n_agents = cfg.get("n_agents", 3)
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
     extractors = [configure_provider(make_provider(m, cache), m, cfg)
                   for m in _cycle(cfg["extract_models"], n_agents)]
-    answerer = _answerer(cfg["answer_model"], cfg, cache)
+    models = _answer_models(cfg)
+    answerers = {m: _answerer(m, cfg, cache) for m in models}
     maint = _maintenance(cfg, cache)
     judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
-    policy = make_policy(policy_spec)
-    graph = make_graph(embedder, cfg, cache)
-
-    # One bar spans ingestion + Q&A so it moves from the first session
-    # onward instead of sitting silent through the whole extraction pass.
-    bar = ProgressBar(len(sessions) + len(questions), label="cell")
-    memory_curve, t_last = [], 0.0
-    for i, session in enumerate(sessions):
-        agent_id = i % n_agents  # round-robin: agents take turns observing the world
-        tagged = {**session, "provenance": f"agent_{agent_id}"}
-        ingest_session(tagged, graph, policy, extractors[agent_id], maint)
-        t_last = max(t_last, session["time"])
-        memory_curve.append({"step": i, "agent": agent_id, "time": session["time"],
-                             **graph.stats()})
-        bar.update(stats=f"ingesting session {i + 1}/{len(sessions)} (agent {agent_id})")
-
-    records = []
-    for q in questions:
-        records.append(_answer_and_judge(q, graph, policy, answerer, judge,
-                                         cfg.get("retrieval_k", 8), t_last))
-        n_so_far = len(records)
-        acc = sum(r["correct"] for r in records) / n_so_far
-        stale = sum(r["stale"] for r in records) / n_so_far
-        bar.update(stats=f"acc={acc:.3f} stale={stale:.3f}")
+    step_agent = {id(s): i % n_agents for i, s in enumerate(sessions)}  # round-robin over the world
+    bar = ProgressBar(len(sessions) + len(questions) * len(models), label="cell")
+    memory_curve, records, snapshots = [], [], {}
+    inv = {"invalidations": 0, "cross_writer_invalidations": 0}
+    final_mem = {}
+    judgements = 0
+    for convo, c_sessions, c_questions in _by_conversation(sessions, questions):
+        policy = make_policy(policy_spec)
+        graph = make_graph(embedder, cfg, cache)
+        t_last = 0.0
+        for session in c_sessions:
+            agent_id = step_agent[id(session)]
+            ingest_session({**session, "provenance": f"agent_{agent_id}"}, graph, policy,
+                           extractors[agent_id], maint)
+            t_last = max(t_last, session["time"])
+            memory_curve.append({"conversation": convo, "agent": agent_id, "time": session["time"],
+                                 **graph.stats()})
+            bar.update(stats=f"ingesting {convo} (agent {agent_id})")
+        for m in models:
+            for q in c_questions:
+                records.append({**_answer_and_judge(q, graph, policy, answerers[m], judge,
+                                                    cfg.get("retrieval_k", 8), t_last),
+                                "answer_model": m})
+                bar.update(stats=f"{m.split('/')[-1]} answering")
+        for k, v in cross_writer_invalidations(graph).items():
+            inv[k] += v
+        judgements += getattr(graph, "llm_judgements", 0)
+        for k, v in graph.stats().items():
+            final_mem[k] = final_mem.get(k, 0) + v
+        snapshots[convo] = [f.to_dict() for f in graph.facts.values()]
     bar.close()
-    result = {"summary": {**summarize(records), "n_agents": n_agents,
-                          **cross_writer_invalidations(graph),
-                          "contradiction_judgements": getattr(graph, "llm_judgements", 0),
-                          "final_memory": graph.stats()},
+    result = {"summary": {**summarize(records), "n_agents": n_agents, **inv,
+                          "contradiction_judgements": judgements, "final_memory": final_mem,
+                          "by_model": _per_model_summary(records)},
               "records": records, "memory_curve": memory_curve}
     if cfg.get("save_graph"):
-        result["graph_snapshot"] = [f.to_dict() for f in graph.facts.values()]
+        result["graph_snapshots"] = snapshots
+        # flat list kept for readers written before per-conversation snapshots
+        result["graph_snapshot"] = [f for fs in snapshots.values() for f in fs]
     return result
 
 
 def run_independent(policy_spec: str, dataset: dict, cfg: dict) -> dict:
-    """N private graphs, each agent sees a seeded random subset of sessions."""
-    n_agents = cfg.get("n_agents", 3)
+    """N private graphs; each agent sees a seeded random subset of sessions."""
+    n_agents = cfg.get("independent_agents", cfg.get("n_agents", 3))
     coverage = cfg.get("coverage", 0.8)  # fraction of sessions each agent observes
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
     extractor = _single_extractor(cfg, cache)
-    answerer = _answerer(cfg["answer_model"], cfg, cache)
+    models = _answer_models(cfg)
+    answerers = {m: _answerer(m, cfg, cache) for m in models}
     maint = _maintenance(cfg, cache)
     judge = _make_judge(cfg, cache)
 
     sessions, questions = global_timeline(dataset)
-    # Precompute each agent's observed subset up front (seeded, deterministic)
-    # so the bar's total -- and therefore its ETA -- is exact from the start,
-    # rather than only covering the Q&A phase once ingestion has already
-    # silently finished.
-    observed_per_agent = []
+    # Each agent's observed subset is drawn once over the global timeline, seeded
+    # per agent, exactly as before; it is then split by conversation.
+    observed_ids = []
     for a in range(n_agents):
         rng = random.Random(cfg.get("seed", 42) + a)
-        observed_per_agent.append([s for s in sessions if rng.random() < coverage])
-    total_ingest = sum(len(o) for o in observed_per_agent)
-    bar = ProgressBar(total_ingest + n_agents * len(questions), label="cell")
+        observed_ids.append({id(s) for s in sessions if rng.random() < coverage})
+    groups = _by_conversation(sessions, questions)
+    total_ingest = sum(len(o) for o in observed_ids)
+    bar = ProgressBar(total_ingest + n_agents * len(questions) * len(models), label="cell")
 
-    per_agent, all_records = [], []
+    per_agent, all_records, snapshots = [], [], {}
     for a in range(n_agents):
-        observed = observed_per_agent[a]
-        policy = make_policy(policy_spec)
-        graph = make_graph(embedder, cfg, cache)
-        t_last = 0.0
-        for s_idx, session in enumerate(observed):  # already time-ordered
-            ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor, maint)
-            t_last = max(t_last, session["time"])
-            bar.update(stats=f"ingesting agent {a}, session {s_idx + 1}/{len(observed)}")
-        records = []
-        for q in questions:
-            records.append(_answer_and_judge(q, graph, policy, answerer, judge,
-                                             cfg.get("retrieval_k", 8), t_last))
-            n_so_far = len(records)
-            acc = sum(r["correct"] for r in records) / n_so_far
-            stale = sum(r["stale"] for r in records) / n_so_far
-            bar.update(stats=f"agent={a} acc={acc:.3f} stale={stale:.3f}")
-        s = summarize(records)
-        per_agent.append({"agent": a, "sessions_observed": len(observed),
-                          **s, "final_memory": graph.stats()})
-        all_records.extend([{**r, "agent": a} for r in records])
+        agent_records, mem, n_obs = [], {}, 0
+        for convo, c_sessions, c_questions in groups:
+            policy = make_policy(policy_spec)
+            graph = make_graph(embedder, cfg, cache)
+            t_last = 0.0
+            for session in c_sessions:
+                if id(session) not in observed_ids[a]:
+                    continue
+                n_obs += 1
+                ingest_session({**session, "provenance": f"agent_{a}"}, graph, policy, extractor, maint)
+                t_last = max(t_last, session["time"])
+                bar.update(stats=f"ingesting agent {a}, {convo}")
+            for m in models:
+                for q in c_questions:
+                    agent_records.append({**_answer_and_judge(q, graph, policy, answerers[m], judge,
+                                                              cfg.get("retrieval_k", 8), t_last),
+                                          "answer_model": m, "agent": a})
+                    bar.update(stats=f"agent={a} {m.split('/')[-1]}")
+            for k, v in graph.stats().items():
+                mem[k] = mem.get(k, 0) + v
+            snapshots[f"agent_{a}|{convo}"] = [f.to_dict() for f in graph.facts.values()]
+        per_agent.append({"agent": a, "sessions_observed": n_obs, **summarize(agent_records),
+                          "by_model": _per_model_summary(agent_records), "final_memory": mem})
+        all_records.extend(agent_records)
     bar.close()
 
     accs = [a["accuracy"] for a in per_agent]
     stales = [a["staleness_rate"] for a in per_agent]
-    return {"summary": {**summarize(all_records), "n_agents": n_agents,
-                        "coverage": coverage,
-                        "accuracy_mean": _mean(accs), "accuracy_std": _std(accs),
-                        "staleness_mean": _mean(stales), "staleness_std": _std(stales)},
-            "per_agent": per_agent, "records": all_records}
+    result = {"summary": {**summarize(all_records), "n_agents": n_agents, "coverage": coverage,
+                          "accuracy_mean": _mean(accs), "accuracy_std": _std(accs),
+                          "staleness_mean": _mean(stales), "staleness_std": _std(stales),
+                          "by_model": _per_model_summary(all_records)},
+              "per_agent": per_agent, "records": all_records}
+    if cfg.get("save_graph"):
+        result["graph_snapshots"] = snapshots
+        # flat list kept for readers written before per-conversation snapshots
+        result["graph_snapshot"] = [f for fs in snapshots.values() for f in fs]
+    return result
 
 
 def run_orchestrator(policy_spec: str, dataset: dict, cfg: dict) -> dict:
-    """Shared graph; router LLM assigns each question to a specialist worker."""
+    """Shared graph per conversation; a fixed router assigns each question to one
+    of three specialist workers, all played by the answer model under test."""
     embedder = make_embedder(cfg.get("embedder", "hashing"))
     cache = cfg.get("cache_dir", ".drift_cache")
     extractor = _single_extractor(cfg, cache)
     judge = _make_judge(cfg, cache)
-    router = configure_provider(make_provider(cfg.get("router_model", cfg["answer_model"]), cache),
-                                cfg.get("router_model", cfg["answer_model"]), cfg)
+    models = _answer_models(cfg)
+    router_spec = cfg.get("router_model", models[0])
+    router = configure_provider(make_provider(router_spec, cache), router_spec, cfg)
     maint = _maintenance(cfg, cache)
-
-    workers = cfg.get("workers", [
-        {"id": "w0", "specialty": "current state of people (where they live/work now)",
-         "model": cfg["answer_model"]},
-        {"id": "w1", "specialty": "old memories and long-ago events",
-         "model": cfg["answer_model"]},
-        {"id": "w2", "specialty": "recent events and updates",
-         "model": cfg["answer_model"]},
+    specialties = ([(w["id"], w["specialty"]) for w in cfg["workers"]] if cfg.get("workers")
+                   else None) or cfg.get("worker_specialties", [
+        ("w0", "current state of people (where they live/work now)"),
+        ("w1", "old memories and long-ago events"),
+        ("w2", "recent events and updates"),
     ])
-    worker_providers = {w["id"]: _answerer(w["model"], cfg, cache) for w in workers}
-    worker_desc = "\n".join(f"{w['id']}: {w['specialty']}" for w in workers)
+    worker_desc = "\n".join(f"{wid}: {spec}" for wid, spec in specialties)
+    answerers = {m: _answerer(m, cfg, cache) for m in models}
 
     sessions, questions = global_timeline(dataset)
-    policy = make_policy(policy_spec)
-    graph = make_graph(embedder, cfg, cache)
-    t_last = 0.0
-    # One bar spans ingestion + Q&A so it moves from the first session
-    # onward instead of sitting silent through the whole extraction pass.
-    bar = ProgressBar(len(sessions) + len(questions), label="cell")
-    for s_idx, session in enumerate(sessions):
-        ingest_session({**session, "provenance": "ingestor"}, graph, policy, extractor, maint)
-        t_last = max(t_last, session["time"])
-        bar.update(stats=f"ingesting session {s_idx + 1}/{len(sessions)}")
-
-    records, routing = [], {w["id"]: 0 for w in workers}
-    for q in questions:
-        route = router.complete(
-            ROUTER_PROMPT.format(workers=worker_desc, question=q["question"]),
-            system=ROUTER_SYSTEM, max_tokens=8).text.strip().lower()
-        wid = next((w["id"] for w in workers if w["id"] in route), workers[0]["id"])
-        routing[wid] += 1
-        rec = _answer_and_judge(q, graph, policy, worker_providers[wid], judge,
-                                cfg.get("retrieval_k", 8), t_last)
-        records.append({**rec, "worker": wid})
-        n_so_far = len(records)
-        acc = sum(r["correct"] for r in records) / n_so_far
-        stale = sum(r["stale"] for r in records) / n_so_far
-        bar.update(stats=f"acc={acc:.3f} stale={stale:.3f}")
+    bar = ProgressBar(len(sessions) + len(questions) * len(models), label="cell")
+    records, routing, snapshots, final_mem = [], {wid: 0 for wid, _ in specialties}, {}, {}
+    for convo, c_sessions, c_questions in _by_conversation(sessions, questions):
+        policy = make_policy(policy_spec)
+        graph = make_graph(embedder, cfg, cache)
+        t_last = 0.0
+        for session in c_sessions:
+            ingest_session({**session, "provenance": "ingestor"}, graph, policy, extractor, maint)
+            t_last = max(t_last, session["time"])
+            bar.update(stats=f"ingesting {convo}")
+        # The router is fixed and model-independent, so every answer model gets
+        # the same routing; only the worker that answers differs.
+        routes = {}
+        for q in c_questions:
+            route = router.complete(ROUTER_PROMPT.format(workers=worker_desc, question=q["question"]),
+                                    system=ROUTER_SYSTEM, max_tokens=8).text.strip().lower()
+            routes[q["question"]] = next((wid for wid, _ in specialties if wid in route), specialties[0][0])
+            routing[routes[q["question"]]] += 1
+        for m in models:
+            for q in c_questions:
+                rec = _answer_and_judge(q, graph, policy, answerers[m], judge,
+                                        cfg.get("retrieval_k", 8), t_last)
+                records.append({**rec, "worker": routes[q["question"]], "answer_model": m})
+                bar.update(stats=f"{m.split('/')[-1]} answering")
+        for k, v in graph.stats().items():
+            final_mem[k] = final_mem.get(k, 0) + v
+        snapshots[convo] = [f.to_dict() for f in graph.facts.values()]
     bar.close()
-
-    return {"summary": {**summarize(records), "routing": routing,
-                        "final_memory": graph.stats()},
-            "records": records}
+    result = {"summary": {**summarize(records), "routing": routing, "final_memory": final_mem,
+                          "by_model": _per_model_summary(records)},
+              "records": records}
+    if cfg.get("save_graph"):
+        result["graph_snapshots"] = snapshots
+        # flat list kept for readers written before per-conversation snapshots
+        result["graph_snapshot"] = [f for fs in snapshots.values() for f in fs]
+    return result
 
 
 TOPOLOGIES = {"shared": run_shared, "independent": run_independent,
@@ -366,11 +423,13 @@ def main() -> None:
     budget = args.budget if args.budget is not None else cfg.get("budget_usd")
     from drift.memory import extraction
     extraction.RETRY_MAX_TOKENS = cfg.get("extract_retry_tokens")
+    extraction.CONTEXT_LINES = int(cfg.get("extract_context_lines", 0))
     for spec, n in cfg.get("answer_max_tokens", {}).items():
         _ANSWER_MAX_TOKENS[spec.split(":", 1)[1]] = n
     dataset = load_dataset(cfg["dataset"])
     results_dir = Path(cfg.get("results_dir", "results/swarm"))
     results_dir.mkdir(parents=True, exist_ok=True)
+    write_run_record(results_dir, cfg, args.config)
 
     topologies = cfg.get("topologies", ["shared", "independent", "orchestrator"])
     total_cells = len(topologies) * len(cfg["policies"])
@@ -391,6 +450,7 @@ def main() -> None:
                 continue
             print(f"[run ] {cell}")
             t0 = time.time()
+            spent_before = SpendLedger.total()
             try:
                 result = TOPOLOGIES[topology](policy_spec, dataset, cfg)
             except (RuntimeError, OSError) as e:
@@ -401,6 +461,7 @@ def main() -> None:
                                       "relation_matching": cfg.get("relation_matching", "exact"),
                                       "embedder": cfg.get("embedder", "hashing")})
             out_path.write_text(json.dumps(result, indent=1))
+            add_cell_cost(out_path, SpendLedger.total() - spent_before, cfg)
             s = result["summary"]
             print(f"       acc={s['accuracy']:.3f} stale={s['staleness_rate']:.3f} "
                   f"({s['wall_seconds']}s)")

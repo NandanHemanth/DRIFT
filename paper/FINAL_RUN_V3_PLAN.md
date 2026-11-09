@@ -56,23 +56,23 @@ Everything that is not listed here stays exactly as in the October final run: th
 
 ---
 
-## 3. Cost estimate (list prices; billed was about 17% lower last time)
+## 3. Cost and time (from `make v3-estimate`, which counts every answer exactly)
 
-| Item | Per run | Runs | Total |
+The first estimate ($85) undercounted RQ4: with all 5 answer models, every RQ4 cell is answered 5 times, and the independent topology answers once per agent. Corrected, list prices (October billed about 17% below list), one process at a time:
+
+| Study | Answers | List USD | Hours |
 |---|---|---|---|
-| Main matrix, answers + judge | $8.20 | 3 | $24.60 |
-| Extraction with context (DeepSeek, ~276 sessions × 3 benchmarks) | ~$0.30 | 3 | ~$0.90 |
-| RQ4, 5 models × 3 benchmarks (~175 cells) | ~$13 | 3 | ~$39 |
-| Grace with history questions (105 cells, doubled questions) | ~$16 | 1 | ~$16 |
-| Matching ablation (30 cells + LLM checks) | ~$3 | 1 | ~$3 |
-| Weights check: 0.6/0.3/0.1, two sweep winners, RRF, recency = 0 (25 P2 cells) | ~$2 | 1 | ~$2 |
-| **Recommended scope total** | | | **~$85** |
-| Cheaper option: RQ4 on MQuAKE-T only (3 runs) | | | saves ~$26 → **~$59** |
-| Minimum: main matrix × 3, everything else once with 2 small models | | | **~$32** |
+| Main matrix, per run | 10,360 | $9.3 | 4.3 |
+| RQ4, per run (shared ×3 matching modes, independent with 3 agents, orchestrator) | 50,320 | $47.3 | 21 |
+| Follow-ups once (grace with history, matching, weights incl. RRF and no recency) | 32,370 | $29.6 | 13.5 |
 
-A hard budget stop is set per run, and a dry run prints the exact number of calls before anything is spent. **[confirm budget]**
+| Option | List USD | Hours (sequential) |
+|---|---|---|
+| A. Main ×3, RQ4 ×3, follow-ups once | ~$200 | ~89 |
+| B. As A, but the independent topology only in run 1 | ~$150 | ~70 |
+| C. Main ×3, RQ4 once, follow-ups once | ~$105 | ~52 |
 
----
+Running two or three studies at the same time in separate terminals cuts the wall-clock time roughly in proportion.
 
 ## 4. RQ4: recommendation from the related work
 
@@ -181,12 +181,27 @@ Domains: personal assistants, CRM and customer records, enterprise knowledge bas
   - mean ± SD and flip rate across runs.
 - **Judge validation against humans:** you grade a blind sample of 150 to 200 answers, and we report agreement and κ. This closes the gap identified in `RESEARCH_STANDARDS.md`.
 
+### 6.5a Why each statistic, with its reference
+
+| Statistic | Used for | Why this one | Reference |
+|---|---|---|---|
+| Exact McNemar test | P2 vs another policy on the same questions | paired yes/no outcomes; uses only questions where the two disagree | McNemar (1947); recommended for comparing classifiers by Dietterich (1998) |
+| Holm correction | many comparisons at once | keeps the chance of any false positive at 5%, less conservative than Bonferroni | Holm (1979) |
+| Paired bootstrap 95% CI | size of every difference | no distribution assumption; standard in NLP evaluation | Efron and Tibshirani (1993); Dror et al. (2018) |
+| Mean ± SD over runs, flip rate | stability across the 3 runs | separates model randomness from question sampling | Mem0 reports mean ± 1 SD over 10 runs (Chhikara et al., 2025) |
+| Kendall's τ, exact permutation p | RQ4 ranking agreement | the Benchmark Agreement Testing standard; reliable with few items and ties | Kendall (1938); Perlitz et al. (2024) |
+| Spearman's ρ | RQ4, alongside τ | weights large rank moves more | Spearman (1904) |
+| Pearson's r | RQ4, context only | agreement of the scores themselves | Pearson (1896); Perlitz et al. (2024) |
+| Cohen's κ | judge vs reference grader | agreement beyond chance | Cohen (1960); Landis and Koch (1977) for the bands |
+| Judge vs human agreement | trusting the LLM judge | the field validates judges against people | LongMemEval (Wu et al., 2025); STALE (Chao et al., 2026) |
+
 ### 6.6 Deliverables after the run
 
 - **Report:** `FINAL_REPORT_V3.md`, covering every result, each with its theory-vs-measurement check, plus the run-to-run analysis.
 - **Figures and tables:** all to the standards above; CSVs for every table.
 - **Dashboard:** updated interactive dashboard.
 - **Run record:** what ran, what failed and was retried, cost per study.
+- **RQ4 deep analysis:** every topology × matching mode × policy × model × benchmark × run, with ranking agreement (τ, ρ, r), the P2-vs-P0 effect per topology, stale propagation, contradiction persistence and cross-writer closures, each with tables and figures to the same standards.
 
 ---
 
