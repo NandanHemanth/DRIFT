@@ -1,0 +1,4 @@
+benchmark,facts,pruned by P4,pruned facts holding a current answer,pruned facts holding an old answer
+MQuAKE-T,382,3,2,1
+FactConsolidation,380,65,49,10
+ConvoMem,603,120,8,8

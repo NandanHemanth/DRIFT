@@ -1,0 +1,16 @@
+benchmark,model,mentions old value,stale (asserts old value)
+MQuAKE-T,Claude Sonnet 5.5,0.781,0.010
+MQuAKE-T,GPT-6.1 Sol,0.010,0.010
+MQuAKE-T,Gemini 3.8 Flash,0.021,0.010
+MQuAKE-T,Llama 3.1 8B,0.229,0.208
+MQuAKE-T,Qwen3 14B,0.031,0.021
+FactConsolidation,Claude Sonnet 5.5,0.510,0.000
+FactConsolidation,GPT-6.1 Sol,0.010,0.000
+FactConsolidation,Gemini 3.8 Flash,0.130,0.000
+FactConsolidation,Llama 3.1 8B,0.380,0.340
+FactConsolidation,Qwen3 14B,0.150,0.020
+ConvoMem,Claude Sonnet 5.5,0.230,0.190
+ConvoMem,GPT-6.1 Sol,0.170,0.170
+ConvoMem,Gemini 3.8 Flash,0.140,0.140
+ConvoMem,Llama 3.1 8B,0.110,0.110
+ConvoMem,Qwen3 14B,0.170,0.160

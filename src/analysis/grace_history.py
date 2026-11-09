@@ -188,10 +188,10 @@ def run(cfg: dict, with_answers: bool, limit: int | None) -> None:
                     hq = HISTORY_TEMPLATE.format(q=q["question"])
                     return {"question": q["question"],
                             "current_answer": cur, "history_answer": his,
-                            "current_correct": judge_answer(q["question"], q["answer"], cur,
-                                                            judge)["correct"],
-                            "history_correct": judge_answer(hq, q["stale_answer"], his,
-                                                            judge)["correct"]}
+                            "current_correct": judge_answer(q["question"], q["answer"], cur, judge,
+                                                            stale_answer=q["stale_answer"])["correct"],
+                            "history_correct": judge_answer(hq, q["stale_answer"], his, judge,
+                                                            stale_answer=q.get("current_answer"))["correct"]}
 
                 items = [(gr, po, t, q) for gr, po, t, qs in built for q in qs]
                 from concurrent.futures import ThreadPoolExecutor

@@ -1,0 +1,4 @@
+benchmark,questions,current value stored,old value stored
+MQuAKE-T,96,1.00,1.00
+FactConsolidation,65,1.00,1.00
+ConvoMem,100,0.30,0.38

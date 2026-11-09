@@ -1,0 +1,16 @@
+benchmark,model,tier,accuracy NOMEM,accuracy P0,accuracy P2,P2 accuracy gain,P2 staleness reduction,"USD per 1,000 correct answers (P2)"
+MQuAKE-T,Claude Sonnet 5.5,frontier,0.000,0.979,0.990,+0.010,+0.010,1.73
+MQuAKE-T,GPT-6.1 Sol,frontier,0.000,0.990,0.990,+0.000,+0.000,1.10
+MQuAKE-T,Gemini 3.8 Flash,mid,0.000,0.990,0.990,+0.000,+0.000,0.47
+MQuAKE-T,Llama 3.1 8B,small,0.000,0.771,0.979,+0.208,+0.198,0.01
+MQuAKE-T,Qwen3 14B,small,0.031,0.948,0.979,+0.031,+0.021,0.12
+FactConsolidation,Claude Sonnet 5.5,frontier,0.000,0.810,0.860,+0.050,+0.000,2.10
+FactConsolidation,GPT-6.1 Sol,frontier,0.000,0.850,0.860,+0.010,+0.000,1.28
+FactConsolidation,Gemini 3.8 Flash,mid,0.000,0.850,0.860,+0.010,+0.000,0.60
+FactConsolidation,Llama 3.1 8B,small,0.000,0.290,0.620,+0.330,+0.280,0.02
+FactConsolidation,Qwen3 14B,small,0.010,0.570,0.770,+0.200,+0.020,0.21
+ConvoMem,Claude Sonnet 5.5,frontier,0.000,0.120,0.070,-0.050,+0.050,27.00
+ConvoMem,GPT-6.1 Sol,frontier,0.000,0.120,0.080,-0.040,+0.050,14.51
+ConvoMem,Gemini 3.8 Flash,mid,0.000,0.110,0.080,-0.030,+0.030,7.68
+ConvoMem,Llama 3.1 8B,small,0.000,0.090,0.050,-0.040,+0.020,0.22
+ConvoMem,Qwen3 14B,small,0.000,0.110,0.080,-0.030,+0.050,1.63

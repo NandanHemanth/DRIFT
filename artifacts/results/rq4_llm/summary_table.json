@@ -1,0 +1,163 @@
+[
+ {
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 114.45833333333333,
+  "n_agents": 5,
+  "invalidations": 74,
+  "cross_writer_invalidations": 60,
+  "contradiction_judgements": 173,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 364,
+   "invalidated_active": 74,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "NOMEM",
+  "wall_seconds": 90.9,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8645833333333334,
+  "mean_f1": 0.818808621933622,
+  "staleness_rate": 0.13541666666666666,
+  "mean_tokens_per_q": 759.3541666666666,
+  "n_agents": 5,
+  "invalidations": 74,
+  "cross_writer_invalidations": 60,
+  "contradiction_judgements": 173,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 364,
+   "invalidated_active": 74,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P0",
+  "wall_seconds": 16.1,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8020833333333334,
+  "mean_f1": 0.7930555555555556,
+  "staleness_rate": 0.041666666666666664,
+  "mean_tokens_per_q": 744.1145833333334,
+  "n_agents": 5,
+  "invalidations": 62,
+  "cross_writer_invalidations": 48,
+  "contradiction_judgements": 161,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 240,
+   "invalidated_active": 37,
+   "pruned": 124,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P1:ttl_days=20",
+  "wall_seconds": 29.8,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8645833333333334,
+  "mean_f1": 0.8576388888888888,
+  "staleness_rate": 0.09375,
+  "mean_tokens_per_q": 636.3645833333334,
+  "n_agents": 5,
+  "invalidations": 74,
+  "cross_writer_invalidations": 60,
+  "contradiction_judgements": 173,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 329,
+   "invalidated_active": 39,
+   "pruned": 35,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P2",
+  "wall_seconds": 72.0,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.6979166666666666,
+  "mean_f1": 0.7229166666666668,
+  "staleness_rate": 0.22916666666666666,
+  "mean_tokens_per_q": 778.2291666666666,
+  "n_agents": 5,
+  "invalidations": 53,
+  "cross_writer_invalidations": 44,
+  "contradiction_judgements": 142,
+  "final_memory": {
+   "total_facts": 333,
+   "active_facts": 333,
+   "invalidated_active": 53,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "topology": "shared",
+  "policy": "P3",
+  "wall_seconds": 37.5,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8541666666666666,
+  "mean_f1": 0.8083919552669553,
+  "staleness_rate": 0.14583333333333334,
+  "mean_tokens_per_q": 757.2083333333334,
+  "n_agents": 5,
+  "invalidations": 74,
+  "cross_writer_invalidations": 60,
+  "contradiction_judgements": 173,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 361,
+   "invalidated_active": 73,
+   "pruned": 3,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P4",
+  "wall_seconds": 109.5,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.78125,
+  "mean_f1": 0.7566979316979316,
+  "staleness_rate": 0.21875,
+  "mean_tokens_per_q": 749.5729166666666,
+  "n_agents": 5,
+  "invalidations": 74,
+  "cross_writer_invalidations": 60,
+  "contradiction_judgements": 173,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 352,
+   "invalidated_active": 70,
+   "pruned": 12,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P5",
+  "wall_seconds": 148.1,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text"
+ }
+]

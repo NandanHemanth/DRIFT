@@ -177,9 +177,17 @@ def enrich(cell: dict, questions: dict) -> None:
         r["_stale_answer"] = stale
         # Recompute from the answer text, so every cell (including any written
         # before the current-value rule) uses one definition of staleness.
+        from drift.pipeline import is_abstention, verbatim_correct
         from drift.runner import mentions_old, staleness_hit
         r["stale"] = staleness_hit(r["answer"], stale, (q or {}).get("current_answer"))
         r["mentions_old"] = mentions_old(r["answer"], stale)
+        # The two grading rules (refusal = incorrect, plain gold = correct) are
+        # applied here too, so every cell is graded the same way whenever it ran.
+        r["judge_correct"] = bool(r["correct"])
+        if is_abstention(r["answer"], r.get("gold", "")):
+            r["correct"] = False
+        elif verbatim_correct(r["answer"], r.get("gold", ""), stale):
+            r["correct"] = True
         r["_category"] = (q or {}).get("category", r.get("category"))
         texts = [m[i] for i in r.get("retrieved_ids", []) if i in m]
         r["_ctx_known"] = bool(texts) and len(texts) == len(r.get("retrieved_ids", []))
@@ -187,7 +195,7 @@ def enrich(cell: dict, questions: dict) -> None:
             low = [t.lower() for t in texts]
             r["stale_in_ctx"] = bool(stale) and any(stale.lower() in t for t in low)
             # gold strings in ConvoMem are full sentences; fall back to "not known"
-            gold = r.get("gold", "")
+            gold = (q or {}).get("current_answer") or r.get("gold", "")
             r["gold_in_ctx"] = any(gold.lower() in t for t in low) if len(gold) <= 60 else None
 
 
@@ -511,9 +519,12 @@ class Report:
                            rows, f"p2_vs_all_{safe}.csv")
                 for r, padj in zip(res, pa_adj):
                     if r[0] == "P0":
-                        verdict = ("equivalent within" if r[2] > -0.05 and r[3] < 0.05 else "not shown equivalent within")
+                        verdict = ("P2 significantly more accurate" if r[2] > 0 and padj < 0.05 else
+                                   "P2 significantly less accurate" if r[3] < 0 and padj < 0.05 else
+                                   "equivalent within ±0.05" if r[2] > -0.05 and r[3] < 0.05 else
+                                   "inconclusive")
                         self.findings.append(
-                            f"{b}: P2 vs P0 accuracy {r[1]:+.3f} [{r[2]:+.3f}, {r[3]:+.3f}] ({verdict} ±0.05); "
+                            f"{b}: P2 vs P0 accuracy {r[1]:+.3f} [{r[2]:+.3f}, {r[3]:+.3f}] ({verdict}); "
                             f"staleness {r[5]:+.3f} [{r[6]:+.3f}, {r[7]:+.3f}].")
                     if r[0] == "P3":
                         self.findings.append(f"{b}: P3 (novelty gate) vs P2 staleness {-r[5]:+.3f}, p {fmt_p(ps_adj[res.index(r)])}.")
@@ -658,8 +669,12 @@ class Report:
             if b not in self.bench:
                 continue
             variants = {"normalized": {m: self.bench[b]["grid"].get(("P2", m)) for m in self.models(b)}}
+            qs = load_questions(str(self.root / self.cfg["datasets"][b]))
             for mode, d in modes.items():
-                variants[mode] = {c["summary"]["model"]: c for c in load_cells(self.root / d)}
+                cells = load_cells(self.root / d)
+                for c in cells:
+                    enrich(c, qs)
+                variants[mode] = {c["summary"]["model"]: c for c in cells}
             for mode in ("exact", "normalized", "llm"):
                 for m, c in sorted((variants.get(mode) or {}).items()):
                     if not c or not any(m in (variants.get(x) or {}) for x in ("exact", "llm")):
@@ -679,11 +694,15 @@ class Report:
 
     def s_rq4(self):
         rows = []
+        qs = load_questions(str(self.root / self.cfg["datasets"]["MQuAKE-T"]))
         for mode, d in (self.cfg.get("rq4") or {}).items():
             for c in load_cells(self.root / d):
+                enrich(c, qs)
                 s = c["summary"]
-                rows.append([mode, s.get("topology"), pol_id(s.get("policy", "")), fmt(s.get("accuracy")),
-                             fmt(s.get("staleness_rate")), fmt(s.get("mean_tokens_per_q"), 0),
+                rr = c["records"]
+                rows.append([mode, s.get("topology"), pol_id(s.get("policy", "")),
+                             fmt(mean(r["correct"] for r in rr)),
+                             fmt(mean(r["stale"] for r in rr)), fmt(s.get("mean_tokens_per_q"), 0),
                              s.get("invalidations", "n/a"), s.get("cross_writer_invalidations", "n/a")])
         if not rows:
             return
@@ -713,40 +732,186 @@ class Report:
         files = sorted(d.glob("*.json")) if d.is_dir() else []
         if not files:
             return
+        from drift.pipeline import is_abstention, verbatim_correct
+        names = {"mquake_t": "MQuAKE-T", "factconsolidation": "FactConsolidation", "convomem": "ConvoMem"}
+        grid = [str(g) for g in self.cfg.get("grace_grid", [0, 1, 3, 5, 7, 10, 14, 21, "never"])]
+        order = {g: i for i, g in enumerate(grid)}
         self.h(2, "10. The grace period, with questions about the past")
+        self.p("For each question with a superseded answer, two probes: the original question (current "
+               "answer) and 'Before it was last changed, what was the answer to ...' (superseded answer), "
+               "answered from retrieval that keeps closed-but-unpruned facts and labels them as superseded. "
+               "Grace is how many days P2 keeps a closed fact before deleting it.")
+
+        def regrade(ans, gold, wrong, verdict):
+            if is_abstention(ans, gold):
+                return False
+            if verbatim_correct(ans, gold, wrong):
+                return True
+            return bool(verdict)
+
         plt = _plt()
         fig, axes = plt.subplots(1, len(files), figsize=(4.2 * len(files), 3.2), squeeze=False)
         for ax, f in zip(axes[0], files):
-            rows = [r for r in json.loads(f.read_text())["rows"] if r["model"] is None]
-            order = {str(g): i for i, g in enumerate(self.cfg.get("grace_grid", [0, 1, 3, 5, 7, 10, 14, 21, "never"]))}
-            rows.sort(key=lambda r: order.get(r["grace"], 99))
-            xs = list(range(len(rows)))
-            ax.plot(xs, [r["history_support"] for r in rows], marker="o", label="old value retrievable")
-            ax.plot(xs, [r["current_gold"] for r in rows], marker="o", label="current value in context")
+            data = json.loads(f.read_text())["rows"]
+            name = names.get(f.stem, f.stem)
+            qmap = {}
+            if name in self.cfg["datasets"]:
+                for c in json.loads((self.root / self.cfg["datasets"][name]).read_text())["conversations"]:
+                    for q in c["questions"]:
+                        qmap[q["question"]] = q
+            ret = sorted([r for r in data if r["model"] is None], key=lambda r: order.get(r["grace"], 99))
+            ans = [r for r in data if r["model"] is not None]
+            self.h(3, name)
+            ages = max((r["closure_ages"] for r in ret), key=len) if ret else []
+            if ages:
+                srt = sorted(ages)
+                self.p(f"Closed facts at question time: {len(ages)}; days since closing: median "
+                       f"{srt[len(srt) // 2]:.1f}, max {srt[-1]:.1f}.")
+            by = defaultdict(dict)
+            for r in ans:
+                cur = [regrade(x["current_answer"], qmap.get(x["question"], {}).get("answer", ""),
+                               qmap.get(x["question"], {}).get("stale_answer"), x["current_correct"])
+                       for x in r.get("records", [])]
+                his = [regrade(x["history_answer"], qmap.get(x["question"], {}).get("stale_answer", ""),
+                               qmap.get(x["question"], {}).get("current_answer"), x["history_correct"])
+                       for x in r.get("records", [])]
+                by[r["grace"]][r["model"]] = (mean(cur), mean(his))
+            models = sorted({r["model"] for r in ans})
+            rows = []
+            for r in ret:
+                row = [r["grace"], r["active_facts"], f"{r['wasted_slots']:.2f}", f"{r['history_stored']:.3f}",
+                       f"{r['history_support']:.3f}"]
+                for m in models:
+                    c, h = by.get(r["grace"], {}).get(m, (float("nan"), float("nan")))
+                    row += [fmt(c), fmt(h)]
+                rows.append(row)
+            hdr = ["grace (days)", "facts stored", "wasted slots", "old value still stored",
+                   "old value retrieved for history probe"]
+            for m in models:
+                hdr += [f"{self.label(m)} current acc.", f"{self.label(m)} history acc."]
+            self.table(hdr, rows, f"grace_{f.stem}.csv")
+            xs = list(range(len(ret)))
+            for m in models:
+                ax.plot(xs, [by.get(r["grace"], {}).get(m, (0, 0))[1] for r in ret], marker="o",
+                        label=f"history acc., {self.label(m)}")
+                ax.plot(xs, [by.get(r["grace"], {}).get(m, (0, 0))[0] for r in ret], ls=":",
+                        label=f"current acc., {self.label(m)}")
             ax2 = ax.twinx()
-            ax2.plot(xs, [r["active_facts"] for r in rows], color="grey", ls="--", label="facts stored")
-            ax.set_xticks(xs, [r["grace"] for r in rows])
+            ax2.plot(xs, [r["active_facts"] for r in ret], color="grey", ls="--")
+            ax2.set_ylabel("facts stored (dashed)")
+            ax.set_xticks(xs, [r["grace"] for r in ret])
             ax.set_xlabel("grace period (days)")
-            ax.set_title(f.stem)
+            ax.set_title(name)
             ax.set_ylim(0, 1.05)
             if f is files[0]:
-                ax.legend(frameon=False, fontsize=7, loc="lower right")
+                ax.legend(frameon=False, fontsize=6, loc="center right")
         fig.tight_layout()
         fig.savefig(self.fig_dir / "grace_history.png", dpi=200)
         plt.close(fig)
-        self.fig("grace_history.png", "Grace period: history kept against storage, per benchmark")
-        md = self.root / self.cfg.get("grace_history_md", "")
-        if md.is_file():
-            self.md += md.read_text().splitlines()[2:]
+        self.fig("grace_history.png", "Grace period: accuracy on current and history questions, and facts stored")
 
     def s_heldout(self):
-        md = self.root / self.cfg.get("heldout_md", "")
-        if md.is_file():
-            self.h(2, "11. Retrieval weights on a benchmark the search never saw")
-            self.md += md.read_text().splitlines()[2:]
+        root = self.root / "artifacts/results/heldout_weights_fc"
+        if not root.is_dir():
+            return
+        qs = load_questions(str(self.root / self.cfg["datasets"]["FactConsolidation"]))
+        labels = {"w631": "0.6/0.3/0.1 (published)", "w912": "0.9/0.1/0.2 (MQuAKE-T best)",
+                  "w811": "0.8/0.1/0.1 (ConvoMem best)"}
+        cells = {}
+        for tag in labels:
+            for c in load_cells(root / tag):
+                enrich(c, qs)
+                cells[(tag, c["summary"]["model"])] = c
+        if not cells:
+            return
+        self.h(2, "11. Retrieval weights on a benchmark the search never saw")
+        self.p("FactConsolidation played no part in the weight search. P2, the two small models; each "
+               "candidate compared with the published weighting on the same questions (exact McNemar).")
+        rows = []
+        for m in sorted({m for _, m in cells}):
+            base = cells.get(("w631", m))
+            if not base:
+                continue
+            ib = {r["question"]: r for r in base["records"]}
+            for tag, lab in labels.items():
+                c = cells.get((tag, m))
+                if not c:
+                    continue
+                acc = mean(r["correct"] for r in c["records"])
+                st = mean(r["stale"] for r in c["records"])
+                if tag == "w631":
+                    rows.append([self.label(m), lab, fmt(acc), fmt(st), "-", "-"])
+                    continue
+                pairs = [(ib[r["question"]]["correct"], r["correct"]) for r in c["records"] if r["question"] in ib]
+                x, y, pv = mcnemar([q for _, q in pairs], [p_ for p_, _ in pairs])
+                rows.append([self.label(m), lab, fmt(acc), fmt(st), f"{x} / {y}", fmt_p(pv)])
+        self.table(["model", "weighting", "accuracy", "staleness", "better / worse than published",
+                    "McNemar p"], rows, "heldout_weights.csv")
+
+    def s_diagnostics(self):
+        self.h(2, "12. Diagnostics: where the remaining errors come from")
+        rows, rules, transp, p4 = [], [], [], []
+        for b in self.bench:
+            if "clean_of" in self.bench[b]:
+                continue
+            data = json.loads((self.root / self.cfg["datasets"][b]).read_text())
+            p0 = next((c for (p, m), c in self.bench[b]["grid"].items() if p == "P0"), None)
+            if p0:
+                snaps = p0.get("graph_snapshots") or {data["conversations"][0]["id"]: p0.get("graph_snapshot", [])}
+                cur = old = n = 0
+                for conv in data["conversations"]:
+                    txt = " ".join(f["text"] for f in snaps.get(conv["id"], [])).lower()
+                    for q in conv["questions"]:
+                        if not q.get("stale_answer"):
+                            continue
+                        n += 1
+                        cur += (q.get("current_answer") or q["answer"]).lower() in txt
+                        old += q["stale_answer"].lower() in txt
+                rows.append([b, n, f"{cur / n:.2f}", f"{old / n:.2f}"])
+            allr = [r for c in self.bench[b]["grid"].values() for r in c["records"]]
+            to_false = sum(1 for r in allr if r["judge_correct"] and not r["correct"])
+            to_true = sum(1 for r in allr if not r["judge_correct"] and r["correct"])
+            rules.append([b, len(allr), to_false, to_true])
+            for m in self.models(b):
+                r0 = self.recs(b, "P0", m)
+                if r0:
+                    transp.append([b, self.label(m), fmt(mean(r["mentions_old"] for r in r0)),
+                                   fmt(mean(r["stale"] for r in r0))])
+            c4 = next((c for (p, m), c in self.bench[b]["grid"].items() if p == "P4"), None)
+            if c4:
+                snaps = c4.get("graph_snapshots") or {"_": c4.get("graph_snapshot", [])}
+                facts = [f for v in snaps.values() for f in v]
+                pruned = [f for f in facts if not f.get("active", True)]
+                golds = {(q.get("current_answer") or q["answer"]).lower() for c in data["conversations"]
+                         for q in c["questions"] if len(q.get("current_answer") or q["answer"]) <= 40}
+                olds = {q["stale_answer"].lower() for c in data["conversations"] for q in c["questions"]
+                        if q.get("stale_answer")}
+                hg = sum(1 for f in pruned if any(g in f["text"].lower() for g in golds))
+                ho = sum(1 for f in pruned if any(o in f["text"].lower() for o in olds))
+                p4.append([b, len(facts), len(pruned), hg, ho])
+        self.p("Is the answer in memory at all? Share of questions with a superseded answer whose current "
+               "value, and whose old value, appear anywhere in the stored facts (P0, so nothing is deleted). "
+               "This is a ceiling no forgetting policy can raise: it is set by extraction.")
+        self.table(["benchmark", "questions", "current value stored", "old value stored"], rows,
+                   "extraction_ceiling.csv")
+        self.p("Grading rules applied on top of the judge: refusals that do not contain the gold answer are "
+               "incorrect, and a short gold answer stated plainly, without the old value or a negation, is "
+               "correct. Number of verdicts each rule changed:")
+        self.table(["benchmark", "graded answers", "judge said correct, rule says refusal",
+                    "judge said incorrect, rule says gold stated"], rules, "grading_rules.csv")
+        self.p("Mentioning the old value is not the same as answering with it. Under P0, share of answers "
+               "that mention the superseded value at all, against the share that give it as the answer:")
+        self.table(["benchmark", "model", "mentions old value", "stale (asserts old value)"], transp,
+                   "mentions_vs_stale.csv")
+        self.p("What does language-model consolidation (P4) delete? Facts pruned by P4, and how many of them "
+               "carry a question's current answer or its superseded answer. On FactConsolidation the current "
+               "answers are counterfactual, so a model that consolidates with its own world knowledge deletes "
+               "them and keeps the true-world old value.")
+        self.table(["benchmark", "facts", "pruned by P4", "pruned facts holding a current answer",
+                    "pruned facts holding an old answer"], p4, "p4_pruning.csv")
 
     def s_findings(self):
-        self.h(2, "12. Findings in one place")
+        self.h(2, "13. Findings in one place")
         self.p("Generated from the numbers above. Each line is a measured result, not an interpretation; "
                "read it with its interval and its table.")
         self.md += [f"* {f}" for f in self.findings] + [""]
@@ -769,6 +934,8 @@ class Report:
         self.s_rq4()
         self.s_grace()
         self.s_heldout()
+        if self.bench:
+            self.s_diagnostics()
         self.s_findings()
         text = "\n".join(self.md) + "\n"
         out = self.root / self.cfg["out_md"]

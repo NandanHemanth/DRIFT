@@ -244,7 +244,8 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
                                      show_supersession=cfg.get("show_supersession", False),
                                      max_tokens=answer_max_tokens)
             verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider,
-                                   max_tokens=cfg.get("judge_max_tokens", 1024))
+                                   max_tokens=cfg.get("judge_max_tokens", 1024),
+                                   stale_answer=q.get("stale_answer"))
             return {
                 "conversation": convo_id, "category": q.get("category", "single_hop"),
                 **result, "gold": q["answer"], **verdict,

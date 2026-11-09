@@ -1,0 +1,76 @@
+[
+ {
+  "policy": "P2",
+  "model": "openrouter:meta-llama/llama-3.1-8b-instruct",
+  "n_questions": 100,
+  "accuracy": 0.68,
+  "mean_f1": 0.584729797979798,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 518.28,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 299,
+   "invalidated_active": 51,
+   "pruned": 81,
+   "write_rejections": 0
+  },
+  "timestamp": 1791844488.849061,
+  "prompt_fingerprint": "27e40cc808c2",
+  "relation_matching": "llm",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "contradiction_judgements": 245,
+  "memory_totals": {
+   "active_facts": 299,
+   "total_facts": 380,
+   "invalidated_active": 51,
+   "pruned": 81,
+   "write_rejections": 0,
+   "closed_total": 132,
+   "contradiction_judgements": 245
+  },
+  "extraction_parse_failures": {
+   "first": 0,
+   "after_retry": 0
+  },
+  "n_conversations": 1
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:qwen/qwen3-14b",
+  "n_questions": 100,
+  "accuracy": 0.84,
+  "mean_f1": 0.4500227762433645,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 837.38,
+  "final_memory": {
+   "conversation": "factconsolidation_sh_6k",
+   "session": 37,
+   "total_facts": 380,
+   "active_facts": 299,
+   "invalidated_active": 51,
+   "pruned": 81,
+   "write_rejections": 0
+  },
+  "timestamp": 1791844756.281339,
+  "prompt_fingerprint": "27e40cc808c2",
+  "relation_matching": "llm",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "contradiction_judgements": 245,
+  "memory_totals": {
+   "active_facts": 299,
+   "total_facts": 380,
+   "invalidated_active": 51,
+   "pruned": 81,
+   "write_rejections": 0,
+   "closed_total": 132,
+   "contradiction_judgements": 245
+  },
+  "extraction_parse_failures": {
+   "first": 0,
+   "after_retry": 0
+  },
+  "n_conversations": 1
+ }
+]

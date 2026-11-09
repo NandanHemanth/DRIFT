@@ -1,0 +1,4 @@
+topology,policies compared,Spearman with single agent
+independent,6,0.94
+orchestrator,6,0.93
+shared,6,0.93

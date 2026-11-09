@@ -114,3 +114,18 @@ definition too.
 | Qwen3 14B | 0.948 | 0.021 | 0.979 | 0.000 |
 
 The remaining 0.010 for the frontier models is the New York City data artefact.
+
+## After the run (13 October)
+
+* One grading rule added after reading the results: a short gold answer stated
+  plainly (no old value, no negation) is graded correct without the judge. The
+  judge had marked answers such as "Bo Ryan is associated with association
+  football." incorrect because the FactConsolidation gold is counterfactual. The
+  rule changed 20 of 3,400 FactConsolidation verdicts and none elsewhere. The
+  analysis applies both rules to every saved answer, so all cells are graded
+  identically whenever they ran.
+* Three cells failed on provider errors in the first pass (FactConsolidation P3
+  with Claude Sonnet 5.5; substrate ConvoMem exact and MQuAKE-T LLM matching with
+  Llama 3.1 8B) and were completed by rerunning `make final-fc` and
+  `make substrate`. The campaign is complete: 105 of 105 main cells, 12 of 12
+  substrate cells, 35 RQ4 cells, the grace sweep and the held-out weight test.

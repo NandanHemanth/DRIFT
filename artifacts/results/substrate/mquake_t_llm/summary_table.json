@@ -1,0 +1,76 @@
+[
+ {
+  "policy": "P2",
+  "model": "openrouter:meta-llama/llama-3.1-8b-instruct",
+  "n_questions": 96,
+  "accuracy": 0.9895833333333334,
+  "mean_f1": 0.972937091503268,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 514.5625,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 337,
+   "invalidated_active": 51,
+   "pruned": 45,
+   "write_rejections": 0
+  },
+  "timestamp": 1791892683.02368,
+  "prompt_fingerprint": "27e40cc808c2",
+  "relation_matching": "llm",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "contradiction_judgements": 229,
+  "memory_totals": {
+   "active_facts": 337,
+   "total_facts": 382,
+   "invalidated_active": 51,
+   "pruned": 45,
+   "write_rejections": 0,
+   "closed_total": 96,
+   "contradiction_judgements": 229
+  },
+  "extraction_parse_failures": {
+   "first": 0,
+   "after_retry": 0
+  },
+  "n_conversations": 1
+ },
+ {
+  "policy": "P2",
+  "model": "openrouter:qwen/qwen3-14b",
+  "n_questions": 96,
+  "accuracy": 0.9791666666666666,
+  "mean_f1": 0.3618713559116036,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 795.3541666666666,
+  "final_memory": {
+   "conversation": "mquake_t_sh",
+   "session": 37,
+   "total_facts": 382,
+   "active_facts": 337,
+   "invalidated_active": 51,
+   "pruned": 45,
+   "write_rejections": 0
+  },
+  "timestamp": 1791844142.968565,
+  "prompt_fingerprint": "27e40cc808c2",
+  "relation_matching": "llm",
+  "maintenance_model": "openrouter:deepseek/deepseek-v4.1-flash",
+  "contradiction_judgements": 229,
+  "memory_totals": {
+   "active_facts": 337,
+   "total_facts": 382,
+   "invalidated_active": 51,
+   "pruned": 45,
+   "write_rejections": 0,
+   "closed_total": 96,
+   "contradiction_judgements": 229
+  },
+  "extraction_parse_failures": {
+   "first": 0,
+   "after_retry": 0
+  },
+  "n_conversations": 1
+ }
+]

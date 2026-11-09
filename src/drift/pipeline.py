@@ -141,10 +141,37 @@ def is_abstention(answer: str, gold: str) -> bool:
     return bool(_ABSTAIN.match(a)) and gold.strip().lower() not in a.lower()
 
 
+_HEDGE = re.compile(r"\b(not|no|unknown|unclear|cannot|neither|nor)\b|n't\b", re.I)
+
+
+def verbatim_correct(answer: str, gold: str, stale: str | None = None) -> bool:
+    """A short gold answer stated plainly: graded CORRECT by rule.
+
+    The final run found the LLM judge marking answers such as "Bo Ryan is
+    associated with association football." INCORRECT although that is the gold
+    answer word for word: on FactConsolidation the golds are deliberately
+    counterfactual, and the judge falls back on its own knowledge. The rule
+    applies only when the gold is a short value (40 characters or fewer), appears
+    as a whole word or phrase, the superseded value is absent, and the answer
+    contains no negation or hedge; everything else still goes to the judge.
+    """
+    g = gold.strip()
+    if not g or len(g) > 40:
+        return False
+    a = answer.lower()
+    if not re.search(r"(?<![a-z0-9])" + re.escape(g.lower()) + r"(?![a-z0-9])", a):
+        return False
+    if stale and stale.strip().lower() in a:
+        return False
+    return not _HEDGE.search(a)
+
+
 def judge_answer(question: str, gold: str, answer: str, judge_provider: BaseProvider,
-                 max_tokens: int = 1024) -> dict:
+                 max_tokens: int = 1024, stale_answer: str | None = None) -> dict:
     if not answer.strip() or is_abstention(answer, gold):
         return {"correct": False, "f1": token_f1(gold, answer), "judge_tokens": 0, "judged_by": "rule"}
+    if verbatim_correct(answer, gold, stale_answer):
+        return {"correct": True, "f1": token_f1(gold, answer), "judge_tokens": 0, "judged_by": "rule"}
     completion = judge_provider.complete(
         JUDGE_PROMPT.format(question=question, gold=gold, answer=answer), system=JUDGE_SYSTEM,
         max_tokens=max_tokens,

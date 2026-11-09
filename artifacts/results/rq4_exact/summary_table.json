@@ -1,0 +1,163 @@
+[
+ {
+  "n_questions": 96,
+  "accuracy": 0.0,
+  "mean_f1": 0.0029761904761904765,
+  "staleness_rate": 0.0,
+  "mean_tokens_per_q": 114.45833333333333,
+  "n_agents": 5,
+  "invalidations": 40,
+  "cross_writer_invalidations": 28,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 364,
+   "invalidated_active": 40,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "NOMEM",
+  "wall_seconds": 1119.6,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8645833333333334,
+  "mean_f1": 0.818808621933622,
+  "staleness_rate": 0.13541666666666666,
+  "mean_tokens_per_q": 759.3541666666666,
+  "n_agents": 5,
+  "invalidations": 40,
+  "cross_writer_invalidations": 28,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 364,
+   "invalidated_active": 40,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P0",
+  "wall_seconds": 179.5,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8020833333333334,
+  "mean_f1": 0.7930555555555556,
+  "staleness_rate": 0.041666666666666664,
+  "mean_tokens_per_q": 744.1145833333334,
+  "n_agents": 5,
+  "invalidations": 35,
+  "cross_writer_invalidations": 23,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 240,
+   "invalidated_active": 24,
+   "pruned": 124,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P1:ttl_days=20",
+  "wall_seconds": 163.8,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.8645833333333334,
+  "mean_f1": 0.865546218487395,
+  "staleness_rate": 0.11458333333333333,
+  "mean_tokens_per_q": 692.6458333333334,
+  "n_agents": 5,
+  "invalidations": 40,
+  "cross_writer_invalidations": 28,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 347,
+   "invalidated_active": 23,
+   "pruned": 17,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P2",
+  "wall_seconds": 164.1,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.6979166666666666,
+  "mean_f1": 0.7229166666666668,
+  "staleness_rate": 0.22916666666666666,
+  "mean_tokens_per_q": 778.2291666666666,
+  "n_agents": 5,
+  "invalidations": 29,
+  "cross_writer_invalidations": 22,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 333,
+   "active_facts": 333,
+   "invalidated_active": 29,
+   "pruned": 0,
+   "write_rejections": 31
+  },
+  "topology": "shared",
+  "policy": "P3",
+  "wall_seconds": 204.0,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.84375,
+  "mean_f1": 0.7979752886002887,
+  "staleness_rate": 0.15625,
+  "mean_tokens_per_q": 757.1770833333334,
+  "n_agents": 5,
+  "invalidations": 40,
+  "cross_writer_invalidations": 28,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 360,
+   "invalidated_active": 40,
+   "pruned": 4,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P4",
+  "wall_seconds": 150.6,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ },
+ {
+  "n_questions": 96,
+  "accuracy": 0.7604166666666666,
+  "mean_f1": 0.7337391774891775,
+  "staleness_rate": 0.23958333333333334,
+  "mean_tokens_per_q": 754.53125,
+  "n_agents": 5,
+  "invalidations": 40,
+  "cross_writer_invalidations": 28,
+  "contradiction_judgements": 0,
+  "final_memory": {
+   "total_facts": 364,
+   "active_facts": 352,
+   "invalidated_active": 38,
+   "pruned": 12,
+   "write_rejections": 0
+  },
+  "topology": "shared",
+  "policy": "P5",
+  "wall_seconds": 148.1,
+  "relation_matching": "exact",
+  "embedder": "ollama:nomic-embed-text"
+ }
+]

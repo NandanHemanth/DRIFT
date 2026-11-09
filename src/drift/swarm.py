@@ -158,7 +158,8 @@ def _answer_and_judge(q: dict, graph: BitemporalGraph, policy, provider,
     result = answer_question(q["question"], graph, policy, provider, k=k, now=now,
                              show_supersession=show_supersession,
                              max_tokens=_ANSWER_MAX_TOKENS.get(getattr(provider, "model", ""), 1024))
-    verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider)
+    verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider,
+                           stale_answer=q.get("stale_answer"))
     return {
         "conversation": q["conversation"], "category": q.get("category", "single_hop"),
         **result, "gold": q["answer"], **verdict,

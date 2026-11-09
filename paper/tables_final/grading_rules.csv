@@ -1,0 +1,4 @@
+benchmark,graded answers,"judge said correct, rule says refusal","judge said incorrect, rule says gold stated"
+MQuAKE-T,3360,0,0
+FactConsolidation,3500,0,20
+ConvoMem,3500,0,0

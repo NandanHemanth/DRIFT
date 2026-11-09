@@ -1,0 +1,7 @@
+model,weighting,accuracy,staleness,better / worse than published,McNemar p
+Llama 3.1 8B,0.6/0.3/0.1 (published),0.620,0.060,-,-
+Llama 3.1 8B,0.9/0.1/0.2 (MQuAKE-T best),0.620,0.050,5 / 5,1.000
+Llama 3.1 8B,0.8/0.1/0.1 (ConvoMem best),0.560,0.050,5 / 11,0.210
+Qwen3 14B,0.6/0.3/0.1 (published),0.770,0.000,-,-
+Qwen3 14B,0.9/0.1/0.2 (MQuAKE-T best),0.810,0.000,7 / 3,0.344
+Qwen3 14B,0.8/0.1/0.1 (ConvoMem best),0.780,0.000,3 / 2,1.000

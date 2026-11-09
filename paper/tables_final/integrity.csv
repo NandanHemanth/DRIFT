@@ -1,0 +1,4 @@
+benchmark,cells,models,questions per cell,prompt versions,relation matching,records with context recovered,extraction failures after retry
+MQuAKE-T,35 / 35,5,96,1,normalized,86%,0
+FactConsolidation,35 / 35,5,100,1,normalized,86%,0
+ConvoMem,35 / 35,5,100,1,normalized,86%,0

@@ -1,0 +1,19 @@
+benchmark,matching,model,accuracy,staleness,facts closed,language model checks
+MQuAKE-T,exact,Llama 3.1 8B,0.979,0.010,95,0
+MQuAKE-T,exact,Qwen3 14B,0.979,0.000,95,0
+MQuAKE-T,normalized,Llama 3.1 8B,0.979,0.010,95,0
+MQuAKE-T,normalized,Qwen3 14B,0.979,0.000,95,0
+MQuAKE-T,llm,Llama 3.1 8B,0.990,0.000,96,229
+MQuAKE-T,llm,Qwen3 14B,0.979,0.000,96,229
+FactConsolidation,exact,Llama 3.1 8B,0.600,0.070,102,0
+FactConsolidation,exact,Qwen3 14B,0.760,0.000,102,0
+FactConsolidation,normalized,Llama 3.1 8B,0.620,0.060,103,0
+FactConsolidation,normalized,Qwen3 14B,0.770,0.000,103,0
+FactConsolidation,llm,Llama 3.1 8B,0.690,0.000,132,245
+FactConsolidation,llm,Qwen3 14B,0.850,0.000,132,245
+ConvoMem,exact,Llama 3.1 8B,0.060,0.060,288,0
+ConvoMem,exact,Qwen3 14B,0.080,0.100,288,0
+ConvoMem,normalized,Llama 3.1 8B,0.050,0.090,281,0
+ConvoMem,normalized,Qwen3 14B,0.080,0.110,281,0
+ConvoMem,llm,Llama 3.1 8B,0.050,0.060,196,558
+ConvoMem,llm,Qwen3 14B,0.060,0.100,196,558
