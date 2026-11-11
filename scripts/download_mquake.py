@@ -192,8 +192,16 @@ def collect(raw: list[dict]) -> tuple[dict, dict, list[dict]]:
 
 def build_sessions(edits: dict, support: dict, n_sessions: int,
                    support_lines: int, seed: int, day_step: float,
-                   phrasing: str = "flat") -> list[dict]:
-    """Place old-before-new per edited pair, then fill with haystack facts."""
+                   phrasing: str = "flat",
+                   required: dict | None = None) -> list[dict]:
+    """Place old-before-new per edited pair, then fill with haystack facts.
+
+    `required` (cloze -> value) holds facts that must be in memory for the
+    questions to be answerable at all: the unedited hops of every multi-hop
+    chain. They are placed first and count towards `support_lines`, so the total
+    fact count, and with it retrieval pressure, stays the same as single-hop.
+    With no required facts the output is byte-identical to earlier builds.
+    """
     rng = random.Random(seed)
     buckets: list[list[str]] = [[] for _ in range(n_sessions)]
 
@@ -205,9 +213,13 @@ def build_sessions(edits: dict, support: dict, n_sessions: int,
         buckets[i].append(edit_statement(info, info["old"], phrasing))
         buckets[j].append(edit_statement(info, info["new"], phrasing))
 
-    pool = list(support.items())
+    required = required or {}
+    for cloze, value in required.items():
+        buckets[rng.randrange(0, n_sessions)].append(statement(cloze, value))
+
+    pool = [(c, v) for c, v in support.items() if c not in required]
     rng.shuffle(pool)
-    for cloze, value in pool[:support_lines]:
+    for cloze, value in pool[:max(0, support_lines - len(required))]:
         buckets[rng.randrange(0, n_sessions)].append(statement(cloze, value))
 
     base = datetime(2024, 1, 1, tzinfo=timezone.utc).timestamp()
@@ -224,7 +236,14 @@ def build_sessions(edits: dict, support: dict, n_sessions: int,
 
 
 def build_questions(hop: str, edits: dict, instances: list[dict],
-                    max_questions: int | None, seed: int) -> list[dict]:
+                    max_questions: int | None, seed: int,
+                    required: dict | None = None,
+                    hop_mix: dict | None = None) -> list[dict]:
+    """Questions for the chosen hop setting.
+
+    For multi-hop, `required` is filled with the unedited chain facts the
+    questions depend on (cloze -> value), for build_sessions to place."""
+    required = required if required is not None else {}
     rng = random.Random(seed)
     out: list[dict] = []
 
@@ -243,20 +262,42 @@ def build_questions(hop: str, edits: dict, instances: list[dict],
         # Multi-hop: the edit propagates through a reasoning chain, so the gold
         # answer changes as an *entailed consequence* rather than by direct
         # lookup. `answer` is the pre-edit chain result, `new_answer` the post.
+        # Questions are drawn per hop count (hop_mix) so 3-hop chains are not
+        # swamped by the far more numerous 2-hop ones, and only questions with a
+        # usable stale answer are kept, since staleness is the point.
+        edit_clozes = {e["cloze"] for e in edits.values()}
+        items = list(instances)
+        rng.shuffle(items)
+        want = dict(hop_mix or {2: 58, 3: 40, 4: 2})
         seen: set[str] = set()
-        for item in instances:
+        for item in items:
+            hops = len(item.get("single_hops", []))
+            if want.get(hops, 0) <= 0:
+                continue
             q = item["questions"][0]
-            if q in seen:
+            stale = usable_stale(item["answer"], item["new_answer"])
+            if q in seen or not stale:
                 continue
             seen.add(q)
-            stale = usable_stale(item["answer"], item["new_answer"])
+            want[hops] -= 1
+            rw = item["requested_rewrite"][0]
+            edited = rw["prompt"].format(rw["subject"]).strip()
+            pos = next((i for i, h in enumerate(item["single_hops"])
+                        if h["cloze"].strip() == edited), -1)
+            # every unedited hop, before and after the edit, must be stored
+            for hop in item.get("single_hops", []) + item.get("new_single_hops", []):
+                hc = hop["cloze"].strip()
+                if hc not in edit_clozes:
+                    required.setdefault(hc, hop["answer"])
             out.append({
                 "question": q,
                 "answer": item["new_answer"],
+                "current_answer": item["new_answer"],
                 "category": "knowledge_update_multihop",
                 "stale_answer": stale,
+                "hops": hops,
+                "edit_position": pos,
             })
-        rng.shuffle(out)
 
     if max_questions:
         out = out[:max_questions]
@@ -286,12 +327,16 @@ def main() -> None:
                          "(better extraction, the default); cloze = MQuAKE's "
                          "original wording (mirrors the question, so higher "
                          "lexical retrieval score)")
+    ap.add_argument("--hop-mix", default="2:58,3:40,4:2",
+                    help="multi-hop only: questions per hop count")
     ap.add_argument("--day-step", type=float, default=1.0)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--from-file", default=None,
+                    help="read the MQuAKE JSON from a local file instead of GitHub")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
-    raw = fetch(args.dataset)
+    raw = json.loads(Path(args.from_file).read_text()) if args.from_file else fetch(args.dataset)
     edits, support, instances = collect(raw)
     print(f"  {len(raw)} instances -> {len(edits)} distinct supersessions, "
           f"{len(support)} haystack facts available")
@@ -299,11 +344,15 @@ def main() -> None:
     if args.sessions < 2:
         raise SystemExit("--sessions must be at least 2 to place old before new")
 
+    required: dict = {}
+    hop_mix = None
+    if args.hop_mix:
+        hop_mix = {int(k): int(v) for k, v in (p.split(":") for p in args.hop_mix.split(","))}
+    questions = build_questions(args.hop, edits, instances,
+                                args.max_questions, args.seed, required, hop_mix)
     sessions = build_sessions(edits, support, args.sessions,
                               args.support_lines, args.seed, args.day_step,
-                              args.phrasing)
-    questions = build_questions(args.hop, edits, instances,
-                                args.max_questions, args.seed)
+                              args.phrasing, required)
 
     annotated = sum(1 for q in questions if q["stale_answer"])
     total_lines = sum(len(s["lines"]) for s in sessions)
@@ -319,6 +368,11 @@ def main() -> None:
 
     print(f"Wrote {out}")
     print(f"  {len(sessions)} sessions, {total_lines} fact lines")
+    if args.hop == "mh":
+        from collections import Counter
+        print(f"  hops {dict(sorted(Counter(q['hops'] for q in questions).items()))}, "
+              f"edit position {dict(sorted(Counter(q['edit_position'] for q in questions).items()))}, "
+              f"{len(required)} chain facts guaranteed in memory")
     print(f"  {len(questions)} questions, {annotated} with stale_answer "
           f"({annotated / len(questions):.0%})")
     if annotated / max(len(questions), 1) < 0.5:

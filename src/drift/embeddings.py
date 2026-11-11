@@ -64,10 +64,61 @@ class OllamaEmbedder:
             return json.loads(resp.read())["embedding"]
 
 
-def make_embedder(spec: str):
+class CachedEmbedder:
+    """Memoise another embedder in memory and on disk.
+
+    An embedding depends only on (model, text), and every cell of a matrix embeds
+    the same facts and questions again: 35 cells x 3 runs re-sent each text to
+    the local Ollama server, which handles one request at a time. The cache
+    returns the vector Ollama produced the first time, so results are unchanged
+    and only repeated work is skipped. Writes go to a temporary file and are
+    renamed into place, so parallel runs never read a half-written entry.
+    """
+
+    def __init__(self, inner, cache_dir: str = ".drift_cache/emb"):
+        import os
+        import threading
+        self.inner = inner
+        self.name = getattr(inner, "name", "embedder")
+        self.model = getattr(inner, "model", self.name)
+        self.dir = cache_dir
+        os.makedirs(cache_dir, exist_ok=True)
+        self._mem: dict[str, list[float]] = {}
+        self._lock = threading.Lock()
+
+    def _path(self, text: str) -> str:
+        import os
+        key = hashlib.sha256(json.dumps([self.name, self.model, text]).encode()).hexdigest()
+        return os.path.join(self.dir, key[:2], key + ".json")
+
+    def embed(self, text: str) -> list[float]:
+        import os
+        import uuid
+        with self._lock:
+            hit = self._mem.get(text)
+        if hit is not None:
+            return hit
+        path = self._path(text)
+        try:
+            with open(path) as fh:
+                vec = json.load(fh)
+        except (OSError, ValueError):
+            vec = self.inner.embed(text)
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            tmp = f"{path}.{os.getpid()}.{uuid.uuid4().hex}.tmp"
+            with open(tmp, "w") as fh:
+                json.dump(vec, fh)
+            os.replace(tmp, path)
+        with self._lock:
+            self._mem[text] = vec
+        return vec
+
+
+def make_embedder(spec: str, cache: bool = True):
     if spec == "hashing":
         return HashingEmbedder()
     if spec.startswith("ollama"):
         model = spec.split(":", 1)[1] if ":" in spec else "nomic-embed-text"
-        return OllamaEmbedder(model)
+        emb = OllamaEmbedder(model)
+        return CachedEmbedder(emb) if cache else emb
     raise ValueError(f"Unknown embedder: {spec}")

@@ -1,0 +1,53 @@
+[
+ {
+  "benchmark": "mquake_t_sh",
+  "sessions": 38,
+  "extraction_misses": 0,
+  "facts": 382,
+  "closed_exact": 90,
+  "questions": 96,
+  "detected_exact": 90,
+  "missed_exact": 6,
+  "gold_closed_exact": 0,
+  "closed_normalized": 90,
+  "detected_normalized": 90,
+  "missed_normalized": 6,
+  "gold_closed_normalized": 0,
+  "reversed_role_pairs": 0,
+  "extraction_failed_after_retry": 0
+ },
+ {
+  "benchmark": "factconsolidation_sh_6k",
+  "sessions": 38,
+  "extraction_misses": 0,
+  "facts": 380,
+  "closed_exact": 111,
+  "questions": 65,
+  "detected_exact": 62,
+  "missed_exact": 3,
+  "gold_closed_exact": 0,
+  "closed_normalized": 112,
+  "detected_normalized": 63,
+  "missed_normalized": 2,
+  "gold_closed_normalized": 0,
+  "reversed_role_pairs": 0,
+  "extraction_failed_after_retry": 0
+ },
+ {
+  "benchmark": "convomem_changing",
+  "sessions": 200,
+  "extraction_misses": 0,
+  "facts": 495,
+  "closed_exact": 237,
+  "questions": 100,
+  "detected_exact": 16,
+  "missed_exact": 18,
+  "gold_closed_exact": 0,
+  "closed_normalized": 241,
+  "detected_normalized": 16,
+  "missed_normalized": 18,
+  "gold_closed_normalized": 0,
+  "reversed_role_pairs": 0,
+  "extraction_failed_after_retry": 0
+ }
+]

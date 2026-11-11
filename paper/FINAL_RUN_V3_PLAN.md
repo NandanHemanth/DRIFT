@@ -30,13 +30,12 @@ Everything that is not listed here stays exactly as in the October final run: th
   - MQuAKE-T and FactConsolidation: little, since each line is a self-contained fact.
   - ConvoMem: values revised in passing ("let's do Saturday instead") should be resolved more often. That targets the extraction ceiling found last time (the answer was stored for only 14 of 100 questions).
 
-### 2.2 Lexical signal: BM25 instead of word overlap [confirm]
+### 2.2 Lexical signal: word overlap, unchanged (decided 8 November)
 
-- **Current:** share of question words (3+ letters) found in the fact. Weakness: common words count as much as rare ones. In the New Zealand example, "the" was one of the 5 matching words.
-- **BM25** (Robertson and Zaragoza, 2009) weights each matching word by how rare it is across stored facts, and corrects for fact length. It is the lexical search Zep uses (Okapi BM25 via Lucene) and the "simple RAG" baseline in MemoryAgentBench.
-- **To keep the 0 to 1 range,** BM25 scores are divided by the highest BM25 score for that question (0 if no fact matches). The signal then has the same range and meaning as the other two.
-- **Cost of switching:** the 0.6 / 0.3 / 0.1 weights were validated with word overlap. With BM25 they must be re-checked, and v3 does that on held-out data (Section 4).
-- **My recommendation: switch.** It is the standard, it removes a known weakness, and the re-check is cheap. The alternative (keep overlap, run BM25 as an ablation) is safer for comparability with October.
+- **Kept:** the share of the question's words (3+ letters) found in the fact, as in October.
+- **Why:** it is the setting the 1,000-weighting sweep and the held-out check validated, so v3 stays comparable with October.
+- **BM25:** implemented (`lexical: "bm25"`) and tested, but not used.
+- **What to say in the thesis:** word overlap is a simplified form of BM25 (Robertson and Zaragoza, 2009) without rarity weighting. In the New Zealand example, both rank the old and new fact identically; separating them is the forgetting policy's job.
 
 ### 2.3 Three runs
 

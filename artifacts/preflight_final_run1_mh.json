@@ -1,0 +1,19 @@
+[
+ {
+  "benchmark": "factconsolidation_mh_6k",
+  "sessions": 38,
+  "extraction_misses": 0,
+  "facts": 380,
+  "closed_exact": 111,
+  "questions": 100,
+  "detected_exact": 74,
+  "missed_exact": 18,
+  "gold_closed_exact": 2,
+  "closed_normalized": 112,
+  "detected_normalized": 74,
+  "missed_normalized": 18,
+  "gold_closed_normalized": 2,
+  "reversed_role_pairs": 0,
+  "extraction_failed_after_retry": 0
+ }
+]

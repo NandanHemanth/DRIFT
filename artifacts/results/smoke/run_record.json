@@ -1,0 +1,29 @@
+[
+ {
+  "started": "2026-11-11T12:18:23.506074+00:00",
+  "config_path": "configs/smoke.json",
+  "commit": "5c94e3e6e2963726b26511c778181856e1dec351+uncommitted-src-changes",
+  "replicate": 0,
+  "config": {
+   "dataset": "data/synthetic_smoke.json",
+   "results_dir": "artifacts/results/smoke",
+   "embedder": "hashing",
+   "retrieval_k": 8,
+   "extract_model": "mock",
+   "judge_model": "mock",
+   "models": [
+    "mock"
+   ],
+   "policies": [
+    "NOMEM",
+    "P0",
+    "P1:ttl_days=35",
+    "P2",
+    "P3",
+    "P4",
+    "P5"
+   ],
+   "save_graph": true
+  }
+ }
+]

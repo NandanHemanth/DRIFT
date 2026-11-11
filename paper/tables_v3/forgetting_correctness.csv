@@ -1,0 +1,19 @@
+benchmark,policy,complete % (old value hidden),sound % (current value visible),changed slots found
+MQuAKE-T,P0,0.0 ± 0.0,100.0 ± 0.0,87
+MQuAKE-T,P1,45.7 ± 3.9,89.3 ± 0.3,87
+MQuAKE-T,P2,91.9 ± 0.3,100.0 ± 0.0,87
+MQuAKE-T,P3,1.2 ± 0.1,90.8 ± 3.0,87
+MQuAKE-T,P4,0.2 ± 0.3,99.7 ± 0.4,87
+MQuAKE-T,P5,6.6 ± 4.7,84.8 ± 3.9,87
+FactConsolidation,P0,0.0 ± 0.0,100.0 ± 0.0,52
+FactConsolidation,P1,59.6 ± 0.0,82.8 ± 0.0,52
+FactConsolidation,P2,84.6 ± 3.3,100.0 ± 0.0,52
+FactConsolidation,P3,1.9 ± 0.0,75.0 ± 0.0,52
+FactConsolidation,P4,0.6 ± 0.2,52.6 ± 6.9,52
+FactConsolidation,P5,3.6 ± 0.8,93.0 ± 0.5,52
+ConvoMem,P0,0.0 ± 0.0,100.0 ± 0.0,4
+ConvoMem,P1,0.0 ± 0.0,100.0 ± 0.0,4
+ConvoMem,P2,31.7 ± 16.1,100.0 ± 0.0,4
+ConvoMem,P3,0.0 ± 0.0,100.0 ± 0.0,4
+ConvoMem,P4,0.0 ± 0.0,53.3 ± 50.3,4
+ConvoMem,P5,64.0 ± 11.5,100.0 ± 0.0,4

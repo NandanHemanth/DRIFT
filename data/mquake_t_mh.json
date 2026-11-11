@@ -1,0 +1,1483 @@
+{
+ "conversations": [
+  {
+   "id": "mquake_t_mh",
+   "sessions": [
+    {
+     "time": 1704067200.0,
+     "lines": [
+      "user: Engelbert Dollfuss is a citizen of Austria.",
+      "user: Mwai Kibaki is a citizen of Kenya.",
+      "user: The head of government of Wichita is Jeff Longwell.",
+      "user: The univeristy where Joe Lovano was educated is Berklee College of Music."
+     ]
+    },
+    {
+     "time": 1704153600.0,
+     "lines": [
+      "user: Shahid Khaqan Abbasi is a citizen of Pakistan.",
+      "user: The head of state of South Korea is Moon Jae-in.",
+      "user: J\u00fcrgen Klinsmann is a citizen of Germany.",
+      "user: The headquarters of Mozilla Corporation is located in the city of Mountain View.",
+      "user: The head of government of Italy is Giuseppe Conte.",
+      "user: VP9 was developed by Google."
+     ]
+    },
+    {
+     "time": 1704240000.0,
+     "lines": [
+      "user: The Verve was created in the country of United Kingdom.",
+      "user: NBC was founded in the city of New York City.",
+      "user: The type of music that Sayumi Michishige plays is J-pop.",
+      "user: Orlando Letelier is a citizen of Chile."
+     ]
+    },
+    {
+     "time": 1704326400.0,
+     "lines": [
+      "user: Thein Sein is a citizen of Myanmar.",
+      "user: The head of government of Marseille is Jean-Claude Gaudin.",
+      "user: Mohammad Javad is a citizen of Iran.",
+      "user: Henrik Ibsen is a citizen of Norway.",
+      "user: Highway to Hell was performed by AC/DC.",
+      "user: The type of music that Teddy Wilson plays is jazz.",
+      "user: Petra Cetkovsk\u00e1 is a citizen of Czech Republic.",
+      "user: association football was created in the country of England.",
+      "user: Rafael Leonidas Trujillo is a citizen of Dominican Republic.",
+      "user: Lady Madonna was performed by The Beatles.",
+      "user: L.A. Woman was performed by The Doors.",
+      "user: Murray Gleeson is a citizen of Australia."
+     ]
+    },
+    {
+     "time": 1704412800.0,
+     "lines": [
+      "user: Mahmoud Ahmadinejad is a citizen of Iran.",
+      "user: Toomas Hendrik Ilves is a citizen of Estonia.",
+      "user: The head of government of Boston is Marty Walsh.",
+      "user: The headquarters of BioWare is located in the city of Edmonton.",
+      "user: Mass Effect 2 was developed by BioWare.",
+      "user: The headquarters of Berklee College of Music is located in the city of Boston.",
+      "user: The type of music that Jung Ryeo-won plays is K-pop.",
+      "user: Najib Mikati is a citizen of Lebanon.",
+      "user: Tim Hardaway is associated with the sport of basketball.",
+      "user: Ioannis Metaxas is a citizen of Greece.",
+      "user: The headquarters of National Energy Board is located in the city of Calgary.",
+      "user: The head of government of Prague is Zden\u011bk H\u0159ib.",
+      "user: The company that produced RC-135 is Boeing.",
+      "user: The origianl broadcaster of The Man from U.N.C.L.E. is NBC.",
+      "user: The headquarters of Annapurna Pictures is located in the city of Los Angeles."
+     ]
+    },
+    {
+     "time": 1704499200.0,
+     "lines": [
+      "user: The head of state of Kosovo is Hashim Tha\u00e7i.",
+      "user: The headquarters of Radio Free Europe/Radio Liberty is located in the city of Prague.",
+      "user: Panagiotis Kanellopoulos is a citizen of Greece.",
+      "user: The head of government of Cincinnati is John Cranley.",
+      "user: Sean Casey is associated with the sport of baseball.",
+      "user: The head of state of Sri Lanka is Maithripala Sirisena.",
+      "user: The type of music that Keith Tippett plays is jazz."
+     ]
+    },
+    {
+     "time": 1704585600.0,
+     "lines": [
+      "user: The head of government of New Zealand is Jacinda Ardern.",
+      "user: Karol\u00edna Pl\u00ed\u0161kov\u00e1 is a citizen of Czech Republic.",
+      "user: Imee Marcos is a citizen of Philippines.",
+      "user: Nicole Eggert is a citizen of United States of America.",
+      "user: The head of government of Philippines is Rodrigo Duterte.",
+      "user: Alan Hollinghurst is a citizen of United Kingdom.",
+      "user: Bachir Gemayel is a citizen of Lebanon.",
+      "user: The head of government of Berlin is Michael M\u00fcller."
+     ]
+    },
+    {
+     "time": 1704672000.0,
+     "lines": [
+      "user: The univeristy where Bill Frisell was educated is Berklee College of Music.",
+      "user: John of Islay is a citizen of Scotland.",
+      "user: Kangin is a citizen of South Korea.",
+      "user: The head of government of New York City is Bill de Blasio.",
+      "user: The head of government of Boston is Michelle Wu.",
+      "user: The head of government of Tucson is Jonathan Rothschild.",
+      "user: Epik High was created in the country of South Korea.",
+      "user: Shin Sang-ok is a citizen of South Korea.",
+      "user: The head of state of Lebanon is Michel Aoun.",
+      "user: The head of state of Dominican Republic is Danilo Medina.",
+      "user: The head of government of Italy is Giorgia Meloni."
+     ]
+    },
+    {
+     "time": 1704758400.0,
+     "lines": [
+      "user: The head of government of New York City is Eric Adams.",
+      "user: rugby was created in the country of England.",
+      "user: The Beatles was created in the country of United Kingdom.",
+      "user: Shaul Mofaz is a citizen of Israel.",
+      "user: The head of government of Ecuador is Len\u00edn Moreno.",
+      "user: Joo Won is a citizen of South Korea.",
+      "user: Yoshihiro Togashi is a citizen of Japan."
+     ]
+    },
+    {
+     "time": 1704844800.0,
+     "lines": [
+      "user: The head of government of Cincinnati is Aftab Pureval.",
+      "user: The headquarters of Mozilla Corporation is located in the city of San Francisco.",
+      "user: hip hop music was created in the country of United States of America.",
+      "user: Karl Bartos is a citizen of Germany.",
+      "user: The head of government of Philippines is Bongbong Marcos.",
+      "user: Ivan Vazov is a citizen of Bulgaria."
+     ]
+    },
+    {
+     "time": 1704931200.0,
+     "lines": [
+      "user: The head of state of Panama is Juan Carlos Varela.",
+      "user: The chief executive officer of McDonald's is Steve Easterbrook.",
+      "user: The head of government of San Juan is Carmen Yul\u00edn Cruz.",
+      "user: The head of government of Czech Republic is Andrej Babi\u0161.",
+      "user: The origianl broadcaster of Private Practice is American Broadcasting Company.",
+      "user: The univeristy where Mike Portnoy was educated is Berklee College of Music.",
+      "user: Miroslav Cik\u00e1n is a citizen of Czech Republic.",
+      "user: The head of state of Ecuador is Len\u00edn Moreno.",
+      "user: The head of state of Kuwait is Sabah Al-Ahmad Al-Jaber Al-Sabah.",
+      "user: Marvin Agustin is a citizen of Philippines.",
+      "user: Lolita Lebr\u00f3n died in the city of San Juan."
+     ]
+    },
+    {
+     "time": 1705017600.0,
+     "lines": [
+      "user: Peter Cosgrove is a citizen of Australia.",
+      "user: The univeristy where Al Di Meola was educated is Berklee College of Music.",
+      "user: Pavel Kohout is a citizen of Czech Republic.",
+      "user: Kim Tae-hee is a citizen of South Korea.",
+      "user: Lisa Stansfield is a citizen of United Kingdom."
+     ]
+    },
+    {
+     "time": 1705104000.0,
+     "lines": [
+      "user: Boeing was founded in the city of Seattle.",
+      "user: The head of state of Lebanon is Najib Mikati.",
+      "user: The Velvet Underground was founded in the city of New York City.",
+      "user: The head of state of Mauritania is Mohamed Ould Abdel Aziz.",
+      "user: The headquarters of Wildrose Party is located in the city of Calgary.",
+      "user: The head of government of Los Angeles is Eric Garcetti.",
+      "user: TV Patrol was created in the country of Philippines.",
+      "user: The head of government of Hong Kong is Carrie Lam.",
+      "user: Johann Gottlieb Fichte is a citizen of Germany.",
+      "user: The headquarters of Lebensborn is located in the city of Berlin."
+     ]
+    },
+    {
+     "time": 1705190400.0,
+     "lines": [
+      "user: Kyle Reese is married to Sarah Connor.",
+      "user: The head of government of United Kingdom is Boris Johnson.",
+      "user: The head of state of Israel is Reuven Rivlin.",
+      "user: The headquarters of Annapurna Pictures is located in the city of Vietnam.",
+      "user: Dick Smith is a citizen of Australia.",
+      "user: 2013 NWSL College Draft is associated with the sport of association football.",
+      "user: Christoph Sch\u00f6nborn is a citizen of Austria.",
+      "user: The head of state of Estonia is Kersti Kaljulaid.",
+      "user: The head coach of Norway national football team is Lars Lagerb\u00e4ck.",
+      "user: The head of state of Zambia is Edgar Lungu.",
+      "user: Quadrophenia was performed by The Who."
+     ]
+    },
+    {
+     "time": 1705276800.0,
+     "lines": [
+      "user: The head of government of Lithuania is Saulius Skvernelis.",
+      "user: Joey de Leon is a citizen of Philippines.",
+      "user: The origianl broadcaster of Mob Wives is VH1.",
+      "user: The head of government of United States of America is Donald Trump.",
+      "user: The head of government of Laos is Thongloun Sisoulith.",
+      "user: Felix Baumgartner is a citizen of Austria.",
+      "user: The head of government of Pakistan is Imran Khan.",
+      "user: The head of government of Sweden is Stefan L\u00f6fven.",
+      "user: The Doors was founded in the city of Los Angeles.",
+      "user: Linet Masai is a citizen of Kenya.",
+      "user: The head of government of Pittsburgh is Bill Peduto."
+     ]
+    },
+    {
+     "time": 1705363200.0,
+     "lines": [
+      "user: Nancy Ajram is a citizen of Lebanon.",
+      "user: The company that produced KC-97 Stratotanker is Boeing.",
+      "user: Beatles for Sale was performed by The Beatles.",
+      "user: John Connor is a citizen of United States of America.",
+      "user: Kay Bailey Hutchison is a citizen of United States of America.",
+      "user: Alex Avila is associated with the sport of baseball.",
+      "user: Choi Ji-woo is a citizen of South Korea.",
+      "user: J-pop was created in the country of Japan.",
+      "user: jazz was created in the country of United States of America.",
+      "user: The head of government of San Diego is Kevin Faulconer.",
+      "user: The head of government of Lebanon is Saad Hariri.",
+      "user: The head of government of Tucson is Regina Romero.",
+      "user: The headquarters of AsusTek Computer Inc. is located in the city of Taipei."
+     ]
+    },
+    {
+     "time": 1705449600.0,
+     "lines": [
+      "user: Stephen Constantine is a citizen of England.",
+      "user: Simeon Djankov is a citizen of Bulgaria.",
+      "user: The head of government of Taipei is Ko Wen-je.",
+      "user: The head of government of Lithuania is Ingrida \u0160imonyt\u0117.",
+      "user: The head of government of Baltimore is Catherine E. Pugh.",
+      "user: Kostas Papanikolaou is a citizen of Greece.",
+      "user: B-52 Stratofortress was developed by Boeing."
+     ]
+    },
+    {
+     "time": 1705536000.0,
+     "lines": [
+      "user: The head of government of Germany is Angela Merkel.",
+      "user: The head of government of Nashville is David Briley.",
+      "user: The headquarters of Scientific American is located in the city of New York City.",
+      "user: The head of government of Norway is Erna Solberg.",
+      "user: Alvin Patrimonio is a citizen of Philippines.",
+      "user: The head of government of Chile is Sebastian Pi\u00f1era.",
+      "user: Ravindra Randeniya is a citizen of Sri Lanka.",
+      "user: The head of state of United States of America is Donald Trump.",
+      "user: Kamal Jumblatt is a citizen of Lebanon.",
+      "user: The head of state of Croatia is Kolinda Grabar-Kitarovi\u0107.",
+      "user: An Byeong-hun is a citizen of South Korea.",
+      "user: The head of government of Wichita is Brandon Whipple.",
+      "user: The head of state of Mauritania is Mohamed Ould Ghazouani."
+     ]
+    },
+    {
+     "time": 1705622400.0,
+     "lines": [
+      "user: ZZ Top was created in the country of United States of America.",
+      "user: Picasa was developed by Google.",
+      "user: The head of government of Taipei is Chiang Wan-an.",
+      "user: Lee Hyori is a citizen of South Korea.",
+      "user: The head of government of Germany is Olaf Scholz.",
+      "user: The head of state of Slovenia is Borut Pahor.",
+      "user: Abbas Kiarostami is a citizen of Iran."
+     ]
+    },
+    {
+     "time": 1705708800.0,
+     "lines": [
+      "user: The head of government of Pittsburgh is Ed Gainey.",
+      "user: The head of government of Berlin is Franziska Giffey.",
+      "user: The head of state of Panama is Laurentino Cortizo.",
+      "user: The head of government of Panama is Juan Carlos Varela.",
+      "user: The head of government of Marseille is Beno\u00eet Payan.",
+      "user: The head of government of United States of America is Joe Biden.",
+      "user: Paloma Faith is a citizen of United Kingdom.",
+      "user: The headquarters of Yamaha Corporation is located in the city of Hamamatsu.",
+      "user: The head of government of Honduras is Juan Orlando Hern\u00e1ndez."
+     ]
+    },
+    {
+     "time": 1705795200.0,
+     "lines": [
+      "user: The Moody Blues was created in the country of United Kingdom.",
+      "user: The head of government of Austria is Sebastian Kurz.",
+      "user: Sarah Connor's child is John Connor.",
+      "user: The head of state of Croatia is Zoran Milanovi\u0107.",
+      "user: The headquarters of Scientific American is located in the city of Los Angeles.",
+      "user: Arthur Schnitzler is a citizen of Austria.",
+      "user: The head of state of Malawi is Peter Mutharika.",
+      "user: The head of state of Sri Lanka is Ranil Wickremesinghe.",
+      "user: Ruhollah Khomeini is a citizen of Iran.",
+      "user: The head of government of Yekaterinburg is Yevgeny Roizman.",
+      "user: The head of government of Malta is Joseph Muscat.",
+      "user: Hibari Misora is a citizen of Japan."
+     ]
+    },
+    {
+     "time": 1705881600.0,
+     "lines": [
+      "user: The headquarters of Leo Baeck Institute is located in the city of New York.",
+      "user: The head of government of San Diego is Todd Gloria.",
+      "user: The head of government of Baltimore is Brandon Scott.",
+      "user: Mass Effect 3 was developed by BioWare.",
+      "user: Chot Reyes is a citizen of Philippines.",
+      "user: The head of state of Kenya is Uhuru Kenyatta.",
+      "user: The head of government of United Kingdom is Rishi Sunak."
+     ]
+    },
+    {
+     "time": 1705968000.0,
+     "lines": [
+      "user: The head of government of Iran is Hassan Rouhani.",
+      "user: The head of government of South Korea is Moon Jae-in.",
+      "user: The head of government of Austria is Karl Nehammer.",
+      "user: The head of government of Nashville is John Cooper.",
+      "user: Luca Lanotte is a citizen of Italy.",
+      "user: Back in the U.S.S.R. was performed by The Beatles.",
+      "user: The company that produced Volvo P1800 is Volvo Cars."
+     ]
+    },
+    {
+     "time": 1706054400.0,
+     "lines": [
+      "user: Aldrich Ames is employed by Central Intelligence Agency.",
+      "user: The head of government of Bulgaria is Boyko Borisov.",
+      "user: The capital of Sverdlovsk Oblast is Yekaterinburg.",
+      "user: The head of state of Chad is Idriss D\u00e9by.",
+      "user: Lady Antebellum was founded in the city of Nashville.",
+      "user: Paul Farmer is employed by Harvard University.",
+      "user: The director of Central Intelligence Agency is Gina Haspel.",
+      "user: The head of government of New York is Andrew Cuomo.",
+      "user: Nicola Stephenson is a citizen of United Kingdom.",
+      "user: The headquarters of Hamilton County is located in the city of Cincinnati.",
+      "user: Smoke on the Water was performed by Deep Purple.",
+      "user: The headquarters of Robert Bosch GmbH is located in the city of Stuttgart.",
+      "user: Graeme Edge is a citizen of England."
+     ]
+    },
+    {
+     "time": 1706140800.0,
+     "lines": [
+      "user: Yoshinori Kitase is a citizen of Japan.",
+      "user: Jaroslav Levinsk\u00fd is a citizen of Czech Republic.",
+      "user: The head of government of Sierra Leone is Julius Maada Bio.",
+      "user: The head of government of Pakistan is Mian Muhammad Shehbaz Sharif.",
+      "user: The head of government of Myanmar is Aung San Suu Kyi.",
+      "user: The headquarters of American Broadcasting Company is located in the city of New York City.",
+      "user: The head of state of Czech Republic is Milo\u0161 Zeman.",
+      "user: The type of music that Kangin plays is K-pop.",
+      "user: The head of state of Israel is Isaac Herzog."
+     ]
+    },
+    {
+     "time": 1706227200.0,
+     "lines": [
+      "user: The head of state of United States of America is Joe Biden.",
+      "user: The Who was created in the country of United Kingdom.",
+      "user: The head of state of Ecuador is Guillermo Lasso.",
+      "user: The head of state of Jersey is Elizabeth II.",
+      "user: baseball was created in the country of United States of America.",
+      "user: AC/DC was created in the country of Australia.",
+      "user: The type of music that Shinhwa plays is K-pop.",
+      "user: Jim Davis is a citizen of United States of America.",
+      "user: The head of state of Kenya is William Ruto."
+     ]
+    },
+    {
+     "time": 1706313600.0,
+     "lines": [
+      "user: The head of state of Czech Republic is Petr Pavel.",
+      "user: The head of government of Myanmar is Min Aung Hlaing.",
+      "user: Vesna Pusi\u0107 is a citizen of Croatia.",
+      "user: Kim Hye-su is a citizen of South Korea.",
+      "user: F. Scott Fitzgerald is famous for The Great Gatsby.",
+      "user: The director of Central Intelligence Agency is William Joseph Burns.",
+      "user: The headquarters of E. W. Scripps Company is located in the city of Cincinnati."
+     ]
+    },
+    {
+     "time": 1706400000.0,
+     "lines": [
+      "user: The head of state of Greece is Prokopis Pavlopoulos.",
+      "user: Josip Ku\u017ee is a citizen of Croatia.",
+      "user: The head of government of San Salvador is Nayib Bukele.",
+      "user: The head of government of Malta is Robert Abela.",
+      "user: The head of government of Kenya is Uhuru Kenyatta.",
+      "user: Foday Sankoh is a citizen of Sierra Leone.",
+      "user: Bridget Jones's Diary was created in the country of United Kingdom.",
+      "user: Blogger was developed by Google.",
+      "user: The headquarters of Yamaha Corporation is located in the city of Naka-ku.",
+      "user: The head of government of Australia is Scott Morrison.",
+      "user: Lord Peter Wimsey is a citizen of United Kingdom."
+     ]
+    },
+    {
+     "time": 1706486400.0,
+     "lines": [
+      "user: Mike Wallace is employed by CBS.",
+      "user: The head of government of San Juan is Miguel Romero.",
+      "user: Antonis Samaras is a citizen of Greece.",
+      "user: Gmail was developed by Google.",
+      "user: The head of government of Australia is Anthony Albanese.",
+      "user: Kid A was performed by Radiohead.",
+      "user: Derek Thompson is a citizen of United Kingdom.",
+      "user: The head of government of New Zealand is Chris Hipkins.",
+      "user: The head of state of Kuwait is Nawaf Al-Ahmad Al-Jaber Al-Sabah.",
+      "user: Ji\u0159\u00ed Kyli\u00e1n is a citizen of Czech Republic.",
+      "user: George Brandis is a citizen of Australia.",
+      "user: Don't You Want Me was performed by The Human League."
+     ]
+    },
+    {
+     "time": 1706572800.0,
+     "lines": [
+      "user: The head of government of Seattle is Jenny Durkan.",
+      "user: Anett Kontaveit is a citizen of Estonia.",
+      "user: The head of state of Mongolia is Khaltmaagiin Battulga.",
+      "user: The head of government of Prague is Bohuslav Svoboda.",
+      "user: The head of government of New York is Kathy Hochul.",
+      "user: The head of state of Dominican Republic is Luis Abinader.",
+      "user: Dan Carter is a citizen of New Zealand.",
+      "user: The headquarters of Google is located in the city of Mountain View.",
+      "user: The head of government of Calgary is Naheed Nenshi.",
+      "user: The type of music that Risa Niigaki plays is J-pop.",
+      "user: The head of government of Sweden is Ulf Kristersson."
+     ]
+    },
+    {
+     "time": 1706659200.0,
+     "lines": [
+      "user: The head of government of Ecuador is Guillermo Lasso.",
+      "user: I Am the Walrus was performed by The Beatles.",
+      "user: The type of music that Helen Humes plays is jazz.",
+      "user: Kate Havnevik is a citizen of Norway.",
+      "user: The head coach of Manchester United F.C. is Ole Gunnar Solskj\u00e6r.",
+      "user: The headquarters of Grove Press is located in the city of New York City."
+     ]
+    },
+    {
+     "time": 1706745600.0,
+     "lines": [
+      "user: The type of music that Jo Kwon plays is K-pop.",
+      "user: The type of music that Sonny Burke plays is jazz.",
+      "user: The chief executive officer of Nokia is Rajeev Suri.",
+      "user: Nogi Maresuke is a citizen of Japan.",
+      "user: The type of music that Drumma Boy plays is hip hop music.",
+      "user: Mohammad Amir is a citizen of Pakistan.",
+      "user: The headquarters of Robert Bosch GmbH is located in the city of Gerlingen.",
+      "user: The head coach of Norway national football team is St\u00e5le Solbakken.",
+      "user: The head of state of Jersey is Charles, Prince of Wales.",
+      "user: The head of government of Calgary is Jyoti Gondek."
+     ]
+    },
+    {
+     "time": 1706832000.0,
+     "lines": [
+      "user: The company that produced AP1000 is Westinghouse Electric.",
+      "user: The head of state of Slovenia is Nata\u0161a Pirc Musar.",
+      "user: The head of state of United Kingdom is Elizabeth II.",
+      "user: The headquarters of Spirit AeroSystems is located in the city of Wichita.",
+      "user: The head of government of Honduras is Xiomara Castro de Zelaya.",
+      "user: The head of government of Chile is Gabriel Boric.",
+      "user: The head of government of South Korea is Yoon Suk-yeol.",
+      "user: The head of state of Zambia is Hakainde Hichilema.",
+      "user: Dave Duncan is associated with the sport of baseball.",
+      "user: The head of government of Seattle is Bruce Harrell.",
+      "user: The type of music that JYJ plays is K-pop.",
+      "user: Tina Arena is a citizen of Australia.",
+      "user: The head of state of Iraq is Barham Salih.",
+      "user: The headquarters of Apax Partners is located in the city of London.",
+      "user: The head of government of Uruguay is Tabar\u00e9 V\u00e1zquez."
+     ]
+    },
+    {
+     "time": 1706918400.0,
+     "lines": [
+      "user: Nights in White Satin was performed by The Moody Blues.",
+      "user: The head of state of Greece is Aikaterini Sakellaropoulou.",
+      "user: The head of government of Czech Republic is Petr Fiala.",
+      "user: The head of state of Honduras is Juan Orlando Hern\u00e1ndez.",
+      "user: The chief executive officer of Aston Martin Lagonda is Andy Palmer.",
+      "user: Miroslav Bla\u017eevi\u0107 is a citizen of Croatia.",
+      "user: The head of government of Bulgaria is Gulub Donev.",
+      "user: Westinghouse Electric was founded in the city of Pittsburgh.",
+      "user: The headquarters of Apax Partners is located in the city of Paris.",
+      "user: The head of state of Niger is Mahamadou Issoufou.",
+      "user: The head of state of Malawi is Lazarus Chakwera.",
+      "user: The head of government of Lebanon is Hassan Diab.",
+      "user: Ranjan Ramanayake is a citizen of Sri Lanka."
+     ]
+    },
+    {
+     "time": 1707004800.0,
+     "lines": [
+      "user: Leif Ove Andsnes is a citizen of Norway.",
+      "user: The head of state of England is Elizabeth II.",
+      "user: The chief executive officer of Aston Martin Lagonda is Amedeo Felisa.",
+      "user: The head of government of Sierra Leone is David J. Francis.",
+      "user: Takanori Nishikawa is a citizen of Japan.",
+      "user: Nowhere Man was performed by The Beatles.",
+      "user: BioWare was founded in the city of Edmonton.",
+      "user: Mohammad-Ali Rajai is a citizen of Iran.",
+      "user: The head of government of Japan is Shinz\u014d Abe.",
+      "user: The head of state of Mongolia is Khurelsukh Ukhnaa.",
+      "user: The head of government of Scotland is Nicola Sturgeon.",
+      "user: The head of government of Edmonton is Don Iveson.",
+      "user: The head of government of Uruguay is Luis Alberto Lacalle Pou."
+     ]
+    },
+    {
+     "time": 1707091200.0,
+     "lines": [
+      "user: The Alamo was created in the country of United States of America.",
+      "user: The head of government of Malawi is Peter Mutharika.",
+      "user: The head of government of Norway is Jonas Gahr St\u00f8re.",
+      "user: The chief executive officer of Nokia is Pekka Lundmark.",
+      "user: We Are the Champions was performed by Queen.",
+      "user: The head of government of Japan is Fumio Kishida.",
+      "user: The head of government of Los Angeles is Karen Bass.",
+      "user: The headquarters of Lebensborn is located in the city of Munich.",
+      "user: K-pop was created in the country of South Korea.",
+      "user: The head of state of Estonia is Alar Karis.",
+      "user: The head coach of Manchester United F.C. is Erik ten Hag.",
+      "user: Johnny Abarrientos is a citizen of Philippines.",
+      "user: The head of government of Hong Kong is John Lee.",
+      "user: The director of Lucasfilm is Kathleen Kennedy.",
+      "user: Sakis Rouvas is a citizen of Greece."
+     ]
+    },
+    {
+     "time": 1707177600.0,
+     "lines": [
+      "user: The head of government of Edmonton is Amarjeet Sohi.",
+      "user: The head of state of Chad is Mahamat D\u00e9by Itno.",
+      "user: The headquarters of FC Bayern Munich is located in the city of Munich.",
+      "user: Len Bias is associated with the sport of basketball.",
+      "user: The head of government of Laos is Phankham Viphavan.",
+      "user: The head of government of Panama is Laurentino Cortizo.",
+      "user: The head of government of Scotland is Humza Yousaf.",
+      "user: The head of state of England is Charles, Prince of Wales.",
+      "user: The headquarters of Google is located in the city of Googleplex.",
+      "user: basketball was created in the country of United States of America.",
+      "user: Farah Pahlavi is a citizen of Iran.",
+      "user: The head of government of Yekaterinburg is Alexey Orlov.",
+      "user: The head of state of Iraq is Latif Rashid.",
+      "user: The chief executive officer of McDonald's is Chris Kempczinski.",
+      "user: The origianl broadcaster of Fury is NBC.",
+      "user: The head of government of Iran is Seyed Ebrahim Raisi.",
+      "user: Victoria Derbyshire is a citizen of United Kingdom.",
+      "user: The director of Lucasfilm is George Lucas.",
+      "user: Stella Maris F.C. is associated with the sport of association football."
+     ]
+    },
+    {
+     "time": 1707264000.0,
+     "lines": [
+      "user: Bitter Sweet Symphony was performed by The Verve.",
+      "user: The head of government of Malawi is Lazarus Chakwera.",
+      "user: Ne Win is a citizen of Myanmar.",
+      "user: The head of state of Kosovo is Vjosa Osmani.",
+      "user: The headquarters of FC Bayern Munich is located in the city of S\u00e4bener Stra\u00dfe.",
+      "user: The head of state of Niger is Mohamed Bazoum.",
+      "user: Dragon Age was developed by BioWare.",
+      "user: Akira Tozawa is a citizen of Japan.",
+      "user: The head of government of Kenya is William Ruto.",
+      "user: The Great Gatsby was created in the country of United States of America.",
+      "user: The head of state of South Korea is Yoon Suk-yeol.",
+      "user: The head of state of United Kingdom is Charles, Prince of Wales.",
+      "user: The type of music that Kangta plays is K-pop.",
+      "user: The head of government of San Salvador is Mario Edgardo Dur\u00e1n Gavidia.",
+      "user: Paul Farmer is employed by Harvard Medical School.",
+      "user: The head of state of Honduras is Xiomara Castro de Zelaya."
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "question": "Who is the head of government of the country that Joey de Leon is a citizen of?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country to which Toomas Hendrik Ilves belongs?",
+     "answer": "Alar Karis",
+     "current_answer": "Alar Karis",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Kersti Kaljulaid",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country to which Chot Reyes belongs?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Where is the headquarters of the developer of VP9 located?",
+     "answer": "Googleplex",
+     "current_answer": "Googleplex",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Mountain View",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Kangta's genre of music originated?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where Felix Baumgartner is a citizen?",
+     "answer": "Karl Nehammer",
+     "current_answer": "Karl Nehammer",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Sebastian Kurz",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in the country where Akira Tozawa holds citizenship?",
+     "answer": "Fumio Kishida",
+     "current_answer": "Fumio Kishida",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Shinz\u014d Abe",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Linet Masai holds citizenship?",
+     "answer": "William Ruto",
+     "current_answer": "William Ruto",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Uhuru Kenyatta",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the location where Joe Lovano's alma mater is headquartered?",
+     "answer": "Michelle Wu",
+     "current_answer": "Michelle Wu",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Marty Walsh",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location where L.A. Woman was formed?",
+     "answer": "Karen Bass",
+     "current_answer": "Karen Bass",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Eric Garcetti",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location where \"The Man from U.N.C.L.E.\" was created?",
+     "answer": "Eric Adams",
+     "current_answer": "Eric Adams",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Bill de Blasio",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government at the location where the developer of Mass Effect 3 is headquartered?",
+     "answer": "Amarjeet Sohi",
+     "current_answer": "Amarjeet Sohi",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Don Iveson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the location where Spirit AeroSystems has its headquarters?",
+     "answer": "Brandon Whipple",
+     "current_answer": "Brandon Whipple",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Jeff Longwell",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government where AsusTek Computer Inc. is headquartered?",
+     "answer": "Chiang Wan-an",
+     "current_answer": "Chiang Wan-an",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Ko Wen-je",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country that Alvin Patrimonio holds citizenship of?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in Jo Kwon's country of origin?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country whose citizen is Dick Smith?",
+     "answer": "Anthony Albanese",
+     "current_answer": "Anthony Albanese",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Scott Morrison",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in the country of origin of the performer of \"Nowhere Man\"?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who was the head of state of the country that the sport associated with Len Bias originated in?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where Helen Humes' genre of music originated?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where Kate Havnevik holds citizenship?",
+     "answer": "Jonas Gahr St\u00f8re",
+     "current_answer": "Jonas Gahr St\u00f8re",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Erna Solberg",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Kim Hye-su holds a citizenship?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in the country where \"TV Patrol\" originated?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Imee Marcos holds citizenship?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Karol\u00edna Pl\u00ed\u0161kov\u00e1 is a citizen?",
+     "answer": "Petr Pavel",
+     "current_answer": "Petr Pavel",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Milo\u0161 Zeman",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country to which Josip Ku\u017ee belongs to?",
+     "answer": "Zoran Milanovi\u0107",
+     "current_answer": "Zoran Milanovi\u0107",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Kolinda Grabar-Kitarovi\u0107",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country of origin of the performer of \"Back in the U.S.S.R.\"?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country to which Lord Peter Wimsey belongs?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in the headquarters location of E. W. Scripps Company?",
+     "answer": "Aftab Pureval",
+     "current_answer": "Aftab Pureval",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "John Cranley",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the current head of state of the country where Anett Kontaveit holds citizenship?",
+     "answer": "Alar Karis",
+     "current_answer": "Alar Karis",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Kersti Kaljulaid",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who was the head of government of the country to which Thein Sein belonged?",
+     "answer": "Min Aung Hlaing",
+     "current_answer": "Min Aung Hlaing",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Aung San Suu Kyi",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where author Alan Hollinghurst holds citizenship?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country of origin of the performer of \"Highway to Hell\"?",
+     "answer": "Anthony Albanese",
+     "current_answer": "Anthony Albanese",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Scott Morrison",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location of the headquarters of the Leo Baeck Institute?",
+     "answer": "Kathy Hochul",
+     "current_answer": "Kathy Hochul",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Andrew Cuomo",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Nicole Eggert holds citizenship?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who was the head of government in the location where KC-97 Stratotanker was formed?",
+     "answer": "Bruce Harrell",
+     "current_answer": "Bruce Harrell",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Jenny Durkan",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where Johann Gottlieb Fichte held a citizenship?",
+     "answer": "Olaf Scholz",
+     "current_answer": "Olaf Scholz",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Angela Merkel",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who was the head of government of the country where Mohammad-Ali Rajai was a citizen?",
+     "answer": "Seyed Ebrahim Raisi",
+     "current_answer": "Seyed Ebrahim Raisi",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Hassan Rouhani",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country to which Ji\u0159\u00ed Kyli\u00e1n belongs?",
+     "answer": "Petr Fiala",
+     "current_answer": "Petr Fiala",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Andrej Babi\u0161",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where rugby originated?",
+     "answer": "Charles, Prince of Wales",
+     "current_answer": "Charles, Prince of Wales",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Elizabeth II",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Where is the headquarters of the developer of Blogger located?",
+     "answer": "Googleplex",
+     "current_answer": "Googleplex",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Mountain View",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the current head of state of Pavel Kohout's country of citizenship?",
+     "answer": "Petr Pavel",
+     "current_answer": "Petr Pavel",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Milo\u0161 Zeman",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Kamal Jumblatt holds citizenship?",
+     "answer": "Najib Mikati",
+     "current_answer": "Najib Mikati",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Michel Aoun",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country that is the origin of the genre associated with Risa Niigaki?",
+     "answer": "Fumio Kishida",
+     "current_answer": "Fumio Kishida",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Shinz\u014d Abe",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the city where the National Energy Board has its headquarters?",
+     "answer": "Jyoti Gondek",
+     "current_answer": "Jyoti Gondek",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Naheed Nenshi",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Where is the headquarters of the developer of Gmail located?",
+     "answer": "Googleplex",
+     "current_answer": "Googleplex",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Mountain View",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Sakis Rouvas holds citizenship?",
+     "answer": "Aikaterini Sakellaropoulou",
+     "current_answer": "Aikaterini Sakellaropoulou",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Prokopis Pavlopoulos",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Bachir Gemayel was a citizen?",
+     "answer": "Najib Mikati",
+     "current_answer": "Najib Mikati",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Michel Aoun",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who was the head of state of the country where Rafael Leonidas Trujillo held citizenship?",
+     "answer": "Luis Abinader",
+     "current_answer": "Luis Abinader",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Danilo Medina",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Takanori Nishikawa holds a citizenship?",
+     "answer": "Fumio Kishida",
+     "current_answer": "Fumio Kishida",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Shinz\u014d Abe",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country whose citizen is Mwai Kibaki?",
+     "answer": "William Ruto",
+     "current_answer": "William Ruto",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Uhuru Kenyatta",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country that Panagiotis Kanellopoulos is a citizen of?",
+     "answer": "Aikaterini Sakellaropoulou",
+     "current_answer": "Aikaterini Sakellaropoulou",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Prokopis Pavlopoulos",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of Choi Ji-woo's country of citizenship?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country to which Miroslav Cik\u00e1n belongs?",
+     "answer": "Petr Pavel",
+     "current_answer": "Petr Pavel",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Milo\u0161 Zeman",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country that Vesna Pusi\u0107 is a citizen of?",
+     "answer": "Zoran Milanovi\u0107",
+     "current_answer": "Zoran Milanovi\u0107",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Kolinda Grabar-Kitarovi\u0107",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Nogi Maresuke holds a citizenship?",
+     "answer": "Fumio Kishida",
+     "current_answer": "Fumio Kishida",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Shinz\u014d Abe",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where \"I Am the Walrus\" performer comes from?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where the performers of \"Quadrophenia\" hail from?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country whose citizen is Petra Cetkovsk\u00e1?",
+     "answer": "Petr Fiala",
+     "current_answer": "Petr Fiala",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Andrej Babi\u0161",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the location where the original broadcaster of \"Private Practice\" is headquartered?",
+     "answer": "Eric Adams",
+     "current_answer": "Eric Adams",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Bill de Blasio",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who was the head of government of the country that Engelbert Dollfuss belonged to?",
+     "answer": "Karl Nehammer",
+     "current_answer": "Karl Nehammer",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Sebastian Kurz",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where Jaroslav Levinsk\u00fd is a citizen?",
+     "answer": "Petr Pavel",
+     "current_answer": "Petr Pavel",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Milo\u0161 Zeman",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "What is the name of the head of government of the country where Simeon Djankov holds citizenship?",
+     "answer": "Gulub Donev",
+     "current_answer": "Gulub Donev",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boyko Borisov",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country that Dan Carter holds citizenship in?",
+     "answer": "Chris Hipkins",
+     "current_answer": "Chris Hipkins",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Jacinda Ardern",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where ZZ Top originated?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Foday Sankoh held citizenship?",
+     "answer": "David J. Francis",
+     "current_answer": "David J. Francis",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Julius Maada Bio",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of Johnny Abarrientos' country of citizenship?",
+     "answer": "Bongbong Marcos",
+     "current_answer": "Bongbong Marcos",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Rodrigo Duterte",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where the music genre of Drumma Boy originated?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location where the Wildrose Party's headquarters is located?",
+     "answer": "Jyoti Gondek",
+     "current_answer": "Jyoti Gondek",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Naheed Nenshi",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Abbas Kiarostami holds citizenship?",
+     "answer": "Seyed Ebrahim Raisi",
+     "current_answer": "Seyed Ebrahim Raisi",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Hassan Rouhani",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of state of the country where the sport related to the 2013 NWSL College Draft originated?",
+     "answer": "Charles, Prince of Wales",
+     "current_answer": "Charles, Prince of Wales",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Elizabeth II",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government where the developer of Dragon Age was founded?",
+     "answer": "Amarjeet Sohi",
+     "current_answer": "Amarjeet Sohi",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Don Iveson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the country of origin of the genre associated with Teddy Wilson?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country to which Arthur Schnitzler belonged?",
+     "answer": "Karl Nehammer",
+     "current_answer": "Karl Nehammer",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Sebastian Kurz",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country to which Henrik Ibsen belongs?",
+     "answer": "Jonas Gahr St\u00f8re",
+     "current_answer": "Jonas Gahr St\u00f8re",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Erna Solberg",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the country where Murray Gleeson is a citizen?",
+     "answer": "Anthony Albanese",
+     "current_answer": "Anthony Albanese",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Scott Morrison",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who was the head of government of the country of citizenship of Ne Win?",
+     "answer": "Min Aung Hlaing",
+     "current_answer": "Min Aung Hlaing",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Aung San Suu Kyi",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government in the location where Grove Press has its headquarters?",
+     "answer": "Eric Adams",
+     "current_answer": "Eric Adams",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Bill de Blasio",
+     "hops": 2,
+     "edit_position": 1
+    },
+    {
+     "question": "Who is the head of government of the location where AP1000 was manufactured?",
+     "answer": "Ed Gainey",
+     "current_answer": "Ed Gainey",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Bill Peduto",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location where the headquarters of the institution where Mike Portnoy was educated is situated?",
+     "answer": "Michelle Wu",
+     "current_answer": "Michelle Wu",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Marty Walsh",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the current head of government in the country that Lady Madonna is from?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where JYJ emerged from?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where Keith Tippett's music genre originated?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the location where Al Di Meola's alma mater is headquartered?",
+     "answer": "Michelle Wu",
+     "current_answer": "Michelle Wu",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Marty Walsh",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country that Tim Hardaway comes from?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the location where the developer of Mass Effect 2 has its headquarters?",
+     "answer": "Amarjeet Sohi",
+     "current_answer": "Amarjeet Sohi",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Don Iveson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country where Alex Avila comes from?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government at the headquarters location of the institution where Bill Frisell was educated?",
+     "answer": "Michelle Wu",
+     "current_answer": "Michelle Wu",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Marty Walsh",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government in the location where Fury was formed?",
+     "answer": "Eric Adams",
+     "current_answer": "Eric Adams",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Bill de Blasio",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where the Beatles for Sale originated from?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country that is the origin of the genre of JYJ?",
+     "answer": "Yoon Suk-yeol",
+     "current_answer": "Yoon Suk-yeol",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Moon Jae-in",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country of origin of the performer of \"I Am the Walrus\"?",
+     "answer": "Charles, Prince of Wales",
+     "current_answer": "Charles, Prince of Wales",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Elizabeth II",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the current head of government of the country where \"Bitter Sweet Symphony\" originated?",
+     "answer": "Rishi Sunak",
+     "current_answer": "Rishi Sunak",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Boris Johnson",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country with which Sean Casey is associated with in sports?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the country where F. Scott Fitzgerald's notable work is from?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country where Stella Maris F.C. originated?",
+     "answer": "Charles, Prince of Wales",
+     "current_answer": "Charles, Prince of Wales",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Elizabeth II",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country where \"Nights in White Satin\" originated?",
+     "answer": "Charles, Prince of Wales",
+     "current_answer": "Charles, Prince of Wales",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Elizabeth II",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of government of the place where B-52 Stratofortress was developed?",
+     "answer": "Bruce Harrell",
+     "current_answer": "Bruce Harrell",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Jenny Durkan",
+     "hops": 3,
+     "edit_position": 2
+    },
+    {
+     "question": "Who is the head of state of the country where the child of Kyle Reese has citizenship?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 4,
+     "edit_position": 3
+    },
+    {
+     "question": "Who is the head of government of the country of citizenship of the child of Kyle Reese's spouse?",
+     "answer": "Joe Biden",
+     "current_answer": "Joe Biden",
+     "category": "knowledge_update_multihop",
+     "stale_answer": "Donald Trump",
+     "hops": 4,
+     "edit_position": 3
+    }
+   ]
+  }
+ ]
+}

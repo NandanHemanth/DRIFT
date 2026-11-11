@@ -167,11 +167,22 @@ class DiskCache:
     def get(self, key: str) -> dict | None:
         p = self._path(key)
         if p.exists():
-            return json.loads(p.read_text())
+            try:
+                return json.loads(p.read_text())
+            except (json.JSONDecodeError, OSError):
+                return None     # unreadable entry: treat as a miss, the call is remade
         return None
 
     def put(self, key: str, value: dict) -> None:
-        self._path(key).write_text(json.dumps(value))
+        # Write to a unique temporary file, then rename. The rename is atomic, so
+        # several processes (or threads) sharing one cache never read a half-written
+        # entry, which matters when studies run in parallel terminals.
+        import os
+        import uuid
+        p = self._path(key)
+        tmp = p.with_name(f".{p.name}.{os.getpid()}.{uuid.uuid4().hex}.tmp")
+        tmp.write_text(json.dumps(value))
+        os.replace(tmp, p)
 
 
 class RateLimiter:

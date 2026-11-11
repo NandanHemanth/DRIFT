@@ -186,6 +186,9 @@ def main() -> None:
         out.append(row)
         print(json.dumps(row))
     tag = "" if CONFIGS[0].startswith("configs/final_") else "_" + Path(CONFIGS[0]).parent.name
+    if all("_mh" in c for c in CONFIGS):
+        # multi-hop preflights must not overwrite the main one or each other
+        tag += "_" + "_".join(Path(c).stem.replace("main_", "") for c in CONFIGS)
     (ROOT / f"artifacts/preflight_final{tag}.json").write_text(json.dumps(out, indent=1))
     bad = [r for r in out if r["extraction_misses"]]
     print("\nOK: every extraction is cached" if not bad else

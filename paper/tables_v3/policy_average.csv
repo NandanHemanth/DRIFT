@@ -1,0 +1,22 @@
+benchmark,policy,accuracy %,stale %,old value in prompt %,reading error %,prompt tokens / question,facts kept
+MQuAKE-T,NOMEM,0.6 ± 0.1,0.1 ± 0.1,,,98,353
+MQuAKE-T,P0,91.3 ± 2.0,6.7 ± 1.3,90.6,7.6,717,353
+MQuAKE-T,P1,82.9 ± 1.5,4.0 ± 1.1,52.1,7.7,716,226
+MQuAKE-T,P2,95.2 ± 2.3,3.3 ± 1.4,9.4,36.0,587,317
+MQuAKE-T,P3,79.1 ± 0.7,15.9 ± 0.6,89.6,17.8,710,327
+MQuAKE-T,P4,89.9 ± 1.4,7.6 ± 1.0,90.5,8.5,717,350
+MQuAKE-T,P5,77.2 ± 3.3,20.3 ± 3.9,85.6,23.7,716,335
+FactConsolidation,NOMEM,0.3 ± 0.1,0.9 ± 0.2,,,95,380
+FactConsolidation,P0,67.2 ± 0.7,6.8 ± 0.3,95.4,11.0,661,380
+FactConsolidation,P1,57.3 ± 0.7,3.6 ± 0.2,73.8,7.5,664,210
+FactConsolidation,P2,79.9 ± 0.6,0.9 ± 0.3,55.4,2.6,599,318
+FactConsolidation,P3,54.7 ± 0.4,16.7 ± 0.2,96.9,26.5,663,334
+FactConsolidation,P4,44.0 ± 5.0,31.5 ± 3.6,97.4,49.6,663,309
+FactConsolidation,P5,64.6 ± 0.5,9.7 ± 0.3,91.7,16.1,663,367
+ConvoMem,NOMEM,0.0 ± 0.0,0.4 ± 0.0,,,99,529
+ConvoMem,P0,12.4 ± 1.6,8.9 ± 1.1,29.3,29.9,802,529
+ConvoMem,P1,12.4 ± 1.6,8.9 ± 1.1,29.3,29.9,802,529
+ConvoMem,P2,8.4 ± 0.6,7.9 ± 1.0,22.0,35.1,567,394
+ConvoMem,P3,12.3 ± 1.7,8.9 ± 1.3,29.7,29.6,796,505
+ConvoMem,P4,11.9 ± 1.2,8.1 ± 0.9,26.2,30.2,777,397
+ConvoMem,P5,8.3 ± 0.8,7.8 ± 0.7,21.9,35.0,642,226

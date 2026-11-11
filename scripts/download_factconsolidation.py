@@ -43,11 +43,14 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 import urllib.parse
 import urllib.request
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))  # for download_mquake.usable_stale
 
 # Read rows over the HF datasets-server JSON API rather than the parquet file.
 # DRIFT's core is stdlib-only (pyproject.toml: dependencies = []), and pulling in
@@ -151,7 +154,47 @@ def build_stale_map(facts: list[tuple[int, str, str, str, str]]) -> dict[str, st
     return stale
 
 
-def convert(row: dict, facts_per_session: int, day_step: float) -> dict:
+MQUAKE_URL = "https://raw.githubusercontent.com/princeton-nlp/MQuAKE/main/datasets/{name}.json"
+MQUAKE_CF = ("MQuAKE-CF-3k-v2", "MQuAKE-CF")
+
+
+def mquake_index(local_dir: str | None = None) -> dict[str, dict]:
+    """question text -> MQuAKE-CF instance, for recovering multi-hop stale answers.
+
+    FactConsolidation-MH reuses MQuAKE-CF's own questions and its gold is
+    MQuAKE's post-edit chain answer (`new_answer`), so the superseded value is
+    the pre-edit chain answer (`answer`) of the same instance. Looked up, never
+    generated: no annotator is involved.
+    """
+    idx: dict[str, dict] = {}
+    for name in MQUAKE_CF:
+        if local_dir:
+            raw = json.loads((Path(local_dir) / f"{name}.json").read_text())
+        else:
+            print(f"Fetching {name} for multi-hop stale answers ...")
+            with urllib.request.urlopen(MQUAKE_URL.format(name=name), timeout=300) as resp:
+                raw = json.loads(resp.read())
+        for item in raw:
+            for q in item.get("questions", []):
+                idx.setdefault(q.strip(), item)
+    return idx
+
+
+def multihop_meta(item: dict, gold: str) -> dict:
+    """Stale answer and chain shape for one MQuAKE-CF instance."""
+    from download_mquake import usable_stale  # same safety rules as MQuAKE-T
+    edited = {r["prompt"].format(r["subject"]).strip() for r in item["requested_rewrite"]}
+    positions = [i for i, h in enumerate(item["single_hops"]) if h["cloze"].strip() in edited]
+    return {"stale_answer": usable_stale(item["answer"], gold),
+            "hops": len(item["single_hops"]),
+            "edit_position": min(positions) if positions else -1,
+            "n_edits": len(item["requested_rewrite"]),
+            "answer_alias": item.get("new_answer_alias", []),
+            "stale_alias": item.get("answer_alias", [])}
+
+
+def convert(row: dict, facts_per_session: int, day_step: float,
+            mh_index: dict | None = None) -> dict:
     facts = parse_context(row["context"])
     stale_map = build_stale_map(facts)
 
@@ -165,14 +208,25 @@ def convert(row: dict, facts_per_session: int, day_step: float) -> dict:
         })
 
     questions = []
+    unmatched = 0
     for q, a in zip(row["questions"], row["answers"]):
-        gold = a[0] if isinstance(a, (list, tuple)) and a else str(a)
-        questions.append({
-            "question": q,
-            "answer": str(gold),
-            "category": "knowledge_update",
-            "stale_answer": stale_map.get(str(gold).strip().lower()),
-        })
+        gold = a[0] if isinstance(a, (list, tuple)) and len(a) else str(a)
+        if mh_index is None:
+            questions.append({
+                "question": q,
+                "answer": str(gold),
+                "category": "knowledge_update",
+                "stale_answer": stale_map.get(str(gold).strip().lower()),
+            })
+            continue
+        item = mh_index.get(q.strip())
+        if item is None:
+            unmatched += 1
+            continue
+        questions.append({"question": q, "answer": str(gold), "current_answer": str(gold),
+                          "category": "knowledge_update_multihop", **multihop_meta(item, str(gold))})
+    if unmatched:
+        print(f"  ! {unmatched} multi-hop questions had no MQuAKE-CF match and were dropped")
 
     return {"id": str((row.get("metadata") or {}).get("qa_pair_ids", ["fc"])[0]).rsplit("_no", 1)[0],
             "sessions": sessions, "questions": questions}
@@ -188,16 +242,30 @@ def main() -> None:
     ap.add_argument("--day-step", type=float, default=1.0,
                     help="simulated days between sessions (sets the valid-time spacing "
                          "that P1's TTL and P2's grace window operate over)")
+    ap.add_argument("--from-parquet", default=None,
+                    help="read the Conflict_Resolution parquet file instead of the HF rows "
+                         "API (needs pyarrow; use when the API is down)")
+    ap.add_argument("--mquake-dir", default=None,
+                    help="multi-hop only: local folder with MQuAKE-CF-3k-v2.json and "
+                         "MQuAKE-CF.json instead of fetching them from GitHub")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
 
     out = Path(args.out or f"data/factconsolidation_{args.hop}_{args.context}.json")
 
     want = f"factconsolidation_{args.hop}_{args.context}"
-    print(f"Fetching {HF_DATASET} [{HF_SPLIT}] -> {want} ...")
-    row = find_split(want)
+    if args.from_parquet:
+        import pyarrow.parquet as pq  # optional, only for this fallback
+        rows = [r for r in pq.read_table(args.from_parquet).to_pylist() if split_name(r) == want]
+        if not rows:
+            raise SystemExit(f"no split matching {want!r} in {args.from_parquet}")
+        row = rows[0]
+    else:
+        print(f"Fetching {HF_DATASET} [{HF_SPLIT}] -> {want} ...")
+        row = find_split(want)
 
-    convo = convert(row, args.facts_per_session, args.day_step)
+    mh_index = mquake_index(args.mquake_dir) if args.hop == "mh" else None
+    convo = convert(row, args.facts_per_session, args.day_step, mh_index)
     dataset = {"name": want, "conversations": [convo]}
 
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -207,6 +275,10 @@ def main() -> None:
     n_stale = sum(1 for q in qs if q["stale_answer"])
     print(f"Wrote {out}: {len(convo['sessions'])} sessions, {len(qs)} questions, "
           f"{n_stale} with stale_answer ({n_stale / max(1, len(qs)) * 100:.0f}%)")
+    if args.hop == "mh":
+        from collections import Counter
+        print(f"  hops {dict(sorted(Counter(q['hops'] for q in qs).items()))}, "
+              f"first edited hop {dict(sorted(Counter(q['edit_position'] for q in qs).items()))}")
     for q in [q for q in qs if q["stale_answer"]][:5]:
         print(f"   gold={q['answer'][:34]:<34} stale={q['stale_answer']}")
 

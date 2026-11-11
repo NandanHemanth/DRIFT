@@ -7,7 +7,7 @@
   "save_graph": true,
   "functional_predicates": "*",
   "relation_matching": "llm",
-  "lexical": "bm25",
+  "lexical": "overlap",
   "extract_context_lines": 4,
   "extract_retry_tokens": 4096,
   "judge_model": "openrouter:deepseek/deepseek-v4.1-flash",

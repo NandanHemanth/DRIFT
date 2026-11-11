@@ -360,7 +360,7 @@ clean-all: clean ## Also remove every real-data result (destructive)
 RUN ?= 1
 V3 = configs/v3/run$(RUN)
 
-v3-configs: ## Write every v3 config (BM25, Zep-style extraction context, 3 runs)
+v3-configs: ## Write every v3 config (Zep-style extraction context, word-overlap lexical, 3 runs)
 	$(PY) scripts/build_v3_configs.py
 
 v3-estimate: ## Dry run: exact answer counts, estimated cost and hours (free, no calls)
@@ -372,6 +372,30 @@ v3-check: ## Ping every model in the v3 configs (a few cents)
 
 v3-preflight: ## Extract every session for run RUN with DeepSeek + context, report detection coverage
 	$(PY) scripts/preflight_final.py --configs $(V3)/main_mquake_t.json,$(V3)/main_factconsolidation.json,$(V3)/main_convomem.json
+
+v3mh-preflight: ## Multi-hop: FactConsolidation-MH for run RUN (reuses the single-hop extraction cache)
+	$(PY) scripts/preflight_final.py --configs $(V3)/main_factconsolidation_mh.json
+
+v3mh-main: ## Multi-hop: 7 policies x 5 models on FactConsolidation-MH for run RUN
+	$(PY) -m drift.runner --config $(V3)/main_factconsolidation_mh.json
+
+v3mh-run: ## Multi-hop: FactConsolidation-MH, preflight then matrix, for run RUN
+	$(MAKE) v3mh-preflight RUN=$(RUN)
+	$(MAKE) v3mh-main RUN=$(RUN)
+
+SHARD ?= 1
+v3cf-preflight: ## MQuAKE-CF-3k multi-hop: extract one shard (SHARD=1..4) for run RUN
+	$(PY) scripts/preflight_final.py --configs $(V3)/main_mquake_cf_mh_s$(SHARD).json
+
+v3cf-main: ## MQuAKE-CF-3k multi-hop: 7 policies x 5 models on one shard (SHARD=1..4) for run RUN
+	$(PY) -m drift.runner --config $(V3)/main_mquake_cf_mh_s$(SHARD).json
+
+v3cf-run: ## MQuAKE-CF-3k multi-hop: preflight then matrix for one shard (SHARD=1..4), run RUN
+	$(MAKE) v3cf-preflight RUN=$(RUN) SHARD=$(SHARD)
+	$(MAKE) v3cf-main RUN=$(RUN) SHARD=$(SHARD)
+
+v3cf-run-all: ## MQuAKE-CF-3k multi-hop: all four shards one after another, run RUN
+	for k in 1 2 3 4; do $(MAKE) v3cf-run RUN=$(RUN) SHARD=$$k || exit 1; done
 
 v3-pilot: ## P0 and P2 on MQuAKE-T, all five models, run 1: checks cost and output before the campaign
 	$(PY) -m drift.runner --config configs/v3/run1/main_mquake_t.json --policies P0,P2

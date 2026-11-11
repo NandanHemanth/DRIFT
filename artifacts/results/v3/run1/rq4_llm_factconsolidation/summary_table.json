@@ -1,0 +1,126 @@
+[
+ {
+  "n_questions": 500,
+  "accuracy": 0.598,
+  "mean_f1": 0.39627194946115796,
+  "staleness_rate": 0.112,
+  "mean_tokens_per_q": 772.046,
+  "n_agents": 5,
+  "invalidations": 77,
+  "cross_writer_invalidations": 57,
+  "contradiction_judgements": 176,
+  "final_memory": {
+   "total_facts": 316,
+   "active_facts": 316,
+   "invalidated_active": 77,
+   "pruned": 0,
+   "write_rejections": 0
+  },
+  "by_model": {
+   "openrouter:openai/gpt-6.1-sol": {
+    "n_questions": 100,
+    "accuracy": 0.71,
+    "mean_f1": 0.7106450216450216,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 573.76
+   },
+   "openrouter:anthropic/claude-sonnet-5.5": {
+    "n_questions": 100,
+    "accuracy": 0.7,
+    "mean_f1": 0.14997019024199476,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 858.38
+   },
+   "openrouter:google/gemini-3.8-flash": {
+    "n_questions": 100,
+    "accuracy": 0.71,
+    "mean_f1": 0.5712300448089922,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 726.4
+   },
+   "openrouter:meta-llama/llama-3.1-8b-instruct": {
+    "n_questions": 100,
+    "accuracy": 0.34,
+    "mean_f1": 0.2968027528027528,
+    "staleness_rate": 0.27,
+    "mean_tokens_per_q": 584.65
+   },
+   "openrouter:qwen/qwen3-14b": {
+    "n_questions": 100,
+    "accuracy": 0.53,
+    "mean_f1": 0.2527117378070284,
+    "staleness_rate": 0.08,
+    "mean_tokens_per_q": 1117.04
+   }
+  },
+  "topology": "shared",
+  "policy": "P0",
+  "wall_seconds": 121.6,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text",
+  "usd_billed": 0.004144,
+  "replicate": 0
+ },
+ {
+  "n_questions": 500,
+  "accuracy": 0.694,
+  "mean_f1": 0.48902031002383944,
+  "staleness_rate": 0.07,
+  "mean_tokens_per_q": 672.556,
+  "n_agents": 5,
+  "invalidations": 77,
+  "cross_writer_invalidations": 57,
+  "contradiction_judgements": 176,
+  "final_memory": {
+   "total_facts": 316,
+   "active_facts": 271,
+   "invalidated_active": 32,
+   "pruned": 45,
+   "write_rejections": 0
+  },
+  "by_model": {
+   "openrouter:openai/gpt-6.1-sol": {
+    "n_questions": 100,
+    "accuracy": 0.72,
+    "mean_f1": 0.7163333333333334,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 531.24
+   },
+   "openrouter:anthropic/claude-sonnet-5.5": {
+    "n_questions": 100,
+    "accuracy": 0.72,
+    "mean_f1": 0.2353421444921445,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 779.07
+   },
+   "openrouter:google/gemini-3.8-flash": {
+    "n_questions": 100,
+    "accuracy": 0.72,
+    "mean_f1": 0.6118354978354978,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 641.98
+   },
+   "openrouter:meta-llama/llama-3.1-8b-instruct": {
+    "n_questions": 100,
+    "accuracy": 0.6,
+    "mean_f1": 0.5367113997113997,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 539.94
+   },
+   "openrouter:qwen/qwen3-14b": {
+    "n_questions": 100,
+    "accuracy": 0.71,
+    "mean_f1": 0.3448791747468218,
+    "staleness_rate": 0.07,
+    "mean_tokens_per_q": 870.55
+   }
+  },
+  "topology": "shared",
+  "policy": "P2",
+  "wall_seconds": 1022.0,
+  "relation_matching": "llm",
+  "embedder": "ollama:nomic-embed-text",
+  "usd_billed": 0.338467,
+  "replicate": 0
+ }
+]

@@ -249,9 +249,11 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
             verdict = judge_answer(q["question"], q["answer"], result["answer"], judge_provider,
                                    max_tokens=cfg.get("judge_max_tokens", 1024),
                                    stale_answer=q.get("stale_answer"))
+            meta = {k: q[k] for k in ("stale_answer", "current_answer", "hops", "edit_position",
+                                       "n_edits", "case_id", "answer_alias", "stale_alias") if k in q}
             return {
                 "conversation": convo_id, "category": q.get("category", "single_hop"),
-                **result, "gold": q["answer"], **verdict,
+                **result, "gold": q["answer"], **verdict, **meta,
                 "stale": staleness_hit(result["answer"], q.get("stale_answer"), q.get("current_answer")),
                 "mentions_old": mentions_old(result["answer"], q.get("stale_answer")),
             }
@@ -270,7 +272,10 @@ def run_cell(policy_spec: str, model_spec: str, dataset: dict, cfg: dict, out_pa
             n_so_far = len(records)
             acc_so_far = sum(r["correct"] for r in records) / n_so_far
             stale_so_far = sum(r["stale"] for r in records) / n_so_far
-            bar.update(stats=f"acc={acc_so_far:.3f} stale={stale_so_far:.3f}")
+            f1_so_far = sum(r["f1"] for r in records) / n_so_far
+            tok_so_far = sum(r["tokens"] for r in records) / n_so_far
+            bar.update(stats=f"acc={acc_so_far:.3f} f1={f1_so_far:.3f} stale={stale_so_far:.3f} "
+                             f"tok/q={tok_so_far:.0f}")
 
     bar.close()
     n = len(records)
@@ -334,6 +339,19 @@ def add_cell_cost(out_path: Path, usd: float, cfg: dict) -> None:
         pass
 
 
+def _log_failure(results_dir: Path, cell: str, err: Exception) -> None:
+    """Append a failed cell and its error to failures.json, so the cause is kept."""
+    import datetime
+    try:
+        path = results_dir / "failures.json"
+        log = json.loads(path.read_text()) if path.exists() else []
+        log.append({"time": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    "cell": cell, "error": f"{type(err).__name__}: {err}"[:2000]})
+        path.write_text(json.dumps(log, indent=1))
+    except Exception:  # noqa: BLE001 - logging must never break a run
+        pass
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="DRIFT experiment runner")
     parser.add_argument("--config", required=True)
@@ -394,6 +412,7 @@ def main() -> None:
                 # rerun later (completed work is cached, the cell will resume).
                 print(f"[fail] {cell}: {str(e)[:160]}  {tracker.cell_done()}")
                 failures.append(cell)
+                _log_failure(results_dir, cell, e)
                 continue
             print(f"       acc={summary['accuracy']:.3f} f1={summary['mean_f1']:.3f} "
                   f"stale={summary['staleness_rate']:.3f} tok/q={summary['mean_tokens_per_q']:.0f}")

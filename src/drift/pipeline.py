@@ -119,11 +119,17 @@ def answer_question(question: str, graph: BitemporalGraph, policy: Policy,
     retrieved = policy.on_retrieve(retrieved, now=now or 0.0)
     memory_block = "\n".join(render_fact(f, show_supersession) for f in retrieved) \
         or "(no relevant memory)"
+    import time
+    t0 = time.monotonic()
     completion: Completion = provider.complete(
         ANSWER_PROMPT.format(memory=memory_block, question=question), system=ANSWER_SYSTEM,
         max_tokens=max_tokens,
     )
+    elapsed = time.monotonic() - t0
     return {
+        # wall time of the answer call; only meaningful when not served from cache
+        "answer_seconds": round(elapsed, 3),
+        "answer_cached": bool(getattr(completion, "cached", False)),
         "question": question,
         # a reasoning model's visible <think> block is not part of the answer
         "answer": _THINK.sub("", completion.text).strip(),
