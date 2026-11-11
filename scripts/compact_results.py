@@ -42,11 +42,20 @@ def compact_file(path: Path, dry_run: bool = False) -> tuple[int, int]:
     # and other aggregators are lists, and carry no snapshot to strip.
     if not isinstance(data, dict):
         return (0, 0)
-    snap = data.get("graph_snapshot")
-    if not isinstance(snap, list) or not any("embedding" in f for f in snap):
+    # Cells with several conversations (ConvoMem, MQuAKE-CF, RQ4) also keep one
+    # snapshot per conversation in graph_snapshots; strip those as well, or the
+    # file keeps nearly all of its size.
+    lists = []
+    if isinstance(data.get("graph_snapshot"), list):
+        lists.append(data["graph_snapshot"])
+    if isinstance(data.get("graph_snapshots"), dict):
+        lists.extend(v for v in data["graph_snapshots"].values() if isinstance(v, list))
+    if not any(isinstance(f, dict) and "embedding" in f for snap in lists for f in snap):
         return (0, 0)
-    for fact in snap:
-        fact.pop("embedding", None)
+    for snap in lists:
+        for fact in snap:
+            if isinstance(fact, dict):
+                fact.pop("embedding", None)
     if not dry_run:
         path.write_text(json.dumps(data))
     return (before, len(json.dumps(data)))

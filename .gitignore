@@ -25,3 +25,6 @@ data/longmemeval_drift.json
 
 # os
 .DS_Store
+
+# derived from artifacts/results by `python -m analysis.v3_compact`; regenerable
+artifacts/v3_compact/
